@@ -10,7 +10,7 @@ import {UsuarioService} from './Service/usuario.service';
 
 })
 export class AppComponent implements OnInit {
-  title = 'paltanes';
+  title = 'Beta';
 
 constructor(private userservi: UsuarioService) {
 
