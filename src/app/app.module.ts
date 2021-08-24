@@ -10,7 +10,7 @@ import {SharedModule} from './shared/shared.module';
 import {ProductsModule} from './components/products/products.module';
 import {PagesModule} from './components/pages/pages.module';
 import {UsersModule} from './components/users/users.module';
-
+import {NgxPrintModule} from 'ngx-print';
 import {AuthModule} from './components/auth/auth.module';
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {MermaModule} from "./components/merma/merma.module";
@@ -33,7 +33,8 @@ import {MermaModule} from "./components/merma/merma.module";
         ReactiveFormsModule,
         HttpClientModule,
         MermaModule,
-        FormsModule
+        FormsModule,
+        NgxPrintModule
 
     ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy}],

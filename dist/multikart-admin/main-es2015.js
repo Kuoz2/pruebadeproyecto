@@ -7047,7 +7047,7 @@ class AddProductComponent {
                 this.servi.guardarproductos(this.productForm.value).subscribe(res => { console.log('lo guardado', res); });
                 ;
                 console.log('productos', this.productForm.value);
-                // this.productForm.reset();
+                this.productForm.reset();
             }
             catch (e) {
                 console.log('ocurrio un error', e);

@@ -1,4 +1,6 @@
-
+@media print {
+  .page-break { display: block; page-break-before: always; }
+}
 
 * {
   font-size: 12px;
@@ -47,6 +49,9 @@ th.precio {
   border: solid;
   width: 600px;
   max-width: 600px;
+}
+.ticket{
+  align-items: center;
 }
 
 img {

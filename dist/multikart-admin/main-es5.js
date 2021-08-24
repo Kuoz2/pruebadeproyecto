@@ -16590,7 +16590,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 console.log('lo guardado', res);
               });
               ;
-              console.log('productos', this.productForm.value); // this.productForm.reset();
+              console.log('productos', this.productForm.value);
+              this.productForm.reset();
             } catch (e) {
               console.log('ocurrio un error', e);
             }

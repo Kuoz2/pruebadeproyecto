@@ -79,6 +79,7 @@
     "ngx-dropzone-wrapper": "^8.0.0",
     "ngx-owl-carousel-o": "^2.0.1",
     "ngx-pagination": "^5.0.0",
+    "ngx-print": "^1.2.1",
     "ngx-spinner": "^9.0.2",
     "node-forge": "^0.10.0",
     "node-rsa": "^1.1.1",

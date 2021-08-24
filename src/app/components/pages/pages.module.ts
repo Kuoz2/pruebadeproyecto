@@ -24,6 +24,7 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {ActualizarbolComponent} from './actualizarbol/actualizarbol.component';
 import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
 import {NgxSpinnerModule} from "ngx-spinner";
+import {NgxPrintModule} from 'ngx-print';
 
 
 @NgModule({
@@ -52,7 +53,7 @@ import {NgxSpinnerModule} from "ngx-spinner";
         NgxPaginationModule,
         Ng4LoadingSpinnerModule,
         NgxSpinnerModule,
-
+        NgxPrintModule,
     ],
     providers:[HoraActualService],
     schemas:[
