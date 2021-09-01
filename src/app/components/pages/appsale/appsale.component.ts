@@ -194,8 +194,10 @@ imagenjpg;
            '}' +
            '\n' +
            'img {\n' +
-           'width: 110mm;\n' +
-           '  height: 500px;' +
+           'width: 356px;\n' +
+           'display:block'+
+           'margin:auto'+
+           '  height: 250px;' +
            '}' +
            '</style>' +
            '<title></title></head>' +
@@ -212,6 +214,7 @@ imagenjpg;
     mywindow.onload = function() {
             mywindow.focus();
             mywindow.print();
+          
        };
     this.se_Imprio = true;
 
