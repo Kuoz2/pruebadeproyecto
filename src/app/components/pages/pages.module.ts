@@ -25,6 +25,7 @@ import {ActualizarbolComponent} from './actualizarbol/actualizarbol.component';
 import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
 import {NgxSpinnerModule} from "ngx-spinner";
 import {NgxPrintModule} from 'ngx-print';
+import { QuickSaleComponent } from './quick-sale/quick-sale.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {NgxPrintModule} from 'ngx-print';
       BoletaComponent,
       CierrecajaComponent,
       ListPageComponent,
-      ActualizarbolComponent],
+      ActualizarbolComponent,
+      QuickSaleComponent],
     imports: [
         CommonModule,
         PagesRoutingModule,

@@ -21,16 +21,16 @@ constructor(private userservi: UsuarioService) {
 
 
   async ngOnInit() {
-    await this.navegador_habierto()
+    //await this.navegador_habierto()
 
-    await window.addEventListener('devtoolschange', event => {
-      console.log('Is DevTools open:', event.detail.isOpen);
-      console.log('DevTools orientation:', event.detail.orientation);
-      if(event.detail.isOpen == true)
-      {
-        window.location.href = "https://errorconsole.herokuapp.com/"
-      }
-    });
+    //await window.addEventListener('devtoolschange', event => {
+      //console.log('Is DevTools open:', event.detail.isOpen);
+      //console.log('DevTools orientation:', event.detail.orientation);
+      //if(event.detail.isOpen == true)
+      //{
+       // window.location.href = "https://errorconsole.herokuapp.com/"
+     // }
+    //});
   }
 
   navegador_habierto(){

@@ -1,3 +1,4 @@
+import { VentasService } from './../../../Service/ventas.service';
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {NavService} from '../../service/nav.service';
 import {AutentificacionService} from '../../../Service/autentificacion.service';
@@ -6,6 +7,8 @@ import {ProductserviceService} from '../../../Service/productservice.service';
 import {Mermas} from '../../../components/Modulos/mermas';
 import {error} from 'selenium-webdriver';
 import {__await} from 'tslib';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-header',
@@ -22,14 +25,29 @@ export class HeaderComponent implements OnInit {
   private mermasnogestionadas = [];
   public cantidad;
   public proIn = 0;
-
+  public ventarapida: FormGroup;
+  public closeResult: string;
+  public option1= "hola"
+  public mediopago = ["efectivo", "tarjeta"]
+  get codigo_producto(){return this.ventarapida.get('codigo_producto')}
   @Output() rightSidebarEvent = new EventEmitter<boolean>();
 
   // tslint:disable-next-line:max-line-length
   constructor(public navServices: NavService,
               private offsession: AutentificacionService,
               private router: Router,
-              private Cmemrmas: ProductserviceService) { }
+              private Cmemrmas: ProductserviceService, private modalService: NgbModal, private formBuilder: FormBuilder, private vns: VentasService) {
+this.ventarapida = this.formBuilder.group({
+  codigo_producto: new FormControl(''),
+  nombre_product: new FormControl(''),
+  cantidad: new FormControl(''),
+  precio: new FormControl(''),
+  medio_pago: new FormControl('')
+})
+
+               }
+
+  
 
   collapseSidebar() {
     this.open = !this.open;
@@ -77,6 +95,7 @@ export class HeaderComponent implements OnInit {
   }
 
    ngOnInit(): void {
+     
     this.mermas().catch(
         // tslint:disable-next-line:no-shadowed-variable
         error => {console.log('el error', error); }
@@ -90,4 +109,58 @@ export class HeaderComponent implements OnInit {
   emitiralerta() {
     alert('hola');
   }
+
+  realizarventa(){
+    console.log("formulario", this.ventarapida.value)
+    if(this.ventarapida.value.codigo_producto == ''){
+  
+      this.vns.__guardar_ventaRapida(this.ventarapida.value)
+
+    }
+
+  }
+
+  open1(content) {
+    
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  checkBoxk(){
+    var check= <HTMLInputElement>  document.querySelector('input[name="dato1"]')
+
+    if(check.checked != false){
+      const inputs = <HTMLInputElement> document.getElementById('manualcode')
+      inputs.value = ""
+      this.ventarapida.value.codigo_producto = ""
+      document.getElementById('manualcode').hidden = true
+      document.getElementById('manualcode1').hidden = true
+     
+    }else{
+      const input = <HTMLInputElement> document.getElementById('manualcode')
+      input.value = ""
+      this.ventarapida.value.codigo_producto = ""
+      document.getElementById('manualcode').hidden = false
+      document.getElementById('manualcode1').hidden = false
+      
+    }
+  }
+  checkBoxk2(){
+    const check= document.querySelector('#input[name="dato"]:checked');
+    console.log("chquiado", check)
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
 }

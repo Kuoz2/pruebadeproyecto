@@ -20,6 +20,7 @@ import {HoraActualService, valorReloj} from '../../../Service/hora-actual.servic
 import {NgxSpinnerService} from 'ngx-spinner';
 import {takeUntil} from 'rxjs/operators';
 
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-appsale',
@@ -134,7 +135,7 @@ imagenjpg;
      imprimir(register) {
     this.fecha.unsubscribe();
 
-    const data = '<head>' +
+    var data = '<head>' +
            '<style type="text/css">' +
            '@page  { margin: 0 ; }' +
            ' body.receipt.sheet { width: 570mm; height: 570mm;}  }}' +
@@ -204,18 +205,28 @@ imagenjpg;
            '<body >' +
            document.getElementById( register ).innerHTML +
            '</body>';
-    const mywindow = window.open( '', '_blank' );
-    mywindow.opener;
+    //const mywindow = window.open( '', '_blank' );
+    //mywindow.opener;
 
-    mywindow.document.open();
-    mywindow.document.write( data );
-    mywindow.document.close();
+    //mywindow.document.open();
+    //mywindow.document.write( data );
+    //mywindow.document.close();
 
-    mywindow.onload = function() {
-            mywindow.focus();
-            mywindow.print();
+   // mywindow.onload = function() {
+     //       mywindow.focus();
+         //   mywindow.print();
           
-       };
+       //};
+       
+       html2canvas(document.getElementById(register)).then(function (canvas) {
+       
+        var anchotag = document.createElement("a") ;
+        document.body.appendChild(anchotag)
+        document.getElementById('previewImg').appendChild(canvas) 
+        anchotag.href = canvas.toDataURL();
+        console.log(anchotag.href)
+        
+       })
     this.se_Imprio = true;
 
 

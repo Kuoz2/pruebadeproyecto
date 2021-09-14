@@ -31,6 +31,7 @@ import { Inventariosano2Pipe } from './Pipe/inventariosano2.pipe';
 import { Inventariogestion2Pipe } from './Pipe/inventariogestion2.pipe';
 import { Inventariosinstock2Pipe } from './Pipe/inventariosinstock2.pipe';
 import { Busqueda2inventarioPipe } from './Pipe/busqueda2inventario.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { Busqueda2inventarioPipe } from './Pipe/busqueda2inventario.pipe';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule, ReactiveFormsModule 
   ],
   providers: [NavService, WINDOW_PROVIDERS],
     exports: [FeatherIconsComponent,

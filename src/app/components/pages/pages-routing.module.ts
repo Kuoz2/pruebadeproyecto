@@ -1,3 +1,4 @@
+import { QuickSaleComponent } from './quick-sale/quick-sale.component';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {VoucherCreateComponent} from "./voucher-create/voucher-create.component";
@@ -63,6 +64,14 @@ const routes: Routes = [
         data:{
           title:"Pago movil",
           breadcrumb:"App pago"
+        }
+      },
+      {
+        path: "quick_sale",
+        component: QuickSaleComponent,
+        data:{
+          title:"Listas de las ventas rapidas",
+          breadcrumb: "Venta rapida"
         }
       },
       {

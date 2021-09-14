@@ -59,7 +59,8 @@ title: 'Productos' , icon: 'box', rol: '', type: 'sub', active: false,  children
 				{path: '/pages/lista-pago', rol: '', title: 'Lista Pagos', type: 'link'},
 				{path: '/pages/medio-pago', rol: '', title: 'Medio de pago', type: 'link', },
 				{path: '/pages/app-pago', rol: '', title: 'App de pago', type: 'link'},
-				{path: '/pages/boleta', rol: 'administrador', title: 'Boleta', type: 'link'}
+				{path: '/pages/boleta', rol: 'administrador', title: 'Boleta', type: 'link'},
+				{path: '/pages/quick_sale', rol: 'administrador', title: 'Venta rapida', type: 'link'}
 			]
 		},
 

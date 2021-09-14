@@ -35,6 +35,7 @@ import {MermaModule} from "./components/merma/merma.module";
         MermaModule,
         FormsModule,
         NgxPrintModule,
+     
       
 
     ],

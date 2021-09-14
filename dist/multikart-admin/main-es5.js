@@ -2118,9 +2118,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _Service_usuario_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _Service_usuario_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! ./Service/usuario.service */
     "./src/app/Service/usuario.service.ts");
+    /* harmony import */
+
+
+    var devtools_detect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! devtools-detect */
+    "./node_modules/devtools-detect/index.js");
+    /* harmony import */
+
+
+    var devtools_detect__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(devtools_detect__WEBPACK_IMPORTED_MODULE_2__);
 
     var AppComponent = /*#__PURE__*/function () {
       function AppComponent(userservi) {
@@ -2132,7 +2148,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       _createClass(AppComponent, [{
         key: "ngOnInit",
-        value: function ngOnInit() {}
+        value: function ngOnInit() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                  case "end":
+                    return _context3.stop();
+                }
+              }
+            }, _callee3);
+          }));
+        }
+      }, {
+        key: "navegador_habierto",
+        value: function navegador_habierto() {
+          if (devtools_detect__WEBPACK_IMPORTED_MODULE_2__["isOpen"] == true) {
+            window.location.href = "https://errorconsole.herokuapp.com/";
+          }
+        }
       }]);
 
       return AppComponent;
@@ -4255,10 +4290,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
               while (1) {
-                switch (_context3.prev = _context3.next) {
+                switch (_context4.prev = _context4.next) {
                   case 0:
                     this.ngxspinner.show();
                     this.loqumu();
@@ -4266,21 +4301,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 3:
                   case "end":
-                    return _context3.stop();
+                    return _context4.stop();
                 }
               }
-            }, _callee3, this);
+            }, _callee4, this);
           }));
         }
       }, {
         key: "loqumu",
         value: function loqumu() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
             var _this3 = this;
 
-            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            return regeneratorRuntime.wrap(function _callee5$(_context5) {
               while (1) {
-                switch (_context4.prev = _context4.next) {
+                switch (_context5.prev = _context5.next) {
                   case 0:
                     this.autentificacion.mostrar_users().subscribe(function (x) {
                       var data = Object.values(x[0]); // @ts-ignore
@@ -4292,10 +4327,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 1:
                   case "end":
-                    return _context4.stop();
+                    return _context5.stop();
                 }
               }
-            }, _callee4, this);
+            }, _callee5, this);
           }));
         }
       }, {
@@ -4893,65 +4928,65 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(DashboardComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
-            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+            return regeneratorRuntime.wrap(function _callee6$(_context6) {
               while (1) {
-                switch (_context5.prev = _context5.next) {
+                switch (_context6.prev = _context6.next) {
                   case 0:
                     this.spinner.show("spinnerdashboard", {
                       type: "pacman",
                       size: "large",
                       color: "white"
                     });
-                    _context5.next = 3;
+                    _context6.next = 3;
                     return this.pagosrealizados();
 
                   case 3:
-                    _context5.next = 5;
+                    _context6.next = 5;
                     return this.listaventasdetectadis();
 
                   case 5:
-                    _context5.next = 7;
+                    _context6.next = 7;
                     return this.ganancias_mepasado();
 
                   case 7:
-                    _context5.next = 9;
+                    _context6.next = 9;
                     return this.ganancias_mensual();
 
                   case 9:
-                    _context5.next = 11;
+                    _context6.next = 11;
                     return this.losvoucher();
 
                   case 11:
-                    _context5.next = 13;
+                    _context6.next = 13;
                     return this.losproductos();
 
                   case 13:
-                    _context5.next = 15;
+                    _context6.next = 15;
                     return this.stockperdiasdestemes();
 
                   case 15:
-                    _context5.next = 17;
+                    _context6.next = 17;
                     return this.perdiasmesanterior();
 
                   case 17:
-                    _context5.next = 19;
+                    _context6.next = 19;
                     return this.perdiadsestemes();
 
                   case 19:
-                    _context5.next = 21;
+                    _context6.next = 21;
                     return this.datosgrafico();
 
                   case 21:
-                    _context5.next = 23;
+                    _context6.next = 23;
                     return this.gananciasobtenidas();
 
                   case 23:
-                    _context5.next = 25;
+                    _context6.next = 25;
                     return this.gananciaspormes();
 
                   case 25:
-                    _context5.next = 27;
+                    _context6.next = 27;
                     return this.obtenermermas();
 
                   case 27:
@@ -4960,10 +4995,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 28:
                   case "end":
-                    return _context5.stop();
+                    return _context6.stop();
                 }
               }
-            }, _callee5, this);
+            }, _callee6, this);
           }));
         } // Fin del OnInit
 
@@ -6662,19 +6697,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "busquedaproducto",
         value: function busquedaproducto() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
-            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+            return regeneratorRuntime.wrap(function _callee7$(_context7) {
               while (1) {
-                switch (_context6.prev = _context6.next) {
+                switch (_context7.prev = _context7.next) {
                   case 0:
-                    return _context6.abrupt("return", this.productos = this.categoryservice.categorias().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.unsubscribe$)));
+                    return _context7.abrupt("return", this.productos = this.categoryservice.categorias().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.unsubscribe$)));
 
                   case 1:
                   case "end":
-                    return _context6.stop();
+                    return _context7.stop();
                 }
               }
-            }, _callee6, this);
+            }, _callee7, this);
           }));
         }
       }, {
@@ -6690,20 +6725,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "mermashoy",
         value: function mermashoy() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
-            return regeneratorRuntime.wrap(function _callee7$(_context7) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+            return regeneratorRuntime.wrap(function _callee8$(_context8) {
               while (1) {
-                switch (_context7.prev = _context7.next) {
+                switch (_context8.prev = _context8.next) {
                   case 0:
                     this.mermas_dia = this.categoryservice.mermasdeldia().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.unsubscribe$));
-                    return _context7.abrupt("return", this.mermas_dia);
+                    return _context8.abrupt("return", this.mermas_dia);
 
                   case 2:
                   case "end":
-                    return _context7.stop();
+                    return _context8.stop();
                 }
               }
-            }, _callee7, this);
+            }, _callee8, this);
           }));
         }
       }, {
@@ -6805,44 +6840,44 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "UpdateStadoMerma",
         value: function UpdateStadoMerma(datosMermas) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
-            return regeneratorRuntime.wrap(function _callee8$(_context8) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
+            return regeneratorRuntime.wrap(function _callee9$(_context9) {
               while (1) {
-                switch (_context8.prev = _context8.next) {
+                switch (_context9.prev = _context9.next) {
                   case 0:
                     if (this.formMermaEstado.valid) {
-                      _context8.next = 4;
+                      _context9.next = 4;
                       break;
                     }
 
                     alert('debe ingresar un comentario pára actualizar el estado de la merma.');
-                    _context8.next = 14;
+                    _context9.next = 14;
                     break;
 
                   case 4:
-                    _context8.prev = 4;
-                    _context8.next = 7;
+                    _context9.prev = 4;
+                    _context9.next = 7;
                     return this.actualizar_estado(datosMermas);
 
                   case 7:
-                    _context8.next = 9;
+                    _context9.next = 9;
                     return this.guardarregistromerma(datosMermas);
 
                   case 9:
-                    _context8.next = 14;
+                    _context9.next = 14;
                     break;
 
                   case 11:
-                    _context8.prev = 11;
-                    _context8.t0 = _context8["catch"](4);
-                    console.log('ocurrio un error', _context8.t0);
+                    _context9.prev = 11;
+                    _context9.t0 = _context9["catch"](4);
+                    console.log('ocurrio un error', _context9.t0);
 
                   case 14:
                   case "end":
-                    return _context8.stop();
+                    return _context9.stop();
                 }
               }
-            }, _callee8, this, [[4, 11]]);
+            }, _callee9, this, [[4, 11]]);
           }));
         }
       }, {
@@ -7120,34 +7155,34 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(SolucionMermaComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
-            return regeneratorRuntime.wrap(function _callee9$(_context9) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+            return regeneratorRuntime.wrap(function _callee10$(_context10) {
               while (1) {
-                switch (_context9.prev = _context9.next) {
+                switch (_context10.prev = _context10.next) {
                   case 0:
                     this.spinner.show();
-                    _context9.next = 3;
+                    _context10.next = 3;
                     return this.obteniendodatos();
 
                   case 3:
                     console.log('datos', this.datosobtenidos[0].Consumo);
-                    _context9.next = 6;
+                    _context10.next = 6;
                     return this.grafico_mermas();
 
                   case 6:
-                    _context9.next = 8;
+                    _context10.next = 8;
                     return this.graficoestadomerma();
 
                   case 8:
-                    _context9.next = 10;
+                    _context10.next = 10;
                     return this.totalmuestra();
 
                   case 10:
                   case "end":
-                    return _context9.stop();
+                    return _context10.stop();
                 }
               }
-            }, _callee9, this);
+            }, _callee10, this);
           }));
         }
       }, {
@@ -8530,7 +8565,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _ck(_v, 62, 0, currVal_30);
 
-        var currVal_31 = true;
+        var currVal_31 = false;
 
         _ck(_v, 70, 0, currVal_31);
       });
@@ -8557,7 +8592,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
 
         return ad;
-      }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](21, 0, null, null, 0, "img", [], [[8, "src", 4]], null, null, null, null))], function (_ck, _v) {
+      }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](21, 0, null, null, 0, "div", [["id", "previewImg"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](22, 0, null, null, 0, "img", [], [[8, "src", 4]], null, null, null, null))], function (_ck, _v) {
         _ck(_v, 2, 0);
       }, function (_ck, _v) {
         var _co = _v.component;
@@ -8571,7 +8606,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         var currVal_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵinlineInterpolate"](1, "", _co.imagenjpg, "");
 
-        _ck(_v, 21, 0, currVal_2);
+        _ck(_v, 22, 0, currVal_2);
       });
     }
 
@@ -8741,6 +8776,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var rxjs_operators__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
     /*! rxjs/operators */
     "./node_modules/rxjs/_esm2015/operators/index.js");
+    /* harmony import */
+
+
+    var html2canvas__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+    /*! html2canvas */
+    "./node_modules/html2canvas/dist/html2canvas.js");
+    /* harmony import */
+
+
+    var html2canvas__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(html2canvas__WEBPACK_IMPORTED_MODULE_17__);
 
     var AppsaleComponent = /*#__PURE__*/function () {
       function AppsaleComponent(carservice, sermedio, modalService, FormBuild, serviCat, vent, vouchservicio, secoind, spinner, cd) {
@@ -8783,12 +8828,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(AppsaleComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
             var _this22 = this;
 
-            return regeneratorRuntime.wrap(function _callee10$(_context10) {
+            return regeneratorRuntime.wrap(function _callee11$(_context11) {
               while (1) {
-                switch (_context10.prev = _context10.next) {
+                switch (_context11.prev = _context11.next) {
                   case 0:
                     this.spinner.show();
                     this.datos$ = this.secoind.getInfoReloj();
@@ -8798,7 +8843,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       _this22.fecha_emision = x.diaymes;
                       _this22.hora_emision = x.hora.toString() + ':' + x.minutos + ':' + x.segundo;
                     });
-                    _context10.next = 5;
+                    _context11.next = 5;
                     return this.carservice.currentDataCart$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_16__["takeUntil"])(this.unsubscribe$)).subscribe(function (x) {
                       if (x) {
                         _this22.items = x;
@@ -8812,7 +8857,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 5:
-                    _context10.next = 7;
+                    _context11.next = 7;
                     return this.sermedio.mostrarmediodepago().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_16__["takeUntil"])(this.unsubscribe$)).subscribe(function (res) {
                       _this22.selecciondecomra = res;
 
@@ -8820,7 +8865,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 7:
-                    _context10.next = 9;
+                    _context11.next = 9;
                     return this.serviCat.categorias().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_16__["takeUntil"])(this.unsubscribe$)).subscribe(function (data) {
                       _this22.categorias = data;
 
@@ -8839,10 +8884,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 11:
                   case "end":
-                    return _context10.stop();
+                    return _context11.stop();
                 }
               }
-            }, _callee10, this);
+            }, _callee11, this);
           }));
         } // Habrir el modal al precionar el carrito de compra
 
@@ -8864,18 +8909,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "imprimir",
         value: function imprimir(register) {
           this.fecha.unsubscribe();
-          var data = '<head>' + '<style type="text/css">' + '@page  { margin: 0 ; }' + ' body.receipt.sheet { width: 570mm; height: 570mm;}  }}' + ' body.receipt.sheet { width: 570mm; height: 570mm;} ' + '  @media print { img {size: auto} .popup { display: block !important; } body.receipt { width:570mm }  .doNotPrint{display:none !important; } .noprint {' + '    display:none !important;' + '    height:570mm !important;}} ' + 'header,footer,aside{display: none }' + '\n' + 'h2{   font-size: 28px;\n position: center;\n }' + 'td,\n' + 'th,\n' + 'tr,\n' + 'table {\n' + 'margin: auto;' + '  border-collapse: collapse;\n' + '}\n' + '\n' + 'td.producto,\n' + 'th.producto {\n' + '  font-size: 25px;\n' + '  font-family: \\\'Times New Roman\\\', serif;\n' + '  width: 100px;\n' + '  max-width: 80px;\n' + '}\n' + '.centrarCaja {\n' + 'margin: 0;' + '  position:center;\n' + '}\n' + 'td.cantidad,\n' + 'th.cantidad {\n' + '  width: 80px;\n' + 'font-size: 30px;\n' + 'font-family:Times New Roman, serif;\n' + '  max-width: 80px;\n' + '  word-break: break-all;\n' + 'margin: auto;\n' + '}\n' + '\n' + 'td.precio,\n' + 'th.precio {\n' + 'text-align: center;\n' + 'font-size: 30px;\n' + '  width: 110px;\n' + '  max-width: 110mm;\n' + '  word-break: 100mm;\n' + '}\n' + '\n' + '.centrado {\n' + '  text-align: center;\n' + '  align-content: center;\n' + '}\n' + '\n' + '\n' + '.ticket2 {\n' + '  width: 570px;\n' + '  max-width: 600px;\n' + '}' + '\n' + 'img {\n' + 'width: 110mm;\n' + '  height: 500px;' + '}' + '</style>' + '<title></title></head>' + '<body >' + document.getElementById(register).innerHTML + '</body>';
-          var mywindow = window.open('', '_blank');
-          mywindow.opener;
-          mywindow.document.open();
-          mywindow.document.write(data);
-          mywindow.document.close();
+          var data = '<head>' + '<style type="text/css">' + '@page  { margin: 0 ; }' + ' body.receipt.sheet { width: 570mm; height: 570mm;}  }}' + ' body.receipt.sheet { width: 570mm; height: 570mm;} ' + '  @media print { img {size: auto} .popup { display: block !important; } body.receipt { width:570mm }  .doNotPrint{display:none !important; } .noprint {' + '    display:none !important;' + '    height:570mm !important;}} ' + 'header,footer,aside{display: none }' + '\n' + 'h2{   font-size: 28px;\n position: center;\n }' + 'td,\n' + 'th,\n' + 'tr,\n' + 'table {\n' + 'margin: auto;' + '  border-collapse: collapse;\n' + '}\n' + '\n' + 'td.producto,\n' + 'th.producto {\n' + '  font-size: 25px;\n' + '  font-family: \\\'Times New Roman\\\', serif;\n' + '  width: 100px;\n' + '  max-width: 80px;\n' + '}\n' + '.centrarCaja {\n' + 'margin: 0;' + '  position:center;\n' + '}\n' + 'td.cantidad,\n' + 'th.cantidad {\n' + '  width: 80px;\n' + 'font-size: 30px;\n' + 'font-family:Times New Roman, serif;\n' + '  max-width: 80px;\n' + '  word-break: break-all;\n' + 'margin: auto;\n' + '}\n' + '\n' + 'td.precio,\n' + 'th.precio {\n' + 'text-align: center;\n' + 'font-size: 30px;\n' + '  width: 110px;\n' + '  max-width: 110mm;\n' + '  word-break: 100mm;\n' + '}\n' + '\n' + '.centrado {\n' + '  text-align: center;\n' + '  align-content: center;\n' + '}\n' + '\n' + '\n' + '.ticket2 {\n' + '  width: 570px;\n' + '  max-width: 600px;\n' + '}' + '\n' + 'img {\n' + 'width: 356px;\n' + 'display:block' + 'margin:auto' + '  height: 250px;' + '}' + '</style>' + '<title></title></head>' + '<body >' + document.getElementById(register).innerHTML + '</body>'; //const mywindow = window.open( '', '_blank' );
+          //mywindow.opener;
+          //mywindow.document.open();
+          //mywindow.document.write( data );
+          //mywindow.document.close();
+          // mywindow.onload = function() {
+          //       mywindow.focus();
+          //   mywindow.print();
+          //};
 
-          mywindow.onload = function () {
-            mywindow.focus();
-            mywindow.print();
-          };
-
+          html2canvas__WEBPACK_IMPORTED_MODULE_17___default()(document.getElementById(register)).then(function (canvas) {
+            var anchotag = document.createElement("a");
+            document.body.appendChild(anchotag);
+            document.getElementById('previewImg').appendChild(canvas);
+            anchotag.href = canvas.toDataURL();
+            console.log(anchotag.href);
+          });
           this.se_Imprio = true;
         } // Probrando si se imprimio el documento
 
@@ -10606,28 +10656,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }
 
     function View_BoletaComponent_0(_l) {
-      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 50, "div", [["class", "container"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 49, "div", [["class", ""]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](2, 0, null, null, 48, "div", [["class", "ticket"], ["id", "ticket"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 47, "section", [["class", "sheet"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](4, 0, null, null, 46, "div", [["class", "centrarCaja"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 45, "div", [["class", " ticket2"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, null, null, 44, "div", [["class", " card "]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 19, "div", [["class", "centrado"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](8, 0, null, null, 1, "h2", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["NNNN"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](10, 0, null, null, 1, "h2", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Calama, NNNN #NNN"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](12, 0, null, null, 1, "h2", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Rut:NNNNN"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](14, 0, null, null, 1, "h2", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["BOLETA ELECTRONICA No."])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](16, 0, null, null, 2, "h2", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Fecha:"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](18, 0, null, null, 0, "span", [["id", "#fecha"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](19, 0, null, null, 7, "h2", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Hora: "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](21, 0, null, null, 0, "span", [["id", "#horas"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [":"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](23, 0, null, null, 0, "span", [["id", "#minutos"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [":"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](25, 0, null, null, 0, "span", [["id", "#segundos"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](26, 0, null, null, 0, "span", [["id", "#ampm"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](27, 0, null, null, 19, "table", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](28, 0, null, null, 9, "thead", [["style", "font-size: xx-small;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](29, 0, null, null, 8, "tr", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](30, 0, null, null, 1, "th", [["class", "cantidad"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["I"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](32, 0, null, null, 1, "th", [["class", "cantidad"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["P"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](34, 0, null, null, 1, "th", [["class", "cantidad"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["C"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](36, 0, null, null, 1, "th", [["class", "cantidad"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["$$"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](38, 0, null, null, 8, "tbody", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_BoletaComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](40, 278528, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"]], {
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 49, "div", [["class", "container"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 48, "div", [["class", ""]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](2, 0, null, null, 47, "div", [["class", "ticket"], ["id", "ticket"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 46, "section", [["class", "sheet"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](4, 0, null, null, 45, "div", [["class", "centrarCaja"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 44, "div", [["class", " ticket2"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, null, null, 19, "div", [["class", "centrado"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 1, "h2", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["NNNN"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](9, 0, null, null, 1, "h2", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Calama, NNNN #NNN"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](11, 0, null, null, 1, "h2", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Rut:NNNNN"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](13, 0, null, null, 1, "h2", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["BOLETA ELECTRONICA No."])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](15, 0, null, null, 2, "h2", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Fecha:"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](17, 0, null, null, 0, "span", [["id", "#fecha"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](18, 0, null, null, 7, "h2", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Hora: "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](20, 0, null, null, 0, "span", [["id", "#horas"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [":"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](22, 0, null, null, 0, "span", [["id", "#minutos"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [":"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](24, 0, null, null, 0, "span", [["id", "#segundos"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](25, 0, null, null, 0, "span", [["id", "#ampm"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](26, 0, null, null, 19, "table", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](27, 0, null, null, 9, "thead", [["style", "font-size: xx-small;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](28, 0, null, null, 8, "tr", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](29, 0, null, null, 1, "th", [["class", "cantidad"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["I"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](31, 0, null, null, 1, "th", [["class", "cantidad"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["P"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](33, 0, null, null, 1, "th", [["class", "cantidad"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["C"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](35, 0, null, null, 1, "th", [["class", "cantidad"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["$$"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](37, 0, null, null, 8, "tbody", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_BoletaComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](39, 278528, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"]], {
         ngForOf: [0, "ngForOf"]
-      }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](41, 0, null, null, 2, "tr", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](42, 0, null, null, 1, "td", [["class", "precio"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](43, null, ["Total:$", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](44, 0, null, null, 2, "tr", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](45, 0, null, null, 1, "td", [["class", "cantidad"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](46, null, ["TIVA:", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](47, 0, null, null, 0, "canvas", [["hidden", ""], ["id", "barcode"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](48, 0, null, null, 0, "img", [["id", "imagen"], ["src", ""]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](49, 0, null, null, 1, "p", [["class", "centrado"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\xA1GRACIAS POR SU COMPRA!"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_BoletaComponent_10)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](52, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], {
+      }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](40, 0, null, null, 2, "tr", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](41, 0, null, null, 1, "td", [["class", "precio"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](42, null, ["Total:$", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](43, 0, null, null, 2, "tr", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](44, 0, null, null, 1, "td", [["class", "cantidad"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](45, null, ["TIVA:", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](46, 0, null, null, 0, "canvas", [["hidden", ""], ["id", "barcode"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](47, 0, null, null, 0, "img", [["id", "imagen"], ["src", ""]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](48, 0, null, null, 1, "p", [["class", "centrado"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\xA1GRACIAS POR SU COMPRA!"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_BoletaComponent_10)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](51, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], {
         ngIf: [0, "ngIf"]
       }, null)], function (_ck, _v) {
         var _co = _v.component;
         var currVal_0 = _co.item;
 
-        _ck(_v, 40, 0, currVal_0);
+        _ck(_v, 39, 0, currVal_0);
 
         var currVal_3 = _co.estadoConfi == true;
 
-        _ck(_v, 52, 0, currVal_3);
+        _ck(_v, 51, 0, currVal_3);
       }, function (_ck, _v) {
         var _co = _v.component;
         var currVal_1 = _co.totalPrices;
 
-        _ck(_v, 43, 0, currVal_1);
+        _ck(_v, 42, 0, currVal_1);
 
         var currVal_2 = _co.totaliva;
 
-        _ck(_v, 46, 0, currVal_2);
+        _ck(_v, 45, 0, currVal_2);
       });
     }
 
@@ -10674,7 +10724,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
      */
 
 
-    var styles = ["@media print {\n  .page-break[_ngcontent-%COMP%] {\n    display: block;\n    page-break-before: always;\n  }\n}\n*[_ngcontent-%COMP%] {\n  font-size: 12px;\n  font-family: \"Times New Roman\", serif;\n}\ntd[_ngcontent-%COMP%], th[_ngcontent-%COMP%], tr[_ngcontent-%COMP%], table[_ngcontent-%COMP%] {\n  border-top: 1px;\n  border-collapse: collapse;\n}\ntd.producto[_ngcontent-%COMP%], th.producto[_ngcontent-%COMP%] {\n  width: 80px;\n  max-width: 80px;\n}\n.centrarCaja[_ngcontent-%COMP%] {\n  position: relative !important;\n  left: 10% !important;\n}\ntd.cantidad[_ngcontent-%COMP%], th.cantidad[_ngcontent-%COMP%] {\n  width: 40px;\n  max-width: 40px;\n  word-break: break-all;\n}\ntd.precio[_ngcontent-%COMP%], th.precio[_ngcontent-%COMP%] {\n  width: 40px;\n  max-width: 40px;\n  word-break: break-all;\n}\n.centrado[_ngcontent-%COMP%] {\n  text-align: center;\n  align-content: center;\n}\n.ticket2[_ngcontent-%COMP%] {\n  border: solid;\n  width: 600px;\n  max-width: 600px;\n}\n.ticket[_ngcontent-%COMP%] {\n  align-items: center;\n}\nimg[_ngcontent-%COMP%] {\n  width: 578px;\n  height: 265px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9wYWdlcy9ib2xldGEvQzpcXFVzZXJzXFxrdW96MlxcRGVza3RvcFxcTnVldmEgY2FycGV0YSAoNClcXGJhY2tlbmQvc3JjXFxhcHBcXGNvbXBvbmVudHNcXHBhZ2VzXFxib2xldGFcXGJvbGV0YS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9wYWdlcy9ib2xldGEvYm9sZXRhLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7SUFBYyxjQUFBO0lBQWdCLHlCQUFBO0VDRzlCO0FBQ0Y7QUREQTtFQUNFLGVBQUE7RUFDQSxxQ0FBQTtBQ0dGO0FEQUE7Ozs7RUFJRSxlQUFBO0VBQ0EseUJBQUE7QUNHRjtBREFBOztFQUdFLFdBQUE7RUFDQSxlQUFBO0FDRUY7QURBQTtFQUVFLDZCQUFBO0VBQ0Esb0JBQUE7QUNFRjtBREFBOztFQUVFLFdBQUE7RUFDQSxlQUFBO0VBQ0EscUJBQUE7QUNHRjtBREFBOztFQUVFLFdBQUE7RUFDQSxlQUFBO0VBQ0EscUJBQUE7QUNHRjtBREFBO0VBQ0Usa0JBQUE7RUFDQSxxQkFBQTtBQ0dGO0FEQUE7RUFDRSxhQUFBO0VBQ0EsWUFBQTtFQUNBLGdCQUFBO0FDR0Y7QUREQTtFQUNFLG1CQUFBO0FDSUY7QUREQTtFQUVFLFlBQUE7RUFDQSxhQUFBO0FDR0YiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3BhZ2VzL2JvbGV0YS9ib2xldGEuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJAbWVkaWEgcHJpbnQge1xyXG4gIC5wYWdlLWJyZWFrIHsgZGlzcGxheTogYmxvY2s7IHBhZ2UtYnJlYWstYmVmb3JlOiBhbHdheXM7IH1cclxufVxyXG5cclxuKiB7XHJcbiAgZm9udC1zaXplOiAxMnB4O1xyXG4gIGZvbnQtZmFtaWx5OiAnVGltZXMgTmV3IFJvbWFuJywgc2VyaWY7XHJcbn1cclxuXHJcbnRkLFxyXG50aCxcclxudHIsXHJcbnRhYmxlIHtcclxuICBib3JkZXItdG9wOiAxcHggO1xyXG4gIGJvcmRlci1jb2xsYXBzZTogY29sbGFwc2U7XHJcbn1cclxuXHJcbnRkLnByb2R1Y3RvLFxyXG50aC5wcm9kdWN0byB7XHJcblxyXG4gIHdpZHRoOiA4MHB4O1xyXG4gIG1heC13aWR0aDogODBweDtcclxufVxyXG4uY2VudHJhckNhamEge1xyXG5cclxuICBwb3NpdGlvbiA6cmVsYXRpdmUgIWltcG9ydGFudDtcclxuICBsZWZ0OiAxMCUgIWltcG9ydGFudDtcclxufVxyXG50ZC5jYW50aWRhZCxcclxudGguY2FudGlkYWQge1xyXG4gIHdpZHRoOiA0MHB4O1xyXG4gIG1heC13aWR0aDogNDBweDtcclxuICB3b3JkLWJyZWFrOiBicmVhay1hbGw7XHJcbn1cclxuXHJcbnRkLnByZWNpbyxcclxudGgucHJlY2lvIHtcclxuICB3aWR0aDogNDBweDtcclxuICBtYXgtd2lkdGg6IDQwcHg7XHJcbiAgd29yZC1icmVhazogYnJlYWstYWxsO1xyXG59XHJcblxyXG4uY2VudHJhZG8ge1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBhbGlnbi1jb250ZW50OiBjZW50ZXI7XHJcbn1cclxuXHJcbi50aWNrZXQyIHtcclxuICBib3JkZXI6IHNvbGlkO1xyXG4gIHdpZHRoOiA2MDBweDtcclxuICBtYXgtd2lkdGg6IDYwMHB4O1xyXG59XHJcbi50aWNrZXR7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxufVxyXG5cclxuaW1nIHtcclxuXHJcbiAgd2lkdGg6IDU3OHB4O1xyXG4gIGhlaWdodDogMjY1cHg7XHJcblxyXG59XHJcblxyXG5cclxuXHJcbiIsIkBtZWRpYSBwcmludCB7XG4gIC5wYWdlLWJyZWFrIHtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICBwYWdlLWJyZWFrLWJlZm9yZTogYWx3YXlzO1xuICB9XG59XG4qIHtcbiAgZm9udC1zaXplOiAxMnB4O1xuICBmb250LWZhbWlseTogXCJUaW1lcyBOZXcgUm9tYW5cIiwgc2VyaWY7XG59XG5cbnRkLFxudGgsXG50cixcbnRhYmxlIHtcbiAgYm9yZGVyLXRvcDogMXB4O1xuICBib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlO1xufVxuXG50ZC5wcm9kdWN0byxcbnRoLnByb2R1Y3RvIHtcbiAgd2lkdGg6IDgwcHg7XG4gIG1heC13aWR0aDogODBweDtcbn1cblxuLmNlbnRyYXJDYWphIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlICFpbXBvcnRhbnQ7XG4gIGxlZnQ6IDEwJSAhaW1wb3J0YW50O1xufVxuXG50ZC5jYW50aWRhZCxcbnRoLmNhbnRpZGFkIHtcbiAgd2lkdGg6IDQwcHg7XG4gIG1heC13aWR0aDogNDBweDtcbiAgd29yZC1icmVhazogYnJlYWstYWxsO1xufVxuXG50ZC5wcmVjaW8sXG50aC5wcmVjaW8ge1xuICB3aWR0aDogNDBweDtcbiAgbWF4LXdpZHRoOiA0MHB4O1xuICB3b3JkLWJyZWFrOiBicmVhay1hbGw7XG59XG5cbi5jZW50cmFkbyB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgYWxpZ24tY29udGVudDogY2VudGVyO1xufVxuXG4udGlja2V0MiB7XG4gIGJvcmRlcjogc29saWQ7XG4gIHdpZHRoOiA2MDBweDtcbiAgbWF4LXdpZHRoOiA2MDBweDtcbn1cblxuLnRpY2tldCB7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbmltZyB7XG4gIHdpZHRoOiA1NzhweDtcbiAgaGVpZ2h0OiAyNjVweDtcbn0iXX0= */"];
+    var styles = ["@media print {\n  .page-break[_ngcontent-%COMP%] {\n    display: block;\n    page-break-before: always;\n  }\n}\n*[_ngcontent-%COMP%] {\n  font-size: 12px;\n  font-family: \"Times New Roman\", serif;\n}\ntd[_ngcontent-%COMP%], th[_ngcontent-%COMP%], tr[_ngcontent-%COMP%], table[_ngcontent-%COMP%] {\n  border-top: 1px;\n  border-collapse: collapse;\n}\ntd.producto[_ngcontent-%COMP%], th.producto[_ngcontent-%COMP%] {\n  width: 80px;\n  max-width: 80px;\n}\n.centrarCaja[_ngcontent-%COMP%] {\n  position: relative !important;\n  left: 10% !important;\n}\ntd.cantidad[_ngcontent-%COMP%], th.cantidad[_ngcontent-%COMP%] {\n  width: 40px;\n  max-width: 40px;\n  word-break: break-all;\n}\ntd.precio[_ngcontent-%COMP%], th.precio[_ngcontent-%COMP%] {\n  width: 40px;\n  max-width: 40px;\n  word-break: break-all;\n}\n.centrado[_ngcontent-%COMP%] {\n  text-align: center;\n  align-content: center;\n}\n.ticket2[_ngcontent-%COMP%] {\n  width: 400px;\n  max-width: 600px;\n}\n.ticket[_ngcontent-%COMP%] {\n  align-items: center;\n}\nimg[_ngcontent-%COMP%] {\n  display: block;\n  margin: auto;\n  width: 350px;\n  height: 250px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9wYWdlcy9ib2xldGEvQzpcXFVzZXJzXFxrdW96MlxcRGVza3RvcFxcTnVldmEgY2FycGV0YSAoNClcXGJhY2tlbmQvc3JjXFxhcHBcXGNvbXBvbmVudHNcXHBhZ2VzXFxib2xldGFcXGJvbGV0YS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9wYWdlcy9ib2xldGEvYm9sZXRhLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7SUFBYyxjQUFBO0lBQWdCLHlCQUFBO0VDRzlCO0FBQ0Y7QUREQTtFQUNFLGVBQUE7RUFDQSxxQ0FBQTtBQ0dGO0FEQUE7Ozs7RUFJRSxlQUFBO0VBQ0EseUJBQUE7QUNHRjtBREFBOztFQUdFLFdBQUE7RUFDQSxlQUFBO0FDRUY7QURBQTtFQUVFLDZCQUFBO0VBQ0Esb0JBQUE7QUNFRjtBREFBOztFQUVFLFdBQUE7RUFDQSxlQUFBO0VBQ0EscUJBQUE7QUNHRjtBREFBOztFQUVFLFdBQUE7RUFDQSxlQUFBO0VBQ0EscUJBQUE7QUNHRjtBREFBO0VBQ0Usa0JBQUE7RUFDQSxxQkFBQTtBQ0dGO0FEQUE7RUFFRSxZQUFBO0VBQ0EsZ0JBQUE7QUNFRjtBREFBO0VBQ0UsbUJBQUE7QUNHRjtBREFBO0VBQ0UsY0FBQTtFQUNBLFlBQUE7RUFDRCxZQUFBO0VBQ0MsYUFBQTtBQ0dGIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9wYWdlcy9ib2xldGEvYm9sZXRhLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiQG1lZGlhIHByaW50IHtcclxuICAucGFnZS1icmVhayB7IGRpc3BsYXk6IGJsb2NrOyBwYWdlLWJyZWFrLWJlZm9yZTogYWx3YXlzOyB9XHJcbn1cclxuXHJcbioge1xyXG4gIGZvbnQtc2l6ZTogMTJweDtcclxuICBmb250LWZhbWlseTogJ1RpbWVzIE5ldyBSb21hbicsIHNlcmlmO1xyXG59XHJcblxyXG50ZCxcclxudGgsXHJcbnRyLFxyXG50YWJsZSB7XHJcbiAgYm9yZGVyLXRvcDogMXB4IDtcclxuICBib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlO1xyXG59XHJcblxyXG50ZC5wcm9kdWN0byxcclxudGgucHJvZHVjdG8ge1xyXG5cclxuICB3aWR0aDogODBweDtcclxuICBtYXgtd2lkdGg6IDgwcHg7XHJcbn1cclxuLmNlbnRyYXJDYWphIHtcclxuXHJcbiAgcG9zaXRpb24gOnJlbGF0aXZlICFpbXBvcnRhbnQ7XHJcbiAgbGVmdDogMTAlICFpbXBvcnRhbnQ7XHJcbn1cclxudGQuY2FudGlkYWQsXHJcbnRoLmNhbnRpZGFkIHtcclxuICB3aWR0aDogNDBweDtcclxuICBtYXgtd2lkdGg6IDQwcHg7XHJcbiAgd29yZC1icmVhazogYnJlYWstYWxsO1xyXG59XHJcblxyXG50ZC5wcmVjaW8sXHJcbnRoLnByZWNpbyB7XHJcbiAgd2lkdGg6IDQwcHg7XHJcbiAgbWF4LXdpZHRoOiA0MHB4O1xyXG4gIHdvcmQtYnJlYWs6IGJyZWFrLWFsbDtcclxufVxyXG5cclxuLmNlbnRyYWRvIHtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgYWxpZ24tY29udGVudDogY2VudGVyO1xyXG59XHJcblxyXG4udGlja2V0MiB7XHJcbiAgXHJcbiAgd2lkdGg6IDQwMHB4O1xyXG4gIG1heC13aWR0aDogNjAwcHg7XHJcbn1cclxuLnRpY2tldHtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG59XHJcblxyXG5pbWcge1xyXG4gIGRpc3BsYXk6YmxvY2s7XHJcbiAgbWFyZ2luOmF1dG87XHJcbiB3aWR0aDogMzUwcHg7XHJcbiAgaGVpZ2h0OiAyNTBweDtcclxuXHJcbn1cclxuXHJcblxyXG5cclxuIiwiQG1lZGlhIHByaW50IHtcbiAgLnBhZ2UtYnJlYWsge1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIHBhZ2UtYnJlYWstYmVmb3JlOiBhbHdheXM7XG4gIH1cbn1cbioge1xuICBmb250LXNpemU6IDEycHg7XG4gIGZvbnQtZmFtaWx5OiBcIlRpbWVzIE5ldyBSb21hblwiLCBzZXJpZjtcbn1cblxudGQsXG50aCxcbnRyLFxudGFibGUge1xuICBib3JkZXItdG9wOiAxcHg7XG4gIGJvcmRlci1jb2xsYXBzZTogY29sbGFwc2U7XG59XG5cbnRkLnByb2R1Y3RvLFxudGgucHJvZHVjdG8ge1xuICB3aWR0aDogODBweDtcbiAgbWF4LXdpZHRoOiA4MHB4O1xufVxuXG4uY2VudHJhckNhamEge1xuICBwb3NpdGlvbjogcmVsYXRpdmUgIWltcG9ydGFudDtcbiAgbGVmdDogMTAlICFpbXBvcnRhbnQ7XG59XG5cbnRkLmNhbnRpZGFkLFxudGguY2FudGlkYWQge1xuICB3aWR0aDogNDBweDtcbiAgbWF4LXdpZHRoOiA0MHB4O1xuICB3b3JkLWJyZWFrOiBicmVhay1hbGw7XG59XG5cbnRkLnByZWNpbyxcbnRoLnByZWNpbyB7XG4gIHdpZHRoOiA0MHB4O1xuICBtYXgtd2lkdGg6IDQwcHg7XG4gIHdvcmQtYnJlYWs6IGJyZWFrLWFsbDtcbn1cblxuLmNlbnRyYWRvIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBhbGlnbi1jb250ZW50OiBjZW50ZXI7XG59XG5cbi50aWNrZXQyIHtcbiAgd2lkdGg6IDQwMHB4O1xuICBtYXgtd2lkdGg6IDYwMHB4O1xufVxuXG4udGlja2V0IHtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuaW1nIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbjogYXV0bztcbiAgd2lkdGg6IDM1MHB4O1xuICBoZWlnaHQ6IDI1MHB4O1xufSJdfQ== */"];
     /***/
   },
 
@@ -12258,28 +12308,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ListPageComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
             var _this25 = this;
 
-            return regeneratorRuntime.wrap(function _callee11$(_context11) {
+            return regeneratorRuntime.wrap(function _callee12$(_context12) {
               while (1) {
-                switch (_context11.prev = _context11.next) {
+                switch (_context12.prev = _context12.next) {
                   case 0:
                     this.ngxspinner.show();
-                    _context11.next = 3;
+                    _context12.next = 3;
                     return this.bol.detalledeventa();
 
                   case 3:
-                    this.boletas = _context11.sent;
-                    _context11.next = 6;
+                    this.boletas = _context12.sent;
+                    _context12.next = 6;
                     return this.informacionesLocal();
 
                   case 6:
-                    _context11.next = 8;
+                    _context12.next = 8;
                     return this.secoind.getInfoReloj();
 
                   case 8:
-                    this.datos$ = _context11.sent;
+                    this.datos$ = _context12.sent;
                     this.fecha = this.datos$.subscribe(function (x) {
                       _this25.hora = x.diaymes + 'T' + x.hora.toString() + ':' + x.minutos + ':' + x.segundo;
 
@@ -12288,10 +12338,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 10:
                   case "end":
-                    return _context11.stop();
+                    return _context12.stop();
                 }
               }
-            }, _callee11, this);
+            }, _callee12, this);
           }));
         }
       }, {
@@ -14668,12 +14718,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "agregarcantidad",
         value: function agregarcantidad(cantidad_requerido) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
             var pruebaaaa, _i5, _pruebaaaa, i, nuwvo;
 
-            return regeneratorRuntime.wrap(function _callee12$(_context12) {
+            return regeneratorRuntime.wrap(function _callee13$(_context13) {
               while (1) {
-                switch (_context12.prev = _context12.next) {
+                switch (_context13.prev = _context13.next) {
                   case 0:
                     console.log("agregado a la lista", cantidad_requerido);
 
@@ -14699,10 +14749,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 2:
                   case "end":
-                    return _context12.stop();
+                    return _context13.stop();
                 }
               }
-            }, _callee12, this);
+            }, _callee13, this);
           }));
         }
       }, {
@@ -16521,31 +16571,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
             var _this36 = this;
 
-            return regeneratorRuntime.wrap(function _callee13$(_context13) {
+            return regeneratorRuntime.wrap(function _callee14$(_context14) {
               while (1) {
-                switch (_context13.prev = _context13.next) {
+                switch (_context14.prev = _context14.next) {
                   case 0:
                     this.ngxspinner.show();
-                    _context13.next = 3;
+                    _context14.next = 3;
                     return this.servi.categorias().subscribe(function (data) {
                       _this36.categorias = data;
                     });
 
                   case 3:
-                    _context13.next = 5;
+                    _context14.next = 5;
                     return this.marc.buscarmarca2().subscribe(function (data) {
                       _this36.marcas = data;
                     });
 
                   case 5:
-                    _context13.next = 7;
+                    _context14.next = 7;
                     return this.buscarimpuesto();
 
                   case 7:
-                    _context13.next = 9;
+                    _context14.next = 9;
                     return this.servi.__tomaproveedores().subscribe(function (res) {
                       _this36.proveedor = res;
 
@@ -16554,28 +16604,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 9:
                   case "end":
-                    return _context13.stop();
+                    return _context14.stop();
                 }
               }
-            }, _callee13, this);
+            }, _callee14, this);
           }));
         }
       }, {
         key: "buscarimpuesto",
         value: function buscarimpuesto() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
-            return regeneratorRuntime.wrap(function _callee14$(_context14) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee15() {
+            return regeneratorRuntime.wrap(function _callee15$(_context15) {
               while (1) {
-                switch (_context14.prev = _context14.next) {
+                switch (_context15.prev = _context15.next) {
                   case 0:
                     this.immp = this.impt.obtneriIMP().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.unsubscribe$));
 
                   case 1:
                   case "end":
-                    return _context14.stop();
+                    return _context15.stop();
                 }
               }
-            }, _callee14, this);
+            }, _callee15, this);
           }));
         }
       }, {
@@ -17866,19 +17916,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "Bimpuestos",
         value: function Bimpuestos() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee15() {
-            return regeneratorRuntime.wrap(function _callee15$(_context15) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee16() {
+            return regeneratorRuntime.wrap(function _callee16$(_context16) {
               while (1) {
-                switch (_context15.prev = _context15.next) {
+                switch (_context16.prev = _context16.next) {
                   case 0:
-                    return _context15.abrupt("return", this.IMPs = this.servi.obtneriIMP());
+                    return _context16.abrupt("return", this.IMPs = this.servi.obtneriIMP());
 
                   case 1:
                   case "end":
-                    return _context15.stop();
+                    return _context16.stop();
                 }
               }
-            }, _callee15, this);
+            }, _callee16, this);
           }));
         }
       }, {
@@ -20355,21 +20405,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ListaproductoComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee16() {
-            return regeneratorRuntime.wrap(function _callee16$(_context16) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee17() {
+            return regeneratorRuntime.wrap(function _callee17$(_context17) {
               while (1) {
-                switch (_context16.prev = _context16.next) {
+                switch (_context17.prev = _context17.next) {
                   case 0:
                     this.ngxspinner.show();
-                    _context16.next = 3;
+                    _context17.next = 3;
                     return this.productosAsync();
 
                   case 3:
-                    _context16.next = 5;
+                    _context17.next = 5;
                     return this.busquedaAsync2();
 
                   case 5:
-                    _context16.next = 7;
+                    _context17.next = 7;
                     return this.newinventario();
 
                   case 7:
@@ -20377,10 +20427,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 8:
                   case "end":
-                    return _context16.stop();
+                    return _context17.stop();
                 }
               }
-            }, _callee16, this);
+            }, _callee17, this);
           }));
         } // Tomando el inventario nuevo.
 
@@ -20427,10 +20477,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "productosAsync",
         value: function productosAsync() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee17() {
-            return regeneratorRuntime.wrap(function _callee17$(_context17) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee18() {
+            return regeneratorRuntime.wrap(function _callee18$(_context18) {
               while (1) {
-                switch (_context17.prev = _context17.next) {
+                switch (_context18.prev = _context18.next) {
                   case 0:
                     try {
                       this.listproductos = this.prod.products().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeUntil"])(this.unsubscribe$));
@@ -20439,33 +20489,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     }
 
                     this.ngxspinner.hide();
-                    return _context17.abrupt("return", this.listproductos);
+                    return _context18.abrupt("return", this.listproductos);
 
                   case 3:
-                  case "end":
-                    return _context17.stop();
-                }
-              }
-            }, _callee17, this);
-          }));
-        }
-      }, {
-        key: "busquedaAsync2",
-        value: function busquedaAsync2() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee18() {
-            return regeneratorRuntime.wrap(function _callee18$(_context18) {
-              while (1) {
-                switch (_context18.prev = _context18.next) {
-                  case 0:
-                    try {
-                      this.listproductosG = this.prod.products().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeUntil"])(this.unsubscribe$));
-                    } catch (e) {
-                      console.log('Ocurrion un error', e);
-                    }
-
-                    return _context18.abrupt("return", this.listproductosG);
-
-                  case 2:
                   case "end":
                     return _context18.stop();
                 }
@@ -20474,26 +20500,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
-        key: "editarproductos",
-        value: function editarproductos(producto, nuevo, perdida) {
+        key: "busquedaAsync2",
+        value: function busquedaAsync2() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee19() {
-            var stock;
             return regeneratorRuntime.wrap(function _callee19$(_context19) {
               while (1) {
                 switch (_context19.prev = _context19.next) {
                   case 0:
-                    console.log('lo que se quiere actualizar', producto);
-                    _context19.next = 3;
-                    return this.prod.actualizarproducto(producto).subscribe(function (data) {
-                      return data;
-                    });
+                    try {
+                      this.listproductosG = this.prod.products().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeUntil"])(this.unsubscribe$));
+                    } catch (e) {
+                      console.log('Ocurrion un error', e);
+                    }
 
-                  case 3:
-                    stock = producto.stock;
-                    _context19.next = 6;
-                    return this.editarstock(stock, nuevo, perdida);
+                    return _context19.abrupt("return", this.listproductosG);
 
-                  case 6:
+                  case 2:
                   case "end":
                     return _context19.stop();
                 }
@@ -20502,25 +20524,53 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
-        key: "editarstock",
-        value: function editarstock(stck, stnuevo, stlost) {
+        key: "editarproductos",
+        value: function editarproductos(producto, nuevo, perdida) {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee20() {
-            var _this47 = this;
-
-            var edicion_producto;
+            var stock;
             return regeneratorRuntime.wrap(function _callee20$(_context20) {
               while (1) {
                 switch (_context20.prev = _context20.next) {
+                  case 0:
+                    console.log('lo que se quiere actualizar', producto);
+                    _context20.next = 3;
+                    return this.prod.actualizarproducto(producto).subscribe(function (data) {
+                      return data;
+                    });
+
+                  case 3:
+                    stock = producto.stock;
+                    _context20.next = 6;
+                    return this.editarstock(stock, nuevo, perdida);
+
+                  case 6:
+                  case "end":
+                    return _context20.stop();
+                }
+              }
+            }, _callee20, this);
+          }));
+        }
+      }, {
+        key: "editarstock",
+        value: function editarstock(stck, stnuevo, stlost) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee21() {
+            var _this47 = this;
+
+            var edicion_producto;
+            return regeneratorRuntime.wrap(function _callee21$(_context21) {
+              while (1) {
+                switch (_context21.prev = _context21.next) {
                   case 0:
                     // tslint:disable-next-line:variable-name
                     edicion_producto = stck; // tslint:disable-next-line:triple-equals
 
                     if (!(stnuevo == 0 && stlost == 0 || stnuevo == null && stlost == null)) {
-                      _context20.next = 4;
+                      _context21.next = 4;
                       break;
                     }
 
-                    _context20.next = 8;
+                    _context21.next = 8;
                     break;
 
                   case 4:
@@ -20542,7 +20592,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       }
                     }
 
-                    _context20.next = 7;
+                    _context21.next = 7;
                     return this.prod.actualizarstock(stck).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeUntil"])(this.unsubscribe$)).subscribe(function (data) {
                       return _this47.cd.markForCheck();
                     });
@@ -20552,26 +20602,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 8:
                   case "end":
-                    return _context20.stop();
+                    return _context21.stop();
                 }
               }
-            }, _callee20, this);
+            }, _callee21, this);
           }));
         }
       }, {
         key: "editar",
         value: function editar() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee21() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee22() {
             var _this48 = this;
 
             var id;
-            return regeneratorRuntime.wrap(function _callee21$(_context21) {
+            return regeneratorRuntime.wrap(function _callee22$(_context22) {
               while (1) {
-                switch (_context21.prev = _context21.next) {
+                switch (_context22.prev = _context22.next) {
                   case 0:
                     id = localStorage.getItem('idc'); // tslint:disable-next-line:max-line-length
 
-                    _context21.next = 3;
+                    _context22.next = 3;
                     return this.prod.buscarproductoporID(+id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeUntil"])(this.unsubscribe$)).subscribe(function (data) {
                       _this48.productoporid = data;
 
@@ -20580,10 +20630,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 3:
                   case "end":
-                    return _context21.stop();
+                    return _context22.stop();
                 }
               }
-            }, _callee21, this);
+            }, _callee22, this);
           }));
         }
       }, {
@@ -20620,15 +20670,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "open5",
         value: function open5(content, inv2) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee22() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee23() {
             var _this51 = this;
 
-            return regeneratorRuntime.wrap(function _callee22$(_context22) {
+            return regeneratorRuntime.wrap(function _callee23$(_context23) {
               while (1) {
-                switch (_context22.prev = _context22.next) {
+                switch (_context23.prev = _context23.next) {
                   case 0:
                     localStorage.setItem('inv2', inv2.id.toString());
-                    _context22.next = 3;
+                    _context23.next = 3;
                     return this.editar5();
 
                   case 3:
@@ -20642,35 +20692,35 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 4:
                   case "end":
-                    return _context22.stop();
+                    return _context23.stop();
                 }
               }
-            }, _callee22, this);
+            }, _callee23, this);
           }));
         }
       }, {
         key: "editar2",
         value: function editar2() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee23() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee24() {
             var _this52 = this;
 
             var id;
-            return regeneratorRuntime.wrap(function _callee23$(_context23) {
+            return regeneratorRuntime.wrap(function _callee24$(_context24) {
               while (1) {
-                switch (_context23.prev = _context23.next) {
+                switch (_context24.prev = _context24.next) {
                   case 0:
                     id = localStorage.getItem('idc2');
-                    _context23.next = 3;
+                    _context24.next = 3;
                     return this.prod.buscarelstockporID(+id).subscribe(function (data) {
                       _this52.stock_actualizado = data;
                     });
 
                   case 3:
                   case "end":
-                    return _context23.stop();
+                    return _context24.stop();
                 }
               }
-            }, _callee23, this);
+            }, _callee24, this);
           }));
         }
       }, {
@@ -21251,13 +21301,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(MarcaComponent, [{
         key: "lasmarca",
         value: function lasmarca() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee24() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee25() {
             var _this55 = this;
 
             var informacion;
-            return regeneratorRuntime.wrap(function _callee24$(_context24) {
+            return regeneratorRuntime.wrap(function _callee25$(_context25) {
               while (1) {
-                switch (_context24.prev = _context24.next) {
+                switch (_context25.prev = _context25.next) {
                   case 0:
                     informacion = function informacion() {
                       return new Promise(function (resolve, reject) {
@@ -21267,32 +21317,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       });
                     };
 
-                    return _context24.abrupt("return", informacion());
+                    return _context25.abrupt("return", informacion());
 
                   case 2:
                   case "end":
-                    return _context24.stop();
+                    return _context25.stop();
                 }
               }
-            }, _callee24);
+            }, _callee25);
           }));
         }
       }, {
         key: "informacionasync",
         value: function informacionasync() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee25() {
-            return regeneratorRuntime.wrap(function _callee25$(_context25) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee26() {
+            return regeneratorRuntime.wrap(function _callee26$(_context26) {
               while (1) {
-                switch (_context25.prev = _context25.next) {
+                switch (_context26.prev = _context26.next) {
                   case 0:
                     this.elnombre = this.Smarca.buscarmarca2();
 
                   case 1:
                   case "end":
-                    return _context25.stop();
+                    return _context26.stop();
                 }
               }
-            }, _callee25, this);
+            }, _callee26, this);
           }));
         }
       }, {
@@ -22153,21 +22203,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(VencimientosComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee26() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee27() {
             var _this60 = this;
 
-            return regeneratorRuntime.wrap(function _callee26$(_context26) {
+            return regeneratorRuntime.wrap(function _callee27$(_context27) {
               while (1) {
-                switch (_context26.prev = _context26.next) {
+                switch (_context27.prev = _context27.next) {
                   case 0:
                     this.ngxspinner.show();
-                    _context26.next = 3;
+                    _context27.next = 3;
                     return this.estanPorvencer()["finally"](function () {
                       _this60.isloading = true;
                     });
 
                   case 3:
-                    _context26.next = 5;
+                    _context27.next = 5;
                     return this.productosquevenceran()["finally"](function () {
                       _this60.isloading = true;
                     });
@@ -22177,23 +22227,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 6:
                   case "end":
-                    return _context26.stop();
+                    return _context27.stop();
                 }
               }
-            }, _callee26, this);
+            }, _callee27, this);
           }));
         }
       }, {
         key: "estanPorvencer",
         value: function estanPorvencer() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee27() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee28() {
             var _this61 = this;
 
-            return regeneratorRuntime.wrap(function _callee27$(_context27) {
+            return regeneratorRuntime.wrap(function _callee28$(_context28) {
               while (1) {
-                switch (_context27.prev = _context27.next) {
+                switch (_context28.prev = _context28.next) {
                   case 0:
-                    _context27.next = 2;
+                    _context28.next = 2;
                     return this.serproduct.GetPorvencer().then(function (res) {
                       _this61.fechas_avencer = res;
                       console.log('obtengo', _this61.fechas_avencer); // tslint:disable-next-line:radix max-line-length
@@ -22249,10 +22299,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 3:
                   case "end":
-                    return _context27.stop();
+                    return _context28.stop();
                 }
               }
-            }, _callee27, this);
+            }, _callee28, this);
           }));
         } // calculandofecha(){
         // let fecha2 = new Date()

@@ -85,7 +85,7 @@
         </div>
     </div>
            </form>
-    <app-boleta [hidden]="true" [item] = "items"    [totalPrices] = "totalPrice" [lahora]="hora" [fechaE]="fechaE"  ></app-boleta>
+    <app-boleta [hidden]="false" [item] = "items"    [totalPrices] = "totalPrice" [lahora]="hora" [fechaE]="fechaE"  ></app-boleta>
 </ng-template>
 <ngx-spinner > <p>Cargando...</p>
 </ngx-spinner>
@@ -110,6 +110,6 @@
         <input class="form-control mr-sm-2 border border-primary" id="busqueda" type="search" placeholder="Buscar" aria-label="Search" size="10" (input) = _buscadorProducto($event)>
         </div>
 </nav>
-
+<div id="previewImg"></div>
 
 <img src="{{imagenjpg}}">

@@ -218,4 +218,6 @@ actualizar_stock_fecha(fchAct: date_expiration) {
       return this.http.put(this.URLFECHAS + '/' + dt.id, dt)
   }
 
+ 
+
 }
