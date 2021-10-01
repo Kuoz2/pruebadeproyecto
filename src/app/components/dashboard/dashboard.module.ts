@@ -28,6 +28,7 @@ import {NgxSpinnerModule} from "ngx-spinner";
         NgxPaginationModule,
         Ng4LoadingSpinnerModule,
         NgxSpinnerModule,
+    
     ]
 })
 export class DashboardModule { }

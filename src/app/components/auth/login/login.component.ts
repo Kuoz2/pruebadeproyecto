@@ -1,35 +1,45 @@
-import {Component, OnInit} from '@angular/core';
+import { async } from '@angular/core/testing';
+import { takeUntil } from 'rxjs/operators';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AutentificacionService} from '../../../Service/autentificacion.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {UsuarioService} from '../../../Service/usuario.service';
 import {NgxSpinnerService} from 'ngx-spinner';
+import { Subject } from 'rxjs';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+  
+  private unsubscribe$ = new Subject<void>();
 
   constructor(private formBuilder: FormBuilder,
               private autentificacion: AutentificacionService,
               private modalService: NgbModal,
               private serviadmin: UsuarioService,
-              private ngxspinner: NgxSpinnerService
+              private spinner: NgxSpinnerService,
+              private cd: ChangeDetectorRef
   ) {
         this.ngForm = LoginComponent.CreateLoginFormGroup();
         this.new_admin = LoginComponent.CreateAdmin();
 
   }
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();  }
 
   get email() {return this.ngForm.get('email'); }
   get password() {return this.ngForm.get('password'); }
 
   public closeResult: string;
-  public usuarios: boolean;
+  public usuarios: boolean = false;
 
   ngForm: FormGroup;
 
@@ -99,28 +109,42 @@ export class LoginComponent implements OnInit {
       this.serviadmin.guardaradmin(admin.value);
   }
 
-  async ngOnInit() {
-    this.ngxspinner.show();
-    this.loqumu();
-    this.ngxspinner.hide();
+   ngOnInit() {
+
+     this.loqumu()
+
   }
 
 
  async loqumu() {
-    this.autentificacion.mostrar_users().subscribe(
-        x => {
 
+  this.spinner.show("spinnerlogin", {
+    type: "pacman",
+    size: "large",
+    color: "white"
+});
+    this.autentificacion.mostrar_users().pipe(takeUntil(this.unsubscribe$)).subscribe(
+        x => {
              const data = Object.values( x[0]);
                 // @ts-ignore
-             this.usuarios = data[0];
-             if (this.usuarios === false) {
+             if (data[0]==true) {
 
-            }
+                 this.usuarios = true
+                 this.spinner.hide("spinnerlogin")
 
-            
-        }
+            }else{
+               this.usuarios = false
+                this.spinner.hide("spinnerlogin")
 
+
+            };
+            this.cd.markForCheck();  
+     
+          }   
+   
  );
+
+
   }
 
   onLogin(form): void {

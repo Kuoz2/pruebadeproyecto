@@ -253,4 +253,8 @@ console.log("decodificado",atob(byte.nombreXML))
             return `with: ${reason}`;
         }
     }
+
+    camarabardcode2(){
+
+    }
 }

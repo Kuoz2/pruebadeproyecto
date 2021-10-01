@@ -20,7 +20,6 @@ export class ContentLayoutComponent implements OnInit {
 
 
   public right_side_bar: boolean;
-  public layoutType: string = 'RTL';
   public layoutClass: boolean = false;
 
   constructor(public navServices: NavService) {
@@ -36,17 +35,6 @@ export class ContentLayoutComponent implements OnInit {
     this.right_side_bar = $event
   }
 
-  public clickRtl(val) {
-    if (val === 'RTL') {
-      document.body.className = 'rtl';
-      this.layoutClass = true;
-      this.layoutType = 'LTR';
-    } else {
-      document.body.className = '';
-      this.layoutClass = false;
-      this.layoutType = 'RTL';
-    }
-  }
 
   ngOnInit() {
 

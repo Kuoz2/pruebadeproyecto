@@ -120,6 +120,7 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
    }
 
    async editarproductos(producto: Productos, nuevo, perdida) {
+
       console.log('lo que se quiere actualizar', producto);
       await this.prod.actualizarproducto(producto).subscribe(data => data);
       const stock = producto.stock;
@@ -156,13 +157,14 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
             }
 
             await this.prod.actualizarstock(stck).pipe(takeUntil(this.unsubscribe$)).subscribe( data => this.cd.markForCheck() );
-            window.location.reload();
+          window.location.reload();
         }
     }
 
 
 
    async editar() {
+    
         const id = localStorage.getItem('idc');
 
        // tslint:disable-next-line:max-line-length
@@ -170,6 +172,9 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
     }
 
     open2(content2, catego: Productos): void {
+            
+       
+        
 
       console.log('lo que entra', catego.id);
       this.modalService.open(content2, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
@@ -184,6 +189,20 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
       this.editar();
       this.editar2();
 
+      var elemento= <HTMLInputElement>  document.querySelector('input[name="newstock"]');
+      var elementoperdida = <HTMLInputElement> document.querySelector('input[name="nuevasperdidas"]');
+      var elementofecha = <HTMLInputElement> document.querySelector('input[name="fechavencimientos"]')  
+        if(catego.stock.pstock != 0 )
+        {
+            elemento.disabled = true
+            elementoperdida.disabled = true
+            elementofecha.disabled=true
+
+        }else{
+            elemento.disabled = false
+            elementoperdida.disabled=false
+            elementofecha.disabled=false
+        }
 
     }
 

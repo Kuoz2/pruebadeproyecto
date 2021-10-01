@@ -35,8 +35,7 @@ import {MermaModule} from "./components/merma/merma.module";
         MermaModule,
         FormsModule,
         NgxPrintModule,
-     
-      
+             
 
     ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy}],

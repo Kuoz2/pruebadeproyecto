@@ -44,6 +44,8 @@ export class AppsaleComponent implements OnInit, OnDestroy {
   public efectivo = 0;
   public devolucion = 0;
   public closeResult: string;
+  public articuloBusqueda: string;
+  public descuentos: number;
   @Output()
   public textoCambiado: EventEmitter<string> = new EventEmitter();
   @Output()
@@ -85,6 +87,7 @@ imagenjpg;
   sitiene = [];
   notiene = []
   async ngOnInit() {
+    this.articuloBusqueda;
     this.spinner.show();
     this.datos$ = this.secoind.getInfoReloj();
 
@@ -221,13 +224,11 @@ imagenjpg;
        html2canvas(document.getElementById(register)).then(function (canvas) {
        
         var anchotag = document.createElement("a") ;
-        document.body.appendChild(anchotag)
-        document.getElementById('previewImg').appendChild(canvas) 
         anchotag.href = canvas.toDataURL();
         console.log(anchotag.href)
-        
+       
        })
-    this.se_Imprio = true;
+     this.se_Imprio = true;
 
 
      }
@@ -356,4 +357,43 @@ remover_producto(producto) {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
+
+  BVenderProducto(){
+   // cordova.plugins.barcodeScanner.scan(
+     // function (result) {
+
+       //    var variable =  <HTMLInputElement> document.getElementById("BusCodigo")
+
+         //  variable.value = result.text
+       //},
+      //function (error) {
+        //  alert("Scanning failed: " + error);
+      //},
+      //{
+        //  preferFrontCamera : true, // iOS and Android
+          //showFlipCameraButton : true, // iOS and Android
+          //showTorchButton : true, // iOS and Android
+          //torchOn: true, // Android, launch with the torch switched on (if available)
+          //saveHistory: true, // Android, save scan history (default false)
+          //prompt : "Place a barcode inside the scan area", // Android
+          //resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
+          //formats : "QR_CODE,PDF_417,UPC_A, UPC_E,EAN_8,EAN_13,CODE_128", // default: all but PDF_417 and RSS_EXPANDED
+          //orientation : "landscape", // Android only (portrait|landscape), default unset so it rotates with the device
+          //disableAnimations : true, // iOS
+          //disableSuccessBeep: false // iOS and Android
+      //}
+   //);
+  }
+
+  limpiar_busqueda(){
+    this.articuloBusqueda = ""
+    this.textoCambiado.emit("")
+    
+  }
+
+  Descuento(prod){
+        console.log("cambio", this.totalPrice)
+
+  }
+
 }

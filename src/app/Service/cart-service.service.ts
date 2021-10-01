@@ -40,7 +40,7 @@ export class CartServiceService {
     let objIndex = listCart.findIndex((obj => obj.id == newData.id));
     if (objIndex != -1){
       //seteamos la cantidad en 1 ya que los arrays se modifican los valores por referencia, si volbemos agregar la cantidad se reniciara.
-      listCart[objIndex].quantity = 1;
+      listCart[objIndex].quantity = 1
       //Eliminamos el array del carrito
       listCart.splice(objIndex,1 )
     }

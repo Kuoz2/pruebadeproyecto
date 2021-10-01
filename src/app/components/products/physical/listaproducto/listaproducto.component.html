@@ -312,8 +312,8 @@
                                         <input type="number" [(ngModel)]="productoporid.stock.pstock" class="for m-control" id = "validationCustom01222" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label for="validationCustom0122222" class="mb-1">Nuevo Stock:</label>
-                                        <input type="number" [(ngModel)]="stock_nuevo" class="form-control" id="validationCustom0122222" >
+                                        <label for="newstock" class="mb-1">Nuevo Stock:</label>
+                                        <input type="number" [(ngModel)]="stock_nuevo" class="form-control" id="newstock" name="newstock">
                                     </div>
                                     <div class="form-group">
                                         <label for="validationCustom012222" class="mb-1">Stock Pérdida Actual:</label>
@@ -321,12 +321,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="validationCustom01222222" class="mb-1">Nuevas Pérdidas:</label>
-                                        <input type="number" [(ngModel)]="stock_perdidas_nuevo" class="form-control" name="perdidas" id="validationCustom01222222">
+                                        <input type="number" [(ngModel)]="stock_perdidas_nuevo" class="form-control" name="perdidas" id="validationCustom01222222" name="nuevasperdidas">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="fecha_vencimiento">Fecha vencimiento</label>
-                                        <input type="text" id="fecha_vencimiento" [(ngModel)]="productoporid.date_expiration.fecha_vencimiento" class="form-control" disabled>
+                                        <input type="date" id="fecha_vencimiento" [(ngModel)]="productoporid.date_expiration.fecha_vencimiento" name="fechavencimientos" class="form-control" >
                                     </div>
                                 </div>
                                 <div class="modal-footer">

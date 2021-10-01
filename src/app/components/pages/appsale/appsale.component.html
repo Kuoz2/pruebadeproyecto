@@ -37,6 +37,7 @@
                         <tr>
                             <th scope="col">Producto</th>
                             <th scope="col">Unidades</th>
+                            <th scope="col">Descuento</th>
                         </tr>
                     </thead>
                     <tbody *ngFor="let productos of items" >
@@ -44,6 +45,7 @@
                             <th>  {{productos.pdescripcion}}</th>
                             <th>{{productos.quantity}}
                                 <button type="button" class="close" aria-label="close"> <span aria-hidden="true" (click)="remover_producto(productos)">&times;</span></button></th>
+                            <th><input type="text" (change)="Descuento(productos)"></th>
                     </tr>
                     <tr *ngIf="productos.sinventario2 == false">
                         <th>{{productos.product.pdescripcion}}</th>
@@ -91,7 +93,7 @@
 </ngx-spinner>
 <nav class="navbar navbar-light">
         <div class="shopping-cart-header">
-            <i class="fa fa-shopping-cart cart-icon" (click)="open2(content2)"></i><span class="badge">{{totalQuantity}}</span>
+           <button type="button" class="btn btn-secondary"(click)="open2(content2)"><i class="fa fa-shopping-cart cart-icon" > Realizar venta</i><span class="badge">{{totalQuantity}}</span></button> 
             <div class="shopping-cart-total">
                 <span class="lighter-text">Total:</span>
                 <span class="main-color-text"><h2>${{totalPrice}}</h2></span>
@@ -107,7 +109,12 @@
         </div>-->
         <label class="input-group-text " for="busqueda"> <i class="fa fa-search-plus"></i></label>
 
-        <input class="form-control mr-sm-2 border border-primary" id="busqueda" type="search" placeholder="Buscar" aria-label="Search" size="10" (input) = _buscadorProducto($event)>
+        <input class="form-control mr-sm-2 border border-primary"
+         id="busqueda"
+          type="search"
+           placeholder="Buscar" 
+           [(ngModel)]="articuloBusqueda"
+            aria-label="Search" size="10" (input) = _buscadorProducto($event) id="BusCodigo" (click)="BVenderProducto()"><button type="button" class="btn btn-warning" (click)="limpiar_busqueda()"><i class="fa fa-trash "></i> Limpiar</button>
         </div>
 </nav>
 <div id="previewImg"></div>

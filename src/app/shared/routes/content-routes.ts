@@ -50,7 +50,10 @@ export const
      breadcrumb: "Mermas"
     }
   },
-
+  {
+    path: 'navegacionboton',
+    loadChildren: () => import('../../components/botoncillo/botoncillo.module').then(m => m.BotoncilloModule)
+  }
 
 
 ];

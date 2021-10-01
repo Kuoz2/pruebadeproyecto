@@ -12,7 +12,7 @@ export class VentasService {
 
   Urlventas = 'https://marketmini.herokuapp.com/sales';
   PruebaVentas = 'http://localhost:3000/sales';
-  private ventarapida='http://localhost:3000/quick_sales';
+  private ventarapida='https://marketmini.herokuapp.com/quick_sales';
   mostrarventas() {
    return this.http.get<Ventas>(this.Urlventas);
   }
@@ -23,7 +23,7 @@ export class VentasService {
 
 
   __guardar_ventaRapida(vrp){
-    console.log('guardando', vrp)
-  //  return this.http.post(this.ventarapida, vrp.value).toPromise().then(res => console.log(res)).catch(error => console.log(error))
+    console.log('venta rapida', vrp)
+  return this.http.post(this.ventarapida, vrp).toPromise().then(res => console.log(res)).catch(error => console.log(error))
   }
 }

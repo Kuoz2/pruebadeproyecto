@@ -43,7 +43,8 @@ import { QuickSaleComponent } from './quick-sale/quick-sale.component';
       CierrecajaComponent,
       ListPageComponent,
       ActualizarbolComponent,
-      QuickSaleComponent],
+      QuickSaleComponent,
+      ],
     imports: [
         CommonModule,
         PagesRoutingModule,

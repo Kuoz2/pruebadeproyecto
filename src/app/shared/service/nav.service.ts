@@ -55,10 +55,9 @@ title: 'Productos' , icon: 'box', rol: '', type: 'sub', active: false,  children
 
 		{
 			title: 'Pagos', icon: 'clipboard', rol: '', type: 'sub', active: false, children: [
-				{path: '/pages/create-voucher', rol: '', title: 'Crear Pago', type: 'link'},
 				{path: '/pages/lista-pago', rol: '', title: 'Lista Pagos', type: 'link'},
 				{path: '/pages/medio-pago', rol: '', title: 'Medio de pago', type: 'link', },
-				{path: '/pages/app-pago', rol: '', title: 'App de pago', type: 'link'},
+				{path: '/pages/app-pago', rol: '', title: 'Venta', type: 'link'},
 				{path: '/pages/boleta', rol: 'administrador', title: 'Boleta', type: 'link'},
 				{path: '/pages/quick_sale', rol: 'administrador', title: 'Venta rapida', type: 'link'}
 			]
@@ -79,6 +78,13 @@ title: 'Productos' , icon: 'box', rol: '', type: 'sub', active: false,  children
 				},
 				{
 					path: '/merma/solucion-merma', rol: '', title: 'Solucion Mrm', type: 'link'
+				}
+			]
+		},
+		{
+			title: 'botonesnavegacion', type: 'sub', rol:'', icon:'eye', active:false, children:[
+				{
+					path:'/navegacionboton/navboton', rol:'', title: 'navegable', type:'link'
 				}
 			]
 		}

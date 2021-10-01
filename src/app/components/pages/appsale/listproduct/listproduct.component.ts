@@ -16,7 +16,7 @@ class IItem {
   styleUrls: ['./listproduct.component.scss']
 })
 export class ListproductComponent implements OnInit {
-
+  public descuentos: number;
   Productos_lista: Observable<Productos[]>;
   Productos_sin_id;
   isloading: boolean;
@@ -64,6 +64,7 @@ console.log('date expiration', this.Productos_sin_id)
     if (data.quantity >= elemento.quantity){
       this.carservice.changeCart(data)
     }else {
+
       const cambio = Object.assign( product, elemento )
       this.carservice.changeCart(cambio)
   }

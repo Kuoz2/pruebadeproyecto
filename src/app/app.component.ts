@@ -33,6 +33,7 @@ constructor(private userservi: UsuarioService) {
     //});
   }
 
+ 
   navegador_habierto(){
     if(devTools.isOpen == true){
       window.location.href = "https://errorconsole.herokuapp.com/"

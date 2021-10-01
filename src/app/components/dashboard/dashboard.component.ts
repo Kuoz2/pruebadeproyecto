@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     }
     async ngOnInit() {
-        this.spinner.show("spinnerdashboard", {
+        this.spinner.show("spinnerlogin", {
             type: "pacman",
             size: "large",
             color: "white"

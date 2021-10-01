@@ -28,7 +28,6 @@ export class HeaderComponent implements OnInit {
   public ventarapida: FormGroup;
   public closeResult: string;
   public option1= "hola"
-  public mediopago = ["efectivo", "tarjeta"]
   get codigo_producto(){return this.ventarapida.get('codigo_producto')}
   @Output() rightSidebarEvent = new EventEmitter<boolean>();
 
@@ -36,14 +35,8 @@ export class HeaderComponent implements OnInit {
   constructor(public navServices: NavService,
               private offsession: AutentificacionService,
               private router: Router,
-              private Cmemrmas: ProductserviceService, private modalService: NgbModal, private formBuilder: FormBuilder, private vns: VentasService) {
-this.ventarapida = this.formBuilder.group({
-  codigo_producto: new FormControl(''),
-  nombre_product: new FormControl(''),
-  cantidad: new FormControl(''),
-  precio: new FormControl(''),
-  medio_pago: new FormControl('')
-})
+              private Cmemrmas: ProductserviceService) {
+
 
                }
 
@@ -110,24 +103,8 @@ this.ventarapida = this.formBuilder.group({
     alert('hola');
   }
 
-  realizarventa(){
-    console.log("formulario", this.ventarapida.value)
-    if(this.ventarapida.value.codigo_producto == ''){
-  
-      this.vns.__guardar_ventaRapida(this.ventarapida.value)
+ 
 
-    }
-
-  }
-
-  open1(content) {
-    
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
 
   checkBoxk(){
     var check= <HTMLInputElement>  document.querySelector('input[name="dato1"]')
@@ -153,14 +130,6 @@ this.ventarapida = this.formBuilder.group({
     console.log("chquiado", check)
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
+
 
 }
