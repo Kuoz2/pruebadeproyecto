@@ -21,6 +21,7 @@ import {NgxSpinnerService} from 'ngx-spinner';
 import {takeUntil} from 'rxjs/operators';
 
 import html2canvas from 'html2canvas';
+import { float } from 'html2canvas/dist/types/css/property-descriptors/float';
 
 @Component({
   selector: 'app-appsale',
@@ -46,6 +47,7 @@ export class AppsaleComponent implements OnInit, OnDestroy {
   public closeResult: string;
   public articuloBusqueda: string;
   public descuentos: number;
+  public Pdescuento: number;
   @Output()
   public textoCambiado: EventEmitter<string> = new EventEmitter();
   @Output()
@@ -120,9 +122,6 @@ imagenjpg;
       this.categorias = data;  this.cd.markForCheck();     this.spinner.hide(); });
     this.vouchservicio.ultimovoucher().subscribe(data => {this.voucher_add =  data; this.cd.markForCheck();
     } ,  );
-
-    this.Imprimcion();
-
   }
   // Habrir el modal al precionar el carrito de compra
   open2(content2): void {
@@ -208,18 +207,18 @@ imagenjpg;
            '<body >' +
            document.getElementById( register ).innerHTML +
            '</body>';
-    //const mywindow = window.open( '', '_blank' );
-    //mywindow.opener;
+    const mywindow = window.open( '', '_blank' );
+    mywindow.opener;
 
-    //mywindow.document.open();
-    //mywindow.document.write( data );
-    //mywindow.document.close();
+    mywindow.document.open();
+    mywindow.document.write( data );
+    mywindow.document.close();
 
-   // mywindow.onload = function() {
-     //       mywindow.focus();
-         //   mywindow.print();
+   mywindow.onload = function() {
+           mywindow.focus();
+            mywindow.print();
           
-       //};
+       };
        
        html2canvas(document.getElementById(register)).then(function (canvas) {
        
@@ -233,8 +232,7 @@ imagenjpg;
 
      }
      // Probrando si se imprimio el documento
-  Imprimcion() {
-  }
+ 
 
   // LAS FORMAS DE CERRAR EL MODAL
   private getDismissReason(reason: any): string {
@@ -391,9 +389,18 @@ remover_producto(producto) {
     
   }
 
-  Descuento(prod){
+  Descuento(prod, i){
+    var descuento = <HTMLInputElement> document.getElementById('descuento'+i)
         console.log("cambio", this.totalPrice)
+        console.log('productos',prod)
+        var porcentaje =  parseInt( descuento.value) / 100 
+        console.log("procentaje", porcentaje)
+        const nuevoVal = porcentaje * this.totalPrice 
+        console.log("nuevo valor", nuevoVal)
+        var nuevoPres = this.totalPrice - nuevoVal
+        console.log("descuento", nuevoPres)
+        this.totalPrice = parseInt( nuevoPres.toFixed())
 
-  }
+      }
 
 }

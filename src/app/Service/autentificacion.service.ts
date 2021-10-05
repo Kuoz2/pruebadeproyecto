@@ -45,6 +45,7 @@ export class AutentificacionService {
             .pipe(tap((ing) => {
                 if (ing.body.jti != null) {
                     this.saveRole( ing.body.role );
+                    this.savejtli(ing.body.jti)
 
                 } else {
                 }
@@ -58,7 +59,7 @@ export class AutentificacionService {
                 } else {
                     this.saveToken( token );
                     if (res.body.role != null && res.body.jti !== null) {
-                        this.router.navigateByUrl( '' );
+                        this.router.navigateByUrl( 'navegacionboton/navboton' );
                     } else {
                         alert( 'Contraseña o email invalidos' );
                     }
@@ -97,6 +98,7 @@ export class AutentificacionService {
       localStorage.removeItem('ACCESS_ROLE');
       localStorage.removeItem('ACCES_USER');
       localStorage.removeItem('ACCESS_NAMBER');
+      localStorage.removeItem('ACCESS_JTLI')
 
   }
 
@@ -106,6 +108,11 @@ export class AutentificacionService {
     //  expiretoken ? this.logout() : this.loggedIn.next(false)
 
 // }
+
+
+private savejtli(Jtili:string){
+    localStorage.setItem('ACCESS_JTLI', Jtili)
+   }
 
   private saveRole(tokeRole: string): void {
       localStorage.setItem('ACCESS_ROLE', tokeRole);

@@ -160,20 +160,21 @@
         <div class="col-xl-3 col-md-6 xl-50">
             <div class="card order-graph sales-carousel">
                 <div class="card-header">
-                    <h6>Porcentaje de pérdidas</h6>
+                    <h6>Porcentaje de ventas</h6>
                     <div class="row">
                         <div class="col-6">
                             <div class="small-chartjs">
-                             <!--   <canvas baseChart id="small-graph-2" height="60vw" width="140vw"
-                                    [datasets]="smallLine2ChartData" [labels]="smallLine2ChartLabels"
-                                    [options]="smallLine2ChartOptions" [colors]="smallLine2ChartColors"
-                                    [legend]="smallLine2ChartLegend" [chartType]="smallLine2ChartType"
+                                <canvas id="ctx1" width="140" height="60" >{{porsentaje_venta}}</canvas>
+                             <!--   <canvas baseChart id="small-graph-1" height="60vw" width="140vw"
+                                    [datasets]="smallLineChartData" [labels]="smallLineChartLabels"
+                                    [options]="smallLineChartOptions" [colors]="smallLineChartColors"
+                                    [legend]="smallLineChartLegend" [chartType]="smallLineChartType"
                                     (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>-->
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="value-graph">
-                                <h3>0% <span><i class="fa fa-angle-up font-secondary"></i></span></h3>
+                                <h3>{{porcentaje_ventas * 100}}% <span><i class="fa fa-angle-up font-primary"></i></span></h3>
                             </div>
                         </div>
                     </div>
@@ -181,11 +182,47 @@
                 <div class="card-body">
                     <div class="media">
                         <div class="media-body">
-                            <span>Porcentaje de pérdidas</span>
-                            <h2 class="mb-0">0</h2>
-                            <p>0% <span><i class="fa fa-angle-up"></i></span></p>
-                            <h5 class="f-w-600">Perdidas</h5>
-                            <p>Las pérdidas son un 0% del mes anterior</p>
+                            <span>Ventas totales</span>
+                            <h2 class="mb-0"  >{{todas_las_ventas?.ganancias_totales}}</h2>
+                          
+                        </div>
+                        <div class="bg-primary b-r-8">
+                            <div class="small-box">
+
+                                <i data-feather="briefcase"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 xl-50">
+            <div class="card order-graph sales-carousel">
+                <div class="card-header">
+                    <h6>Porcentaje de pérdidas primer inventario</h6>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="small-chartjs">
+                               <canvas  id="ctx2" height="60vw" width="140vw" >{{porcentaje_perdida}}</canvas>
+                                    <!--[datasets]="smallLine2ChartData" [labels]="smallLine2ChartLabels"
+                                    [options]="smallLine2ChartOptions" [colors]="smallLine2ChartColors"
+                                    [legend]="smallLine2ChartLegend" [chartType]="smallLine2ChartType"
+                                    (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>-->
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="value-graph">
+                                <h3>{{porcentaje_perdidas * 100}}% <span><i class="fa fa-angle-up font-secondary"></i></span></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body">
+                            <span>Total de perdidas inventario</span>
+                            <h2 class="mb-0">{{totalperdidasinventario1?.totalperdiasinv}}</h2>
+                            
                         </div>
                         <div class="bg-secondary b-r-8">
                             <div class="small-box">
@@ -199,12 +236,12 @@
         <div class="col-xl-3 col-md-6 xl-50">
             <div class="card order-graph sales-carousel">
                 <div class="card-header">
-                    <h6>Transacción efectivo</h6>
+                    <h6>Pérdidas en el segundo inventario</h6>
                     <div class="row">
                         <div class="col-6">
                             <div class="small-chartjs">
-                              <!--  <canvas baseChart id="small-graph-3" height="60vw" width="140vw"
-                                    [datasets]="smallLine3ChartData" [labels]="smallLine3ChartLabels"
+                                <canvas baseChart id="ctx3" height="60vw" width="140vw">{{todas_perdidainventario2}}</canvas>
+                                    <!--[datasets]="smallLine3ChartData" [labels]="smallLine3ChartLabels"
                                     [options]="smallLine3ChartOptions" [colors]="smallLine3ChartColors"
                                     [legend]="smallLine3ChartLegend" [chartType]="smallLine3ChartType"
                                     (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>-->
@@ -212,7 +249,7 @@
                         </div>
                         <div class="col-6">
                             <div class="value-graph">
-                                <h3>0% <span><i class="fa fa-angle-up font-warning"></i></span></h3>
+                                <h3>{{todas_perdidasinventario2 * 100 }}% <span><i class="fa fa-angle-up font-warning"></i></span></h3>
                             </div>
                         </div>
                     </div>
@@ -220,12 +257,9 @@
                 <div class="card-body">
                     <div class="media">
                         <div class="media-body">
-                            <span>Transacción por efectivo</span>
-                            <h2 class="mb-0">0</h2>
-                            <p>0% <span><i class="fa fa-angle-up"></i></span></p>
-                            <h5 class="f-w-600">Detalle de la transacción</h5>
-                            <p>Las ventas por efectivo son un 0%</p>
-                        </div>
+                            <span>Total de pérdidas inventario 2</span>
+                            <h2 class="mb-0">{{total_perdidasobtenidas?.total_perdidas}}</h2>
+                           
                         <div class="bg-warning b-r-8">
                             <div class="small-box">
                                 <i data-feather="shopping-cart"></i>
@@ -238,12 +272,12 @@
         <div class="col-xl-3 col-md-6 xl-50">
             <div class="card order-graph sales-carousel">
                <div class="card-header">
-                    <h6> Transacción por tarjeta</h6>
+                    <h6> Ventras rapidas</h6>
                     <div class="row">
                         <div class="col-6">
                             <div class="small-chartjs">
-                               <!--<canvas baseChart id="small-graph-4" height="60vw" width="140vw"
-                                    [datasets]="smallLine4ChartData" [labels]="smallLine4ChartLabels"
+                               <canvas baseChart id="ctx4" height="60vw" width="140vw">{{venta_rapidasgrafico}}</canvas>
+                                    <!--[datasets]="smallLine4ChartData" [labels]="smallLine4ChartLabels"
                                     [options]="smallLine4ChartOptions" [colors]="smallLine4ChartColors"
                                     [legend]="smallLine4ChartLegend" [chartType]="smallLine4ChartType"
                                     (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>-->
@@ -251,7 +285,7 @@
                         </div>
                         <div class="col-6">
                             <div class="value-graph">
-                                <h3>0% <span><i class="fa fa-angle-up font-danger"></i></span></h3>
+                                <h3>{{ventas_rapidasrealizada * 100}}% <span><i class="fa fa-angle-up font-danger"></i></span></h3>
                             </div>
                         </div>
                     </div>
@@ -259,12 +293,8 @@
               <div class="card-body">
                     <div class="media">
                         <div class="media-body">
-                            <span>Transacciones por tarjeta</span>
-                            <h2 class="mb-0">0</h2>
-                            <p>0% <span><i class="fa fa-angle-up"></i></span></p>
-                            <h5 class="f-w-600">Detalle de transacción</h5>
-                            <p>Las ventas por tarjeta son un 0%</p>
-                        </div>
+                            <span>Ventas rapidas cantidad ganada</span>
+                            <h2 class="mb-0">{{total_ventasrapidas?.totalventasR}}</h2>
                         <div class="bg-danger b-r-8">
                             <div class="small-box">
                                 <i data-feather="calendar"></i>

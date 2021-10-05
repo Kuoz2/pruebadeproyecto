@@ -12,7 +12,8 @@
     </div>
 </div>
 -->
-
+<ngx-spinner name="spinnerdashboard">
+</ngx-spinner>
 <ng-template #content2 let-modal2>
     <form action="" [formGroup]="app_venta" (ngSubmit)="guardarVentaApp()">
 
@@ -27,7 +28,7 @@
         <div class="shopping-cart-header">
             <div class="shopping-cart-total">
                 <span class="lighter-text">Total:</span>
-                <span class="main-color-text" >${{totalPrice}}</span>
+                <span class="main-color-text" ><h2>${{totalPrice}}</h2></span>
             </div>
         </div>
         <div class="form">
@@ -40,16 +41,17 @@
                             <th scope="col">Descuento</th>
                         </tr>
                     </thead>
-                    <tbody *ngFor="let productos of items" >
+                    <tbody *ngFor="let productos of items ; let i = index" [attr.data-index]="i" >
                     <tr *ngIf="productos.sinventario == true">
                             <th>  {{productos.pdescripcion}}</th>
                             <th>{{productos.quantity}}
                                 <button type="button" class="close" aria-label="close"> <span aria-hidden="true" (click)="remover_producto(productos)">&times;</span></button></th>
-                            <th><input type="text" (change)="Descuento(productos)"></th>
+                            <th><div class="qty-box1"><input type="number" name="descuento" id="descuento{{i}}" (change)="Descuento(productos, i)"> </div></th>
                     </tr>
                     <tr *ngIf="productos.sinventario2 == false">
                         <th>{{productos.product.pdescripcion}}</th>
                         <th>{{productos.quantity}}</th>
+                        <th><div class="qty-box1"><input type="number" name="descuento" id="descuento{{i}}" (change)="Descuento(productos, i)"> </div></th>
                     </tr>
                     </tbody>
                 </table>
@@ -80,14 +82,14 @@
                 <button type="submit" class="btn btn-primary"  >Guardar</button>
                 <button class="btn btn-secondary" type="button" data-dismiss="modal"
                         (click)="cancelar_venta()">Cancelar</button>
-              <button type="button" class="oculto-impresion btn btn-success" (click)="imprimir('ticket');Imprimcion()"> imprimir</button>
+              <button type="button" class="oculto-impresion btn btn-success" (click)="imprimir('ticket')"> imprimir</button>
            <!-- <button [useExistingCss]="true" printSectionId="ticket" type ="button" class="oculto-impresion btn btn-success" ngxPrint> imprimti</button>-->
 
             </div>
         </div>
     </div>
            </form>
-    <app-boleta [hidden]="false" [item] = "items"    [totalPrices] = "totalPrice" [lahora]="hora" [fechaE]="fechaE"  ></app-boleta>
+    <app-boleta [hidden]="true" [item] = "items"    [totalPrices] = "totalPrice" [lahora]="hora" [fechaE]="fechaE"  ></app-boleta>
 </ng-template>
 <ngx-spinner > <p>Cargando...</p>
 </ngx-spinner>

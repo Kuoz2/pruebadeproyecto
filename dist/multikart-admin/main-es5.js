@@ -449,6 +449,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(function (ing) {
             if (ing.body.jti != null) {
               _this.saveRole(ing.body.role);
+
+              _this.savejtli(ing.body.jti);
             } else {}
           })).subscribe(function (res) {
             console.log(res);
@@ -461,7 +463,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               _this.saveToken(token);
 
               if (res.body.role != null && res.body.jti !== null) {
-                _this.router.navigateByUrl('');
+                _this.router.navigateByUrl('navegacionboton/navboton');
               } else {
                 alert('Contraseña o email invalidos');
               }
@@ -495,12 +497,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           localStorage.removeItem('ACCESS_ROLE');
           localStorage.removeItem('ACCES_USER');
           localStorage.removeItem('ACCESS_NAMBER');
+          localStorage.removeItem('ACCESS_JTLI');
         } // private consultaToken(){
         //    const userToken = localStorage.getItem('ACCESS_TOKEN');
         //  const expiretoken= helper.isTokenExpired(userToken);
         //  expiretoken ? this.logout() : this.loggedIn.next(false)
         // }
 
+      }, {
+        key: "savejtli",
+        value: function savejtli(Jtili) {
+          localStorage.setItem('ACCESS_JTLI', Jtili);
+        }
       }, {
         key: "saveRole",
         value: function saveRole(tokeRole) {
@@ -1799,7 +1807,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         this.URLTOTALGANANCIAS_FV = 'https://marketmini.herokuapp.com/vouchers/mostrar_ganancias_por_mes'; // MUESTRA LAS GANANCIAS POR CADA MES Y MUESTRA EL RESULTADO.
 
-        this.URLGuardarconfig = 'https://marketmini.herokuapp.com/config_vouchers'; //de forma local se aran el ingreso.
+        this.URLGuardarconfig = 'https://marketmini.herokuapp.com/config_vouchers';
+        this.inventarioperdida2 = 'https://marketmini.herokuapp.com/date_expirations/buscar_las_fechas_perdidas';
+        this.todaslasperdidas = 'https://marketmini.herokuapp.com/date_expirations/todaslasperdidasdos';
+        this.pruebatodaslasperdidasdinv1 = 'https://marketmini.herokuapp.com/stocks/todaslasperdiadasinvprim';
+        this.pruebaquicksales = 'https://marketmini.herokuapp.com/quick_sales/ventarapida_fechas';
+        this.totalventasrapidas = 'https://marketmini.herokuapp.com/quick_sales/totalventasrapidas';
+        this.perdidaxmes = 'https://marketmini.herokuapp.com/stocks/buscar_las_fechas_perdidas'; //de forma local se aran el ingreso.
 
         this.Pruebaurldetallevoucher = 'http://localhost:3000/voucher_details';
         this.PruebaUrlvoucher = 'http://localhost:3000/vouchers';
@@ -1880,6 +1894,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "mostrar_ganancias_fv",
         value: function mostrar_ganancias_fv() {
           return this.http.get(this.URLTOTALGANANCIAS_FV);
+        } //Muestra las perdidas por mes.
+
+      }, {
+        key: "mostrar_perdidasXmes",
+        value: function mostrar_perdidasXmes() {
+          return this.http.get(this.perdidaxmes);
         }
       }, {
         key: "guardarcambios",
@@ -1893,6 +1913,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.http.post(this.PruebaInformeXML, xml).subscribe(function (res) {
             console.log("envio", res);
           });
+        } //Inventario 2 de perdidas.
+
+      }, {
+        key: "perdidas_inventario2",
+        value: function perdidas_inventario2() {
+          return this.http.get(this.inventarioperdida2);
+        } //Muestra todas las perdidas
+
+      }, {
+        key: "todaslasperdiadsinventario2",
+        value: function todaslasperdiadsinventario2() {
+          return this.http.get(this.todaslasperdidas);
+        } //Todas las perdidas del inventario primario.
+
+      }, {
+        key: "todaslasperdidasdinventario1",
+        value: function todaslasperdidasdinventario1() {
+          return this.http.get(this.pruebatodaslasperdidasdinv1);
+        } //Todas las ventas rapidas
+
+      }, {
+        key: "ventasrapidas",
+        value: function ventasrapidas() {
+          return this.http.get(this.pruebaquicksales);
+        } //Total de las ventas rapidas
+
+      }, {
+        key: "totalventasR",
+        value: function totalventasR() {
+          return this.http.get(this.totalventasrapidas);
         }
       }]);
 
@@ -3615,45 +3665,45 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _node_modules_ngx_spinner_ngx_spinner_ngfactory__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ng-bootstrap/ng-bootstrap */
+    "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+    /* harmony import */
+
+
+    var _node_modules_ngx_spinner_ngx_spinner_ngfactory__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ../../../../../node_modules/ngx-spinner/ngx-spinner.ngfactory */
     "./node_modules/ngx-spinner/ngx-spinner.ngfactory.js");
     /* harmony import */
 
 
-    var ngx_spinner__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var ngx_spinner__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ngx-spinner */
     "./node_modules/ngx-spinner/fesm2015/ngx-spinner.js");
     /* harmony import */
 
 
-    var _node_modules_ngx_owl_carousel_o_ngx_owl_carousel_o_ngfactory__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _node_modules_ngx_owl_carousel_o_ngx_owl_carousel_o_ngfactory__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! ../../../../../node_modules/ngx-owl-carousel-o/ngx-owl-carousel-o.ngfactory */
     "./node_modules/ngx-owl-carousel-o/ngx-owl-carousel-o.ngfactory.js");
     /* harmony import */
 
 
-    var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/fesm2015/common.js");
     /* harmony import */
 
 
-    var _node_modules_ng_bootstrap_ng_bootstrap_ng_bootstrap_ngfactory__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var _node_modules_ng_bootstrap_ng_bootstrap_ng_bootstrap_ngfactory__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! ../../../../../node_modules/@ng-bootstrap/ng-bootstrap/ng-bootstrap.ngfactory */
     "./node_modules/@ng-bootstrap/ng-bootstrap/ng-bootstrap.ngfactory.js");
-    /* harmony import */
-
-
-    var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
-    /*! @ng-bootstrap/ng-bootstrap */
-    "./node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
     /* harmony import */
 
 
@@ -3875,10 +3925,267 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
     }
 
-    function View_LoginComponent_0(_l) {
-      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "ngx-spinner", [["name", "spinnerlogin"]], null, null, null, _node_modules_ngx_spinner_ngx_spinner_ngfactory__WEBPACK_IMPORTED_MODULE_4__["View_NgxSpinnerComponent_0"], _node_modules_ngx_spinner_ngx_spinner_ngfactory__WEBPACK_IMPORTED_MODULE_4__["RenderType_NgxSpinnerComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 770048, null, 0, ngx_spinner__WEBPACK_IMPORTED_MODULE_5__["NgxSpinnerComponent"], [ngx_spinner__WEBPACK_IMPORTED_MODULE_5__["NgxSpinnerService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], {
+    function View_LoginComponent_7(_l) {
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 45, "form", [["class", "needs-validation"], ["novalidate", ""]], [[2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "ngSubmit"], [null, "submit"], [null, "reset"]], function (_v, en, $event) {
+        var ad = true;
+        var _co = _v.component;
+
+        if ("submit" === en) {
+          var pd_0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 2).onSubmit($event) !== false;
+          ad = pd_0 && ad;
+        }
+
+        if ("reset" === en) {
+          var pd_1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 2).onReset() !== false;
+          ad = pd_1 && ad;
+        }
+
+        if ("ngSubmit" === en) {
+          var pd_2 = _co.guardarnuevoadmin(_co.new_admin) !== false;
+          ad = pd_2 && ad;
+        }
+
+        return ad;
+      }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], [], null, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 540672, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupDirective"], [[8, null], [8, null]], {
+        form: [0, "form"]
+      }, {
+        ngSubmit: "ngSubmit"
+      }), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](2048, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ControlContainer"], null, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupDirective"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](4, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], [[4, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ControlContainer"]]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 40, "div", [["formGroupName", "user"]], [[2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](6, 212992, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupName"], [[3, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ControlContainer"]], [8, null], [8, null]], {
         name: [0, "name"]
-      }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](2, 0, null, null, 81, "div", [["class", "page-wrapper"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 80, "div", [["class", "authentication-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](4, 0, null, null, 79, "div", [["class", "container"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 78, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, null, null, 63, "div", [["class", "col-md-5 p-0 card-left"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 62, "div", [["class", "card bg-primary"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](8, 0, null, null, 48, "div", [["class", "svg-icon"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](9, 0, null, null, 47, ":svg:svg", [[":xml:space", "preserve"], ["id", "Layer_1"], ["style", "enable-background:new 0 0 468.52 468.52;"], ["version", "1.1"], ["viewBox", "0 0 468.52 468.52"], ["x", "0px"], ["xmlns", "http://www.w3.org/2000/svg"], ["y", "0px"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](10, 0, null, null, 46, ":svg:g", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](11, 0, null, null, 0, ":svg:path", [["d", "M468.52,102.595v251.88c0,11.14-7.571,20.52-17.86,23.25c-1.98,0.531-4.06,0.81-6.2,0.81H38.58\n            c-13.29,0-24.061-10.77-24.061-24.06v-251.88c0-13.29,10.771-24.06,24.061-24.06h405.88c2.14,0,4.22,0.28,6.2,0.81\n            C460.949,82.075,468.52,91.455,468.52,102.595"], ["style", "fill:#E6E6E6;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](12, 0, null, null, 0, ":svg:path", [["d", "M468.518,102.591v23.94h-454v-23.94c0-13.29,10.771-24.06,24.06-24.06h405.88\n            C457.747,78.532,468.518,89.302,468.518,102.591"], ["style", "fill:#B3B3B3;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](13, 0, null, null, 0, ":svg:rect", [["height", "16.532"], ["style", "fill:#999999;"], ["width", "118.901"], ["x", "42.099"], ["y", "141.002"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](14, 0, null, null, 0, ":svg:polyline", [["points", "442.383,222.765 256.652,222.765 256.652,354.496 442.383,354.496 442.383,222.765 \t"], ["style", "fill:#FFFFFF;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](15, 0, null, null, 0, ":svg:polyline", [["points", "434.552,329.733 265.552,329.733 265.552,346.265 434.552,346.265 434.552,329.733 \t"], ["style", "fill:#13c9ca;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](16, 0, null, null, 0, ":svg:polyline", [["points", "286.552,297.744 265.552,297.744 265.552,314.276 286.552,314.276 286.552,297.744 \t"], ["style", "fill:#a5a5a5;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](17, 0, null, null, 0, ":svg:polyline", [["points", "350.552,265.754 265.552,265.754 265.552,282.286 350.552,282.286 350.552,265.754 \t"], ["style", "fill:#ffbc58;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](18, 0, null, null, 0, ":svg:polyline", [["points", "411.552,233.765 265.552,233.765 265.552,250.297 411.552,250.297 411.552,233.765 \t"], ["style", "fill:#999999;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](19, 0, null, null, 0, ":svg:circle", [["cx", "47.517"], ["cy", "102.532"], ["r", "15"], ["style", "fill:#a5a5a5;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](20, 0, null, null, 0, ":svg:circle", [["cx", "87.517"], ["cy", "102.532"], ["r", "15"], ["style", "fill:#ffbc58;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](21, 0, null, null, 0, ":svg:path", [["d", "M463.696,88.139c3.027,4.024,4.822,9.029,4.822,14.453v23.94h-23.321\n            c0.04,35.899-19.42,70.584-53.444,88.347c-2.102,0.921-4.223,1.779-6.365,2.574l2.774,5.313h54.222v131.731H298.563l7.326,24.038\n            h138.57c2.14,0,4.22-0.28,6.2-0.81c10.29-2.73,17.86-12.11,17.86-23.25v-251.88C468.52,97.17,466.725,92.164,463.696,88.139\n             M463.657,88.088c0.012,0.016,0.023,0.031,0.036,0.047C463.681,88.12,463.669,88.103,463.657,88.088 M463.621,88.04\n            c0.008,0.01,0.015,0.02,0.023,0.03C463.636,88.06,463.629,88.05,463.621,88.04 M463.59,87.999c0.003,0.004,0.006,0.008,0.009,0.012\n            C463.596,88.007,463.593,88.003,463.59,87.999"], ["style", "fill:#EEEEEE;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](22, 0, null, null, 0, ":svg:path", [["d", "M444.46,78.535h-11.739c0.396,0.716,0.784,1.437,1.165,2.167c7.655,14.662,11.293,30.36,11.31,45.83\n            h23.321v-23.94c0-5.424-1.795-10.429-4.822-14.453l0,0c-0.001-0.001-0.002-0.002-0.003-0.003l0,0\n            c-0.012-0.016-0.023-0.031-0.036-0.047l0,0c-0.005-0.006-0.009-0.012-0.014-0.018l0,0c-0.008-0.01-0.015-0.02-0.023-0.03l0,0\n            c-0.007-0.01-0.014-0.019-0.022-0.029l0,0c-0.003-0.004-0.006-0.008-0.009-0.012l0,0c-3.187-4.171-7.708-7.269-12.93-8.654\n            C448.68,78.815,446.6,78.535,444.46,78.535"], ["style", "fill:#CBCBCB;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](23, 0, null, null, 0, ":svg:path", [["d", "M442.383,222.765h-54.222l5.326,10.202c-0.519,0.271-1.04,0.537-1.561,0.798h19.626v16.532H266.807\n            l4.711,15.457h79.034v16.532h-73.996l4.711,15.458h5.285v16.532h-0.246l4.711,15.457h143.536v16.532H296.055l2.509,8.231h143.819\n            V222.765"], ["style", "fill:#FFFFFF;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](24, 0, null, null, 0, ":svg:polyline", [["points", "434.552,329.733 291.016,329.733 296.055,346.265 434.552,346.265 434.552,329.733 \t"], ["style", "fill:#6EC6EB;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](25, 0, null, null, 0, ":svg:polyline", [["points", "286.552,297.744 281.267,297.744 286.306,314.276 286.552,314.276 286.552,297.744 \t"], ["style", "fill:#FDA589;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](26, 0, null, null, 0, ":svg:polyline", [["points", "350.552,265.754 271.518,265.754 276.556,282.286 350.552,282.286 350.552,265.754 \t"], ["style", "fill:#FBE98E;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](27, 0, null, null, 0, ":svg:path", [["d", "M246.265,126.531h-17.178l29.329,96.234h62.908c-1.465-0.282-2.926-0.591-4.384-0.929l-1.001-0.232\n            c-24.282-7.625-45.651-24.51-58.362-48.855C249.857,157.962,246.221,142.128,246.265,126.531"], ["style", "fill:#EEEEEE;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](28, 0, null, null, 0, ":svg:path", [["d", "M258.73,78.535h-44.27l14.628,47.996h17.178c0.028-10.08,1.594-20.062,4.587-29.594\n            C252.852,90.569,255.489,84.4,258.73,78.535"], ["style", "fill:#CBCBCB;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](29, 0, null, null, 0, ":svg:path", [["d", "M321.324,222.765h-62.908l7.136,23.415v-12.415h53.983l3.362-10.708\n            C322.373,222.963,321.848,222.866,321.324,222.765"], ["style", "fill:#FFFFFF;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](30, 0, null, null, 0, ":svg:path", [["d", "M411.552,233.765h-19.626c-14.25,7.129-29.421,10.514-44.383,10.514\n            c-10.173,0-20.251-1.566-29.869-4.586l1.861-5.928h-53.983v12.415l1.255,4.117h144.745V233.765"], ["style", "fill:#BABABA;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](31, 0, null, null, 0, ":svg:path", [["d", "M385.387,217.453c-6.196,2.3-12.551,4.073-18.994,5.313h21.767L385.387,217.453"], ["style", "fill:#CECECE;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](32, 0, null, null, 0, ":svg:path", [["d", "M388.161,222.765h-21.767c-7.428,1.428-14.973,2.147-22.536,2.147\n            c-6.999,0-14.015-0.616-20.959-1.855l-3.362,10.708h72.391c0.521-0.261,1.042-0.527,1.561-0.798L388.161,222.765"], ["style", "fill:#DBDBDB;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](33, 0, null, null, 0, ":svg:path", [["d", "M391.926,233.765h-72.391l-1.861,5.928c9.618,3.02,19.696,4.586,29.869,4.586\n            C362.505,244.279,377.677,240.894,391.926,233.765"], ["style", "fill:#A4A4A4;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](34, 0, null, null, 0, ":svg:path", [["d", "M345.64,27.261c-15.507,0-31.24,3.637-45.936,11.309c-17.955,9.374-31.855,23.466-40.973,39.961\n            h173.987c-12.828-23.18-33.641-39.288-57.199-46.682C365.898,28.829,355.817,27.261,345.64,27.261"], ["style", "fill:#DBDBDB;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](35, 0, null, null, 0, ":svg:polyline", [["points", "432.719,78.532 258.732,78.532 258.73,78.535 432.721,78.535 432.719,78.532 \t"], ["style", "fill:#9F9F9F;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](36, 0, null, null, 0, ":svg:path", [["d", "M445.196,126.531H246.265c-0.044,15.597,3.592,31.43,11.312,46.218\n            c12.711,24.345,34.08,41.23,58.362,48.855l1.001,0.232c1.458,0.338,2.919,0.647,4.384,0.929h45.069\n            c6.443-1.239,12.797-3.012,18.994-5.313c2.142-0.795,4.263-1.653,6.365-2.574C425.776,197.115,445.237,162.431,445.196,126.531"], ["style", "fill:#CECECE;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](37, 0, null, null, 0, ":svg:path", [["d", "M432.721,78.535H258.73c-3.241,5.865-5.878,12.033-7.878,18.402\n            c-2.993,9.532-4.559,19.515-4.587,29.594h198.931c-0.017-15.469-3.656-31.168-11.31-45.83\n            C433.505,79.972,433.117,79.251,432.721,78.535"], ["style", "fill:#B2B2B2;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](38, 0, null, null, 0, ":svg:path", [["d", "M366.393,222.765h-45.069c0.524,0.101,1.049,0.198,1.574,0.292\n            c6.945,1.239,13.96,1.855,20.959,1.855C351.42,224.912,358.965,224.193,366.393,222.765"], ["style", "fill:#DBDBDB;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](39, 0, null, null, 0, ":svg:path", [["d", "M345.73,113.225l-5.24,16.69l-24.55,78.18c-24.28-7.62-45.65-24.51-58.36-48.85\n            c-12.71-24.35-14.35-51.53-6.73-75.81l83.46,26.2L345.73,113.225z"], ["style", "fill:#ffbc58;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](40, 0, null, null, 0, ":svg:path", [["d", "M393.49,219.465c-7.48,3.9-15.23,6.76-23.08,8.63c-17.7,4.21-35.91,3.38-52.74-1.91l26.47-84.29\n            l3.32-10.59L393.49,219.465z"], ["style", "fill:#13c9ca;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](41, 0, null, null, 0, ":svg:path", [["d", "M391.75,201.375l-46.02-88.15l-11.42-3.59l-83.46-26.2c7.63-24.29,24.51-45.66,48.85-58.37\n            c2.55-1.33,5.12-2.54,7.73-3.62c22.27-9.33,46.35-9.93,68.09-3.1c24.29,7.62,45.66,24.5,58.37,48.85\n            C459.3,115.885,440.44,175.955,391.75,201.375z"], ["style", "fill:#a5a5a5;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](42, 0, null, null, 0, ":svg:polyline", [["points", "226.383,168.765 40.652,168.765 40.652,354.496 226.383,354.496 226.383,168.765 \t"], ["style", "fill:#FFFFFF;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](43, 0, null, null, 0, ":svg:polyline", [["points", "93.6,254.001 57.602,254.001 57.602,343.996 93.6,343.996 93.6,254.001 \t"], ["style", "fill:#2BE0C6;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](44, 0, null, null, 0, ":svg:polyline", [["points", "151.517,224.002 115.518,224.002 115.518,343.996 151.517,343.996 151.517,224.002 \t"], ["style", "fill:#ffbc58;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](45, 0, null, null, 0, ":svg:polyline", [["points", "209.432,191.004 173.435,191.004 173.435,343.996 209.432,343.996 209.432,191.004 \t"], ["style", "fill:#a5a5a5;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](46, 0, null, null, 0, ":svg:polyline", [["points", "242.83,325.765 242.83,454.765 0,454.765 0,325.765 242.83,325.765 \t"], ["style", "fill:#13c9ca;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](47, 0, null, null, 0, ":svg:polyline", [["points", "15,439.765 15,340.765 227.826,340.765 227.826,439.765 15,439.765 \t"], ["style", "fill:#F2F2F2;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](48, 0, null, null, 0, ":svg:polyline", [["points", "108.064,430.978 87.408,408.6 78.664,420.466 71.9,415.483 86.68,395.426 106.349,416.734\n            137.239,360.959 160.785,398.8 188.393,349.552 195.722,353.66 161.162,415.307 137.661,377.538 108.064,430.978 \t"], ["style", "fill:#a5a5a5;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](49, 0, null, null, 0, ":svg:rect", [["height", "11"], ["style", "fill:#999999;"], ["width", "27"], ["x", "26"], ["y", "357.765"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](50, 0, null, null, 0, ":svg:rect", [["height", "11"], ["style", "fill:#999999;"], ["width", "27"], ["x", "26"], ["y", "384.765"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](51, 0, null, null, 0, ":svg:rect", [["height", "11"], ["style", "fill:#999999;"], ["width", "27"], ["x", "26"], ["y", "411.765"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](52, 0, null, null, 0, ":svg:polyline", [["points", "242.83,325.765 209.432,325.765 173.435,325.765 151.517,325.765 115.518,325.765\n            93.6,325.765 92.88,325.765 97.451,340.765 227.826,340.765 227.826,439.765 127.619,439.765 132.19,454.765 242.83,454.765\n            242.83,325.765 \t"], ["style", "fill:#6EC6EB;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](53, 0, null, null, 0, ":svg:polyline", [["points", "227.826,340.765 97.451,340.765 115.542,400.135 137.239,360.959 160.785,398.8\n            188.393,349.552 195.722,353.66 161.162,415.307 137.661,377.538 118.951,411.32 127.619,439.765 227.826,439.765 227.826,340.765\n                "], ["style", "fill:#F6F6F6;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](54, 0, null, null, 0, ":svg:polyline", [["points", "188.393,349.552 160.785,398.8 137.239,360.959 115.542,400.135 118.951,411.32\n            137.661,377.538 161.162,415.307 195.722,353.66 188.393,349.552 \t"], ["style", "fill:#FDA589;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](55, 0, null, null, 0, ":svg:path", [["d", "M393.695,417.909l8.485-20.662l25.251,25.251c1.464,1.464,3.387,2.199,5.303,2.192\n            c1.923,0,3.84-0.728,5.303-2.192c2.934-2.934,2.927-7.679,0-10.607l-25.251-25.251l20.669-8.492l-78.559-38.792L393.695,417.909z"], ["style", "fill:#CCCCCC;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](56, 0, null, null, 0, ":svg:path", [["d", "M393.695,417.909l8.485-20.662l25.251,25.251c1.464,1.464,3.387,2.199,5.303,2.192\n            c1.923,0,3.84-0.728,5.303-2.192l-83.142-83.142L393.695,417.909z"], ["style", "fill:#808080;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](57, 0, null, null, 12, "div", [["class", "single-item"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](58, 0, null, null, 11, "owl-carousel-o", [], null, [["document", "visibilitychange"]], function (_v, en, $event) {
+      }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](2048, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ControlContainer"], null, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupName"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](8, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], [[4, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ControlContainer"]]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](9, 0, null, null, 33, "div", [["class", "form"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](10, 0, null, null, 10, "div", [["class", "form-group row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](11, 0, null, null, 1, "label", [["class", "col-xl-3 col-md-4"], ["for", "validationCustom123"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" Rut"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](13, 0, null, null, 7, "input", [["class", "form-control col-xl-8 col-md-7"], ["formControlName", "rut_user"], ["id", "validationCustom123"], ["name", "rut_user"], ["required", ""], ["type", "text"]], [[1, "required", 0], [2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "input"], [null, "blur"], [null, "compositionstart"], [null, "compositionend"]], function (_v, en, $event) {
+        var ad = true;
+
+        if ("input" === en) {
+          var pd_0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 14)._handleInput($event.target.value) !== false;
+          ad = pd_0 && ad;
+        }
+
+        if ("blur" === en) {
+          var pd_1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 14).onTouched() !== false;
+          ad = pd_1 && ad;
+        }
+
+        if ("compositionstart" === en) {
+          var pd_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 14)._compositionStart() !== false;
+          ad = pd_2 && ad;
+        }
+
+        if ("compositionend" === en) {
+          var pd_3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 14)._compositionEnd($event.target.value) !== false;
+          ad = pd_3 && ad;
+        }
+
+        return ad;
+      }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](14, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], [2, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["COMPOSITION_BUFFER_MODE"]]], null, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](15, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"], [], {
+        required: [0, "required"]
+      }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](1024, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALIDATORS"], function (p0_0) {
+        return [p0_0];
+      }, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](1024, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"], function (p0_0) {
+        return [p0_0];
+      }, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](18, 671744, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"], [[3, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ControlContainer"]], [6, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALIDATORS"]], [8, null], [6, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"]], [2, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_p"]]], {
+        name: [0, "name"]
+      }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](2048, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControl"], null, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](20, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], [[4, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControl"]]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](21, 0, null, null, 10, "div", [["class", "form-group row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](22, 0, null, null, 1, "label", [["class", "col-xl-3 col-md-4"], ["for", "validationCustom2"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Correo"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](24, 0, null, null, 7, "input", [["class", "form-control col-xl-8 col-md-7"], ["formControlName", "email"], ["id", "validationCustom2"], ["name", "email"], ["required", ""], ["type", "text"]], [[1, "required", 0], [2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "input"], [null, "blur"], [null, "compositionstart"], [null, "compositionend"]], function (_v, en, $event) {
+        var ad = true;
+
+        if ("input" === en) {
+          var pd_0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 25)._handleInput($event.target.value) !== false;
+          ad = pd_0 && ad;
+        }
+
+        if ("blur" === en) {
+          var pd_1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 25).onTouched() !== false;
+          ad = pd_1 && ad;
+        }
+
+        if ("compositionstart" === en) {
+          var pd_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 25)._compositionStart() !== false;
+          ad = pd_2 && ad;
+        }
+
+        if ("compositionend" === en) {
+          var pd_3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 25)._compositionEnd($event.target.value) !== false;
+          ad = pd_3 && ad;
+        }
+
+        return ad;
+      }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](25, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], [2, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["COMPOSITION_BUFFER_MODE"]]], null, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](26, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"], [], {
+        required: [0, "required"]
+      }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](1024, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALIDATORS"], function (p0_0) {
+        return [p0_0];
+      }, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](1024, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"], function (p0_0) {
+        return [p0_0];
+      }, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](29, 671744, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"], [[3, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ControlContainer"]], [6, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALIDATORS"]], [8, null], [6, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"]], [2, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_p"]]], {
+        name: [0, "name"]
+      }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](2048, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControl"], null, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](31, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], [[4, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControl"]]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](32, 0, null, null, 10, "div", [["class", "form-group row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](33, 0, null, null, 1, "label", [["class", "col-xl-3 col-md-4"], ["for", "validationCustom22"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Correo"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](35, 0, null, null, 7, "input", [["class", "form-control col-xl-8 col-md-7"], ["formControlName", "role"], ["id", "validationCustom22"], ["name", "role"], ["placeholder", "administrador"], ["readonly", ""], ["required", ""], ["type", "text"], ["value", "administrador"]], [[1, "required", 0], [2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "input"], [null, "blur"], [null, "compositionstart"], [null, "compositionend"]], function (_v, en, $event) {
+        var ad = true;
+
+        if ("input" === en) {
+          var pd_0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 36)._handleInput($event.target.value) !== false;
+          ad = pd_0 && ad;
+        }
+
+        if ("blur" === en) {
+          var pd_1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 36).onTouched() !== false;
+          ad = pd_1 && ad;
+        }
+
+        if ("compositionstart" === en) {
+          var pd_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 36)._compositionStart() !== false;
+          ad = pd_2 && ad;
+        }
+
+        if ("compositionend" === en) {
+          var pd_3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 36)._compositionEnd($event.target.value) !== false;
+          ad = pd_3 && ad;
+        }
+
+        return ad;
+      }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](36, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], [2, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["COMPOSITION_BUFFER_MODE"]]], null, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](37, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"], [], {
+        required: [0, "required"]
+      }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](1024, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALIDATORS"], function (p0_0) {
+        return [p0_0];
+      }, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](1024, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"], function (p0_0) {
+        return [p0_0];
+      }, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](40, 671744, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"], [[3, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ControlContainer"]], [6, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALIDATORS"]], [8, null], [6, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"]], [2, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_p"]]], {
+        name: [0, "name"]
+      }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](2048, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControl"], null, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](42, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], [[4, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControl"]]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](43, 0, null, null, 2, "div", [["class", "modal-footer"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](44, 0, null, null, 1, "button", [["class", "btn btn-primary"], ["type", "submit"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Guardar"]))], function (_ck, _v) {
+        var _co = _v.component;
+        var currVal_7 = _co.new_admin;
+
+        _ck(_v, 2, 0, currVal_7);
+
+        var currVal_15 = "user";
+
+        _ck(_v, 6, 0, currVal_15);
+
+        var currVal_24 = "";
+
+        _ck(_v, 15, 0, currVal_24);
+
+        var currVal_25 = "rut_user";
+
+        _ck(_v, 18, 0, currVal_25);
+
+        var currVal_34 = "";
+
+        _ck(_v, 26, 0, currVal_34);
+
+        var currVal_35 = "email";
+
+        _ck(_v, 29, 0, currVal_35);
+
+        var currVal_44 = "";
+
+        _ck(_v, 37, 0, currVal_44);
+
+        var currVal_45 = "role";
+
+        _ck(_v, 40, 0, currVal_45);
+      }, function (_ck, _v) {
+        var currVal_0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 4).ngClassUntouched;
+
+        var currVal_1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 4).ngClassTouched;
+
+        var currVal_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 4).ngClassPristine;
+
+        var currVal_3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 4).ngClassDirty;
+
+        var currVal_4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 4).ngClassValid;
+
+        var currVal_5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 4).ngClassInvalid;
+
+        var currVal_6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 4).ngClassPending;
+
+        _ck(_v, 0, 0, currVal_0, currVal_1, currVal_2, currVal_3, currVal_4, currVal_5, currVal_6);
+
+        var currVal_8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 8).ngClassUntouched;
+
+        var currVal_9 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 8).ngClassTouched;
+
+        var currVal_10 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 8).ngClassPristine;
+
+        var currVal_11 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 8).ngClassDirty;
+
+        var currVal_12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 8).ngClassValid;
+
+        var currVal_13 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 8).ngClassInvalid;
+
+        var currVal_14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 8).ngClassPending;
+
+        _ck(_v, 5, 0, currVal_8, currVal_9, currVal_10, currVal_11, currVal_12, currVal_13, currVal_14);
+
+        var currVal_16 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 15).required ? "" : null;
+
+        var currVal_17 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 20).ngClassUntouched;
+
+        var currVal_18 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 20).ngClassTouched;
+
+        var currVal_19 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 20).ngClassPristine;
+
+        var currVal_20 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 20).ngClassDirty;
+
+        var currVal_21 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 20).ngClassValid;
+
+        var currVal_22 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 20).ngClassInvalid;
+
+        var currVal_23 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 20).ngClassPending;
+
+        _ck(_v, 13, 0, currVal_16, currVal_17, currVal_18, currVal_19, currVal_20, currVal_21, currVal_22, currVal_23);
+
+        var currVal_26 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 26).required ? "" : null;
+
+        var currVal_27 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 31).ngClassUntouched;
+
+        var currVal_28 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 31).ngClassTouched;
+
+        var currVal_29 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 31).ngClassPristine;
+
+        var currVal_30 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 31).ngClassDirty;
+
+        var currVal_31 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 31).ngClassValid;
+
+        var currVal_32 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 31).ngClassInvalid;
+
+        var currVal_33 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 31).ngClassPending;
+
+        _ck(_v, 24, 0, currVal_26, currVal_27, currVal_28, currVal_29, currVal_30, currVal_31, currVal_32, currVal_33);
+
+        var currVal_36 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 37).required ? "" : null;
+
+        var currVal_37 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 42).ngClassUntouched;
+
+        var currVal_38 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 42).ngClassTouched;
+
+        var currVal_39 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 42).ngClassPristine;
+
+        var currVal_40 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 42).ngClassDirty;
+
+        var currVal_41 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 42).ngClassValid;
+
+        var currVal_42 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 42).ngClassInvalid;
+
+        var currVal_43 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 42).ngClassPending;
+
+        _ck(_v, 35, 0, currVal_36, currVal_37, currVal_38, currVal_39, currVal_40, currVal_41, currVal_42, currVal_43);
+      });
+    }
+
+    function View_LoginComponent_6(_l) {
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 0, "i", [["class", "icon-unlock mr-2"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" Administrador "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](0, null, null, 1, null, View_LoginComponent_7)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](3, 16384, [[6, 4]], 0, _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbTabContent"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], null, null)], null, null);
+    }
+
+    function View_LoginComponent_5(_l) {
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 5, "ngb-tab", [], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 2113536, [[2, 4]], 2, _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbTab"], [], null, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵqud"](603979776, 5, {
+        titleTpls: 1
+      }), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵqud"](603979776, 6, {
+        contentTpls: 1
+      }), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](0, null, null, 1, null, View_LoginComponent_6)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](5, 16384, [[5, 4]], 0, _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbTabTitle"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], null, null)], null, null);
+    }
+
+    function View_LoginComponent_0(_l) {
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "ngx-spinner", [["name", "spinnerlogin"]], null, null, null, _node_modules_ngx_spinner_ngx_spinner_ngfactory__WEBPACK_IMPORTED_MODULE_5__["View_NgxSpinnerComponent_0"], _node_modules_ngx_spinner_ngx_spinner_ngfactory__WEBPACK_IMPORTED_MODULE_5__["RenderType_NgxSpinnerComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 770048, null, 0, ngx_spinner__WEBPACK_IMPORTED_MODULE_6__["NgxSpinnerComponent"], [ngx_spinner__WEBPACK_IMPORTED_MODULE_6__["NgxSpinnerService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], {
+        name: [0, "name"]
+      }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](2, 0, null, null, 83, "div", [["class", "page-wrapper"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 82, "div", [["class", "authentication-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](4, 0, null, null, 81, "div", [["class", "container"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 80, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, null, null, 63, "div", [["class", "col-md-5 p-0 card-left"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 62, "div", [["class", "card bg-primary"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](8, 0, null, null, 48, "div", [["class", "svg-icon"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](9, 0, null, null, 47, ":svg:svg", [[":xml:space", "preserve"], ["id", "Layer_1"], ["style", "enable-background:new 0 0 468.52 468.52;"], ["version", "1.1"], ["viewBox", "0 0 468.52 468.52"], ["x", "0px"], ["xmlns", "http://www.w3.org/2000/svg"], ["y", "0px"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](10, 0, null, null, 46, ":svg:g", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](11, 0, null, null, 0, ":svg:path", [["d", "M468.52,102.595v251.88c0,11.14-7.571,20.52-17.86,23.25c-1.98,0.531-4.06,0.81-6.2,0.81H38.58\n            c-13.29,0-24.061-10.77-24.061-24.06v-251.88c0-13.29,10.771-24.06,24.061-24.06h405.88c2.14,0,4.22,0.28,6.2,0.81\n            C460.949,82.075,468.52,91.455,468.52,102.595"], ["style", "fill:#E6E6E6;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](12, 0, null, null, 0, ":svg:path", [["d", "M468.518,102.591v23.94h-454v-23.94c0-13.29,10.771-24.06,24.06-24.06h405.88\n            C457.747,78.532,468.518,89.302,468.518,102.591"], ["style", "fill:#B3B3B3;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](13, 0, null, null, 0, ":svg:rect", [["height", "16.532"], ["style", "fill:#999999;"], ["width", "118.901"], ["x", "42.099"], ["y", "141.002"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](14, 0, null, null, 0, ":svg:polyline", [["points", "442.383,222.765 256.652,222.765 256.652,354.496 442.383,354.496 442.383,222.765 \t"], ["style", "fill:#FFFFFF;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](15, 0, null, null, 0, ":svg:polyline", [["points", "434.552,329.733 265.552,329.733 265.552,346.265 434.552,346.265 434.552,329.733 \t"], ["style", "fill:#13c9ca;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](16, 0, null, null, 0, ":svg:polyline", [["points", "286.552,297.744 265.552,297.744 265.552,314.276 286.552,314.276 286.552,297.744 \t"], ["style", "fill:#a5a5a5;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](17, 0, null, null, 0, ":svg:polyline", [["points", "350.552,265.754 265.552,265.754 265.552,282.286 350.552,282.286 350.552,265.754 \t"], ["style", "fill:#ffbc58;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](18, 0, null, null, 0, ":svg:polyline", [["points", "411.552,233.765 265.552,233.765 265.552,250.297 411.552,250.297 411.552,233.765 \t"], ["style", "fill:#999999;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](19, 0, null, null, 0, ":svg:circle", [["cx", "47.517"], ["cy", "102.532"], ["r", "15"], ["style", "fill:#a5a5a5;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](20, 0, null, null, 0, ":svg:circle", [["cx", "87.517"], ["cy", "102.532"], ["r", "15"], ["style", "fill:#ffbc58;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](21, 0, null, null, 0, ":svg:path", [["d", "M463.696,88.139c3.027,4.024,4.822,9.029,4.822,14.453v23.94h-23.321\n            c0.04,35.899-19.42,70.584-53.444,88.347c-2.102,0.921-4.223,1.779-6.365,2.574l2.774,5.313h54.222v131.731H298.563l7.326,24.038\n            h138.57c2.14,0,4.22-0.28,6.2-0.81c10.29-2.73,17.86-12.11,17.86-23.25v-251.88C468.52,97.17,466.725,92.164,463.696,88.139\n             M463.657,88.088c0.012,0.016,0.023,0.031,0.036,0.047C463.681,88.12,463.669,88.103,463.657,88.088 M463.621,88.04\n            c0.008,0.01,0.015,0.02,0.023,0.03C463.636,88.06,463.629,88.05,463.621,88.04 M463.59,87.999c0.003,0.004,0.006,0.008,0.009,0.012\n            C463.596,88.007,463.593,88.003,463.59,87.999"], ["style", "fill:#EEEEEE;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](22, 0, null, null, 0, ":svg:path", [["d", "M444.46,78.535h-11.739c0.396,0.716,0.784,1.437,1.165,2.167c7.655,14.662,11.293,30.36,11.31,45.83\n            h23.321v-23.94c0-5.424-1.795-10.429-4.822-14.453l0,0c-0.001-0.001-0.002-0.002-0.003-0.003l0,0\n            c-0.012-0.016-0.023-0.031-0.036-0.047l0,0c-0.005-0.006-0.009-0.012-0.014-0.018l0,0c-0.008-0.01-0.015-0.02-0.023-0.03l0,0\n            c-0.007-0.01-0.014-0.019-0.022-0.029l0,0c-0.003-0.004-0.006-0.008-0.009-0.012l0,0c-3.187-4.171-7.708-7.269-12.93-8.654\n            C448.68,78.815,446.6,78.535,444.46,78.535"], ["style", "fill:#CBCBCB;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](23, 0, null, null, 0, ":svg:path", [["d", "M442.383,222.765h-54.222l5.326,10.202c-0.519,0.271-1.04,0.537-1.561,0.798h19.626v16.532H266.807\n            l4.711,15.457h79.034v16.532h-73.996l4.711,15.458h5.285v16.532h-0.246l4.711,15.457h143.536v16.532H296.055l2.509,8.231h143.819\n            V222.765"], ["style", "fill:#FFFFFF;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](24, 0, null, null, 0, ":svg:polyline", [["points", "434.552,329.733 291.016,329.733 296.055,346.265 434.552,346.265 434.552,329.733 \t"], ["style", "fill:#6EC6EB;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](25, 0, null, null, 0, ":svg:polyline", [["points", "286.552,297.744 281.267,297.744 286.306,314.276 286.552,314.276 286.552,297.744 \t"], ["style", "fill:#FDA589;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](26, 0, null, null, 0, ":svg:polyline", [["points", "350.552,265.754 271.518,265.754 276.556,282.286 350.552,282.286 350.552,265.754 \t"], ["style", "fill:#FBE98E;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](27, 0, null, null, 0, ":svg:path", [["d", "M246.265,126.531h-17.178l29.329,96.234h62.908c-1.465-0.282-2.926-0.591-4.384-0.929l-1.001-0.232\n            c-24.282-7.625-45.651-24.51-58.362-48.855C249.857,157.962,246.221,142.128,246.265,126.531"], ["style", "fill:#EEEEEE;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](28, 0, null, null, 0, ":svg:path", [["d", "M258.73,78.535h-44.27l14.628,47.996h17.178c0.028-10.08,1.594-20.062,4.587-29.594\n            C252.852,90.569,255.489,84.4,258.73,78.535"], ["style", "fill:#CBCBCB;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](29, 0, null, null, 0, ":svg:path", [["d", "M321.324,222.765h-62.908l7.136,23.415v-12.415h53.983l3.362-10.708\n            C322.373,222.963,321.848,222.866,321.324,222.765"], ["style", "fill:#FFFFFF;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](30, 0, null, null, 0, ":svg:path", [["d", "M411.552,233.765h-19.626c-14.25,7.129-29.421,10.514-44.383,10.514\n            c-10.173,0-20.251-1.566-29.869-4.586l1.861-5.928h-53.983v12.415l1.255,4.117h144.745V233.765"], ["style", "fill:#BABABA;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](31, 0, null, null, 0, ":svg:path", [["d", "M385.387,217.453c-6.196,2.3-12.551,4.073-18.994,5.313h21.767L385.387,217.453"], ["style", "fill:#CECECE;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](32, 0, null, null, 0, ":svg:path", [["d", "M388.161,222.765h-21.767c-7.428,1.428-14.973,2.147-22.536,2.147\n            c-6.999,0-14.015-0.616-20.959-1.855l-3.362,10.708h72.391c0.521-0.261,1.042-0.527,1.561-0.798L388.161,222.765"], ["style", "fill:#DBDBDB;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](33, 0, null, null, 0, ":svg:path", [["d", "M391.926,233.765h-72.391l-1.861,5.928c9.618,3.02,19.696,4.586,29.869,4.586\n            C362.505,244.279,377.677,240.894,391.926,233.765"], ["style", "fill:#A4A4A4;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](34, 0, null, null, 0, ":svg:path", [["d", "M345.64,27.261c-15.507,0-31.24,3.637-45.936,11.309c-17.955,9.374-31.855,23.466-40.973,39.961\n            h173.987c-12.828-23.18-33.641-39.288-57.199-46.682C365.898,28.829,355.817,27.261,345.64,27.261"], ["style", "fill:#DBDBDB;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](35, 0, null, null, 0, ":svg:polyline", [["points", "432.719,78.532 258.732,78.532 258.73,78.535 432.721,78.535 432.719,78.532 \t"], ["style", "fill:#9F9F9F;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](36, 0, null, null, 0, ":svg:path", [["d", "M445.196,126.531H246.265c-0.044,15.597,3.592,31.43,11.312,46.218\n            c12.711,24.345,34.08,41.23,58.362,48.855l1.001,0.232c1.458,0.338,2.919,0.647,4.384,0.929h45.069\n            c6.443-1.239,12.797-3.012,18.994-5.313c2.142-0.795,4.263-1.653,6.365-2.574C425.776,197.115,445.237,162.431,445.196,126.531"], ["style", "fill:#CECECE;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](37, 0, null, null, 0, ":svg:path", [["d", "M432.721,78.535H258.73c-3.241,5.865-5.878,12.033-7.878,18.402\n            c-2.993,9.532-4.559,19.515-4.587,29.594h198.931c-0.017-15.469-3.656-31.168-11.31-45.83\n            C433.505,79.972,433.117,79.251,432.721,78.535"], ["style", "fill:#B2B2B2;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](38, 0, null, null, 0, ":svg:path", [["d", "M366.393,222.765h-45.069c0.524,0.101,1.049,0.198,1.574,0.292\n            c6.945,1.239,13.96,1.855,20.959,1.855C351.42,224.912,358.965,224.193,366.393,222.765"], ["style", "fill:#DBDBDB;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](39, 0, null, null, 0, ":svg:path", [["d", "M345.73,113.225l-5.24,16.69l-24.55,78.18c-24.28-7.62-45.65-24.51-58.36-48.85\n            c-12.71-24.35-14.35-51.53-6.73-75.81l83.46,26.2L345.73,113.225z"], ["style", "fill:#ffbc58;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](40, 0, null, null, 0, ":svg:path", [["d", "M393.49,219.465c-7.48,3.9-15.23,6.76-23.08,8.63c-17.7,4.21-35.91,3.38-52.74-1.91l26.47-84.29\n            l3.32-10.59L393.49,219.465z"], ["style", "fill:#13c9ca;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](41, 0, null, null, 0, ":svg:path", [["d", "M391.75,201.375l-46.02-88.15l-11.42-3.59l-83.46-26.2c7.63-24.29,24.51-45.66,48.85-58.37\n            c2.55-1.33,5.12-2.54,7.73-3.62c22.27-9.33,46.35-9.93,68.09-3.1c24.29,7.62,45.66,24.5,58.37,48.85\n            C459.3,115.885,440.44,175.955,391.75,201.375z"], ["style", "fill:#a5a5a5;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](42, 0, null, null, 0, ":svg:polyline", [["points", "226.383,168.765 40.652,168.765 40.652,354.496 226.383,354.496 226.383,168.765 \t"], ["style", "fill:#FFFFFF;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](43, 0, null, null, 0, ":svg:polyline", [["points", "93.6,254.001 57.602,254.001 57.602,343.996 93.6,343.996 93.6,254.001 \t"], ["style", "fill:#2BE0C6;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](44, 0, null, null, 0, ":svg:polyline", [["points", "151.517,224.002 115.518,224.002 115.518,343.996 151.517,343.996 151.517,224.002 \t"], ["style", "fill:#ffbc58;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](45, 0, null, null, 0, ":svg:polyline", [["points", "209.432,191.004 173.435,191.004 173.435,343.996 209.432,343.996 209.432,191.004 \t"], ["style", "fill:#a5a5a5;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](46, 0, null, null, 0, ":svg:polyline", [["points", "242.83,325.765 242.83,454.765 0,454.765 0,325.765 242.83,325.765 \t"], ["style", "fill:#13c9ca;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](47, 0, null, null, 0, ":svg:polyline", [["points", "15,439.765 15,340.765 227.826,340.765 227.826,439.765 15,439.765 \t"], ["style", "fill:#F2F2F2;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](48, 0, null, null, 0, ":svg:polyline", [["points", "108.064,430.978 87.408,408.6 78.664,420.466 71.9,415.483 86.68,395.426 106.349,416.734\n            137.239,360.959 160.785,398.8 188.393,349.552 195.722,353.66 161.162,415.307 137.661,377.538 108.064,430.978 \t"], ["style", "fill:#a5a5a5;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](49, 0, null, null, 0, ":svg:rect", [["height", "11"], ["style", "fill:#999999;"], ["width", "27"], ["x", "26"], ["y", "357.765"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](50, 0, null, null, 0, ":svg:rect", [["height", "11"], ["style", "fill:#999999;"], ["width", "27"], ["x", "26"], ["y", "384.765"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](51, 0, null, null, 0, ":svg:rect", [["height", "11"], ["style", "fill:#999999;"], ["width", "27"], ["x", "26"], ["y", "411.765"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](52, 0, null, null, 0, ":svg:polyline", [["points", "242.83,325.765 209.432,325.765 173.435,325.765 151.517,325.765 115.518,325.765\n            93.6,325.765 92.88,325.765 97.451,340.765 227.826,340.765 227.826,439.765 127.619,439.765 132.19,454.765 242.83,454.765\n            242.83,325.765 \t"], ["style", "fill:#6EC6EB;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](53, 0, null, null, 0, ":svg:polyline", [["points", "227.826,340.765 97.451,340.765 115.542,400.135 137.239,360.959 160.785,398.8\n            188.393,349.552 195.722,353.66 161.162,415.307 137.661,377.538 118.951,411.32 127.619,439.765 227.826,439.765 227.826,340.765\n                "], ["style", "fill:#F6F6F6;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](54, 0, null, null, 0, ":svg:polyline", [["points", "188.393,349.552 160.785,398.8 137.239,360.959 115.542,400.135 118.951,411.32\n            137.661,377.538 161.162,415.307 195.722,353.66 188.393,349.552 \t"], ["style", "fill:#FDA589;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](55, 0, null, null, 0, ":svg:path", [["d", "M393.695,417.909l8.485-20.662l25.251,25.251c1.464,1.464,3.387,2.199,5.303,2.192\n            c1.923,0,3.84-0.728,5.303-2.192c2.934-2.934,2.927-7.679,0-10.607l-25.251-25.251l20.669-8.492l-78.559-38.792L393.695,417.909z"], ["style", "fill:#CCCCCC;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](56, 0, null, null, 0, ":svg:path", [["d", "M393.695,417.909l8.485-20.662l25.251,25.251c1.464,1.464,3.387,2.199,5.303,2.192\n            c1.923,0,3.84-0.728,5.303-2.192l-83.142-83.142L393.695,417.909z"], ["style", "fill:#808080;"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](57, 0, null, null, 12, "div", [["class", "single-item"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](58, 0, null, null, 11, "owl-carousel-o", [], null, [["document", "visibilitychange"]], function (_v, en, $event) {
         var ad = true;
 
         if ("document:visibilitychange" === en) {
@@ -3887,19 +4194,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
 
         return ad;
-      }, _node_modules_ngx_owl_carousel_o_ngx_owl_carousel_o_ngfactory__WEBPACK_IMPORTED_MODULE_6__["View_CarouselComponent_0"], _node_modules_ngx_owl_carousel_o_ngx_owl_carousel_o_ngfactory__WEBPACK_IMPORTED_MODULE_6__["RenderType_CarouselComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](512, null, ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵb"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵb"], [ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵc"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](131584, null, ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵa"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵa"], [ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵb"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](131584, null, ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵd"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵd"], [ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵb"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵe"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵl"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](131584, null, ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵs"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵs"], [ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵb"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](131584, null, ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵt"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵt"], [ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵb"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](131584, null, ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵu"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵu"], [ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵb"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](131584, null, ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵv"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵv"], [ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵb"], [2, _angular_router__WEBPACK_IMPORTED_MODULE_7__["ActivatedRoute"]], [2, _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](66, 3391488, null, 1, ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["CarouselComponent"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵw"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵb"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵa"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵd"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵs"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵt"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵu"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵv"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵc"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵl"]], {
+      }, _node_modules_ngx_owl_carousel_o_ngx_owl_carousel_o_ngfactory__WEBPACK_IMPORTED_MODULE_7__["View_CarouselComponent_0"], _node_modules_ngx_owl_carousel_o_ngx_owl_carousel_o_ngfactory__WEBPACK_IMPORTED_MODULE_7__["RenderType_CarouselComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](512, null, ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵb"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵb"], [ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵc"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](131584, null, ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵa"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵa"], [ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵb"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](131584, null, ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵd"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵd"], [ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵb"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵe"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵl"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](131584, null, ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵs"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵs"], [ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵb"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](131584, null, ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵt"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵt"], [ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵb"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](131584, null, ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵu"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵu"], [ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵb"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](131584, null, ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵv"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵv"], [ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵb"], [2, _angular_router__WEBPACK_IMPORTED_MODULE_8__["ActivatedRoute"]], [2, _angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](66, 3391488, null, 1, ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["CarouselComponent"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵw"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵb"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵa"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵd"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵs"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵt"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵu"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵv"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵc"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_2__["ɵl"]], {
         options: [0, "options"]
       }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵqud"](603979776, 1, {
         slides: 1
-      }), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_LoginComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](69, 278528, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgForOf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"]], {
+      }), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_LoginComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](69, 278528, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgForOf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"]], {
         ngForOf: [0, "ngForOf"]
-      }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](70, 0, null, null, 13, "div", [["class", "col-md-7 p-0 card-right"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](71, 0, null, null, 12, "div", [["class", "card tab2-card"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](72, 0, null, null, 11, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](73, 0, null, null, 10, "ngb-tabset", [["class", "tab-coupon mb-0"]], null, null, null, _node_modules_ng_bootstrap_ng_bootstrap_ng_bootstrap_ngfactory__WEBPACK_IMPORTED_MODULE_9__["View_NgbTabset_0"], _node_modules_ng_bootstrap_ng_bootstrap_ng_bootstrap_ngfactory__WEBPACK_IMPORTED_MODULE_9__["RenderType_NgbTabset"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](74, 2146304, null, 1, _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_10__["NgbTabset"], [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_10__["NgbTabsetConfig"]], null, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵqud"](603979776, 2, {
+      }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](70, 0, null, null, 15, "div", [["class", "col-md-7 p-0 card-right"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](71, 0, null, null, 14, "div", [["class", "card tab2-card"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](72, 0, null, null, 13, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](73, 0, null, null, 12, "ngb-tabset", [["class", "tab-coupon mb-0"]], null, null, null, _node_modules_ng_bootstrap_ng_bootstrap_ng_bootstrap_ngfactory__WEBPACK_IMPORTED_MODULE_10__["View_NgbTabset_0"], _node_modules_ng_bootstrap_ng_bootstrap_ng_bootstrap_ngfactory__WEBPACK_IMPORTED_MODULE_10__["RenderType_NgbTabset"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](74, 2146304, null, 1, _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbTabset"], [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbTabsetConfig"]], null, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵqud"](603979776, 2, {
         tabs: 1
-      }), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](76, 0, null, null, 7, "ngb-tab", [], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](77, 2113536, [[2, 4]], 2, _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_10__["NgbTab"], [], null, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵqud"](603979776, 3, {
+      }), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](76, 0, null, null, 7, "ngb-tab", [], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](77, 2113536, [[2, 4]], 2, _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbTab"], [], null, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵqud"](603979776, 3, {
         titleTpls: 1
       }), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵqud"](603979776, 4, {
         contentTpls: 1
-      }), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](0, null, null, 1, null, View_LoginComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](81, 16384, [[3, 4]], 0, _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_10__["NgbTabTitle"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](0, null, null, 1, null, View_LoginComponent_4)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](83, 16384, [[4, 4]], 0, _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_10__["NgbTabContent"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], null, null)], function (_ck, _v) {
+      }), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](0, null, null, 1, null, View_LoginComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](81, 16384, [[3, 4]], 0, _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbTabTitle"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](0, null, null, 1, null, View_LoginComponent_4)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](83, 16384, [[4, 4]], 0, _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbTabContent"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_LoginComponent_5)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](85, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], {
+        ngIf: [0, "ngIf"]
+      }, null)], function (_ck, _v) {
         var _co = _v.component;
         var currVal_0 = "spinnerlogin";
 
@@ -3912,11 +4221,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         var currVal_2 = _co.owlcarousel;
 
         _ck(_v, 69, 0, currVal_2);
+
+        var currVal_3 = _co.usuarios != true;
+
+        _ck(_v, 85, 0, currVal_3);
       }, null);
     }
 
     function View_LoginComponent_Host_0(_l) {
-      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "app-login", [], null, null, null, View_LoginComponent_0, RenderType_LoginComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 245760, null, 0, _login_component__WEBPACK_IMPORTED_MODULE_11__["LoginComponent"], [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"], _Service_autentificacion_service__WEBPACK_IMPORTED_MODULE_12__["AutentificacionService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_10__["NgbModal"], _Service_usuario_service__WEBPACK_IMPORTED_MODULE_13__["UsuarioService"], ngx_spinner__WEBPACK_IMPORTED_MODULE_5__["NgxSpinnerService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], null, null)], function (_ck, _v) {
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "app-login", [], null, null, null, View_LoginComponent_0, RenderType_LoginComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 245760, null, 0, _login_component__WEBPACK_IMPORTED_MODULE_11__["LoginComponent"], [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"], _Service_autentificacion_service__WEBPACK_IMPORTED_MODULE_12__["AutentificacionService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"], _Service_usuario_service__WEBPACK_IMPORTED_MODULE_13__["UsuarioService"], ngx_spinner__WEBPACK_IMPORTED_MODULE_6__["NgxSpinnerService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], null, null)], function (_ck, _v) {
         _ck(_v, 1, 0);
       }, null);
     }
@@ -4426,7 +4739,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     function View_DashboardComponent_0(_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](2, [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵpid"](0, _shared_Pipe_ceparador_pipe__WEBPACK_IMPORTED_MODULE_2__["CeparadorPipe"], []), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "ngx-spinner", [["name", "spinnerdashboard"]], null, null, null, _node_modules_ngx_spinner_ngx_spinner_ngfactory__WEBPACK_IMPORTED_MODULE_3__["View_NgxSpinnerComponent_0"], _node_modules_ngx_spinner_ngx_spinner_ngfactory__WEBPACK_IMPORTED_MODULE_3__["RenderType_NgxSpinnerComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 770048, null, 0, ngx_spinner__WEBPACK_IMPORTED_MODULE_4__["NgxSpinnerComponent"], [ngx_spinner__WEBPACK_IMPORTED_MODULE_4__["NgxSpinnerService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], {
         name: [0, "name"]
-      }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 250, "div", [["class", "container-fluid"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](4, 0, null, null, 249, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 18, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, null, null, 17, "div", [["class", "card o-hidden widget-cards"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 16, "div", [["class", "bg-warning card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](8, 0, null, null, 15, "div", [["class", "media static-top-widget row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](9, 0, null, null, 3, "div", [["class", "icons-widgets col-4"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](10, 0, null, null, 2, "div", [["class", "align-self-center text-center"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](11, 0, null, null, 1, "app-feather-icons", [["class", "font-warning"]], null, null, null, _shared_components_feather_icons_feather_icons_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["View_FeatherIconsComponent_0"], _shared_components_feather_icons_feather_icons_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["RenderType_FeatherIconsComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](12, 114688, null, 0, _shared_components_feather_icons_feather_icons_component__WEBPACK_IMPORTED_MODULE_6__["FeatherIconsComponent"], [], {
+      }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 260, "div", [["class", "container-fluid"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](4, 0, null, null, 259, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 18, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, null, null, 17, "div", [["class", "card o-hidden widget-cards"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 16, "div", [["class", "bg-warning card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](8, 0, null, null, 15, "div", [["class", "media static-top-widget row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](9, 0, null, null, 3, "div", [["class", "icons-widgets col-4"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](10, 0, null, null, 2, "div", [["class", "align-self-center text-center"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](11, 0, null, null, 1, "app-feather-icons", [["class", "font-warning"]], null, null, null, _shared_components_feather_icons_feather_icons_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["View_FeatherIconsComponent_0"], _shared_components_feather_icons_feather_icons_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["RenderType_FeatherIconsComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](12, 114688, null, 0, _shared_components_feather_icons_feather_icons_component__WEBPACK_IMPORTED_MODULE_6__["FeatherIconsComponent"], [], {
         icon: [0, "icon"]
       }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](13, 0, null, null, 10, "div", [["class", "media-body col-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](14, 0, null, null, 1, "span", [["class", "m-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Ganancia actual"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](16, 0, null, null, 7, "h3", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["$ "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](18, 0, null, null, 3, "span", [["class", "counter"]], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](19, 606208, null, 0, angular_count_to__WEBPACK_IMPORTED_MODULE_7__["CountToDirective"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]], {
         CountTo: [0, "CountTo"],
@@ -4455,7 +4768,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵpod"](109, {
         itemsPerPage: 0,
         currentPage: 1
-      }), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵpid"](0, ngx_pagination__WEBPACK_IMPORTED_MODULE_9__["PaginatePipe"], [ngx_pagination__WEBPACK_IMPORTED_MODULE_9__["PaginationService"]]), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](111, 0, null, null, 33, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](112, 0, null, null, 32, "div", [["class", "card order-graph sales-carousel"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](113, 0, null, null, 13, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](114, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Porcentaje de ventas"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](116, 0, null, null, 10, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](117, 0, null, null, 3, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](118, 0, null, null, 2, "div", [["class", "small-chartjs"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](119, 0, null, null, 1, "canvas", [["height", "60"], ["id", "ctx1"], ["width", "140"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](120, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](121, 0, null, null, 5, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](122, 0, null, null, 4, "div", [["class", "value-graph"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](123, 0, null, null, 3, "h3", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](124, null, ["", "% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](125, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](126, 0, null, null, 0, "i", [["class", "fa fa-angle-up font-primary"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](127, 0, null, null, 17, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](128, 0, null, null, 16, "div", [["class", "media"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](129, 0, null, null, 12, "div", [["class", "media-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](130, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Ventas totales"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](132, 0, null, null, 1, "h2", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](133, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](134, 0, null, null, 3, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["0% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](136, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](137, 0, null, null, 0, "i", [["class", "fa fa-angle-up"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](138, 0, null, null, 1, "h5", [["class", "f-w-600"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Mes actual y anterior"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](140, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](141, null, ["Sus ventas estan en un ", "% al mes anterior."])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](142, 0, null, null, 2, "div", [["class", "bg-primary b-r-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](143, 0, null, null, 1, "div", [["class", "small-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](144, 0, null, null, 0, "i", [["data-feather", "briefcase"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](145, 0, null, null, 31, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](146, 0, null, null, 30, "div", [["class", "card order-graph sales-carousel"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](147, 0, null, null, 11, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](148, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Porcentaje de p\xE9rdidas"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](150, 0, null, null, 8, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](151, 0, null, null, 1, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](152, 0, null, null, 0, "div", [["class", "small-chartjs"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](153, 0, null, null, 5, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](154, 0, null, null, 4, "div", [["class", "value-graph"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](155, 0, null, null, 3, "h3", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["0% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](157, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](158, 0, null, null, 0, "i", [["class", "fa fa-angle-up font-secondary"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](159, 0, null, null, 17, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](160, 0, null, null, 16, "div", [["class", "media"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](161, 0, null, null, 12, "div", [["class", "media-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](162, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Porcentaje de p\xE9rdidas"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](164, 0, null, null, 1, "h2", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["0"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](166, 0, null, null, 3, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["0% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](168, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](169, 0, null, null, 0, "i", [["class", "fa fa-angle-up"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](170, 0, null, null, 1, "h5", [["class", "f-w-600"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Perdidas"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](172, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Las p\xE9rdidas son un 0% del mes anterior"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](174, 0, null, null, 2, "div", [["class", "bg-secondary b-r-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](175, 0, null, null, 1, "div", [["class", "small-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](176, 0, null, null, 0, "i", [["data-feather", "credit-card"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](177, 0, null, null, 31, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](178, 0, null, null, 30, "div", [["class", "card order-graph sales-carousel"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](179, 0, null, null, 11, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](180, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Transacci\xF3n efectivo"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](182, 0, null, null, 8, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](183, 0, null, null, 1, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](184, 0, null, null, 0, "div", [["class", "small-chartjs"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](185, 0, null, null, 5, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](186, 0, null, null, 4, "div", [["class", "value-graph"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](187, 0, null, null, 3, "h3", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["0% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](189, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](190, 0, null, null, 0, "i", [["class", "fa fa-angle-up font-warning"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](191, 0, null, null, 17, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](192, 0, null, null, 16, "div", [["class", "media"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](193, 0, null, null, 12, "div", [["class", "media-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](194, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Transacci\xF3n por efectivo"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](196, 0, null, null, 1, "h2", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["0"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](198, 0, null, null, 3, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["0% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](200, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](201, 0, null, null, 0, "i", [["class", "fa fa-angle-up"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](202, 0, null, null, 1, "h5", [["class", "f-w-600"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Detalle de la transacci\xF3n"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](204, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Las ventas por efectivo son un 0%"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](206, 0, null, null, 2, "div", [["class", "bg-warning b-r-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](207, 0, null, null, 1, "div", [["class", "small-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](208, 0, null, null, 0, "i", [["data-feather", "shopping-cart"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](209, 0, null, null, 31, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](210, 0, null, null, 30, "div", [["class", "card order-graph sales-carousel"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](211, 0, null, null, 11, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](212, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" Transacci\xF3n por tarjeta"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](214, 0, null, null, 8, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](215, 0, null, null, 1, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](216, 0, null, null, 0, "div", [["class", "small-chartjs"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](217, 0, null, null, 5, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](218, 0, null, null, 4, "div", [["class", "value-graph"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](219, 0, null, null, 3, "h3", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["0% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](221, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](222, 0, null, null, 0, "i", [["class", "fa fa-angle-up font-danger"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](223, 0, null, null, 17, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](224, 0, null, null, 16, "div", [["class", "media"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](225, 0, null, null, 12, "div", [["class", "media-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](226, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Transacciones por tarjeta"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](228, 0, null, null, 1, "h2", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["0"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](230, 0, null, null, 3, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["0% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](232, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](233, 0, null, null, 0, "i", [["class", "fa fa-angle-up"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](234, 0, null, null, 1, "h5", [["class", "f-w-600"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Detalle de transacci\xF3n"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](236, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Las ventas por tarjeta son un 0%"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](238, 0, null, null, 2, "div", [["class", "bg-danger b-r-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](239, 0, null, null, 1, "div", [["class", "small-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](240, 0, null, null, 0, "i", [["data-feather", "calendar"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](241, 0, null, null, 12, "div", [["class", "col-sm-12"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](242, 0, null, null, 11, "div", [["class", "card"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](243, 0, null, null, 2, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](244, 0, null, null, 1, "h5", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Mermas"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](246, 0, null, null, 7, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](247, 0, null, null, 6, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](248, 0, null, null, 5, "div", [["class", "col-xl-6 col-sm-8 xl-100"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](249, 0, null, null, 4, "div", [["class", "order-graph sm-order-space"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](250, 0, null, null, 3, "div", [["class", "peity-chart-dashboard text-center chart-vertical-center"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](251, 0, null, null, 2, "div", [["class", "chart"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](252, 0, null, null, 1, "canvas", [["baseChart", ""], ["height", "500"], ["width", "300"]], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](253, 999424, null, 0, ng2_charts__WEBPACK_IMPORTED_MODULE_10__["BaseChartDirective"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], ng2_charts__WEBPACK_IMPORTED_MODULE_10__["ThemeService"]], {
+      }), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵpid"](0, ngx_pagination__WEBPACK_IMPORTED_MODULE_9__["PaginatePipe"], [ngx_pagination__WEBPACK_IMPORTED_MODULE_9__["PaginationService"]]), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](111, 0, null, null, 33, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](112, 0, null, null, 32, "div", [["class", "card order-graph sales-carousel"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](113, 0, null, null, 13, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](114, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Porcentaje de ventas"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](116, 0, null, null, 10, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](117, 0, null, null, 3, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](118, 0, null, null, 2, "div", [["class", "small-chartjs"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](119, 0, null, null, 1, "canvas", [["height", "60"], ["id", "ctx1"], ["width", "140"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](120, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](121, 0, null, null, 5, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](122, 0, null, null, 4, "div", [["class", "value-graph"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](123, 0, null, null, 3, "h3", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](124, null, ["", "% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](125, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](126, 0, null, null, 0, "i", [["class", "fa fa-angle-up font-primary"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](127, 0, null, null, 17, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](128, 0, null, null, 16, "div", [["class", "media"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](129, 0, null, null, 12, "div", [["class", "media-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](130, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Ventas totales"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](132, 0, null, null, 1, "h2", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](133, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](134, 0, null, null, 3, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["0% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](136, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](137, 0, null, null, 0, "i", [["class", "fa fa-angle-up"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](138, 0, null, null, 1, "h5", [["class", "f-w-600"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Mes actual y anterior"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](140, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](141, null, ["Sus ventas estan en un ", "% al mes anterior."])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](142, 0, null, null, 2, "div", [["class", "bg-primary b-r-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](143, 0, null, null, 1, "div", [["class", "small-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](144, 0, null, null, 0, "i", [["data-feather", "briefcase"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](145, 0, null, null, 25, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](146, 0, null, null, 24, "div", [["class", "card order-graph sales-carousel"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](147, 0, null, null, 13, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](148, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Porcentaje de ventas"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](150, 0, null, null, 10, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](151, 0, null, null, 3, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](152, 0, null, null, 2, "div", [["class", "small-chartjs"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](153, 0, null, null, 1, "canvas", [["height", "60"], ["id", "ctx1"], ["width", "140"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](154, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](155, 0, null, null, 5, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](156, 0, null, null, 4, "div", [["class", "value-graph"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](157, 0, null, null, 3, "h3", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](158, null, ["", "% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](159, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](160, 0, null, null, 0, "i", [["class", "fa fa-angle-up font-primary"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](161, 0, null, null, 9, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](162, 0, null, null, 8, "div", [["class", "media"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](163, 0, null, null, 4, "div", [["class", "media-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](164, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Ventas totales"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](166, 0, null, null, 1, "h2", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](167, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](168, 0, null, null, 2, "div", [["class", "bg-primary b-r-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](169, 0, null, null, 1, "div", [["class", "small-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](170, 0, null, null, 0, "i", [["data-feather", "briefcase"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](171, 0, null, null, 25, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](172, 0, null, null, 24, "div", [["class", "card order-graph sales-carousel"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](173, 0, null, null, 13, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](174, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Porcentaje de p\xE9rdidas primer inventario"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](176, 0, null, null, 10, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](177, 0, null, null, 3, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](178, 0, null, null, 2, "div", [["class", "small-chartjs"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](179, 0, null, null, 1, "canvas", [["height", "60vw"], ["id", "ctx2"], ["width", "140vw"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](180, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](181, 0, null, null, 5, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](182, 0, null, null, 4, "div", [["class", "value-graph"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](183, 0, null, null, 3, "h3", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](184, null, ["", "% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](185, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](186, 0, null, null, 0, "i", [["class", "fa fa-angle-up font-secondary"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](187, 0, null, null, 9, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](188, 0, null, null, 8, "div", [["class", "media"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](189, 0, null, null, 4, "div", [["class", "media-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](190, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Total de perdidas inventario"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](192, 0, null, null, 1, "h2", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](193, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](194, 0, null, null, 2, "div", [["class", "bg-secondary b-r-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](195, 0, null, null, 1, "div", [["class", "small-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](196, 0, null, null, 0, "i", [["data-feather", "credit-card"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](197, 0, null, null, 66, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](198, 0, null, null, 25, "div", [["class", "card order-graph sales-carousel"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](199, 0, null, null, 14, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](200, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["P\xE9rdidas en el segundo inventario"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](202, 0, null, null, 11, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](203, 0, null, null, 4, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](204, 0, null, null, 3, "div", [["class", "small-chartjs"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](205, 0, null, null, 2, "canvas", [["baseChart", ""], ["height", "60vw"], ["id", "ctx3"], ["width", "140vw"]], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](206, 999424, null, 0, ng2_charts__WEBPACK_IMPORTED_MODULE_10__["BaseChartDirective"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], ng2_charts__WEBPACK_IMPORTED_MODULE_10__["ThemeService"]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](207, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](208, 0, null, null, 5, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](209, 0, null, null, 4, "div", [["class", "value-graph"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](210, 0, null, null, 3, "h3", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](211, null, ["", "% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](212, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](213, 0, null, null, 0, "i", [["class", "fa fa-angle-up font-warning"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](214, 0, null, null, 9, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](215, 0, null, null, 8, "div", [["class", "media"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](216, 0, null, null, 7, "div", [["class", "media-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](217, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Total de p\xE9rdidas inventario 2"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](219, 0, null, null, 1, "h2", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](220, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](221, 0, null, null, 2, "div", [["class", "bg-warning b-r-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](222, 0, null, null, 1, "div", [["class", "small-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](223, 0, null, null, 0, "i", [["data-feather", "shopping-cart"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](224, 0, null, null, 39, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](225, 0, null, null, 25, "div", [["class", "card order-graph sales-carousel"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](226, 0, null, null, 14, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](227, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" Ventras rapidas"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](229, 0, null, null, 11, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](230, 0, null, null, 4, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](231, 0, null, null, 3, "div", [["class", "small-chartjs"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](232, 0, null, null, 2, "canvas", [["baseChart", ""], ["height", "60vw"], ["id", "ctx4"], ["width", "140vw"]], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](233, 999424, null, 0, ng2_charts__WEBPACK_IMPORTED_MODULE_10__["BaseChartDirective"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], ng2_charts__WEBPACK_IMPORTED_MODULE_10__["ThemeService"]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](234, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](235, 0, null, null, 5, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](236, 0, null, null, 4, "div", [["class", "value-graph"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](237, 0, null, null, 3, "h3", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](238, null, ["", "% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](239, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](240, 0, null, null, 0, "i", [["class", "fa fa-angle-up font-danger"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](241, 0, null, null, 9, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](242, 0, null, null, 8, "div", [["class", "media"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](243, 0, null, null, 7, "div", [["class", "media-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](244, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Ventas rapidas cantidad ganada"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](246, 0, null, null, 1, "h2", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](247, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](248, 0, null, null, 2, "div", [["class", "bg-danger b-r-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](249, 0, null, null, 1, "div", [["class", "small-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](250, 0, null, null, 0, "i", [["data-feather", "calendar"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](251, 0, null, null, 12, "div", [["class", "col-sm-12"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](252, 0, null, null, 11, "div", [["class", "card"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](253, 0, null, null, 2, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](254, 0, null, null, 1, "h5", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Mermas"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](256, 0, null, null, 7, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](257, 0, null, null, 6, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](258, 0, null, null, 5, "div", [["class", "col-xl-6 col-sm-8 xl-100"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](259, 0, null, null, 4, "div", [["class", "order-graph sm-order-space"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](260, 0, null, null, 3, "div", [["class", "peity-chart-dashboard text-center chart-vertical-center"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](261, 0, null, null, 2, "div", [["class", "chart"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](262, 0, null, null, 1, "canvas", [["baseChart", ""], ["height", "500"], ["width", "300"]], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](263, 999424, null, 0, ng2_charts__WEBPACK_IMPORTED_MODULE_10__["BaseChartDirective"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], ng2_charts__WEBPACK_IMPORTED_MODULE_10__["ThemeService"]], {
         data: [0, "data"],
         labels: [1, "labels"],
         options: [2, "options"],
@@ -4517,15 +4830,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _ck(_v, 108, 0, currVal_18);
 
-        var currVal_23 = _co.pieChartData;
-        var currVal_24 = _co.pieChartLabels;
-        var currVal_25 = _co.pieChartOptions;
-        var currVal_26 = _co.pieChartType;
-        var currVal_27 = _co.pieChartColors;
-        var currVal_28 = _co.pieChartLegend;
-        var currVal_29 = _co.pieChartPlugins;
+        _ck(_v, 206, 0);
 
-        _ck(_v, 253, 0, currVal_23, currVal_24, currVal_25, currVal_26, currVal_27, currVal_28, currVal_29);
+        _ck(_v, 233, 0);
+
+        var currVal_35 = _co.pieChartData;
+        var currVal_36 = _co.pieChartLabels;
+        var currVal_37 = _co.pieChartOptions;
+        var currVal_38 = _co.pieChartType;
+        var currVal_39 = _co.pieChartColors;
+        var currVal_40 = _co.pieChartLegend;
+        var currVal_41 = _co.pieChartPlugins;
+
+        _ck(_v, 263, 0, currVal_35, currVal_36, currVal_37, currVal_38, currVal_39, currVal_40, currVal_41);
       }, function (_ck, _v) {
         var _co = _v.component;
         var currVal_17 = _co.chaarti;
@@ -4547,6 +4864,54 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         var currVal_22 = _co.porcentaje_ventas * 100;
 
         _ck(_v, 141, 0, currVal_22);
+
+        var currVal_23 = _co.porsentaje_venta;
+
+        _ck(_v, 154, 0, currVal_23);
+
+        var currVal_24 = _co.porcentaje_ventas * 100;
+
+        _ck(_v, 158, 0, currVal_24);
+
+        var currVal_25 = _co.todas_las_ventas == null ? null : _co.todas_las_ventas.ganancias_totales;
+
+        _ck(_v, 167, 0, currVal_25);
+
+        var currVal_26 = _co.porcentaje_perdida;
+
+        _ck(_v, 180, 0, currVal_26);
+
+        var currVal_27 = _co.porcentaje_perdidas * 100;
+
+        _ck(_v, 184, 0, currVal_27);
+
+        var currVal_28 = _co.totalperdidasinventario1 == null ? null : _co.totalperdidasinventario1.totalperdiasinv;
+
+        _ck(_v, 193, 0, currVal_28);
+
+        var currVal_29 = _co.todas_perdidainventario2;
+
+        _ck(_v, 207, 0, currVal_29);
+
+        var currVal_30 = _co.todas_perdidasinventario2 * 100;
+
+        _ck(_v, 211, 0, currVal_30);
+
+        var currVal_31 = _co.total_perdidasobtenidas == null ? null : _co.total_perdidasobtenidas.total_perdidas;
+
+        _ck(_v, 220, 0, currVal_31);
+
+        var currVal_32 = _co.venta_rapidasgrafico;
+
+        _ck(_v, 234, 0, currVal_32);
+
+        var currVal_33 = _co.ventas_rapidasrealizada * 100;
+
+        _ck(_v, 238, 0, currVal_33);
+
+        var currVal_34 = _co.total_ventasrapidas == null ? null : _co.total_ventasrapidas.totalventasR;
+
+        _ck(_v, 247, 0, currVal_34);
       });
     }
 
@@ -4719,9 +5084,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         this.reducido = []; // Reduciendo los valors obtenidos de los productos y el stock de perdidas de este mes
 
-        this.reduciendo_est = []; // OBTIENE EL PROSENTAJE DE GANANCIAS OBTENIDAS ENTRE 2 MESES.
+        this.reduciendo_est = [];
+        this.ventas_rapidasrealizada = 0; // Obtiene las pérdidas del segundo inventario.
 
-        this.porcentaje_ventas = 0; // FECHAS OBTENIDAS ESTE MES.
+        this.todas_perdidasinventario2 = 0; // OBTIENE EL PROSENTAJE DE GANANCIAS OBTENIDAS ENTRE 2 MESES.
+
+        this.porcentaje_ventas = 0; //Obtiene el porcentaje de perdidas
+
+        this.porcentaje_perdidas = 0; // FECHAS OBTENIDAS ESTE MES.
 
         this.fechas_registradas = []; // tslint:disable-next-line:variable-name
 
@@ -4739,7 +5109,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               while (1) {
                 switch (_context5.prev = _context5.next) {
                   case 0:
-                    this.spinner.show("spinnerlogin", {
+                    this.spinner.show("spinnerdashboard", {
                       type: "pacman",
                       size: "large",
                       color: "white"
@@ -4796,10 +5166,35 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     return this.obtenermermas();
 
                   case 27:
-                    // Detectar el navagador
+                    _context5.next = 29;
+                    return this.PerdidasXmes();
+
+                  case 29:
+                    _context5.next = 31;
+                    return this.perdidas_segundoinventario();
+
+                  case 31:
+                    _context5.next = 33;
+                    return this.perdidasobtenidas();
+
+                  case 33:
+                    _context5.next = 35;
+                    return this.totalperdiadasinventarioprimario();
+
+                  case 35:
+                    _context5.next = 37;
+                    return this.ventasrapidasgrafico();
+
+                  case 37:
+                    _context5.next = 39;
+                    return this.totaldeventasrapidas();
+
+                  case 39:
+                    this.spinner.hide("spinnerdashboard"); // Detectar el navagador
+
                     this.detectando();
 
-                  case 28:
+                  case 41:
                   case "end":
                     return _context5.stop();
                 }
@@ -5241,9 +5636,42 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
         }
       }, {
+        key: "perdidasobtenidas",
+        value: function perdidasobtenidas() {
+          var _this18 = this;
+
+          this.vouch.todaslasperdiadsinventario2().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.unsubscribe$)).subscribe(function (res) {
+            _this18.total_perdidasobtenidas = res;
+
+            _this18.cd.markForCheck();
+          });
+        }
+      }, {
+        key: "totalperdiadasinventarioprimario",
+        value: function totalperdiadasinventarioprimario() {
+          var _this19 = this;
+
+          this.vouch.todaslasperdidasdinventario1().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.unsubscribe$)).subscribe(function (res) {
+            _this19.totalperdidasinventario1 = res;
+
+            _this19.cd.markForCheck();
+          });
+        }
+      }, {
+        key: "totaldeventasrapidas",
+        value: function totaldeventasrapidas() {
+          var _this20 = this;
+
+          this.vouch.totalventasR().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.unsubscribe$)).subscribe(function (res) {
+            _this20.total_ventasrapidas = res;
+
+            _this20.cd.markForCheck();
+          });
+        }
+      }, {
         key: "gananciaspormes",
         value: function gananciaspormes() {
-          var _this18 = this;
+          var _this21 = this;
 
           // BUSCA LAS GANANCIAS POR MES Y LAS MUESTRA.
           this.vouch.mostrar_ganancias_fv().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.unsubscribe$)).subscribe(function (res) {
@@ -5283,9 +5711,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
             var raiz = vg2.slice(-2).reduce(reducer); // console.log("raiz", Math.sqrt(raiz).toFixed(2 ))
 
-            _this18.porcentaje_ventas = Math.sqrt(raiz).toFixed(2); // Iniciando un grafico lineal para porcentajes
+            _this21.porcentaje_ventas = Math.sqrt(raiz).toFixed(2); // Iniciando un grafico lineal para porcentajes
 
-            _this18.porsentaje_venta = new chart_js__WEBPACK_IMPORTED_MODULE_7__('ctx1', {
+            _this21.porsentaje_venta = new chart_js__WEBPACK_IMPORTED_MODULE_7__('ctx1', {
               type: 'line',
               data: {
                 labels: dg2,
@@ -5313,7 +5741,236 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             });
 
-            _this18.cd.markForCheck();
+            _this21.cd.markForCheck();
+          });
+        } //Perdidas por mes.
+
+      }, {
+        key: "PerdidasXmes",
+        value: function PerdidasXmes() {
+          var _this22 = this;
+
+          this.vouch.mostrar_perdidasXmes().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.unsubscribe$)).subscribe(function (res) {
+            var dg2 = [];
+            var vg2 = [];
+
+            if (res) {
+              var _iterator10 = _createForOfIteratorHelper(res),
+                  _step10;
+
+              try {
+                for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
+                  var d = _step10.value;
+
+                  for (var _i5 = 0, _Object$keys3 = Object.keys(d); _i5 < _Object$keys3.length; _i5++) {
+                    var h = _Object$keys3[_i5];
+                    console.log("detalles de h ", h);
+                    dg2.push([h]);
+                  }
+
+                  for (var _i6 = 0, _Object$values3 = Object.values(d); _i6 < _Object$values3.length; _i6++) {
+                    var l = _Object$values3[_i6];
+                    vg2.push(parseInt(l.toString()));
+                  }
+                }
+              } catch (err) {
+                _iterator10.e(err);
+              } finally {
+                _iterator10.f();
+              }
+            } else {
+              vg2.push(0);
+            }
+
+            var reducer = function reducer(accumulator, currentValue) {
+              return currentValue % 100 / accumulator;
+            };
+
+            var raiz = vg2.slice(-2).reduce(reducer); // console.log("raiz", Math.sqrt(raiz).toFixed(2 ))
+
+            _this22.porcentaje_perdidas = Math.sqrt(raiz).toFixed(2); // Iniciando un grafico lineal para porcentajes
+
+            _this22.porcentaje_perdida = new chart_js__WEBPACK_IMPORTED_MODULE_7__('ctx2', {
+              type: 'line',
+              data: {
+                labels: dg2,
+                datasets: [{
+                  steppedLine: true,
+                  borderColor: 'blue',
+                  data: vg2,
+                  backgroundColor: '#84B7FA'
+                }]
+              },
+              options: {
+                legend: {
+                  display: false
+                },
+                scales: {
+                  yAxes: [{
+                    display: false,
+                    stacked: true
+                  }],
+                  xAxes: [{
+                    display: true,
+                    stacked: false
+                  }]
+                }
+              }
+            });
+
+            _this22.cd.markForCheck();
+          });
+        }
+      }, {
+        key: "perdidas_segundoinventario",
+        value: function perdidas_segundoinventario() {
+          var _this23 = this;
+
+          this.vouch.perdidas_inventario2().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.unsubscribe$)).subscribe(function (res) {
+            var dg2 = [];
+            var vg2 = [];
+
+            if (res) {
+              var _iterator11 = _createForOfIteratorHelper(res),
+                  _step11;
+
+              try {
+                for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
+                  var d = _step11.value;
+
+                  for (var _i7 = 0, _Object$keys4 = Object.keys(d); _i7 < _Object$keys4.length; _i7++) {
+                    var h = _Object$keys4[_i7];
+                    console.log("detalles de h ", h);
+                    dg2.push([h]);
+                  }
+
+                  for (var _i8 = 0, _Object$values4 = Object.values(d); _i8 < _Object$values4.length; _i8++) {
+                    var l = _Object$values4[_i8];
+                    vg2.push(parseInt(l.toString()));
+                  }
+                }
+              } catch (err) {
+                _iterator11.e(err);
+              } finally {
+                _iterator11.f();
+              }
+            } else {
+              vg2.push(0);
+            }
+
+            var reducer = function reducer(accumulator, currentValue) {
+              return currentValue % 100 / accumulator;
+            };
+
+            var raiz = vg2.slice(-2).reduce(reducer); // console.log("raiz", Math.sqrt(raiz).toFixed(2 ))
+
+            _this23.todas_perdidasinventario2 = Math.sqrt(raiz).toFixed(2); // Iniciando un grafico lineal para porcentajes
+
+            _this23.todas_perdidainventario2 = new chart_js__WEBPACK_IMPORTED_MODULE_7__('ctx3', {
+              type: 'line',
+              data: {
+                labels: dg2,
+                datasets: [{
+                  steppedLine: true,
+                  borderColor: 'blue',
+                  data: vg2,
+                  backgroundColor: '#84B7FA'
+                }]
+              },
+              options: {
+                legend: {
+                  display: false
+                },
+                scales: {
+                  yAxes: [{
+                    display: false,
+                    stacked: true
+                  }],
+                  xAxes: [{
+                    display: true,
+                    stacked: false
+                  }]
+                }
+              }
+            });
+
+            _this23.cd.markForCheck();
+          });
+        }
+      }, {
+        key: "ventasrapidasgrafico",
+        value: function ventasrapidasgrafico() {
+          var _this24 = this;
+
+          this.vouch.ventasrapidas().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.unsubscribe$)).subscribe(function (res) {
+            var dg2 = [];
+            var vg2 = [];
+
+            if (res) {
+              var _iterator12 = _createForOfIteratorHelper(res),
+                  _step12;
+
+              try {
+                for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
+                  var d = _step12.value;
+
+                  for (var _i9 = 0, _Object$keys5 = Object.keys(d); _i9 < _Object$keys5.length; _i9++) {
+                    var h = _Object$keys5[_i9];
+                    console.log("detalles de h ", h);
+                    dg2.push([h]);
+                  }
+
+                  for (var _i10 = 0, _Object$values5 = Object.values(d); _i10 < _Object$values5.length; _i10++) {
+                    var l = _Object$values5[_i10];
+                    vg2.push(parseInt(l.toString()));
+                  }
+                }
+              } catch (err) {
+                _iterator12.e(err);
+              } finally {
+                _iterator12.f();
+              }
+            } else {
+              vg2.push(0);
+            }
+
+            var reducer = function reducer(accumulator, currentValue) {
+              return currentValue % 100 / accumulator;
+            };
+
+            var raiz = vg2.slice(-2).reduce(reducer); // console.log("raiz", Math.sqrt(raiz).toFixed(2 ))
+
+            _this24.ventas_rapidasrealizada = Math.sqrt(raiz).toFixed(2); // Iniciando un grafico lineal para porcentajes
+
+            _this24.venta_rapidasgrafico = new chart_js__WEBPACK_IMPORTED_MODULE_7__('ctx4', {
+              type: 'line',
+              data: {
+                labels: dg2,
+                datasets: [{
+                  steppedLine: true,
+                  borderColor: 'blue',
+                  data: vg2,
+                  backgroundColor: '#84B7FA'
+                }]
+              },
+              options: {
+                legend: {
+                  display: false
+                },
+                scales: {
+                  yAxes: [{
+                    display: false,
+                    stacked: true
+                  }],
+                  xAxes: [{
+                    display: true,
+                    stacked: false
+                  }]
+                }
+              }
+            });
+
+            _this24.cd.markForCheck();
           });
         }
       }, {
@@ -5328,7 +5985,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "obtmermas",
         value: function obtmermas() {
-          this.spinner.hide("spinnerdashboard");
           return this.mermas = this.produc.mermasdeldia().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.unsubscribe$));
         }
       }]);
@@ -6483,13 +7139,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this19 = this;
+          var _this25 = this;
 
           this.datos$ = this.secoind.getInfoReloj();
           this.datos$.subscribe(function (x) {
-            _this19.hora = x.hora;
-            _this19.minutos = x.minutos;
-            _this19.segundos = x.segundo;
+            _this25.hora = x.hora;
+            _this25.minutos = x.minutos;
+            _this25.segundos = x.segundo;
           });
           this.spinnerService.show();
           this.categoriasAsync();
@@ -6620,14 +7276,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "press",
         value: function press(Contenidos, mermas) {
-          var _this20 = this;
+          var _this26 = this;
 
           this.modalService.open(Contenidos, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
-            _this20.closeResult = "Closed with: ".concat(result);
+            _this26.closeResult = "Closed with: ".concat(result);
           }, function (reason) {
-            _this20.closeResult = "Dismissed ".concat(_this20.getDismissReason(reason));
+            _this26.closeResult = "Dismissed ".concat(_this26.getDismissReason(reason));
           });
           this.datosMermas = mermas;
           console.log('merma', this.datosMermas);
@@ -6994,12 +7650,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "obteniendodatos",
         value: function obteniendodatos() {
-          var _this21 = this;
+          var _this27 = this;
 
           return this.stcn.cantidadesObtenidas().then(function (res) {
-            return _this21.datosobtenidos = res;
+            return _this27.datosobtenidos = res;
           })["finally"](function () {
-            _this21.isloading = true;
+            _this27.isloading = true;
           })["catch"](function (err) {
             console.log('se obtuvo un error', err);
           });
@@ -8065,7 +8721,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     });
 
     function View_AppsaleComponent_3(_l) {
-      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 9, "tr", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](2, null, [" ", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 4, "th", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](4, null, ["", " "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 2, "button", [["aria-label", "close"], ["class", "close"], ["type", "button"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, null, null, 1, "span", [["aria-hidden", "true"]], null, [[null, "click"]], function (_v, en, $event) {
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 10, "tr", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](2, null, [" ", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 4, "th", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](4, null, ["", " "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 2, "button", [["aria-label", "close"], ["class", "close"], ["type", "button"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, null, null, 1, "span", [["aria-hidden", "true"]], null, [[null, "click"]], function (_v, en, $event) {
         var ad = true;
         var _co = _v.component;
 
@@ -8075,12 +8731,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
 
         return ad;
-      }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\xD7"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](8, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](9, 0, null, null, 0, "input", [["type", "text"]], null, [[null, "change"]], function (_v, en, $event) {
+      }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\xD7"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](8, 0, null, null, 2, "th", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](9, 0, null, null, 1, "div", [["class", "qty-box1"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](10, 0, null, null, 0, "input", [["name", "descuento"], ["type", "number"]], [[8, "id", 0]], [[null, "change"]], function (_v, en, $event) {
         var ad = true;
         var _co = _v.component;
 
         if ("change" === en) {
-          var pd_0 = _co.Descuento(_v.parent.context.$implicit) !== false;
+          var pd_0 = _co.Descuento(_v.parent.context.$implicit, _v.parent.context.index) !== false;
           ad = pd_0 && ad;
         }
 
@@ -8093,11 +8749,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         var currVal_1 = _v.parent.context.$implicit.quantity;
 
         _ck(_v, 4, 0, currVal_1);
+
+        var currVal_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵinlineInterpolate"](1, "descuento", _v.parent.context.index, "");
+
+        _ck(_v, 10, 0, currVal_2);
       });
     }
 
     function View_AppsaleComponent_4(_l) {
-      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 4, "tr", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](2, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](4, null, ["", ""]))], null, function (_ck, _v) {
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 7, "tr", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](2, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](4, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 2, "th", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, null, null, 1, "div", [["class", "qty-box1"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 0, "input", [["name", "descuento"], ["type", "number"]], [[8, "id", 0]], [[null, "change"]], function (_v, en, $event) {
+        var ad = true;
+        var _co = _v.component;
+
+        if ("change" === en) {
+          var pd_0 = _co.Descuento(_v.parent.context.$implicit, _v.parent.context.index) !== false;
+          ad = pd_0 && ad;
+        }
+
+        return ad;
+      }, null, null))], null, function (_ck, _v) {
         var currVal_0 = _v.parent.context.$implicit.product.pdescripcion;
 
         _ck(_v, 2, 0, currVal_0);
@@ -8105,23 +8775,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         var currVal_1 = _v.parent.context.$implicit.quantity;
 
         _ck(_v, 4, 0, currVal_1);
+
+        var currVal_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵinlineInterpolate"](1, "descuento", _v.parent.context.index, "");
+
+        _ck(_v, 7, 0, currVal_2);
       });
     }
 
     function View_AppsaleComponent_2(_l) {
-      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 4, "tbody", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_AppsaleComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], {
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 4, "tbody", [], [[1, "data-index", 0]], null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_AppsaleComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], {
         ngIf: [0, "ngIf"]
       }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_AppsaleComponent_4)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](4, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], {
         ngIf: [0, "ngIf"]
       }, null)], function (_ck, _v) {
-        var currVal_0 = _v.context.$implicit.sinventario == true;
+        var currVal_1 = _v.context.$implicit.sinventario == true;
 
-        _ck(_v, 2, 0, currVal_0);
+        _ck(_v, 2, 0, currVal_1);
 
-        var currVal_1 = _v.context.$implicit.sinventario2 == false;
+        var currVal_2 = _v.context.$implicit.sinventario2 == false;
 
-        _ck(_v, 4, 0, currVal_1);
-      }, null);
+        _ck(_v, 4, 0, currVal_2);
+      }, function (_ck, _v) {
+        var currVal_0 = _v.context.index;
+
+        _ck(_v, 0, 0, currVal_0);
+      });
     }
 
     function View_AppsaleComponent_5(_l) {
@@ -8149,7 +8827,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }
 
     function View_AppsaleComponent_1(_l) {
-      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 71, "form", [["action", ""], ["novalidate", ""]], [[2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "ngSubmit"], [null, "submit"], [null, "reset"]], function (_v, en, $event) {
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 72, "form", [["action", ""], ["novalidate", ""]], [[2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "ngSubmit"], [null, "submit"], [null, "reset"]], function (_v, en, $event) {
         var ad = true;
         var _co = _v.component;
 
@@ -8182,68 +8860,68 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
 
         return ad;
-      }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](9, 0, null, null, 1, "span", [["aria-hidden", "true"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\xD7"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](11, 0, null, null, 60, "div", [["class", "modal-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](12, 0, null, null, 5, "div", [["class", "shopping-cart-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](13, 0, null, null, 4, "div", [["class", "shopping-cart-total"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](14, 0, null, null, 1, "span", [["class", "lighter-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Total:"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](16, 0, null, null, 1, "span", [["class", "main-color-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](17, null, ["$", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](18, 0, null, null, 53, "div", [["class", "form"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](19, 0, null, null, 11, "div", [["class", "form-group"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](20, 0, null, null, 10, "table", [["class", "table table-sm"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](21, 0, null, null, 7, "thead", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](22, 0, null, null, 6, "tr", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](23, 0, null, null, 1, "th", [["scope", "col"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Producto"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](25, 0, null, null, 1, "th", [["scope", "col"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Unidades"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](27, 0, null, null, 1, "th", [["scope", "col"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Descuento"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_AppsaleComponent_2)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](30, 278528, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"]], {
+      }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](9, 0, null, null, 1, "span", [["aria-hidden", "true"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["\xD7"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](11, 0, null, null, 61, "div", [["class", "modal-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](12, 0, null, null, 6, "div", [["class", "shopping-cart-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](13, 0, null, null, 5, "div", [["class", "shopping-cart-total"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](14, 0, null, null, 1, "span", [["class", "lighter-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Total:"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](16, 0, null, null, 2, "span", [["class", "main-color-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](17, 0, null, null, 1, "h2", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](18, null, ["$", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](19, 0, null, null, 53, "div", [["class", "form"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](20, 0, null, null, 11, "div", [["class", "form-group"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](21, 0, null, null, 10, "table", [["class", "table table-sm"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](22, 0, null, null, 7, "thead", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](23, 0, null, null, 6, "tr", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](24, 0, null, null, 1, "th", [["scope", "col"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Producto"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](26, 0, null, null, 1, "th", [["scope", "col"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Unidades"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](28, 0, null, null, 1, "th", [["scope", "col"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Descuento"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_AppsaleComponent_2)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](31, 278528, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"]], {
         ngForOf: [0, "ngForOf"]
-      }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](31, 0, null, null, 1, "label", [["class", "mb-1"], ["for", "loseleccionadodelacompra"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Forma de pago :"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](33, 0, null, null, 11, "div", [["class", "input-group input-group-sm mb-3"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](34, 0, null, null, 10, "select", [["class", "custom-select mr-sm-2"], ["formControlName", "loseleccionadodelacompra"], ["id", "loseleccionadodelacompra"]], [[8, "value", 0], [2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "change"], [null, "blur"]], function (_v, en, $event) {
+      }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](32, 0, null, null, 1, "label", [["class", "mb-1"], ["for", "loseleccionadodelacompra"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Forma de pago :"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](34, 0, null, null, 11, "div", [["class", "input-group input-group-sm mb-3"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](35, 0, null, null, 10, "select", [["class", "custom-select mr-sm-2"], ["formControlName", "loseleccionadodelacompra"], ["id", "loseleccionadodelacompra"]], [[8, "value", 0], [2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "change"], [null, "blur"]], function (_v, en, $event) {
         var ad = true;
 
         if ("change" === en) {
-          var pd_0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 35).onChange($event.target.value) !== false;
+          var pd_0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 36).onChange($event.target.value) !== false;
           ad = pd_0 && ad;
         }
 
         if ("blur" === en) {
-          var pd_1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 35).onTouched() !== false;
+          var pd_1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 36).onTouched() !== false;
           ad = pd_1 && ad;
         }
 
         return ad;
-      }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](35, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]], null, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](1024, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"], function (p0_0) {
+      }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](36, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]], null, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](1024, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"], function (p0_0) {
         return [p0_0];
-      }, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](37, 671744, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"], [[3, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ControlContainer"]], [8, null], [8, null], [6, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"]], [2, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_p"]]], {
+      }, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](38, 671744, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"], [[3, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ControlContainer"]], [8, null], [8, null], [6, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"]], [2, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_p"]]], {
         name: [0, "name"]
-      }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](2048, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControl"], null, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](39, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], [[4, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControl"]]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](40, 0, null, null, 2, "option", [], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](41, 147456, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgSelectOption"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], [2, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"]]], {
+      }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](2048, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControl"], null, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](40, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], [[4, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControl"]]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](41, 0, null, null, 2, "option", [], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](42, 147456, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgSelectOption"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], [2, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"]]], {
         ngValue: [0, "ngValue"]
-      }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](42, 147456, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_x"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], [8, null]], {
+      }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](43, 147456, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_x"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], [8, null]], {
         ngValue: [0, "ngValue"]
-      }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_AppsaleComponent_5)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](44, 278528, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"]], {
+      }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_AppsaleComponent_5)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](45, 278528, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"]], {
         ngForOf: [0, "ngForOf"]
-      }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](45, 0, null, null, 1, "label", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" Efectivo:"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](47, 0, null, null, 10, "div", [["class", "input-group input-group-sm mb-3"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](48, 0, null, null, 2, "div", [["class", "input-group-prepend"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](49, 0, null, null, 1, "span", [["class", "input-group-text"], ["id", "inputGroup-sizing-sm"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["$"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](51, 0, null, null, 6, "input", [["aria-label", "Sizing example input"], ["class", "form-control"], ["formControlName", "efectivo"], ["id", "efectivo"], ["name", "efectivo"], ["type", "number"]], [[2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "keypress"], [null, "input"], [null, "blur"], [null, "compositionstart"], [null, "compositionend"], [null, "change"]], function (_v, en, $event) {
+      }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](46, 0, null, null, 1, "label", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" Efectivo:"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](48, 0, null, null, 10, "div", [["class", "input-group input-group-sm mb-3"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](49, 0, null, null, 2, "div", [["class", "input-group-prepend"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](50, 0, null, null, 1, "span", [["class", "input-group-text"], ["id", "inputGroup-sizing-sm"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["$"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](52, 0, null, null, 6, "input", [["aria-label", "Sizing example input"], ["class", "form-control"], ["formControlName", "efectivo"], ["id", "efectivo"], ["name", "efectivo"], ["type", "number"]], [[2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "keypress"], [null, "input"], [null, "blur"], [null, "compositionstart"], [null, "compositionend"], [null, "change"]], function (_v, en, $event) {
         var ad = true;
         var _co = _v.component;
 
         if ("input" === en) {
-          var pd_0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 52)._handleInput($event.target.value) !== false;
+          var pd_0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 53)._handleInput($event.target.value) !== false;
           ad = pd_0 && ad;
         }
 
         if ("blur" === en) {
-          var pd_1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 52).onTouched() !== false;
+          var pd_1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 53).onTouched() !== false;
           ad = pd_1 && ad;
         }
 
         if ("compositionstart" === en) {
-          var pd_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 52)._compositionStart() !== false;
+          var pd_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 53)._compositionStart() !== false;
           ad = pd_2 && ad;
         }
 
         if ("compositionend" === en) {
-          var pd_3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 52)._compositionEnd($event.target.value) !== false;
+          var pd_3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 53)._compositionEnd($event.target.value) !== false;
           ad = pd_3 && ad;
         }
 
         if ("change" === en) {
-          var pd_4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 53).onChange($event.target.value) !== false;
+          var pd_4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 54).onChange($event.target.value) !== false;
           ad = pd_4 && ad;
         }
 
         if ("input" === en) {
-          var pd_5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 53).onChange($event.target.value) !== false;
+          var pd_5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 54).onChange($event.target.value) !== false;
           ad = pd_5 && ad;
         }
 
         if ("blur" === en) {
-          var pd_6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 53).onTouched() !== false;
+          var pd_6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 54).onTouched() !== false;
           ad = pd_6 && ad;
         }
 
@@ -8253,11 +8931,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
 
         return ad;
-      }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](52, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], [2, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["COMPOSITION_BUFFER_MODE"]]], null, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](53, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NumberValueAccessor"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]], null, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](1024, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"], function (p0_0, p1_0) {
+      }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](53, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], [2, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["COMPOSITION_BUFFER_MODE"]]], null, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](54, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NumberValueAccessor"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]], null, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](1024, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"], function (p0_0, p1_0) {
         return [p0_0, p1_0];
-      }, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NumberValueAccessor"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](55, 671744, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"], [[3, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ControlContainer"]], [8, null], [8, null], [6, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"]], [2, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_p"]]], {
+      }, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NumberValueAccessor"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](56, 671744, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"], [[3, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ControlContainer"]], [8, null], [8, null], [6, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"]], [2, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_p"]]], {
         name: [0, "name"]
-      }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](2048, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControl"], null, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](57, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], [[4, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControl"]]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](58, 0, null, null, 1, "label", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" Devoluci\xF3n:"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](60, 0, null, null, 4, "div", [["class", "input-group input-group-sm mb-3"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](61, 0, null, null, 3, "div", [["class", "input-group-prepend"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](62, 0, null, null, 1, "span", [["class", "input-group-text"], ["id", "inputGroup-sizing-sm2"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["$"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](64, null, ["", " "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](65, 0, null, null, 6, "div", [["class", "modal-footer"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](66, 0, null, null, 1, "button", [["class", "btn btn-primary"], ["type", "submit"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Guardar"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](68, 0, null, null, 1, "button", [["class", "btn btn-secondary"], ["data-dismiss", "modal"], ["type", "button"]], null, [[null, "click"]], function (_v, en, $event) {
+      }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](2048, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControl"], null, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](58, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], [[4, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControl"]]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](59, 0, null, null, 1, "label", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" Devoluci\xF3n:"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](61, 0, null, null, 4, "div", [["class", "input-group input-group-sm mb-3"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](62, 0, null, null, 3, "div", [["class", "input-group-prepend"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](63, 0, null, null, 1, "span", [["class", "input-group-text"], ["id", "inputGroup-sizing-sm2"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["$"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](65, null, ["", " "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](66, 0, null, null, 6, "div", [["class", "modal-footer"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](67, 0, null, null, 1, "button", [["class", "btn btn-primary"], ["type", "submit"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Guardar"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](69, 0, null, null, 1, "button", [["class", "btn btn-secondary"], ["data-dismiss", "modal"], ["type", "button"]], null, [[null, "click"]], function (_v, en, $event) {
         var ad = true;
         var _co = _v.component;
 
@@ -8267,19 +8945,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
 
         return ad;
-      }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Cancelar"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](70, 0, null, null, 1, "button", [["class", "oculto-impresion btn btn-success"], ["type", "button"]], null, [[null, "click"]], function (_v, en, $event) {
+      }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Cancelar"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](71, 0, null, null, 1, "button", [["class", "oculto-impresion btn btn-success"], ["type", "button"]], null, [[null, "click"]], function (_v, en, $event) {
         var ad = true;
         var _co = _v.component;
 
         if ("click" === en) {
-          _co.imprimir("ticket");
-
-          var pd_0 = _co.Imprimcion() !== false;
+          var pd_0 = _co.imprimir("ticket") !== false;
           ad = pd_0 && ad;
         }
 
         return ad;
-      }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" imprimir"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](72, 0, null, null, 1, "app-boleta", [], [[8, "hidden", 0]], null, null, _boleta_boleta_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["View_BoletaComponent_0"], _boleta_boleta_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["RenderType_BoletaComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](73, 114688, null, 0, _boleta_boleta_component__WEBPACK_IMPORTED_MODULE_5__["BoletaComponent"], [_Service_hora_actual_service__WEBPACK_IMPORTED_MODULE_6__["HoraActualService"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"], _Service_voucher_service__WEBPACK_IMPORTED_MODULE_7__["VoucherService"]], {
+      }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" imprimir"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](73, 0, null, null, 1, "app-boleta", [], [[8, "hidden", 0]], null, null, _boleta_boleta_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["View_BoletaComponent_0"], _boleta_boleta_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["RenderType_BoletaComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](74, 114688, null, 0, _boleta_boleta_component__WEBPACK_IMPORTED_MODULE_5__["BoletaComponent"], [_Service_hora_actual_service__WEBPACK_IMPORTED_MODULE_6__["HoraActualService"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"], _Service_voucher_service__WEBPACK_IMPORTED_MODULE_7__["VoucherService"]], {
         item: [0, "item"],
         totalPrices: [1, "totalPrices"],
         lahora: [2, "lahora"],
@@ -8292,34 +8968,34 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         var currVal_9 = _co.items;
 
-        _ck(_v, 30, 0, currVal_9);
+        _ck(_v, 31, 0, currVal_9);
 
         var currVal_18 = "loseleccionadodelacompra";
 
-        _ck(_v, 37, 0, currVal_18);
+        _ck(_v, 38, 0, currVal_18);
 
         var currVal_19 = 0;
 
-        _ck(_v, 41, 0, currVal_19);
+        _ck(_v, 42, 0, currVal_19);
 
         var currVal_20 = 0;
 
-        _ck(_v, 42, 0, currVal_20);
+        _ck(_v, 43, 0, currVal_20);
 
         var currVal_21 = _co.selecciondecomra;
 
-        _ck(_v, 44, 0, currVal_21);
+        _ck(_v, 45, 0, currVal_21);
 
         var currVal_29 = "efectivo";
 
-        _ck(_v, 55, 0, currVal_29);
+        _ck(_v, 56, 0, currVal_29);
 
         var currVal_32 = _co.items;
         var currVal_33 = _co.totalPrice;
         var currVal_34 = _co.hora;
         var currVal_35 = _co.fechaE;
 
-        _ck(_v, 73, 0, currVal_32, currVal_33, currVal_34, currVal_35);
+        _ck(_v, 74, 0, currVal_32, currVal_33, currVal_34, currVal_35);
       }, function (_ck, _v) {
         var _co = _v.component;
 
@@ -8341,84 +9017,86 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         var currVal_8 = _co.totalPrice;
 
-        _ck(_v, 17, 0, currVal_8);
+        _ck(_v, 18, 0, currVal_8);
 
         var currVal_10 = 0;
 
-        var currVal_11 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 39).ngClassUntouched;
+        var currVal_11 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 40).ngClassUntouched;
 
-        var currVal_12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 39).ngClassTouched;
+        var currVal_12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 40).ngClassTouched;
 
-        var currVal_13 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 39).ngClassPristine;
+        var currVal_13 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 40).ngClassPristine;
 
-        var currVal_14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 39).ngClassDirty;
+        var currVal_14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 40).ngClassDirty;
 
-        var currVal_15 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 39).ngClassValid;
+        var currVal_15 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 40).ngClassValid;
 
-        var currVal_16 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 39).ngClassInvalid;
+        var currVal_16 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 40).ngClassInvalid;
 
-        var currVal_17 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 39).ngClassPending;
+        var currVal_17 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 40).ngClassPending;
 
-        _ck(_v, 34, 0, currVal_10, currVal_11, currVal_12, currVal_13, currVal_14, currVal_15, currVal_16, currVal_17);
+        _ck(_v, 35, 0, currVal_10, currVal_11, currVal_12, currVal_13, currVal_14, currVal_15, currVal_16, currVal_17);
 
-        var currVal_22 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 57).ngClassUntouched;
+        var currVal_22 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 58).ngClassUntouched;
 
-        var currVal_23 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 57).ngClassTouched;
+        var currVal_23 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 58).ngClassTouched;
 
-        var currVal_24 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 57).ngClassPristine;
+        var currVal_24 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 58).ngClassPristine;
 
-        var currVal_25 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 57).ngClassDirty;
+        var currVal_25 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 58).ngClassDirty;
 
-        var currVal_26 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 57).ngClassValid;
+        var currVal_26 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 58).ngClassValid;
 
-        var currVal_27 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 57).ngClassInvalid;
+        var currVal_27 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 58).ngClassInvalid;
 
-        var currVal_28 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 57).ngClassPending;
+        var currVal_28 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 58).ngClassPending;
 
-        _ck(_v, 51, 0, currVal_22, currVal_23, currVal_24, currVal_25, currVal_26, currVal_27, currVal_28);
+        _ck(_v, 52, 0, currVal_22, currVal_23, currVal_24, currVal_25, currVal_26, currVal_27, currVal_28);
 
         var currVal_30 = _co.devolucion_app();
 
-        _ck(_v, 64, 0, currVal_30);
+        _ck(_v, 65, 0, currVal_30);
 
-        var currVal_31 = false;
+        var currVal_31 = true;
 
-        _ck(_v, 72, 0, currVal_31);
+        _ck(_v, 73, 0, currVal_31);
       });
     }
 
     function View_AppsaleComponent_0(_l) {
-      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](0, [["content2", 2]], null, 0, null, View_AppsaleComponent_1)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 3, "ngx-spinner", [], null, null, null, _node_modules_ngx_spinner_ngx_spinner_ngfactory__WEBPACK_IMPORTED_MODULE_8__["View_NgxSpinnerComponent_0"], _node_modules_ngx_spinner_ngx_spinner_ngfactory__WEBPACK_IMPORTED_MODULE_8__["RenderType_NgxSpinnerComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 770048, null, 0, ngx_spinner__WEBPACK_IMPORTED_MODULE_9__["NgxSpinnerComponent"], [ngx_spinner__WEBPACK_IMPORTED_MODULE_9__["NgxSpinnerService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, 0, 1, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Cargando..."])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 25, "nav", [["class", "navbar navbar-light"]], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](6, 16384, null, 0, _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_10__["NgbNavbar"], [], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 11, "div", [["class", "shopping-cart-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](8, 0, null, null, 4, "button", [["class", "btn btn-secondary"], ["type", "button"]], null, [[null, "click"]], function (_v, en, $event) {
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "ngx-spinner", [["name", "spinnerdashboard"]], null, null, null, _node_modules_ngx_spinner_ngx_spinner_ngfactory__WEBPACK_IMPORTED_MODULE_8__["View_NgxSpinnerComponent_0"], _node_modules_ngx_spinner_ngx_spinner_ngfactory__WEBPACK_IMPORTED_MODULE_8__["RenderType_NgxSpinnerComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 770048, null, 0, ngx_spinner__WEBPACK_IMPORTED_MODULE_9__["NgxSpinnerComponent"], [ngx_spinner__WEBPACK_IMPORTED_MODULE_9__["NgxSpinnerService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], {
+        name: [0, "name"]
+      }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](0, [["content2", 2]], null, 0, null, View_AppsaleComponent_1)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 3, "ngx-spinner", [], null, null, null, _node_modules_ngx_spinner_ngx_spinner_ngfactory__WEBPACK_IMPORTED_MODULE_8__["View_NgxSpinnerComponent_0"], _node_modules_ngx_spinner_ngx_spinner_ngfactory__WEBPACK_IMPORTED_MODULE_8__["RenderType_NgxSpinnerComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](4, 770048, null, 0, ngx_spinner__WEBPACK_IMPORTED_MODULE_9__["NgxSpinnerComponent"], [ngx_spinner__WEBPACK_IMPORTED_MODULE_9__["NgxSpinnerService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, 0, 1, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Cargando..."])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 25, "nav", [["class", "navbar navbar-light"]], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](8, 16384, null, 0, _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_10__["NgbNavbar"], [], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](9, 0, null, null, 11, "div", [["class", "shopping-cart-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](10, 0, null, null, 4, "button", [["class", "btn btn-secondary"], ["type", "button"]], null, [[null, "click"]], function (_v, en, $event) {
         var ad = true;
         var _co = _v.component;
 
         if ("click" === en) {
-          var pd_0 = _co.open2(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 0)) !== false;
+          var pd_0 = _co.open2(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 2)) !== false;
           ad = pd_0 && ad;
         }
 
         return ad;
-      }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](9, 0, null, null, 1, "i", [["class", "fa fa-shopping-cart cart-icon"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" Realizar venta"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](11, 0, null, null, 1, "span", [["class", "badge"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](12, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](13, 0, null, null, 5, "div", [["class", "shopping-cart-total"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](14, 0, null, null, 1, "span", [["class", "lighter-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Total:"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](16, 0, null, null, 2, "span", [["class", "main-color-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](17, 0, null, null, 1, "h2", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](18, null, ["$", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](19, 0, null, null, 11, "div", [["class", "input-group mb-3 flex-nowrap"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](20, 0, null, null, 1, "label", [["class", "input-group-text "], ["for", "busqueda"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](21, 0, null, null, 0, "i", [["class", "fa fa-search-plus"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](22, 0, null, null, 5, "input", [["aria-label", "Search"], ["class", "form-control mr-sm-2 border border-primary"], ["id", "BusCodigo"], ["placeholder", "Buscar"], ["size", "10"], ["type", "search"]], [[2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "ngModelChange"], [null, "input"], [null, "click"], [null, "blur"], [null, "compositionstart"], [null, "compositionend"]], function (_v, en, $event) {
+      }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](11, 0, null, null, 1, "i", [["class", "fa fa-shopping-cart cart-icon"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" Realizar venta"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](13, 0, null, null, 1, "span", [["class", "badge"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](14, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](15, 0, null, null, 5, "div", [["class", "shopping-cart-total"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](16, 0, null, null, 1, "span", [["class", "lighter-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Total:"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](18, 0, null, null, 2, "span", [["class", "main-color-text"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](19, 0, null, null, 1, "h2", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](20, null, ["$", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](21, 0, null, null, 11, "div", [["class", "input-group mb-3 flex-nowrap"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](22, 0, null, null, 1, "label", [["class", "input-group-text "], ["for", "busqueda"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](23, 0, null, null, 0, "i", [["class", "fa fa-search-plus"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](24, 0, null, null, 5, "input", [["aria-label", "Search"], ["class", "form-control mr-sm-2 border border-primary"], ["id", "BusCodigo"], ["placeholder", "Buscar"], ["size", "10"], ["type", "search"]], [[2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "ngModelChange"], [null, "input"], [null, "click"], [null, "blur"], [null, "compositionstart"], [null, "compositionend"]], function (_v, en, $event) {
         var ad = true;
         var _co = _v.component;
 
         if ("input" === en) {
-          var pd_0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 23)._handleInput($event.target.value) !== false;
+          var pd_0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 25)._handleInput($event.target.value) !== false;
           ad = pd_0 && ad;
         }
 
         if ("blur" === en) {
-          var pd_1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 23).onTouched() !== false;
+          var pd_1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 25).onTouched() !== false;
           ad = pd_1 && ad;
         }
 
         if ("compositionstart" === en) {
-          var pd_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 23)._compositionStart() !== false;
+          var pd_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 25)._compositionStart() !== false;
           ad = pd_2 && ad;
         }
 
         if ("compositionend" === en) {
-          var pd_3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 23)._compositionEnd($event.target.value) !== false;
+          var pd_3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 25)._compositionEnd($event.target.value) !== false;
           ad = pd_3 && ad;
         }
 
@@ -8438,13 +9116,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
 
         return ad;
-      }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](23, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], [2, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["COMPOSITION_BUFFER_MODE"]]], null, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](1024, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"], function (p0_0) {
+      }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](25, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], [2, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["COMPOSITION_BUFFER_MODE"]]], null, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](1024, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"], function (p0_0) {
         return [p0_0];
-      }, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](25, 671744, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], [[8, null], [8, null], [8, null], [6, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"]]], {
+      }, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](27, 671744, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], [[8, null], [8, null], [8, null], [6, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"]]], {
         model: [0, "model"]
       }, {
         update: "ngModelChange"
-      }), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](2048, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControl"], null, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](27, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], [[4, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControl"]]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](28, 0, null, null, 2, "button", [["class", "btn btn-warning"], ["type", "button"]], null, [[null, "click"]], function (_v, en, $event) {
+      }), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵprd"](2048, null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControl"], null, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"]]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](29, 16384, null, 0, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], [[4, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControl"]]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](30, 0, null, null, 2, "button", [["class", "btn btn-warning"], ["type", "button"]], null, [[null, "click"]], function (_v, en, $event) {
         var ad = true;
         var _co = _v.component;
 
@@ -8454,43 +9132,46 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
 
         return ad;
-      }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](29, 0, null, null, 0, "i", [["class", "fa fa-trash "]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" Limpiar"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](31, 0, null, null, 0, "div", [["id", "previewImg"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](32, 0, null, null, 0, "img", [], [[8, "src", 4]], null, null, null, null))], function (_ck, _v) {
+      }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](31, 0, null, null, 0, "i", [["class", "fa fa-trash "]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" Limpiar"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](33, 0, null, null, 0, "div", [["id", "previewImg"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](34, 0, null, null, 0, "img", [], [[8, "src", 4]], null, null, null, null))], function (_ck, _v) {
         var _co = _v.component;
+        var currVal_0 = "spinnerdashboard";
 
-        _ck(_v, 2, 0);
+        _ck(_v, 1, 0, currVal_0);
 
-        var currVal_9 = _co.articuloBusqueda;
+        _ck(_v, 4, 0);
 
-        _ck(_v, 25, 0, currVal_9);
+        var currVal_10 = _co.articuloBusqueda;
+
+        _ck(_v, 27, 0, currVal_10);
       }, function (_ck, _v) {
         var _co = _v.component;
-        var currVal_0 = _co.totalQuantity;
+        var currVal_1 = _co.totalQuantity;
 
-        _ck(_v, 12, 0, currVal_0);
+        _ck(_v, 14, 0, currVal_1);
 
-        var currVal_1 = _co.totalPrice;
+        var currVal_2 = _co.totalPrice;
 
-        _ck(_v, 18, 0, currVal_1);
+        _ck(_v, 20, 0, currVal_2);
 
-        var currVal_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 27).ngClassUntouched;
+        var currVal_3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 29).ngClassUntouched;
 
-        var currVal_3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 27).ngClassTouched;
+        var currVal_4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 29).ngClassTouched;
 
-        var currVal_4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 27).ngClassPristine;
+        var currVal_5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 29).ngClassPristine;
 
-        var currVal_5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 27).ngClassDirty;
+        var currVal_6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 29).ngClassDirty;
 
-        var currVal_6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 27).ngClassValid;
+        var currVal_7 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 29).ngClassValid;
 
-        var currVal_7 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 27).ngClassInvalid;
+        var currVal_8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 29).ngClassInvalid;
 
-        var currVal_8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 27).ngClassPending;
+        var currVal_9 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵnov"](_v, 29).ngClassPending;
 
-        _ck(_v, 22, 0, currVal_2, currVal_3, currVal_4, currVal_5, currVal_6, currVal_7, currVal_8);
+        _ck(_v, 24, 0, currVal_3, currVal_4, currVal_5, currVal_6, currVal_7, currVal_8, currVal_9);
 
-        var currVal_10 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵinlineInterpolate"](1, "", _co.imagenjpg, "");
+        var currVal_11 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵinlineInterpolate"](1, "", _co.imagenjpg, "");
 
-        _ck(_v, 32, 0, currVal_10);
+        _ck(_v, 34, 0, currVal_11);
       });
     }
 
@@ -8713,7 +9394,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "ngOnInit",
         value: function ngOnInit() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
-            var _this22 = this;
+            var _this28 = this;
 
             return regeneratorRuntime.wrap(function _callee10$(_context10) {
               while (1) {
@@ -8723,51 +9404,50 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     this.spinner.show();
                     this.datos$ = this.secoind.getInfoReloj();
                     this.fecha = this.datos$.subscribe(function (x) {
-                      _this22.hora = x.diaymes + 'T' + x.hora.toString() + ':' + x.minutos + ':' + x.segundo;
-                      _this22.fechaE = x.diaymes;
-                      _this22.fecha_emision = x.diaymes;
-                      _this22.hora_emision = x.hora.toString() + ':' + x.minutos + ':' + x.segundo;
+                      _this28.hora = x.diaymes + 'T' + x.hora.toString() + ':' + x.minutos + ':' + x.segundo;
+                      _this28.fechaE = x.diaymes;
+                      _this28.fecha_emision = x.diaymes;
+                      _this28.hora_emision = x.hora.toString() + ':' + x.minutos + ':' + x.segundo;
                     });
                     _context10.next = 6;
                     return this.carservice.currentDataCart$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_16__["takeUntil"])(this.unsubscribe$)).subscribe(function (x) {
                       if (x) {
-                        _this22.items = x;
-                        _this22.totalQuantity = x.length;
-                        _this22.totalPrice = x.reduce(function (sum, current) {
+                        _this28.items = x;
+                        _this28.totalQuantity = x.length;
+                        _this28.totalPrice = x.reduce(function (sum, current) {
                           return sum + (current.pvalor || current.product.pvalor * current.quantity);
                         }, 0);
 
-                        _this22.cd.markForCheck();
+                        _this28.cd.markForCheck();
                       }
                     });
 
                   case 6:
                     _context10.next = 8;
                     return this.sermedio.mostrarmediodepago().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_16__["takeUntil"])(this.unsubscribe$)).subscribe(function (res) {
-                      _this22.selecciondecomra = res;
+                      _this28.selecciondecomra = res;
 
-                      _this22.cd.markForCheck();
+                      _this28.cd.markForCheck();
                     });
 
                   case 8:
                     _context10.next = 10;
                     return this.serviCat.categorias().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_16__["takeUntil"])(this.unsubscribe$)).subscribe(function (data) {
-                      _this22.categorias = data;
+                      _this28.categorias = data;
 
-                      _this22.cd.markForCheck();
+                      _this28.cd.markForCheck();
 
-                      _this22.spinner.hide();
+                      _this28.spinner.hide();
                     });
 
                   case 10:
                     this.vouchservicio.ultimovoucher().subscribe(function (data) {
-                      _this22.voucher_add = data;
+                      _this28.voucher_add = data;
 
-                      _this22.cd.markForCheck();
+                      _this28.cd.markForCheck();
                     });
-                    this.Imprimcion();
 
-                  case 12:
+                  case 11:
                   case "end":
                     return _context10.stop();
                 }
@@ -8779,14 +9459,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "open2",
         value: function open2(content2) {
-          var _this23 = this;
+          var _this29 = this;
 
           this.modalService.open(content2, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
-            _this23.closeResult = "Closed with: ".concat(result);
+            _this29.closeResult = "Closed with: ".concat(result);
           }, function (reason) {
-            _this23.closeResult = "Dismissed ".concat(_this23.getDismissReason(reason));
+            _this29.closeResult = "Dismissed ".concat(_this29.getDismissReason(reason));
           });
         } // Modulo para imprimir.
 
@@ -8794,15 +9474,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "imprimir",
         value: function imprimir(register) {
           this.fecha.unsubscribe();
-          var data = '<head>' + '<style type="text/css">' + '@page  { margin: 0 ; }' + ' body.receipt.sheet { width: 570mm; height: 570mm;}  }}' + ' body.receipt.sheet { width: 570mm; height: 570mm;} ' + '  @media print { img {size: auto} .popup { display: block !important; } body.receipt { width:570mm }  .doNotPrint{display:none !important; } .noprint {' + '    display:none !important;' + '    height:570mm !important;}} ' + 'header,footer,aside{display: none }' + '\n' + 'h2{   font-size: 28px;\n position: center;\n }' + 'td,\n' + 'th,\n' + 'tr,\n' + 'table {\n' + 'margin: auto;' + '  border-collapse: collapse;\n' + '}\n' + '\n' + 'td.producto,\n' + 'th.producto {\n' + '  font-size: 25px;\n' + '  font-family: \\\'Times New Roman\\\', serif;\n' + '  width: 100px;\n' + '  max-width: 80px;\n' + '}\n' + '.centrarCaja {\n' + 'margin: 0;' + '  position:center;\n' + '}\n' + 'td.cantidad,\n' + 'th.cantidad {\n' + '  width: 80px;\n' + 'font-size: 30px;\n' + 'font-family:Times New Roman, serif;\n' + '  max-width: 80px;\n' + '  word-break: break-all;\n' + 'margin: auto;\n' + '}\n' + '\n' + 'td.precio,\n' + 'th.precio {\n' + 'text-align: center;\n' + 'font-size: 30px;\n' + '  width: 110px;\n' + '  max-width: 110mm;\n' + '  word-break: 100mm;\n' + '}\n' + '\n' + '.centrado {\n' + '  text-align: center;\n' + '  align-content: center;\n' + '}\n' + '\n' + '\n' + '.ticket2 {\n' + '  width: 570px;\n' + '  max-width: 600px;\n' + '}' + '\n' + 'img {\n' + 'width: 356px;\n' + 'display:block' + 'margin:auto' + '  height: 250px;' + '}' + '</style>' + '<title></title></head>' + '<body >' + document.getElementById(register).innerHTML + '</body>'; //const mywindow = window.open( '', '_blank' );
-          //mywindow.opener;
-          //mywindow.document.open();
-          //mywindow.document.write( data );
-          //mywindow.document.close();
-          // mywindow.onload = function() {
-          //       mywindow.focus();
-          //   mywindow.print();
-          //};
+          var data = '<head>' + '<style type="text/css">' + '@page  { margin: 0 ; }' + ' body.receipt.sheet { width: 570mm; height: 570mm;}  }}' + ' body.receipt.sheet { width: 570mm; height: 570mm;} ' + '  @media print { img {size: auto} .popup { display: block !important; } body.receipt { width:570mm }  .doNotPrint{display:none !important; } .noprint {' + '    display:none !important;' + '    height:570mm !important;}} ' + 'header,footer,aside{display: none }' + '\n' + 'h2{   font-size: 28px;\n position: center;\n }' + 'td,\n' + 'th,\n' + 'tr,\n' + 'table {\n' + 'margin: auto;' + '  border-collapse: collapse;\n' + '}\n' + '\n' + 'td.producto,\n' + 'th.producto {\n' + '  font-size: 25px;\n' + '  font-family: \\\'Times New Roman\\\', serif;\n' + '  width: 100px;\n' + '  max-width: 80px;\n' + '}\n' + '.centrarCaja {\n' + 'margin: 0;' + '  position:center;\n' + '}\n' + 'td.cantidad,\n' + 'th.cantidad {\n' + '  width: 80px;\n' + 'font-size: 30px;\n' + 'font-family:Times New Roman, serif;\n' + '  max-width: 80px;\n' + '  word-break: break-all;\n' + 'margin: auto;\n' + '}\n' + '\n' + 'td.precio,\n' + 'th.precio {\n' + 'text-align: center;\n' + 'font-size: 30px;\n' + '  width: 110px;\n' + '  max-width: 110mm;\n' + '  word-break: 100mm;\n' + '}\n' + '\n' + '.centrado {\n' + '  text-align: center;\n' + '  align-content: center;\n' + '}\n' + '\n' + '\n' + '.ticket2 {\n' + '  width: 570px;\n' + '  max-width: 600px;\n' + '}' + '\n' + 'img {\n' + 'width: 356px;\n' + 'display:block' + 'margin:auto' + '  height: 250px;' + '}' + '</style>' + '<title></title></head>' + '<body >' + document.getElementById(register).innerHTML + '</body>';
+          var mywindow = window.open('', '_blank');
+          mywindow.opener;
+          mywindow.document.open();
+          mywindow.document.write(data);
+          mywindow.document.close();
+
+          mywindow.onload = function () {
+            mywindow.focus();
+            mywindow.print();
+          };
 
           html2canvas__WEBPACK_IMPORTED_MODULE_17___default()(document.getElementById(register)).then(function (canvas) {
             var anchotag = document.createElement("a");
@@ -8811,10 +9493,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
           this.se_Imprio = true;
         } // Probrando si se imprimio el documento
-
-      }, {
-        key: "Imprimcion",
-        value: function Imprimcion() {} // LAS FORMAS DE CERRAR EL MODAL
+        // LAS FORMAS DE CERRAR EL MODAL
 
       }, {
         key: "getDismissReason",
@@ -8859,12 +9538,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               this.detallevoucher.voucher.vfecha = this.fecha_emision;
               this.detallevoucher.voucher.vdia = this.dia;
 
-              var _iterator10 = _createForOfIteratorHelper(this.items),
-                  _step10;
+              var _iterator13 = _createForOfIteratorHelper(this.items),
+                  _step13;
 
               try {
-                for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
-                  var i = _step10.value;
+                for (_iterator13.s(); !(_step13 = _iterator13.n()).done;) {
+                  var i = _step13.value;
 
                   if (i.sinventario == true && i.sinventario != false) {
                     this.detallevoucher.product_id = i.id;
@@ -8919,9 +9598,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   }
                 }
               } catch (err) {
-                _iterator10.e(err);
+                _iterator13.e(err);
               } finally {
-                _iterator10.f();
+                _iterator13.f();
               }
 
               this.cancelar2.payment_id.pagomonto = this.app_venta.value.efectivo;
@@ -9008,8 +9687,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "Descuento",
-        value: function Descuento(prod) {
+        value: function Descuento(prod, i) {
+          var descuento = document.getElementById('descuento' + i);
           console.log("cambio", this.totalPrice);
+          console.log('productos', prod);
+          var porcentaje = parseInt(descuento.value) / 100;
+          console.log("procentaje", porcentaje);
+          var nuevoVal = porcentaje * this.totalPrice;
+          console.log("nuevo valor", nuevoVal);
+          var nuevoPres = this.totalPrice - nuevoVal;
+          console.log("descuento", nuevoPres);
+          this.totalPrice = parseInt(nuevoPres.toFixed());
         }
       }]);
 
@@ -9354,15 +10042,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "listaproductossinid",
         value: function listaproductossinid() {
-          var _this24 = this;
+          var _this30 = this;
 
           return this.productos_car._buscandolasfechasin_productid().then(function (res) {
-            _this24.Productos_sin_id = res;
-            console.log(_this24.Productos_sin_id);
+            _this30.Productos_sin_id = res;
+            console.log(_this30.Productos_sin_id);
           })["catch"](function (err) {
             console.log('Se, encontro un error', err);
           })["finally"](function () {
-            _this24.isloading = true;
+            _this30.isloading = true;
           });
           console.log('date expiration', this.Productos_sin_id);
         }
@@ -12238,7 +12926,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "ngOnInit",
         value: function ngOnInit() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
-            var _this25 = this;
+            var _this31 = this;
 
             return regeneratorRuntime.wrap(function _callee11$(_context11) {
               while (1) {
@@ -12260,9 +12948,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   case 8:
                     this.datos$ = _context11.sent;
                     this.fecha = this.datos$.subscribe(function (x) {
-                      _this25.hora = x.diaymes + 'T' + x.hora.toString() + ':' + x.minutos + ':' + x.segundo;
+                      _this31.hora = x.diaymes + 'T' + x.hora.toString() + ':' + x.minutos + ':' + x.segundo;
 
-                      _this25.ngxspinner.hide();
+                      _this31.ngxspinner.hide();
                     });
 
                   case 10:
@@ -12276,7 +12964,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "agregaboleta",
         value: function agregaboleta(da) {
-          var _this26 = this;
+          var _this32 = this;
 
           var reducer = function reducer(accumulator, currentValue) {
             return accumulator + currentValue;
@@ -12289,16 +12977,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var valortotal = [];
           this.datos.push(da);
           this.cortar = this.datos.filter(function (item, index) {
-            return _this26.datos.indexOf(item) === index;
+            return _this32.datos.indexOf(item) === index;
           });
           console.log('ingresados', this.cortar);
 
-          var _iterator11 = _createForOfIteratorHelper(this.datos),
-              _step11;
+          var _iterator14 = _createForOfIteratorHelper(this.datos),
+              _step14;
 
           try {
-            for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
-              var o = _step11.value;
+            for (_iterator14.s(); !(_step14 = _iterator14.n()).done;) {
+              var o = _step14.value;
               dproducto.push(o.product);
               valornet.push(o.product.pvalor);
               valorNeto.push(o.product.pvneto);
@@ -12310,9 +12998,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               this.totalTodo = valortotal.reduce(reducer);
             }
           } catch (err) {
-            _iterator11.e(err);
+            _iterator14.e(err);
           } finally {
-            _iterator11.f();
+            _iterator14.f();
           }
 
           console.log('rut', this.cortar.map(function (res) {
@@ -12381,19 +13069,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function detalleCmpr() {
           var detalle = [];
 
-          var _iterator12 = _createForOfIteratorHelper(this.cortar),
-              _step12;
+          var _iterator15 = _createForOfIteratorHelper(this.cortar),
+              _step15;
 
           try {
-            for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
-              var o = _step12.value;
+            for (_iterator15.s(); !(_step15 = _iterator15.n()).done;) {
+              var o = _step15.value;
               console.log('detalle del o', o);
               detalle.push("\n         <Detalle>\n            <TpoDoc>39</TpoDoc>\n             <NroDoc>10</NroDoc>\n            <TasaImp>19%</TasaImp>\n            <FchDoc>".concat(o.fecha_emision, "</FchDoc>\n            <RutEmi>").concat(this.rutEmisor, " </RutEmi>\n             <TipoProd>").concat(o.product.category.cnombre, "</TipoProd>\n             <RznSoc>").concat(this.rasonSoci, "</RznSoc>\n             <MntNeto>1422876</MntNeto>\n             <MntIVA>").concat(o.product.piva, "</MntIVA>\n             <MntTotal>").concat(o.voucher.vtotal, "</MntTotal>\n             ").concat(o.product.id, "\n        </Detalle>"));
             }
           } catch (err) {
-            _iterator12.e(err);
+            _iterator15.e(err);
           } finally {
-            _iterator12.f();
+            _iterator15.f();
           }
 
           console.log('Detalle comprado', detalle[0]);
@@ -12403,15 +13091,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "open",
         value: function open(content) {
-          var _this27 = this;
+          var _this33 = this;
 
           this.fecha.unsubscribe();
           this.modalService.open(content, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
-            _this27.closeResult = "Closed with: ".concat(result);
+            _this33.closeResult = "Closed with: ".concat(result);
           }, function (reason) {
-            _this27.closeResult = "Dismissed ".concat(_this27.getDismissReason(reason));
+            _this33.closeResult = "Dismissed ".concat(_this33.getDismissReason(reason));
           });
         }
       }, {
@@ -12620,10 +13308,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ListavoucherComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this28 = this;
+          var _this34 = this;
 
           this.vouch.mostrarvoucher().subscribe(function (data) {
-            _this28.registrovoucher = data;
+            _this34.registrovoucher = data;
           });
         }
       }]);
@@ -12904,38 +13592,38 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(MedioComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this29 = this;
+          var _this35 = this;
 
           this.medio.mostrarmediodepago().subscribe(function (data) {
-            _this29.tomarmedio = data;
+            _this35.tomarmedio = data;
           });
         }
       }, {
         key: "guardarmedio",
         value: function guardarmedio() {
-          var _this30 = this;
+          var _this36 = this;
 
           if (this.medioForm.valid) {
             var data = [];
 
-            var _iterator13 = _createForOfIteratorHelper(this.tomarmedio),
-                _step13;
+            var _iterator16 = _createForOfIteratorHelper(this.tomarmedio),
+                _step16;
 
             try {
-              for (_iterator13.s(); !(_step13 = _iterator13.n()).done;) {
-                var o = _step13.value;
+              for (_iterator16.s(); !(_step16 = _iterator16.n()).done;) {
+                var o = _step16.value;
                 data.push(o.mpnombre);
               }
             } catch (err) {
-              _iterator13.e(err);
+              _iterator16.e(err);
             } finally {
-              _iterator13.f();
+              _iterator16.f();
             }
 
             if (data.includes(this.medioForm.value.mpnombre.toLowerCase()) != true) {
               this.medioForm.value.mpnombre = this.medioForm.value.mpnombre.toLowerCase();
               return this.medio.guardarmododepago(this.medioForm.value).subscribe(function (res) {
-                _this30.mediopago = res;
+                _this36.mediopago = res;
               });
             } else {
               alert("El medio de pago ya existe" + this.medioForm.value.mpnombre.toLowerCase());
@@ -13715,7 +14403,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var TicketComponent = /*#__PURE__*/function () {
       function TicketComponent(form, vouchservicio, vent, cd, prodi, secoind) {
-        var _this31 = this;
+        var _this37 = this;
 
         _classCallCheck(this, TicketComponent);
 
@@ -13734,30 +14422,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.pasarelformulario = new _Modulos_DetalleVoucher__WEBPACK_IMPORTED_MODULE_2__["DetalleVoucher"]();
         this.productos_actualizado = new _Modulos_Productos__WEBPACK_IMPORTED_MODULE_8__["Productos"]();
         this.vouchservicio.ultimovoucher().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.unsubscribe$)).subscribe(function (res) {
-          _this31.voucherult = res;
+          _this37.voucherult = res;
 
-          _this31.cd.markForCheck();
+          _this37.cd.markForCheck();
         });
       }
 
       _createClass(TicketComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this32 = this;
+          var _this38 = this;
 
           this.datos$ = this.secoind.getInfoReloj();
           this.datos$.subscribe(function (x) {
             document.getElementById("#horas").innerHTML = String(x.hora);
             document.getElementById("#minutos").innerHTML = x.minutos;
-            _this32.dia = x.diadesemana;
-            _this32.fecha = x.diaymes;
+            _this38.dia = x.diadesemana;
+            _this38.fecha = x.diaymes;
             document.getElementById("#ampm").innerHTML = x.ampm;
             document.getElementById("#segundos").innerHTML = x.segundo;
           });
           this.vouchservicio.mostrarvoucher().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.unsubscribe$)).subscribe(function (busqueda) {
-            _this32.busquedavoucher.push(busqueda);
+            _this38.busquedavoucher.push(busqueda);
 
-            _this32.cd.markForCheck();
+            _this38.cd.markForCheck();
           });
         }
       }, {
@@ -13779,7 +14467,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "guardareldetallevoucher",
         value: function guardareldetallevoucher(detallevaucher, busquedavoucher) {
-          var _this33 = this;
+          var _this39 = this;
 
           console.log("ticketform", this.ticketForm.value);
 
@@ -13794,15 +14482,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.ingresodeunvaucher.voucher.vhora; //Aqui se coloca la hora.
 
             this.vouchservicio.ultimovoucher().subscribe(function (res) {
-              _this33.voucherult = res;
+              _this39.voucherult = res;
             });
 
-            var _iterator14 = _createForOfIteratorHelper(this.agregadoalalista),
-                _step14;
+            var _iterator17 = _createForOfIteratorHelper(this.agregadoalalista),
+                _step17;
 
             try {
-              for (_iterator14.s(); !(_step14 = _iterator14.n()).done;) {
-                var i = _step14.value;
+              for (_iterator17.s(); !(_step17 = _iterator17.n()).done;) {
+                var i = _step17.value;
                 this.ingresodeunvaucher.product_id = i.id;
                 this.ingresodeunvaucher.dvcantidad = i.cantidad;
                 this.productos_actualizado = i;
@@ -13816,9 +14504,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               } //   setTimeout(() =>{this.guardarventa()}, 1000)
 
             } catch (err) {
-              _iterator14.e(err);
+              _iterator17.e(err);
             } finally {
-              _iterator14.f();
+              _iterator17.f();
             }
 
             this.cancelar.payment_id.pagomonto = this.total();
@@ -13837,18 +14525,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function total() {
           var total = 0;
 
-          var _iterator15 = _createForOfIteratorHelper(this.agregadoalalista),
-              _step15;
+          var _iterator18 = _createForOfIteratorHelper(this.agregadoalalista),
+              _step18;
 
           try {
-            for (_iterator15.s(); !(_step15 = _iterator15.n()).done;) {
-              var a = _step15.value;
+            for (_iterator18.s(); !(_step18 = _iterator18.n()).done;) {
+              var a = _step18.value;
               total += a.pvalor * a.cantidad;
             }
           } catch (err) {
-            _iterator15.e(err);
+            _iterator18.e(err);
           } finally {
-            _iterator15.f();
+            _iterator18.f();
           }
 
           return total;
@@ -14620,18 +15308,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(VoucherCreateComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this34 = this;
+          var _this40 = this;
 
           this.sermedio.mostrarmediodepago().subscribe(function (res) {
-            _this34.selecciondecomra = res;
+            _this40.selecciondecomra = res;
           });
           this.serviproducto.products().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["takeUntil"])(this.unsubscribe$)).subscribe(function (data) {
-            _this34.productos = data;
+            _this40.productos = data;
           });
           this.vouchservicio.mostrarvoucher().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["takeUntil"])(this.unsubscribe$)).subscribe(function (busqueda) {
-            _this34.busquedavoucher.push(busqueda);
+            _this40.busquedavoucher.push(busqueda);
 
-            console.log(_this34.busquedavoucher);
+            console.log(_this40.busquedavoucher);
           });
 
           if (!localStorage.getItem('ACCESS_TOKEN')) {
@@ -14670,7 +15358,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "agregarproductos",
         value: function agregarproductos(product, content3) {
-          var _this35 = this;
+          var _this41 = this;
 
           // impedir numero repetidos
 
@@ -14712,35 +15400,35 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       this.agregadoalalista.push(pr)
                   }
               }*/
-          var _iterator16 = _createForOfIteratorHelper(product),
-              _step16;
+          var _iterator19 = _createForOfIteratorHelper(product),
+              _step19;
 
           try {
             var _loop = function _loop() {
-              var l = _step16.value;
+              var l = _step19.value;
 
-              var ObjecIndex = _this35.agregadoalalista.findIndex(function (obj) {
+              var ObjecIndex = _this41.agregadoalalista.findIndex(function (obj) {
                 return obj.id == l.id;
               });
 
               if (ObjecIndex != -1) {
                 alert("este producto ya esta agregado");
               } else {
-                _this35.agregar_producto_lista.push(l);
+                _this41.agregar_producto_lista.push(l);
 
-                _this35.modalService.open(content3, {
+                _this41.modalService.open(content3, {
                   ariaLabelledBy: 'modal-basic-title'
                 }).result.then(function (result) {
-                  _this35.closeResult = "Closed with: ".concat(result);
+                  _this41.closeResult = "Closed with: ".concat(result);
                 }, function (reason) {
-                  _this35.closeResult = "Dismissed ".concat(_this35.getDismissReason(reason));
+                  _this41.closeResult = "Dismissed ".concat(_this41.getDismissReason(reason));
                 });
 
-                _this35.filtrovoucher = null;
+                _this41.filtrovoucher = null;
               }
             };
 
-            for (_iterator16.s(); !(_step16 = _iterator16.n()).done;) {
+            for (_iterator19.s(); !(_step19 = _iterator19.n()).done;) {
               _loop();
             } // tslint:disable-next-line:no-unused-expression
 
@@ -14752,9 +15440,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             */
 
           } catch (err) {
-            _iterator16.e(err);
+            _iterator19.e(err);
           } finally {
-            _iterator16.f();
+            _iterator19.f();
           }
         }
       }, {
@@ -14775,18 +15463,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function calculartotal(d) {
           var total = 0;
 
-          var _iterator17 = _createForOfIteratorHelper(d),
-              _step17;
+          var _iterator20 = _createForOfIteratorHelper(d),
+              _step20;
 
           try {
-            for (_iterator17.s(); !(_step17 = _iterator17.n()).done;) {
-              var l = _step17.value;
+            for (_iterator20.s(); !(_step20 = _iterator20.n()).done;) {
+              var l = _step20.value;
               total += l.pvalor;
             }
           } catch (err) {
-            _iterator17.e(err);
+            _iterator20.e(err);
           } finally {
-            _iterator17.f();
+            _iterator20.f();
           }
 
           console.log('subida2', total);
@@ -14804,18 +15492,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function total() {
           var total = 0;
 
-          var _iterator18 = _createForOfIteratorHelper(this.agregadoalalista),
-              _step18;
+          var _iterator21 = _createForOfIteratorHelper(this.agregadoalalista),
+              _step21;
 
           try {
-            for (_iterator18.s(); !(_step18 = _iterator18.n()).done;) {
-              var a = _step18.value;
+            for (_iterator21.s(); !(_step21 = _iterator21.n()).done;) {
+              var a = _step21.value;
               total += a.pvalor * a.cantidad;
             }
           } catch (err) {
-            _iterator18.e(err);
+            _iterator21.e(err);
           } finally {
-            _iterator18.f();
+            _iterator21.f();
           }
 
           return total;
@@ -14824,7 +15512,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "agregarcantidad",
         value: function agregarcantidad(cantidad_requerido) {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
-            var pruebaaaa, _i5, _pruebaaaa, i, nuwvo;
+            var pruebaaaa, _i11, _pruebaaaa, i, nuwvo;
 
             return regeneratorRuntime.wrap(function _callee12$(_context12) {
               while (1) {
@@ -14840,8 +15528,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       pruebaaaa = [];
                       pruebaaaa.push(this.agregar_producto_lista.pop());
 
-                      for (_i5 = 0, _pruebaaaa = pruebaaaa; _i5 < _pruebaaaa.length; _i5++) {
-                        i = _pruebaaaa[_i5];
+                      for (_i11 = 0, _pruebaaaa = pruebaaaa; _i11 < _pruebaaaa.length; _i11++) {
+                        i = _pruebaaaa[_i11];
                         console.log("lo almacenado", i);
                         i.cantidad = cantidad_requerido;
                         this.agregadoalalista.push(i);
@@ -16677,7 +17365,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "ngOnInit",
         value: function ngOnInit() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
-            var _this36 = this;
+            var _this42 = this;
 
             return regeneratorRuntime.wrap(function _callee13$(_context13) {
               while (1) {
@@ -16686,13 +17374,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     this.ngxspinner.show();
                     _context13.next = 3;
                     return this.servi.categorias().subscribe(function (data) {
-                      _this36.categorias = data;
+                      _this42.categorias = data;
                     });
 
                   case 3:
                     _context13.next = 5;
                     return this.marc.buscarmarca2().subscribe(function (data) {
-                      _this36.marcas = data;
+                      _this42.marcas = data;
                     });
 
                   case 5:
@@ -16702,9 +17390,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   case 7:
                     _context13.next = 9;
                     return this.servi.__tomaproveedores().subscribe(function (res) {
-                      _this36.proveedor = res;
+                      _this42.proveedor = res;
 
-                      _this36.ngxspinner.hide();
+                      _this42.ngxspinner.hide();
                     });
 
                   case 9:
@@ -16819,7 +17507,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "readUrl",
         value: function readUrl(event, i) {
-          var _this37 = this;
+          var _this43 = this;
 
           if (event.target.files.length === 0) {
             return;
@@ -16837,7 +17525,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           reader.readAsDataURL(event.target.files[0]);
 
           reader.onload = function (_event) {
-            _this37.url[i].img = reader.result.toString();
+            _this43.url[i].img = reader.result.toString();
           };
         }
       }, {
@@ -17394,14 +18082,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "open2",
         value: function open2(content2, catego) {
-          var _this38 = this;
+          var _this44 = this;
 
           this.modalService.open(content2, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
-            _this38.closeResult = "Closed with: ".concat(result);
+            _this44.closeResult = "Closed with: ".concat(result);
           }, function (reason) {
-            _this38.closeResult = "Dismissed ".concat(_this38.getDismissReason(reason));
+            _this44.closeResult = "Dismissed ".concat(_this44.getDismissReason(reason));
           });
           localStorage.setItem('idc', catego.id.toString());
           this.editar();
@@ -17409,33 +18097,33 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "editarcategoria",
         value: function editarcategoria(categoria) {
-          var _this39 = this;
+          var _this45 = this;
 
           this.servi.actualizarcategoria(categoria).subscribe(function (data) {
-            _this39.categoriaID = data;
+            _this45.categoriaID = data;
           });
         }
       }, {
         key: "editar",
         value: function editar() {
-          var _this40 = this;
+          var _this46 = this;
 
           var id = localStorage.getItem('idc');
           this.servi.mostrarporID(+id).subscribe(function (data) {
-            _this40.categoriaID = data;
+            _this46.categoriaID = data;
           });
         }
       }, {
         key: "open",
         value: function open(content) {
-          var _this41 = this;
+          var _this47 = this;
 
           this.modalService.open(content, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
-            _this41.closeResult = "Closed with: ".concat(result);
+            _this47.closeResult = "Closed with: ".concat(result);
           }, function (reason) {
-            _this41.closeResult = "Dismissed ".concat(_this41.getDismissReason(reason));
+            _this47.closeResult = "Dismissed ".concat(_this47.getDismissReason(reason));
           });
         }
       }, {
@@ -18039,14 +18727,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "open2",
         value: function open2(content2, impuestos) {
-          var _this42 = this;
+          var _this48 = this;
 
           this.modalService.open(content2, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
-            _this42.closeResult = "Closed with: ".concat(result);
+            _this48.closeResult = "Closed with: ".concat(result);
           }, function (reason) {
-            _this42.closeResult = "Dismissed ".concat(_this42.getDismissReason(reason));
+            _this48.closeResult = "Dismissed ".concat(_this48.getDismissReason(reason));
           });
           localStorage.setItem('idi', impuestos.id.toString());
           this.editar();
@@ -18054,33 +18742,33 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "editar",
         value: function editar() {
-          var _this43 = this;
+          var _this49 = this;
 
           var id = localStorage.getItem('idi');
           this.servi.impuestosporID(+id).subscribe(function (data) {
-            _this43.impuestoID = data;
+            _this49.impuestoID = data;
           });
         }
       }, {
         key: "editarimpuesto",
         value: function editarimpuesto(impuesto) {
-          var _this44 = this;
+          var _this50 = this;
 
           this.servi.actualizarimpuesto(impuesto).subscribe(function (data) {
-            _this44.impuestoID = data;
+            _this50.impuestoID = data;
           });
         }
       }, {
         key: "open",
         value: function open(content) {
-          var _this45 = this;
+          var _this51 = this;
 
           this.modalService.open(content, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
-            _this45.closeResult = "Closed with: ".concat(result);
+            _this51.closeResult = "Closed with: ".concat(result);
           }, function (reason) {
-            _this45.closeResult = "Dismissed ".concat(_this45.getDismissReason(reason));
+            _this51.closeResult = "Dismissed ".concat(_this51.getDismissReason(reason));
           });
         }
       }, {
@@ -20544,12 +21232,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "newinventario",
         value: function newinventario() {
-          var _this46 = this;
+          var _this52 = this;
 
           return this.prod.getnewinventario().then(function (res) {
-            _this46.tomanuevoinventario = res;
+            _this52.tomanuevoinventario = res;
           })["finally"](function () {
-            _this46.isloading = true;
+            _this52.isloading = true;
           })["catch"](function (err) {
             console.log('Ocurrio un error', err);
           });
@@ -20662,7 +21350,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "editarstock",
         value: function editarstock(stck, stnuevo, stlost) {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee20() {
-            var _this47 = this;
+            var _this53 = this;
 
             var edicion_producto;
             return regeneratorRuntime.wrap(function _callee20$(_context20) {
@@ -20701,7 +21389,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                     _context20.next = 7;
                     return this.prod.actualizarstock(stck).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeUntil"])(this.unsubscribe$)).subscribe(function (data) {
-                      return _this47.cd.markForCheck();
+                      return _this53.cd.markForCheck();
                     });
 
                   case 7:
@@ -20719,7 +21407,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "editar",
         value: function editar() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee21() {
-            var _this48 = this;
+            var _this54 = this;
 
             var id;
             return regeneratorRuntime.wrap(function _callee21$(_context21) {
@@ -20730,9 +21418,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                     _context21.next = 3;
                     return this.prod.buscarproductoporID(+id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeUntil"])(this.unsubscribe$)).subscribe(function (data) {
-                      _this48.productoporid = data;
+                      _this54.productoporid = data;
 
-                      _this48.cd.markForCheck();
+                      _this54.cd.markForCheck();
                     });
 
                   case 3:
@@ -20746,15 +21434,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "open2",
         value: function open2(content2, catego) {
-          var _this49 = this;
+          var _this55 = this;
 
           console.log('lo que entra', catego.id);
           this.modalService.open(content2, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
-            _this49.closeResult = "Closed with: ".concat(result);
+            _this55.closeResult = "Closed with: ".concat(result);
           }, function (reason) {
-            _this49.closeResult = "Dismissed ".concat(_this49.getDismissReason(reason));
+            _this55.closeResult = "Dismissed ".concat(_this55.getDismissReason(reason));
           });
           localStorage.setItem('idc', catego.id.toString());
           localStorage.setItem('idc2', catego.id.toString());
@@ -20777,21 +21465,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "open4",
         value: function open4(content) {
-          var _this50 = this;
+          var _this56 = this;
 
           this.modalService.open(content, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
-            _this50.closeResult = "Closed with: ".concat(result);
+            _this56.closeResult = "Closed with: ".concat(result);
           }, function (reason) {
-            _this50.closeResult = "Dismissed ".concat(_this50.getDismissReason(reason));
+            _this56.closeResult = "Dismissed ".concat(_this56.getDismissReason(reason));
           });
         }
       }, {
         key: "open5",
         value: function open5(content, inv2) {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee22() {
-            var _this51 = this;
+            var _this57 = this;
 
             return regeneratorRuntime.wrap(function _callee22$(_context22) {
               while (1) {
@@ -20805,9 +21493,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     this.modalService.open(content, {
                       ariaLabelledBy: 'modal-basic-title'
                     }).result.then(function (result) {
-                      _this51.closeResult = "Closed with: ".concat(result);
+                      _this57.closeResult = "Closed with: ".concat(result);
                     }, function (reason) {
-                      _this51.closeResult = "Dismissed ".concat(_this51.getDismissReason(reason));
+                      _this57.closeResult = "Dismissed ".concat(_this57.getDismissReason(reason));
                     });
 
                   case 4:
@@ -20822,7 +21510,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "editar2",
         value: function editar2() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee23() {
-            var _this52 = this;
+            var _this58 = this;
 
             var id;
             return regeneratorRuntime.wrap(function _callee23$(_context23) {
@@ -20832,7 +21520,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     id = localStorage.getItem('idc2');
                     _context23.next = 3;
                     return this.prod.buscarelstockporID(+id).subscribe(function (data) {
-                      _this52.stock_actualizado = data;
+                      _this58.stock_actualizado = data;
                     });
 
                   case 3:
@@ -20846,30 +21534,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "editar5",
         value: function editar5() {
-          var _this53 = this;
+          var _this59 = this;
 
           var id = localStorage.getItem('inv2'); // tslint:disable-next-line:max-line-length
 
           this.prod.segundoinventarioID(+id).then(function (res) {
-            _this53.inventario2 = res;
-            console.log('respuesta', _this53.inventario2.product.pdescripcion);
+            _this59.inventario2 = res;
+            console.log('respuesta', _this59.inventario2.product.pdescripcion);
           })["catch"](function (err) {
             console.log('se obtuvo un error', err);
           })["finally"](function () {
-            _this53.isloading = true;
+            _this59.isloading = true;
           });
         }
       }, {
         key: "open3",
         value: function open3(content3, catego) {
-          var _this54 = this;
+          var _this60 = this;
 
           this.modalService.open(content3, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
-            _this54.closeResult = "Closed with: ".concat(result);
+            _this60.closeResult = "Closed with: ".concat(result);
           }, function (reason) {
-            _this54.closeResult = "Dismissed ".concat(_this54.getDismissReason(reason));
+            _this60.closeResult = "Dismissed ".concat(_this60.getDismissReason(reason));
           });
         }
       }, {
@@ -21422,7 +22110,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "lasmarca",
         value: function lasmarca() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee24() {
-            var _this55 = this;
+            var _this61 = this;
 
             var informacion;
             return regeneratorRuntime.wrap(function _callee24$(_context24) {
@@ -21432,7 +22120,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     informacion = function informacion() {
                       return new Promise(function (resolve, reject) {
                         setTimeout(function () {
-                          resolve(_this55.Smarca.buscarmarca2().toPromise());
+                          resolve(_this61.Smarca.buscarmarca2().toPromise());
                         }, 1500);
                       });
                     };
@@ -21475,14 +22163,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "open2",
         value: function open2(content2, marca) {
-          var _this56 = this;
+          var _this62 = this;
 
           this.modalService.open(content2, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
-            _this56.closeResult = "Closed with: ".concat(result);
+            _this62.closeResult = "Closed with: ".concat(result);
           }, function (reason) {
-            _this56.closeResult = "Dismissed ".concat(_this56.getDismissReason(reason));
+            _this62.closeResult = "Dismissed ".concat(_this62.getDismissReason(reason));
           });
           localStorage.setItem('idmm', marca.id.toString());
           this.editar();
@@ -21490,14 +22178,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "open",
         value: function open(content) {
-          var _this57 = this;
+          var _this63 = this;
 
           this.modalService.open(content, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
-            _this57.closeResult = "Closed with: ".concat(result);
+            _this63.closeResult = "Closed with: ".concat(result);
           }, function (reason) {
-            _this57.closeResult = "Dismissed ".concat(_this57.getDismissReason(reason));
+            _this63.closeResult = "Dismissed ".concat(_this63.getDismissReason(reason));
           });
         }
       }, {
@@ -21508,11 +22196,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "editar",
         value: function editar() {
-          var _this58 = this;
+          var _this64 = this;
 
           var id = localStorage.getItem('idmm');
           this.Smarca.mostrarporID(+id).subscribe(function (data) {
-            _this58.marcaId = data;
+            _this64.marcaId = data;
           });
         }
       }, {
@@ -21952,64 +22640,64 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "guardarseleccion",
         value: function guardarseleccion(registros, event) {
-          var _this59 = this;
+          var _this65 = this;
 
           var element = {
             munidades: 1
           };
 
-          var _iterator19 = _createForOfIteratorHelper(registros),
-              _step19;
+          var _iterator22 = _createForOfIteratorHelper(registros),
+              _step22;
 
           try {
             var _loop2 = function _loop2() {
-              var l = _step19.value;
+              var l = _step22.value;
 
               if (l.munidades >= element.munidades) {
-                if (_this59.promociones) {
-                  var ObjetIndex = _this59.promociones.findIndex(function (obj) {
+                if (_this65.promociones) {
+                  var ObjetIndex = _this65.promociones.findIndex(function (obj) {
                     return obj.id == l.id;
                   });
 
                   if (ObjetIndex != -1) {
-                    _this59.promociones[ObjetIndex].munidades += 1;
+                    _this65.promociones[ObjetIndex].munidades += 1;
                   } else {
-                    _this59.promociones.push(l);
+                    _this65.promociones.push(l);
                   }
                 } else {
-                  _this59.promociones = [];
+                  _this65.promociones = [];
 
-                  _this59.promociones.push(l);
+                  _this65.promociones.push(l);
                 }
               } else {
-                if (_this59.promociones) {
+                if (_this65.promociones) {
                   Object.assign(l, element);
 
-                  var _ObjetIndex = _this59.promociones.findIndex(function (obj) {
+                  var _ObjetIndex = _this65.promociones.findIndex(function (obj) {
                     return obj.id == l.id;
                   });
 
                   if (_ObjetIndex != -1) {
-                    _this59.promociones[_ObjetIndex].munidades += 1;
+                    _this65.promociones[_ObjetIndex].munidades += 1;
                   } else {
-                    _this59.promociones.push(l);
+                    _this65.promociones.push(l);
                   }
                 } else {
                   Object.assign(l, element);
-                  _this59.promociones = [];
+                  _this65.promociones = [];
 
-                  _this59.promociones.push(l);
+                  _this65.promociones.push(l);
                 }
               }
             };
 
-            for (_iterator19.s(); !(_step19 = _iterator19.n()).done;) {
+            for (_iterator22.s(); !(_step22 = _iterator22.n()).done;) {
               _loop2();
             }
           } catch (err) {
-            _iterator19.e(err);
+            _iterator22.e(err);
           } finally {
-            _iterator19.f();
+            _iterator22.f();
           }
         }
       }, {
@@ -22017,12 +22705,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function guardarpromo() {
           var datos = [];
 
-          var _iterator20 = _createForOfIteratorHelper(this.promociones),
-              _step20;
+          var _iterator23 = _createForOfIteratorHelper(this.promociones),
+              _step23;
 
           try {
-            for (_iterator20.s(); !(_step20 = _iterator20.n()).done;) {
-              var o = _step20.value;
+            for (_iterator23.s(); !(_step23 = _iterator23.n()).done;) {
+              var o = _step23.value;
               this.promo.munidades = o.munidades;
               this.promo.mproducto = o.pdescripcion;
               this.promo.productos = o;
@@ -22030,9 +22718,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               console.log("poroduct", o);
             }
           } catch (err) {
-            _iterator20.e(err);
+            _iterator23.e(err);
           } finally {
-            _iterator20.f();
+            _iterator23.f();
           }
         }
       }, {
@@ -22324,7 +23012,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "ngOnInit",
         value: function ngOnInit() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee26() {
-            var _this60 = this;
+            var _this66 = this;
 
             return regeneratorRuntime.wrap(function _callee26$(_context26) {
               while (1) {
@@ -22333,13 +23021,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     this.ngxspinner.show();
                     _context26.next = 3;
                     return this.estanPorvencer()["finally"](function () {
-                      _this60.isloading = true;
+                      _this66.isloading = true;
                     });
 
                   case 3:
                     _context26.next = 5;
                     return this.productosquevenceran()["finally"](function () {
-                      _this60.isloading = true;
+                      _this66.isloading = true;
                     });
 
                   case 5:
@@ -22357,7 +23045,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "estanPorvencer",
         value: function estanPorvencer() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee27() {
-            var _this61 = this;
+            var _this67 = this;
 
             return regeneratorRuntime.wrap(function _callee27$(_context27) {
               while (1) {
@@ -22365,34 +23053,34 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   case 0:
                     _context27.next = 2;
                     return this.serproduct.GetPorvencer().then(function (res) {
-                      _this61.fechas_avencer = res;
-                      console.log('obtengo', _this61.fechas_avencer); // tslint:disable-next-line:radix max-line-length
+                      _this67.fechas_avencer = res;
+                      console.log('obtengo', _this67.fechas_avencer); // tslint:disable-next-line:radix max-line-length
 
-                      console.log('fechas', _this61.fechas_avencer.forEach(function (respuesta) {
-                        _this61.obtener_mes.push(parseInt(respuesta.date_expiration.fecha_vencimiento.slice(5, -3))); // tslint:disable-next-line:max-line-length radix
-
-
-                        _this61.obtener_dias.push(parseInt(respuesta.date_expiration.fecha_vencimiento.slice(8))); // tslint:disable-next-line:max-line-length radix        
+                      console.log('fechas', _this67.fechas_avencer.forEach(function (respuesta) {
+                        _this67.obtener_mes.push(parseInt(respuesta.date_expiration.fecha_vencimiento.slice(5, -3))); // tslint:disable-next-line:max-line-length radix
 
 
-                        _this61.obtener_anio.push(parseInt(respuesta.date_expiration.fecha_vencimiento.slice(0, 4)));
+                        _this67.obtener_dias.push(parseInt(respuesta.date_expiration.fecha_vencimiento.slice(8))); // tslint:disable-next-line:max-line-length radix        
 
-                        _this61.obtener_nombre_prd.push(respuesta.pdescripcion);
 
-                        _this61.obtener_marca.push(respuesta.brand.bnombre);
+                        _this67.obtener_anio.push(parseInt(respuesta.date_expiration.fecha_vencimiento.slice(0, 4)));
 
-                        _this61.obtener_categoria.push(respuesta.category.cnombre);
+                        _this67.obtener_nombre_prd.push(respuesta.pdescripcion);
 
-                        _this61.obtener_fechacompleta.push(respuesta.date_expiration.fecha_vencimiento);
+                        _this67.obtener_marca.push(respuesta.brand.bnombre);
+
+                        _this67.obtener_categoria.push(respuesta.category.cnombre);
+
+                        _this67.obtener_fechacompleta.push(respuesta.date_expiration.fecha_vencimiento);
                       })); // tslint:disable-next-line:radix
 
-                      for (var i in _this61.obtener_dias) {
-                        if (_this61.obtener_dias[i] < _this61.dia_actual) {
+                      for (var i in _this67.obtener_dias) {
+                        if (_this67.obtener_dias[i] < _this67.dia_actual) {
                           console.log('Esto vencio');
                         } else {
                           var fecha2 = new Date();
                           var minisegundos = 24 * 60 * 60 * 1000;
-                          var fecha1 = new Date(_this61.obtener_fechacompleta[i]);
+                          var fecha1 = new Date(_this67.obtener_fechacompleta[i]);
                           var milesegundostranscurridos = Math.abs(fecha2.getTime() - fecha1.getTime());
                           var diastranscurridos = Math.round(milesegundostranscurridos / minisegundos);
                           var porcentajedias = diastranscurridos * 100;
@@ -22400,14 +23088,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                           var objectosjsonobtenidos = raiscuadrada.toFixed(0); // tslint:disable-next-line:max-line-length radix
 
                           var jsonObtenido = {
-                            marca: _this61.obtener_marca[i],
-                            categoria: _this61.obtener_categoria[i],
-                            nombrePRD: _this61.obtener_nombre_prd[i],
+                            marca: _this67.obtener_marca[i],
+                            categoria: _this67.obtener_categoria[i],
+                            nombrePRD: _this67.obtener_nombre_prd[i],
                             vence_en: diastranscurridos,
                             queda_un: objectosjsonobtenidos
                           };
 
-                          _this61.resultado.push(jsonObtenido);
+                          _this67.resultado.push(jsonObtenido);
                         }
                       }
                     })["catch"](function (error) {
@@ -22441,17 +23129,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "productosquevenceran",
         value: function productosquevenceran() {
-          var _this62 = this;
+          var _this68 = this;
 
           return this.serproduct.Getprodvencmes().then(function (res) {
             console.log('respues', res);
 
-            var _iterator21 = _createForOfIteratorHelper(res),
-                _step21;
+            var _iterator24 = _createForOfIteratorHelper(res),
+                _step24;
 
             try {
-              for (_iterator21.s(); !(_step21 = _iterator21.n()).done;) {
-                var i = _step21.value;
+              for (_iterator24.s(); !(_step24 = _iterator24.n()).done;) {
+                var i = _step24.value;
                 var fecha2 = new Date();
                 var minisegundos = 24 * 60 * 60 * 1000;
                 var fecha1 = new Date(i.fecha_vencimiento || i.fecha_vencimiento2);
@@ -22460,21 +23148,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 var porcentajedias = diastranscurridos * 100;
                 var raiscuadrada = Math.sqrt(porcentajedias);
                 console.log('segundas fechas', diastranscurridos);
-                _this62.diastrascurridos2 = diastranscurridos;
+                _this68.diastrascurridos2 = diastranscurridos;
 
-                _this62.segundas_fechas.push({
+                _this68.segundas_fechas.push({
                   marca: i.marca || i.marca2,
                   categoria: i.categoria || i.categoria2,
                   dedscripcion: i.descripcion || i.descripcion2,
                   vencido_en: parseInt(raiscuadrada.toFixed(0))
                 });
 
-                console.log('datos finales', _this62.segundas_fechas);
+                console.log('datos finales', _this68.segundas_fechas);
               }
             } catch (err) {
-              _iterator21.e(err);
+              _iterator24.e(err);
             } finally {
-              _iterator21.f();
+              _iterator24.f();
             }
           });
         }
@@ -23753,7 +24441,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "readUrl",
         value: function readUrl(event, i) {
-          var _this63 = this;
+          var _this69 = this;
 
           if (event.target.files.length === 0) return; //Image upload validation
 
@@ -23768,7 +24456,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           reader.readAsDataURL(event.target.files[0]);
 
           reader.onload = function (_event) {
-            _this63.url[i].img = reader.result.toString();
+            _this69.url[i].img = reader.result.toString();
           };
         }
       }, {
@@ -23777,12 +24465,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "guardarprovider",
         value: function guardarprovider() {
-          var _this64 = this;
+          var _this70 = this;
 
           this.provideer.value.factura_provider = btoa(this.provideer.value.factura_provider);
           console.log("guardando", this.provideer.value);
           this.serviProvider.guardarProvider(this.provideer.value).subscribe(function (res) {
-            _this64.provideer_post = res;
+            _this70.provideer_post = res;
           });
           this.url.forEach(function (res) {
             return res.img = "assets/images/dashboard/stats.png";
@@ -24914,29 +25602,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           if (args[0] != "0" && args[0] != '' && typeof args[0] != "undefined") {
-            var _iterator22 = _createForOfIteratorHelper(value),
-                _step22;
+            var _iterator25 = _createForOfIteratorHelper(value),
+                _step25;
 
             try {
-              for (_iterator22.s(); !(_step22 = _iterator22.n()).done;) {
-                var ca = _step22.value;
+              for (_iterator25.s(); !(_step25 = _iterator25.n()).done;) {
+                var ca = _step25.value;
 
                 if (ca.category.cnombre.indexOf(args) > -1) {
                   marca2.push(ca);
                 }
               }
             } catch (err) {
-              _iterator22.e(err);
+              _iterator25.e(err);
             } finally {
-              _iterator22.f();
+              _iterator25.f();
             }
 
             var data = Object.values(marca2.reduce(function (prev, next) {
               return Object.assign(prev, _defineProperty({}, next.brand, next));
             }, {}));
 
-            for (var _i6 = 0, _data = data; _i6 < _data.length; _i6++) {
-              var de = _data[_i6];
+            for (var _i12 = 0, _data = data; _i12 < _data.length; _i12++) {
+              var de = _data[_i12];
               marca.push(de);
             }
           }
@@ -24982,12 +25670,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var productos = []; // tslint:disable-next-line:triple-equals
 
           if (args[0] != "0" && args[0] != '' && typeof args[0] != "undefined" || value != null) {
-            var _iterator23 = _createForOfIteratorHelper(value),
-                _step23;
+            var _iterator26 = _createForOfIteratorHelper(value),
+                _step26;
 
             try {
-              for (_iterator23.s(); !(_step23 = _iterator23.n()).done;) {
-                var ca = _step23.value;
+              for (_iterator26.s(); !(_step26 = _iterator26.n()).done;) {
+                var ca = _step26.value;
                 console.log(ca.category.cnombre.indexOf(args)); // tslint:disable-next-line:triple-equals
 
                 if (ca.category.cnombre.indexOf(args) == -1) {
@@ -24996,9 +25684,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
               }
             } catch (err) {
-              _iterator23.e(err);
+              _iterator26.e(err);
             } finally {
-              _iterator23.f();
+              _iterator26.f();
             }
 
             return productos;
@@ -25195,12 +25883,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var valormenor = [];
 
           if (value) {
-            var _iterator24 = _createForOfIteratorHelper(value),
-                _step24;
+            var _iterator27 = _createForOfIteratorHelper(value),
+                _step27;
 
             try {
-              for (_iterator24.s(); !(_step24 = _iterator24.n()).done;) {
-                var d = _step24.value;
+              for (_iterator27.s(); !(_step27 = _iterator27.n()).done;) {
+                var d = _step27.value;
                 console.log("primer inventairo", d);
 
                 if (d.stock.pstock < 10 && d.stock.pstock != 0 && d.stock.psotck != null) {
@@ -25208,9 +25896,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
               }
             } catch (err) {
-              _iterator24.e(err);
+              _iterator27.e(err);
             } finally {
-              _iterator24.f();
+              _iterator27.f();
             }
 
             return valormenor;
@@ -25255,12 +25943,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var valor = [];
 
           if (value) {
-            var _iterator25 = _createForOfIteratorHelper(value),
-                _step25;
+            var _iterator28 = _createForOfIteratorHelper(value),
+                _step28;
 
             try {
-              for (_iterator25.s(); !(_step25 = _iterator25.n()).done;) {
-                var l = _step25.value;
+              for (_iterator28.s(); !(_step28 = _iterator28.n()).done;) {
+                var l = _step28.value;
                 // tslint:disable-next-line:triple-equals
                 console.log('valor', l);
 
@@ -25269,9 +25957,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
               }
             } catch (err) {
-              _iterator25.e(err);
+              _iterator28.e(err);
             } finally {
-              _iterator25.f();
+              _iterator28.f();
             }
 
             return valor;
@@ -25318,12 +26006,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var valor = [];
 
           if (value) {
-            var _iterator26 = _createForOfIteratorHelper(value),
-                _step26;
+            var _iterator29 = _createForOfIteratorHelper(value),
+                _step29;
 
             try {
-              for (_iterator26.s(); !(_step26 = _iterator26.n()).done;) {
-                var l = _step26.value;
+              for (_iterator29.s(); !(_step29 = _iterator29.n()).done;) {
+                var l = _step29.value;
 
                 // tslint:disable-next-line:triple-equals
                 if (l.stock.pstock > 10 || l.stock.pstock != 0) {
@@ -25331,9 +26019,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
               }
             } catch (err) {
-              _iterator26.e(err);
+              _iterator29.e(err);
             } finally {
-              _iterator26.f();
+              _iterator29.f();
             }
 
             return valor;
@@ -25380,21 +26068,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var peligro = [];
 
           if (value) {
-            var _iterator27 = _createForOfIteratorHelper(value),
-                _step27;
+            var _iterator30 = _createForOfIteratorHelper(value),
+                _step30;
 
             try {
-              for (_iterator27.s(); !(_step27 = _iterator27.n()).done;) {
-                var p = _step27.value;
+              for (_iterator30.s(); !(_step30 = _iterator30.n()).done;) {
+                var p = _step30.value;
 
                 if (p.stock.pstock === 0) {
                   peligro.push(p);
                 }
               }
             } catch (err) {
-              _iterator27.e(err);
+              _iterator30.e(err);
             } finally {
-              _iterator27.f();
+              _iterator30.f();
             }
 
             return peligro;
@@ -25441,12 +26129,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var valor = [];
 
           if (value) {
-            var _iterator28 = _createForOfIteratorHelper(value),
-                _step28;
+            var _iterator31 = _createForOfIteratorHelper(value),
+                _step31;
 
             try {
-              for (_iterator28.s(); !(_step28 = _iterator28.n()).done;) {
-                var l = _step28.value;
+              for (_iterator31.s(); !(_step31 = _iterator31.n()).done;) {
+                var l = _step31.value;
                 // tslint:disable-next-line:triple-equals
                 console.log('valor', l);
 
@@ -25455,9 +26143,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
               }
             } catch (err) {
-              _iterator28.e(err);
+              _iterator31.e(err);
             } finally {
-              _iterator28.f();
+              _iterator31.f();
             }
 
             return valor;
@@ -25504,21 +26192,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var peligro = [];
 
           if (value) {
-            var _iterator29 = _createForOfIteratorHelper(value),
-                _step29;
+            var _iterator32 = _createForOfIteratorHelper(value),
+                _step32;
 
             try {
-              for (_iterator29.s(); !(_step29 = _iterator29.n()).done;) {
-                var p = _step29.value;
+              for (_iterator32.s(); !(_step32 = _iterator32.n()).done;) {
+                var p = _step32.value;
 
                 if (p.product.stock.pstock === 0) {
                   peligro.push(p);
                 }
               }
             } catch (err) {
-              _iterator29.e(err);
+              _iterator32.e(err);
             } finally {
-              _iterator29.f();
+              _iterator32.f();
             }
 
             return peligro;
@@ -25565,21 +26253,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var resultado = [];
 
           if (arg) {
-            var _iterator30 = _createForOfIteratorHelper(value),
-                _step30;
+            var _iterator33 = _createForOfIteratorHelper(value),
+                _step33;
 
             try {
-              for (_iterator30.s(); !(_step30 = _iterator30.n()).done;) {
-                var v = _step30.value;
+              for (_iterator33.s(); !(_step33 = _iterator33.n()).done;) {
+                var v = _step33.value;
 
                 if (v.pcodigo.toString().indexOf(arg) > -1) {
                   resultado.push(v);
                 }
               }
             } catch (err) {
-              _iterator30.e(err);
+              _iterator33.e(err);
             } finally {
-              _iterator30.f();
+              _iterator33.f();
             }
           }
 
@@ -25883,7 +26571,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var BreadcrumbComponent = /*#__PURE__*/function () {
       function BreadcrumbComponent(activatedRoute, router) {
-        var _this65 = this;
+        var _this71 = this;
 
         _classCallCheck(this, BreadcrumbComponent);
 
@@ -25892,7 +26580,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.router.events.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["filter"])(function (event) {
           return event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_0__["NavigationEnd"];
         })).pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function () {
-          return _this65.activatedRoute;
+          return _this71.activatedRoute;
         })).pipe(Object(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (route) {
           while (route.firstChild) {
             route = route.firstChild;
@@ -25902,13 +26590,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         })).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["filter"])(function (route) {
           return route.outlet === _angular_router__WEBPACK_IMPORTED_MODULE_0__["PRIMARY_OUTLET"];
         })).subscribe(function (route) {
-          var snapshot = _this65.router.routerState.snapshot;
+          var snapshot = _this71.router.routerState.snapshot;
           var title = route.snapshot.data['title'];
           var parent = route.parent.snapshot.data['breadcrumb'];
           var child = route.snapshot.data['breadcrumb'];
-          _this65.breadcrumbs = {};
-          _this65.title = title;
-          _this65.breadcrumbs = {
+          _this71.breadcrumbs = {};
+          _this71.title = title;
+          _this71.breadcrumbs = {
             "parentBreadcrumb": parent,
             "childBreadcrumb": child
           };
@@ -26665,7 +27353,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.Cmemrmas = Cmemrmas; // tslint:disable-next-line:variable-name
 
         this.right_sidebar = false;
-        this.open = false;
+        this.open = true;
         this.openNav = false;
         this.mermasnogestionadas = [];
         this.proIn = 0;
@@ -26704,30 +27392,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "mermas",
         value: function mermas() {
-          var _this66 = this;
+          var _this72 = this;
 
           return this.Cmemrmas.mermasdeldia().toPromise().then(function (res) {
             console.log('Mermas', res);
-            _this66.Actualmermas = res; // tslint:disable-next-line:no-shadowed-variable
+            _this72.Actualmermas = res; // tslint:disable-next-line:no-shadowed-variable
 
-            _this66.Actualmermas.map(function (res) {
+            _this72.Actualmermas.map(function (res) {
               if (res.solution_boolean === false) {
-                _this66.mermasnogestionadas.push(res);
+                _this72.mermasnogestionadas.push(res);
               }
             });
 
-            _this66.cantidad = _this66.mermasnogestionadas.length;
+            _this72.cantidad = _this72.mermasnogestionadas.length;
           });
         }
       }, {
         key: "inventario_gestionable",
         value: function inventario_gestionable() {
-          var _this67 = this;
+          var _this73 = this;
 
           return this.Cmemrmas.inventario_gestion().then(function (res) {
             // @ts-ignore
-            _this67.proIn = res.length;
-            console.log('cantidad', _this67.proIn);
+            _this73.proIn = res.length;
+            console.log('cantidad', _this73.proIn);
           });
         }
       }, {
@@ -27900,7 +28588,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var SidebarComponent = /*#__PURE__*/function () {
       function SidebarComponent(router, navServices, log) {
-        var _this68 = this;
+        var _this74 = this;
 
         _classCallCheck(this, SidebarComponent);
 
@@ -27909,23 +28597,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.log = log;
         this.rol = "";
         this.navServices.items.subscribe(function (menuItems) {
-          _this68.menuItems = menuItems;
+          _this74.menuItems = menuItems;
 
-          _this68.menuItems.forEach(function (res) {
+          _this74.menuItems.forEach(function (res) {
             res.rol = localStorage.getItem("ACCESS_ROLE");
           });
 
-          _this68.router.events.subscribe(function (event) {
+          _this74.router.events.subscribe(function (event) {
             if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_0__["NavigationEnd"]) {
               menuItems.filter(function (items) {
                 if (!items.children) return false;
                 items.children.filter(function (subItems) {
-                  _this68.setNavActive(subItems);
+                  _this74.setNavActive(subItems);
 
-                  if (subItems.path === event.url) _this68.setNavActive(subItems);
+                  if (subItems.path === event.url) _this74.setNavActive(subItems);
                   if (!subItems.children) return false;
                   subItems.children.filter(function (subSubItems) {
-                    if (subSubItems.path === event.url) _this68.setNavActive(subSubItems);
+                    if (subSubItems.path === event.url) _this74.setNavActive(subSubItems);
                   });
                 });
               });
@@ -27957,11 +28645,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "toggletNavActive",
         value: function toggletNavActive(item) {
-          var _this69 = this;
+          var _this75 = this;
 
           if (!item.active) {
             this.menuItems.forEach(function (a) {
-              if (_this69.menuItems.includes(item)) a.active = false;
+              if (_this75.menuItems.includes(item)) a.active = false;
               if (!a.children) return false;
               a.children.forEach(function (b) {
                 if (a.children.includes(item)) {
@@ -27977,7 +28665,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "readUrl",
         value: function readUrl(event) {
-          var _this70 = this;
+          var _this76 = this;
 
           if (event.target.files.length === 0) return; //Image upload validation
 
@@ -27992,7 +28680,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           reader.readAsDataURL(event.target.files[0]);
 
           reader.onload = function (_event) {
-            _this70.url = reader.result;
+            _this76.url = reader.result;
           };
         }
       }, {

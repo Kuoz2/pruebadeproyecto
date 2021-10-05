@@ -5,7 +5,7 @@ import {Voucher} from '../components/Modulos/Voucher';
 import {Observable} from 'rxjs';
 import {V_Producto} from '../components/Modulos/GANANCIAS';
 
-import {Reporte_grafico, Venta_mes_atras, Venta_por_mes, } from '../components/Modulos/reporte_grafico';
+import {Reporete_perdidas_grafico, Reporte_grafico, totalperdiaspriminv, totalventasrapidas, Venta_mes_atras, Venta_por_mes, } from '../components/Modulos/reporte_grafico';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,12 @@ export class VoucherService {
   UTLtotalganancias = 'https://marketmini.herokuapp.com/voucher_details/las_ganancias_totales_meses'; // Muestra el total de las ganancias.
   URLTOTALGANANCIAS_FV = 'https://marketmini.herokuapp.com/vouchers/mostrar_ganancias_por_mes'; // MUESTRA LAS GANANCIAS POR CADA MES Y MUESTRA EL RESULTADO.
   URLGuardarconfig = 'https://marketmini.herokuapp.com/config_vouchers'  ;
-  
+  inventarioperdida2 = 'https://marketmini.herokuapp.com/date_expirations/buscar_las_fechas_perdidas';
+  todaslasperdidas = 'https://marketmini.herokuapp.com/date_expirations/todaslasperdidasdos';
+  pruebatodaslasperdidasdinv1 = 'https://marketmini.herokuapp.com/stocks/todaslasperdiadasinvprim';
+  pruebaquicksales = 'https://marketmini.herokuapp.com/quick_sales/ventarapida_fechas';
+  totalventasrapidas= 'https://marketmini.herokuapp.com/quick_sales/totalventasrapidas';
+  perdidaxmes = 'https://marketmini.herokuapp.com/stocks/buscar_las_fechas_perdidas';
   //de forma local se aran el ingreso.
   Pruebaurldetallevoucher = 'http://localhost:3000/voucher_details';
   PruebaUrlvoucher = 'http://localhost:3000/vouchers';
@@ -89,6 +94,11 @@ export class VoucherService {
     mostrar_ganancias_fv() {
         return this.http.get<any[]>(this.URLTOTALGANANCIAS_FV);
     }
+      //Muestra las perdidas por mes.
+      mostrar_perdidasXmes(){
+        return this.http.get<any[]>(this.perdidaxmes)
+      }
+  
 
     guardarcambios(d) {
       this.http.post(this.URLGuardarconfig, d);
@@ -97,5 +107,29 @@ export class VoucherService {
     // Guardar el xml para enviarlo por email.
     PostANDSendXML(xml){
       this.http.post(this.PruebaInformeXML, xml).subscribe(res => {console.log("envio",res)})
+    }
+     //Inventario 2 de perdidas.
+     perdidas_inventario2(){
+      return this.http.get<any[]>(this.inventarioperdida2)
+    }
+
+    //Muestra todas las perdidas
+    todaslasperdiadsinventario2(){
+        return this.http.get<Reporete_perdidas_grafico>(this.todaslasperdidas)
+    }
+
+    //Todas las perdidas del inventario primario.
+    todaslasperdidasdinventario1(){
+      return this.http.get<totalperdiaspriminv>(this.pruebatodaslasperdidasdinv1)
+    }
+
+    //Todas las ventas rapidas
+    ventasrapidas(){
+        return this.http.get<any[]>(this.pruebaquicksales)
+    }
+
+    //Total de las ventas rapidas
+    totalventasR(){
+      return this.http.get<totalventasrapidas>(this.totalventasrapidas)
     }
 }

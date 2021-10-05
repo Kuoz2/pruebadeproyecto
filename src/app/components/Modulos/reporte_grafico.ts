@@ -4,6 +4,19 @@ import {Productos} from "./Productos";
 export interface Reporte_grafico {
     ganancias_totales: number ;
 }
+//Datos toda las perdias del segundo inventario para el grafico
+export interface  Reporete_perdidas_grafico {
+    total_perdidas: number;
+}
+
+//todas las perdidas para el grafico de perdidas del ivnentario 1
+export interface totalperdiaspriminv{
+    totalperdiasinv: number;
+}
+
+export interface totalventasrapidas{
+    totalventasR: number;
+}
 
 //Se recoje las ventas del mes.
 export interface Venta_por_mes {

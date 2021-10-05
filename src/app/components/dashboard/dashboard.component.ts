@@ -10,7 +10,7 @@ import {Productos} from '../Modulos/Productos';
 import {Sort_Prod, V_Producto} from '../Modulos/GANANCIAS';
 import * as Chart from 'chart.js';
 import {ChartOptions, ChartType} from 'chart.js';
-import {Reporte_grafico, Venta_mes_atras, Venta_por_mes, } from '../Modulos/reporte_grafico';
+import {Reporete_perdidas_grafico, Reporte_grafico, totalperdiaspriminv, totalventasrapidas, Venta_mes_atras, Venta_por_mes, } from '../Modulos/reporte_grafico';
 import {Label} from 'ng2-charts';
 import {Mermas} from '../Modulos/mermas';
 import {NgxSpinnerService} from 'ngx-spinner';
@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     }
     async ngOnInit() {
-        this.spinner.show("spinnerlogin", {
+        this.spinner.show("spinnerdashboard", {
             type: "pacman",
             size: "large",
             color: "white"
@@ -50,6 +50,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
         await this.gananciasobtenidas();
         await this.gananciaspormes();
         await this.obtenermermas();
+        await this.PerdidasXmes();
+        await this.perdidas_segundoinventario();
+        await this.perdidasobtenidas();
+        await this.totalperdiadasinventarioprimario();
+        await this.ventasrapidasgrafico();
+        await this.totaldeventasrapidas();
+        this.spinner.hide("spinnerdashboard");
         // Detectar el navagador
         this.detectando();
 
@@ -111,8 +118,24 @@ export class DashboardComponent implements OnInit, OnDestroy {
     // Reduciendo los valors obtenidos de los productos y el stock de perdidas de este mes
     public reduciendo_est = [];
 
+     //fechas de las ventas ralidas de forma rapidas
+     public venta_rapidasgrafico: Chart;
+     public ventas_rapidasrealizada: any = 0;
+     public total_ventasrapidas: totalventasrapidas;
+
+       //Total numerico de todas las perdidas
+    public total_perdidasobtenidas: Reporete_perdidas_grafico;
+
+    //total de perdidas del inventario 1 
+
+    public totalperdidasinventario1: totalperdiaspriminv;
+
+    // Obtiene las pérdidas del segundo inventario.
+    public todas_perdidasinventario2: any = 0;
+    public todas_perdidainventario2: Chart;
     // Obttiene los regresado por el servidor sobre las todas las ganancias.
     public todas_las_ventas: Reporte_grafico;
+    
 
     public chaarti: Chart;
 // Para cargar el grafico del porcentaje de ventas realizadas
@@ -121,10 +144,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
     // GRAFICO PONDERADO PARA LAS PERDIDAS DE LOS MESES.
 
     // Ganancias por mes.
-    ganancias_mensuales: Venta_por_mes;
+   public  ganancias_mensuales: Venta_por_mes;
 
     // OBTIENE EL PROSENTAJE DE GANANCIAS OBTENIDAS ENTRE 2 MESES.
     public porcentaje_ventas: any = 0;
+    //Obtiene el porcentaje de perdidas
+
+    public porcentaje_perdidas: any = 0;
+
+    public porcentaje_perdida: Chart;
 
     // FECHAS OBTENIDAS ESTE MES.
     fechas_registradas = [];
@@ -429,6 +457,17 @@ export class DashboardComponent implements OnInit, OnDestroy {
         // tslint:disable-next-line:max-line-length
         this.vouch.muestra_todas_ganancias().pipe(takeUntil(this.unsubscribe$)).subscribe(res => {this.todas_las_ventas = res; this.cd.markForCheck(); } );
     }
+    perdidasobtenidas(){
+        this.vouch.todaslasperdiadsinventario2().pipe(takeUntil(this.unsubscribe$)).subscribe(res =>  {this.total_perdidasobtenidas =  res; this.cd.markForCheck(); })
+    }   
+
+    totalperdiadasinventarioprimario(){
+    this.vouch.todaslasperdidasdinventario1().pipe(takeUntil(this.unsubscribe$)).subscribe(res => {this.totalperdidasinventario1 = res; this.cd.markForCheck();})
+    }
+
+    totaldeventasrapidas(){
+    this.vouch.totalventasR().pipe(takeUntil(this.unsubscribe$)).subscribe(res => {this.total_ventasrapidas = res; this.cd.markForCheck()})
+    }
 
     gananciaspormes() {
 
@@ -492,6 +531,192 @@ export class DashboardComponent implements OnInit, OnDestroy {
         });
 
     }
+
+     //Perdidas por mes.
+     PerdidasXmes(){
+        this.vouch.mostrar_perdidasXmes().pipe(takeUntil(this.unsubscribe$)).subscribe(res => {
+            const dg2 = [];
+            const vg2 = [];
+            if (res) {
+                for (const d of res) {
+                    for (const h of Object.keys( d )) {
+                        console.log("detalles de h ", h)
+                        dg2.push( [h] );
+                    }
+                    for (const l of Object.values( d )) {
+                        vg2.push( parseInt( l.toString() ) );
+
+
+                    }
+                }
+            } else {
+                vg2.push(0);
+            }
+            const reducer = (accumulator, currentValue) =>   (currentValue % 100) / accumulator ;
+            const raiz = vg2.slice(-2).reduce(reducer);
+            // console.log("raiz", Math.sqrt(raiz).toFixed(2 ))
+            this.porcentaje_perdidas = Math.sqrt(raiz).toFixed(2);
+            // Iniciando un grafico lineal para porcentajes
+            this.porcentaje_perdida = new Chart('ctx2', {
+                type: 'line',
+
+                data: {
+                    labels: dg2,
+                    datasets: [{
+                        steppedLine: true,
+                        borderColor: 'blue',
+                        data: vg2,
+                        backgroundColor: '#84B7FA'
+                    }
+                    ]
+                },
+                options: {
+
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        yAxes: [{
+                            display: false,
+                            stacked: true
+                        }],
+                        xAxes: [{
+                            display: true,
+                            stacked: false
+                        }],
+
+                    }
+                }
+            });
+            this.cd.markForCheck();
+        })
+    }
+
+    
+
+    perdidas_segundoinventario(){
+        this.vouch.perdidas_inventario2().pipe(takeUntil(this.unsubscribe$)).subscribe(res => {
+            const dg2 = [];
+            const vg2 = [];
+            if (res) {
+                for (const d of res) {
+                    for (const h of Object.keys( d )) {
+                        console.log("detalles de h ", h)
+                        dg2.push( [h] );
+                    }
+                    for (const l of Object.values( d )) {
+                        vg2.push( parseInt( l.toString() ) );
+
+
+                    }
+                }
+            } else {
+                vg2.push(0);
+            }
+            const reducer = (accumulator, currentValue) =>   (currentValue % 100) / accumulator ;
+            const raiz = vg2.slice(-2).reduce(reducer);
+            // console.log("raiz", Math.sqrt(raiz).toFixed(2 ))
+            this.todas_perdidasinventario2 = Math.sqrt(raiz).toFixed(2);
+            // Iniciando un grafico lineal para porcentajes
+            this.todas_perdidainventario2 = new Chart('ctx3', {
+                type: 'line',
+
+                data: {
+                    labels: dg2,
+                    datasets: [{
+                        steppedLine: true,
+                        borderColor: 'blue',
+                        data: vg2,
+                        backgroundColor: '#84B7FA'
+                    }
+                    ]
+                },
+                options: {
+
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        yAxes: [{
+                            display: false,
+                            stacked: true
+                        }],
+                        xAxes: [{
+                            display: true,
+                            stacked: false
+                        }],
+
+                    }
+                }
+            });
+           
+            this.cd.markForCheck();
+
+        })
+
+    }
+
+    ventasrapidasgrafico(){
+        this.vouch.ventasrapidas().pipe(takeUntil(this.unsubscribe$)).subscribe(res => {
+            const dg2 = [];
+            const vg2 = [];
+            if (res) {
+                for (const d of res) {
+                    for (const h of Object.keys( d )) {
+                        console.log("detalles de h ", h)
+                        dg2.push( [h] );
+                    }
+                    for (const l of Object.values( d )) {
+                        vg2.push( parseInt( l.toString() ) );
+
+
+                    }
+                }
+            } else {
+                vg2.push(0);
+            }
+
+            const reducer = (accumulator, currentValue) =>   (currentValue % 100) / accumulator ;
+            const raiz = vg2.slice(-2).reduce(reducer);
+            // console.log("raiz", Math.sqrt(raiz).toFixed(2 ))
+            this.ventas_rapidasrealizada = Math.sqrt(raiz).toFixed(2);
+            // Iniciando un grafico lineal para porcentajes
+            this.venta_rapidasgrafico = new Chart('ctx4', {
+                type: 'line',
+
+                data: {
+                    labels: dg2,
+                    datasets: [{
+                        steppedLine: true,
+                        borderColor: 'blue',
+                        data: vg2,
+                        backgroundColor: '#84B7FA'
+                    }
+                    ]
+                },
+                options: {
+
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        yAxes: [{
+                            display: false,
+                            stacked: true
+                        }],
+                        xAxes: [{
+                            display: true,
+                            stacked: false
+                        }],
+
+                    }
+                }
+            });
+           
+            this.cd.markForCheck();
+
+        })
+    }
     detectando() {
         const toMatch = [
             /Android/i,
@@ -510,7 +735,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     obtmermas(): Observable<Mermas[]> {
-        this.spinner.hide("spinnerdashboard");
 
         return this.mermas = this.produc.mermasdeldia().pipe(takeUntil(this.unsubscribe$));
 
