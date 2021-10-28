@@ -1,27 +1,27 @@
 .btn-agregar-producto {
     background-color: #37ACDC;
     border-color: #37ACDC;
-    width: 200px;
+    width: 100%;
     height: 200px;
 }
 .btn-agregar-producto:focus{
     background-color: #54C7F5;
     border-color: #54C7F5;
-    width: 200px;
+    width: 100%;
     height: 200px;
 }
 
 .btn-ver-inventario {
     background-color: #80CA55;
     border-color: #80CA55;
-    width: 200px;
+    width: 100%;
     height: 200px;
 }
 
 .btn.btn-ver-inventario:focus{
     background-color: #AFEA8D ;
     border-color: #AFEA8D;
-    width: 200px;
+    width: 100%;
     height: 200px;
 }
 
@@ -32,13 +32,67 @@
 .btn-realizar-venta{
     background-color: #FC0000;
     border-color: #FF3636;
-    width: 200px;
+    width: 100%;
     height: 200px;
 }
 
 .btn-venta-rapida{
     background-color: #FF5900;
     border-color: #FA7F3C;
-    width: 200px;
+    width: 100%;
     height: 200px;
+}
+
+.btn-ver-categoria {
+    background-color: #00d9ff;
+    border-color: #00d9ff;
+    width: 100%;
+    height: 200px;
+}
+
+.btn-venta-listaventa{
+    background-color: #ff8800;
+    border-color: #ff8800;
+    width: 100%;
+    height: 200px;
+}
+
+.btn-ver-marca{
+    background-color: #1498af;
+    border-color: #1498af;
+    width: 100%;
+    height: 200px;
+}
+
+.btn-venta-impuesto{
+    background-color: #af7914;
+    border-color: #af7914;
+    width: 100%;
+    height: 200px;
+}
+
+@media screen and (max-width: 600px) {
+    table {
+        width:100%;
+    }
+    thead {
+        display: none;
+    }
+    tr:nth-of-type(2n) {
+        background-color: inherit;
+    }
+    tr td:first-child {
+        background: #f0f0f0;
+        font-weight:bold;
+        font-size:1.3em;
+    }
+    tbody td {
+        display: block;
+        text-align:center;
+    }
+    tbody td:before {
+        content: attr(data-th);
+        display: block;
+        text-align:center;
+    }
 }

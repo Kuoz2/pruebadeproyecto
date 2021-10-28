@@ -43,7 +43,8 @@ export class ListPageComponent implements OnInit {
     moduloCertificadoLLave: string;
     exponenteCertificadoLLave: string;
     rutEmisiorBoleta: string;
-
+    public fechaIni: string;
+    public fechaFin: string;
     // tslint:disable-next-line:max-line-length
     constructor(private bol: VoucherService, private modalService: NgbModal, public secoind: HoraActualService, private ngxspinner: NgxSpinnerService ) { }
  async ngOnInit() {

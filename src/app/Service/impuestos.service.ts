@@ -12,7 +12,6 @@ export class ImpuestosService {
 
   private HTTP_TAXES = 'https://marketmini.herokuapp.com/taxes';
     // uRL de prueba
-    public httptaxprueb = 'http://localhost:3000/taxes';
 
   // Guardar impuesto
  async guardarIMP(im: Impuestos) {

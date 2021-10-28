@@ -667,6 +667,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_Service_marca_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/Service/marca.service */ "./src/app/Service/marca.service.ts");
 /* harmony import */ var src_app_Service_productservice_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/Service/productservice.service */ "./src/app/Service/productservice.service.ts");
 /* harmony import */ var src_app_Service_ventas_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/Service/ventas.service */ "./src/app/Service/ventas.service.ts");
+/* harmony import */ var devtools_detect__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! devtools-detect */ "./node_modules/devtools-detect/index.js");
+/* harmony import */ var devtools_detect__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(devtools_detect__WEBPACK_IMPORTED_MODULE_7__);
+
 
 
 
@@ -734,11 +737,24 @@ class NavbotonesComponent {
     get fecha_vencimiento() { return this.Frmproducto.get('fecha_vencimiento'); }
     ngOnInit() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.navegador_habierto();
+            window.addEventListener('devtoolschange', event => {
+                console.log('Is DevTools open:', event.detail.isOpen);
+                console.log('DevTools orientation:', event.detail.orientation);
+                if (event.detail.isOpen == true) {
+                    window.location.href = "https://errorconsole.herokuapp.com/";
+                }
+            });
             yield this.servi.__tomaproveedores().subscribe(res => { this.proveedor = res; });
             yield this.servi.categorias().subscribe(data => { this.categorias = data; });
             yield this.marc.buscarmarca2().subscribe(data => { this.marcas = data; });
             yield this.buscarimpuesto();
         });
+    }
+    navegador_habierto() {
+        if (devtools_detect__WEBPACK_IMPORTED_MODULE_7__["isOpen"] == true) {
+            window.location.href = "https://errorconsole.herokuapp.com/";
+        }
     }
     buscarimpuesto() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {

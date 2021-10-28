@@ -5,13 +5,14 @@
 
 
 <div class="container">
-    <div class="">
+    <div class="lign-items-start">
 
         <div id="ticket" class="ticket">
             <section class="sheet">
                 <div class="centrarCaja">
                     <div class=" ticket2">
-                            <div class="centrado">
+                        <div class="card">
+                            <div class="centrado" style="width: 18rem;">
                                 <h2>NNNN</h2>
                                 <h2>Calama, NNNN #NNN</h2>
                                 <h2>Rut:NNNNN</h2>
@@ -44,7 +45,7 @@
                                 </tr>
 
                                 <tr>
-                                    <td class="precio">Total:${{totalPrices}}</td>
+                                    <td class="precio">Total:${{totalPrices  || 0}}</td>
                                 </tr>
                                 <tr>
                                     <td class="cantidad">TIVA:{{totaliva}}</td>
@@ -56,7 +57,7 @@
                             <img src="" id="imagen" >
 
                             <p class="centrado">¡GRACIAS POR SU COMPRA!</p>
-                       
+                        </div>
                     </div>
                 </div>
             </section>
@@ -65,7 +66,7 @@
 </div>
 
 <!-- Configuracion de la boleta -->
-<ng-container *ngIf="estadoConfi == true">
+<ng-container *ngIf="estadoConfi != true">
 <div class="container">
     <div class="col-xl-12">
     <div class="card">

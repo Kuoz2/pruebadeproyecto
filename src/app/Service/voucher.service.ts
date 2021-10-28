@@ -29,18 +29,8 @@ export class VoucherService {
   totalventasrapidas= 'https://marketmini.herokuapp.com/quick_sales/totalventasrapidas';
   perdidaxmes = 'https://marketmini.herokuapp.com/stocks/buscar_las_fechas_perdidas';
   //de forma local se aran el ingreso.
-  Pruebaurldetallevoucher = 'http://localhost:3000/voucher_details';
-  PruebaUrlvoucher = 'http://localhost:3000/vouchers';
-  PruebaUrlultvoucher = 'http://localhost:3000/vouchers/showlast';
-  PruebaUrlVntMes = 'http://localhost:3000/show_date';
-  PruebaUrlVentasTotal = 'http://localhost:3000/voucher_details/show_cantidad';
-  PruebaUrlmespasado = 'http://localhost:3000/voucher_details/show_after_month';
-  PruebaUrlproductosV = 'http://localhost:3000/voucher_details/producto_max_vend';
-  PruebaUrltotalganacias = 'http://localhost:3000/voucher_details/las_ganancias_totales_meses';
-  PruebaUrltotalganancias_FV = 'http://localhost:3000/vouchers/mostrar_ganancias_por_mes';
-  PruebaUrlGuardarconfig = 'http://localhost:3000/config_vouchers';
+
   PruebaInformeXML = 'https://marketmini.herokuapp.com/archives'
-  pruebaenvioxml = 'localhost:3000/archives/'
 
   constructor(private http: HttpClient) { }
   // Ganancias totales del mes pasado.

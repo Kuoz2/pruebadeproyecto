@@ -1,3 +1,4 @@
+import { NavbotonesComponent } from './components/botoncillo/navbotones/navbotones.component';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {content} from './shared/routes/content-routes';
@@ -9,15 +10,14 @@ import {ConconcanService} from "./Service/conconcan.service";
 const routes: Routes = [
 
 
-
   {
     path: '',
     component: ContentLayoutComponent,
-    canActivate: [ConconcanService],
+    canActivate:[ConconcanService],
     children: content,
 
-  },
-
+    },
+ 
   {
     path: 'login',
     component: LoginComponent

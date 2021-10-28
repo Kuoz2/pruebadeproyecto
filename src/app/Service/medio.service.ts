@@ -11,7 +11,6 @@ export class MedioService {
 
 
   UrlMedio = 'https://marketmini.herokuapp.com/half_payments';
-  probandoMedioPago = 'http://localhost:3000/half_payments';
 
   mostrartodolosmedios() {
     return this.http.get<Medio[]>(this.UrlMedio);

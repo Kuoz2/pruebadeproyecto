@@ -56,7 +56,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
         await this.totalperdiadasinventarioprimario();
         await this.ventasrapidasgrafico();
         await this.totaldeventasrapidas();
-        this.spinner.hide("spinnerdashboard");
         // Detectar el navagador
         this.detectando();
 
@@ -466,7 +465,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     totaldeventasrapidas(){
-    this.vouch.totalventasR().pipe(takeUntil(this.unsubscribe$)).subscribe(res => {this.total_ventasrapidas = res; this.cd.markForCheck()})
+    this.vouch.totalventasR().pipe(takeUntil(this.unsubscribe$)).subscribe(res => {this.total_ventasrapidas = res;        this.spinner.hide("spinnerdashboard");
+    this.cd.markForCheck()})
     }
 
     gananciaspormes() {

@@ -1,3 +1,4 @@
+import { LocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -10,6 +11,8 @@ import { Categories } from '../../Modulos/Categories';
 import { Impuestos } from '../../Modulos/impuestos';
 import { Marca } from '../../Modulos/Marca';
 import { Provideer } from '../../Modulos/Provideer';
+import * as devTools from 'devtools-detect';
+import { VerificarTokenService } from 'src/app/Service/verificar-token.service';
 
 @Component({
   selector: 'app-navbotones',
@@ -37,7 +40,6 @@ export class NavbotonesComponent implements OnInit {
   get pcodigo() { return this.Frmproducto.get('pcodigo'); }
   get pstock() {return this.Frmproducto.get('pstock'); }
   get pvalor() { return this.Frmproducto.get('pvalor'); }
-  get ppicture() { return this.Frmproducto.get('ppicture'); }
   get category_id() { return this.Frmproducto.get('categorias'); }
   get stock_lost() {return this.Frmproducto.get('stock_lost'); }
   get stock_security() {return this.Frmproducto.get('stock_security'); }
@@ -50,23 +52,24 @@ export class NavbotonesComponent implements OnInit {
     private servi: ProductserviceService,
     private modalService: NgbModal,
      private fb: FormBuilder,
-      private vns: VentasService) {
+     private fb2:FormBuilder,
+      private vns: VentasService,
+      private verifica: VerificarTokenService) {
     this.Frmproducto = this.fb.group({
       pcodigo: new FormControl( '', [Validators.required]),
-      pdescripcion: new FormControl('', [Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$'), Validators.required]),
+      pdescripcion: new FormControl(''),
       pdetalle: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]),
-      ppicture:  new FormControl('', [Validators.required]),
       pvalor: new FormControl('', [Validators.required]),
       provider_id: new FormControl('', [Validators.required]),
       precio_provider: new FormControl('', [Validators.required]),
       category_id: new FormControl ('', [Validators.required]),
       pactivado: new FormControl(false),
-      tax_id: new FormControl('', [Validators.required]),
+      tax_id: new FormControl(''),
       brand_id: new FormControl('', [Validators.required]),
-      piva: new FormControl('', [Validators.required]),
+      piva: new FormControl('',),
       stock: new FormGroup( {
-          pstock: new FormControl( '', [Validators.required] ),
-          stock_lost: new FormControl( '' , [Validators.required]),
+          pstock: new FormControl( ''),
+          stock_lost: new FormControl( '' ),
           stock_security: new FormControl(''),
           product_id: new FormControl(0)
       }),
@@ -79,7 +82,7 @@ export class NavbotonesComponent implements OnInit {
     })
 
 
-    this.ventarapida = this.fb.group({
+    this.ventarapida = this.fb2.group({
       codigo_producto: new FormControl(''),
       nombre_product: new FormControl(''),
       cantidad: new FormControl(''),
@@ -90,7 +93,7 @@ export class NavbotonesComponent implements OnInit {
   
 
  async ngOnInit(){
-
+  
     await this.servi.__tomaproveedores().subscribe(res => {this.proveedor = res; });
     await  this.servi.categorias().subscribe(data => {this.categorias = data; });
     await  this.marc.buscarmarca2().subscribe(data => {this.marcas =  data; });
@@ -99,6 +102,11 @@ export class NavbotonesComponent implements OnInit {
 
 
 
+  navegador_habierto(){
+    if(devTools.isOpen == true){
+      window.location.href = "https://errorconsole.herokuapp.com/"
+    }
+}
 
   async buscarimpuesto() {
     this.immp = this.impt.obtneriIMP();
@@ -228,25 +236,25 @@ calImp(imp, valor): number {
   }
 
   Guardaregistro(form){
-    if (!this.Frmproducto.valid) {
+  
+    if (this.Frmproducto.valid) { return;}
       try {
-          this.Frmproducto.value.category_id = this.Frmproducto.value.category_id.id;
-          this.Frmproducto.value.ppicture = btoa( this.Frmproducto.value.ppicture );
+
+       this.Frmproducto.value.category_id = this.Frmproducto.value.category_id.id;
           this.Frmproducto.value.provider_id = this.Frmproducto.value.provider_id.id;
           this.Frmproducto.value.tax_id = this.Frmproducto.value.tax_id.id;
           this.Frmproducto.value.brand_id = this.Frmproducto.value.brand_id.id;
           this.Frmproducto.value.date_expiration.stock_expiration = this.Frmproducto.value.stock.pstock;
           this.Frmproducto.value.stock.product_id = 0;
           this.Frmproducto.value.date_expiration.product_id = 0;
-          this.servi.guardarproductos( this.Frmproducto.value ).subscribe(res =>  {console.log('lo guardado', res); });;
+         this.servi.guardarproductos( this.Frmproducto.value );
           console.log( 'productos', this.Frmproducto.value );
          // this.productForm.reset();
-         this.Frmproducto.reset()
 
       } catch (e) {
           console.log( 'ocurrio un error', e );
       }
-  }
+ 
 
   }
 
@@ -285,4 +293,5 @@ calImp(imp, valor): number {
     }
 
   }
+
 }

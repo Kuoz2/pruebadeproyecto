@@ -20,16 +20,15 @@ constructor(private userservi: UsuarioService) {
 
 
 
-  async ngOnInit() {
-    //await this.navegador_habierto()
-
-    //await window.addEventListener('devtoolschange', event => {
-      //console.log('Is DevTools open:', event.detail.isOpen);
-      //console.log('DevTools orientation:', event.detail.orientation);
-      //if(event.detail.isOpen == true)
-      //{
-       // window.location.href = "https://errorconsole.herokuapp.com/"
-     // }
+   ngOnInit() {
+    // this.navegador_habierto()
+     //window.addEventListener('devtoolschange', event => {
+    //console.log('Is DevTools open:', event.detail.isOpen);
+    //console.log('DevTools orientation:', event.detail.orientation);
+    //if(event.detail.isOpen == true)
+   // {
+    // window.location.href = "https://errorconsole.herokuapp.com/"
+     //}
     //});
   }
 
@@ -38,6 +37,23 @@ constructor(private userservi: UsuarioService) {
     if(devTools.isOpen == true){
       window.location.href = "https://errorconsole.herokuapp.com/"
     }
+}
+
+navegador(){
+  var sBrowser, sUsrAg = navigator.userAgent;
+  if(sUsrAg.indexOf("Chrome") > -1) {
+    sBrowser = "Google Chrome";
+} else if (sUsrAg.indexOf("Safari") > -1) {
+    sBrowser = "Apple Safari";
+} else if (sUsrAg.indexOf("Opera") > -1) {
+    sBrowser = "Opera";
+} else if (sUsrAg.indexOf("Firefox") > -1) {
+    sBrowser = "Mozilla Firefox";
+} else if (sUsrAg.indexOf("MSIE") > -1) {
+    sBrowser = "Microsoft Internet Explorer";
+}
+
+alert("Usted está utilizando: " + sBrowser);
 }
 
 }

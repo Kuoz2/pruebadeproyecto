@@ -14,7 +14,6 @@ export class MarcaService {
   constructor(private http: HttpClient) { }
   urlmarca = 'https://marketmini.herokuapp.com/brands';
   // Buscarunamarca
-    UrlPrueba = 'http://localhost:3000/brands';
  async buscarmarca() {
    return await this.http.get<Marca>( this.urlmarca );
   }

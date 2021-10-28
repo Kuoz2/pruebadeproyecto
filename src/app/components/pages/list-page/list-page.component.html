@@ -54,7 +54,7 @@
             <RutEmi>{{rutEmisor}} </RutEmi> <br>
              <TipoProd>{{ o.product.category.cnombre }}</TipoProd><br>
              <RznSoc>{{rasonSoci}}</RznSoc><br>
-             <MntNeto>1422876</MntNeto> <br>
+             <MntNeto>{{o.product.pvalor}}</MntNeto> <br>
              <MntIVA>{{o.product.piva}}</MntIVA> <br>
              <MntTotal>{{o.voucher.vtotal}}</MntTotal> <br>
         </Detalle><br>
@@ -73,7 +73,7 @@
 <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Vista archivo XML</button>
 <div class="form-group row">
     <select class="form-control digits col-xl-8 col-sm-7" [(ngModel)]="tipodeDoc"  name="categorias" id="exampleFormControlSelect1" >
-        <option value="" selected><--- Tipo de libro ---></option>
+        <option value="" selected>--- Tipo de libro ---</option>
         <option value="Incompleto">Incompleto</option>
         <option value="Completo">Completo</option>
     </select>
@@ -110,7 +110,7 @@
                     <div class="custom-datatable">
                         <table class="table table-hover">
                             <thead>
-                            <tr class="text-center">
+                            <tr >
                                 <th>
                                     ID
                                 </th>
@@ -135,7 +135,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr *ngFor="let bl of (boletas |async | paginate: {id: 'paginacion',itemsPerPage:5, currentPage:p}) "  class="text-center">
+                            <tr *ngFor="let bl of (boletas |async |rangodefechas: fechaIni : fechaFin |  paginate: {id: 'paginacion',itemsPerPage:5, currentPage:p}) "  class="text-center">
                                 <td>{{bl.id  }}</td>
                                 <td>{{bl.dvcantidad }}</td>
                                 <td >{{bl.product.pcodigo}}</td>

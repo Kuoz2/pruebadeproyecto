@@ -9,6 +9,7 @@ import {Provideer} from '../components/Modulos/Provideer';
 import {FormGroup} from '@angular/forms';
 import {Mermas} from '../components/Modulos/mermas';
 import {DateExpiration, Fecha_vencimiento} from '../components/Modulos/Fecha_vencimiento';
+import { VerificarTokenService } from './verificar-token.service';
 
 
 @Injectable({
@@ -17,7 +18,7 @@ import {DateExpiration, Fecha_vencimiento} from '../components/Modulos/Fecha_ven
 export class ProductserviceService {
 // Variables publicas
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private verifica: VerificarTokenService) { }
 
 private UrlProductos = 'https://marketmini.herokuapp.com/products';
 private UrlCategorias = 'https://marketmini.herokuapp.com/categories';
@@ -32,24 +33,7 @@ private UR_MERMAS = 'https://marketmini.herokuapp.com/decreases';
 private URLINFORME = 'https://marketmini.herokuapp.com/mrmsolutions';
 private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations'
 
- UrlPrueba = 'http://localhost:3000/products';
- urlPruebaMerma = 'http://localhost:3000/decreases';
- urlPruebMrmInforme = 'http://localhost:3000/mrmsolutions';
- UrlpruebaCategoria = 'http://localhost:3000/categories';
- urlpruebaProveedores = 'http://localhost:3000/providers';
- urlpruebastock = 'http://localhost:3000/stocks';
- stockperdida = 'http://localhost:3000/stocks/mostrar_stock_de_perdidas';
- urlstockperdiudanaterior = 'http://localhost:3000/stocks/p_mes_anterior';
-    // tslint:disable-next-line:variable-name
- prueba_guardar_stock = 'http://localhost:3000/stocks'
- prueba_stock_productos = 'http://localhost:3000/stocks/stock_products';
- pruebastockperdida = 'http://localhost:3000/stocks/mostrar_stock_de_perdidas';
- pruebaSTCKGRFPERDIDAS = 'http://localhost:3000/stocks/buscar_las_fechas_perdidas';
- pruebaActualizarFechaVenta = 'http://localhost:3000/date_expirations';
- pruebanuevoinventario = 'http://localhost:3000/date_expirations';
- prueba_guardarfechainventario2 = 'http://localhost:3000/date_expirations'
- prueba_buscarnoproduct_id = 'http://localhost:3000/date_expirations/date_product_id_on'
-
+  respuesta_guardando
     // Actualizar la fecha al realizar una venta.
     
   // Tomar todos los productos
@@ -88,8 +72,23 @@ private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations'
       return this.http.put<Stock>(this.URLStock + '/' + stck.id, stck);
     }
     // Guardar un nuevo producto
-   guardarproductos(p) {
-    return this.http.post<Productos>(this.UrlProductos, p);
+   async guardarproductos(p) {
+     
+    
+    await  this.verifica.VerficSaveProd().subscribe(res => {
+      console.log(res)
+        if(res.resultado != 'existe') {return}
+        if(res.resultado == 'existe'){
+        this.http.post<Productos>(this.UrlProductos, p).subscribe(response => {
+         return response; })
+        } 
+  
+      })
+     // if(this.respuesta_guardando.guardado = 'Se guardo'){
+     // return p.reset()
+
+      //}
+      //return p.reset()
   }
 
 
@@ -218,6 +217,5 @@ actualizar_stock_fecha(fchAct: date_expiration) {
       return this.http.put(this.URLFECHAS + '/' + dt.id, dt)
   }
 
- 
 
 }

@@ -2179,25 +2179,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! tslib */
-    "./node_modules/tslib/tslib.es6.js");
-    /* harmony import */
-
-
-    var _Service_usuario_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    var _Service_usuario_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
     /*! ./Service/usuario.service */
     "./src/app/Service/usuario.service.ts");
     /* harmony import */
 
 
-    var devtools_detect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var devtools_detect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! devtools-detect */
     "./node_modules/devtools-detect/index.js");
     /* harmony import */
 
 
-    var devtools_detect__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(devtools_detect__WEBPACK_IMPORTED_MODULE_2__);
+    var devtools_detect__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(devtools_detect__WEBPACK_IMPORTED_MODULE_1__);
 
     var AppComponent = /*#__PURE__*/function () {
       function AppComponent(userservi) {
@@ -2210,24 +2204,42 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(AppComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
-              while (1) {
-                switch (_context3.prev = _context3.next) {
-                  case 0:
-                  case "end":
-                    return _context3.stop();
-                }
-              }
-            }, _callee3);
-          }));
+          this.navegador_habierto();
+          window.addEventListener('devtoolschange', function (event) {
+            console.log('Is DevTools open:', event.detail.isOpen);
+            console.log('DevTools orientation:', event.detail.orientation);
+
+            if (event.detail.isOpen == true) {
+              window.location.href = "https://errorconsole.herokuapp.com/";
+            }
+          });
         }
       }, {
         key: "navegador_habierto",
         value: function navegador_habierto() {
-          if (devtools_detect__WEBPACK_IMPORTED_MODULE_2__["isOpen"] == true) {
+          if (devtools_detect__WEBPACK_IMPORTED_MODULE_1__["isOpen"] == true) {
             window.location.href = "https://errorconsole.herokuapp.com/";
           }
+        }
+      }, {
+        key: "navegador",
+        value: function navegador() {
+          var sBrowser,
+              sUsrAg = navigator.userAgent;
+
+          if (sUsrAg.indexOf("Chrome") > -1) {
+            sBrowser = "Google Chrome";
+          } else if (sUsrAg.indexOf("Safari") > -1) {
+            sBrowser = "Apple Safari";
+          } else if (sUsrAg.indexOf("Opera") > -1) {
+            sBrowser = "Opera";
+          } else if (sUsrAg.indexOf("Firefox") > -1) {
+            sBrowser = "Mozilla Firefox";
+          } else if (sUsrAg.indexOf("MSIE") > -1) {
+            sBrowser = "Microsoft Internet Explorer";
+          }
+
+          alert("Usted está utilizando: " + sBrowser);
         }
       }]);
 
@@ -4414,12 +4426,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loqumu",
         value: function loqumu() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
             var _this3 = this;
 
-            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
               while (1) {
-                switch (_context4.prev = _context4.next) {
+                switch (_context3.prev = _context3.next) {
                   case 0:
                     this.spinner.show("spinnerlogin", {
                       type: "pacman",
@@ -4446,10 +4458,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 2:
                   case "end":
-                    return _context4.stop();
+                    return _context3.stop();
                 }
               }
-            }, _callee4, this);
+            }, _callee3, this);
           }));
         }
       }, {
@@ -4739,7 +4751,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     function View_DashboardComponent_0(_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](2, [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵpid"](0, _shared_Pipe_ceparador_pipe__WEBPACK_IMPORTED_MODULE_2__["CeparadorPipe"], []), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "ngx-spinner", [["name", "spinnerdashboard"]], null, null, null, _node_modules_ngx_spinner_ngx_spinner_ngfactory__WEBPACK_IMPORTED_MODULE_3__["View_NgxSpinnerComponent_0"], _node_modules_ngx_spinner_ngx_spinner_ngfactory__WEBPACK_IMPORTED_MODULE_3__["RenderType_NgxSpinnerComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 770048, null, 0, ngx_spinner__WEBPACK_IMPORTED_MODULE_4__["NgxSpinnerComponent"], [ngx_spinner__WEBPACK_IMPORTED_MODULE_4__["NgxSpinnerService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], {
         name: [0, "name"]
-      }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 260, "div", [["class", "container-fluid"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](4, 0, null, null, 259, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 18, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, null, null, 17, "div", [["class", "card o-hidden widget-cards"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 16, "div", [["class", "bg-warning card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](8, 0, null, null, 15, "div", [["class", "media static-top-widget row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](9, 0, null, null, 3, "div", [["class", "icons-widgets col-4"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](10, 0, null, null, 2, "div", [["class", "align-self-center text-center"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](11, 0, null, null, 1, "app-feather-icons", [["class", "font-warning"]], null, null, null, _shared_components_feather_icons_feather_icons_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["View_FeatherIconsComponent_0"], _shared_components_feather_icons_feather_icons_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["RenderType_FeatherIconsComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](12, 114688, null, 0, _shared_components_feather_icons_feather_icons_component__WEBPACK_IMPORTED_MODULE_6__["FeatherIconsComponent"], [], {
+      }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 226, "div", [["class", "container-fluid"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](4, 0, null, null, 225, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 18, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](6, 0, null, null, 17, "div", [["class", "card o-hidden widget-cards"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](7, 0, null, null, 16, "div", [["class", "bg-warning card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](8, 0, null, null, 15, "div", [["class", "media static-top-widget row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](9, 0, null, null, 3, "div", [["class", "icons-widgets col-4"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](10, 0, null, null, 2, "div", [["class", "align-self-center text-center"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](11, 0, null, null, 1, "app-feather-icons", [["class", "font-warning"]], null, null, null, _shared_components_feather_icons_feather_icons_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["View_FeatherIconsComponent_0"], _shared_components_feather_icons_feather_icons_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["RenderType_FeatherIconsComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](12, 114688, null, 0, _shared_components_feather_icons_feather_icons_component__WEBPACK_IMPORTED_MODULE_6__["FeatherIconsComponent"], [], {
         icon: [0, "icon"]
       }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](13, 0, null, null, 10, "div", [["class", "media-body col-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](14, 0, null, null, 1, "span", [["class", "m-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Ganancia actual"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](16, 0, null, null, 7, "h3", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["$ "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](18, 0, null, null, 3, "span", [["class", "counter"]], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](19, 606208, null, 0, angular_count_to__WEBPACK_IMPORTED_MODULE_7__["CountToDirective"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]], {
         CountTo: [0, "CountTo"],
@@ -4768,7 +4780,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵpod"](109, {
         itemsPerPage: 0,
         currentPage: 1
-      }), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵpid"](0, ngx_pagination__WEBPACK_IMPORTED_MODULE_9__["PaginatePipe"], [ngx_pagination__WEBPACK_IMPORTED_MODULE_9__["PaginationService"]]), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](111, 0, null, null, 33, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](112, 0, null, null, 32, "div", [["class", "card order-graph sales-carousel"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](113, 0, null, null, 13, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](114, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Porcentaje de ventas"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](116, 0, null, null, 10, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](117, 0, null, null, 3, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](118, 0, null, null, 2, "div", [["class", "small-chartjs"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](119, 0, null, null, 1, "canvas", [["height", "60"], ["id", "ctx1"], ["width", "140"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](120, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](121, 0, null, null, 5, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](122, 0, null, null, 4, "div", [["class", "value-graph"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](123, 0, null, null, 3, "h3", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](124, null, ["", "% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](125, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](126, 0, null, null, 0, "i", [["class", "fa fa-angle-up font-primary"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](127, 0, null, null, 17, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](128, 0, null, null, 16, "div", [["class", "media"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](129, 0, null, null, 12, "div", [["class", "media-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](130, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Ventas totales"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](132, 0, null, null, 1, "h2", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](133, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](134, 0, null, null, 3, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["0% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](136, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](137, 0, null, null, 0, "i", [["class", "fa fa-angle-up"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](138, 0, null, null, 1, "h5", [["class", "f-w-600"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Mes actual y anterior"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](140, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](141, null, ["Sus ventas estan en un ", "% al mes anterior."])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](142, 0, null, null, 2, "div", [["class", "bg-primary b-r-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](143, 0, null, null, 1, "div", [["class", "small-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](144, 0, null, null, 0, "i", [["data-feather", "briefcase"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](145, 0, null, null, 25, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](146, 0, null, null, 24, "div", [["class", "card order-graph sales-carousel"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](147, 0, null, null, 13, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](148, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Porcentaje de ventas"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](150, 0, null, null, 10, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](151, 0, null, null, 3, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](152, 0, null, null, 2, "div", [["class", "small-chartjs"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](153, 0, null, null, 1, "canvas", [["height", "60"], ["id", "ctx1"], ["width", "140"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](154, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](155, 0, null, null, 5, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](156, 0, null, null, 4, "div", [["class", "value-graph"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](157, 0, null, null, 3, "h3", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](158, null, ["", "% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](159, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](160, 0, null, null, 0, "i", [["class", "fa fa-angle-up font-primary"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](161, 0, null, null, 9, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](162, 0, null, null, 8, "div", [["class", "media"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](163, 0, null, null, 4, "div", [["class", "media-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](164, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Ventas totales"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](166, 0, null, null, 1, "h2", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](167, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](168, 0, null, null, 2, "div", [["class", "bg-primary b-r-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](169, 0, null, null, 1, "div", [["class", "small-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](170, 0, null, null, 0, "i", [["data-feather", "briefcase"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](171, 0, null, null, 25, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](172, 0, null, null, 24, "div", [["class", "card order-graph sales-carousel"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](173, 0, null, null, 13, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](174, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Porcentaje de p\xE9rdidas primer inventario"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](176, 0, null, null, 10, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](177, 0, null, null, 3, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](178, 0, null, null, 2, "div", [["class", "small-chartjs"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](179, 0, null, null, 1, "canvas", [["height", "60vw"], ["id", "ctx2"], ["width", "140vw"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](180, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](181, 0, null, null, 5, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](182, 0, null, null, 4, "div", [["class", "value-graph"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](183, 0, null, null, 3, "h3", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](184, null, ["", "% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](185, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](186, 0, null, null, 0, "i", [["class", "fa fa-angle-up font-secondary"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](187, 0, null, null, 9, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](188, 0, null, null, 8, "div", [["class", "media"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](189, 0, null, null, 4, "div", [["class", "media-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](190, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Total de perdidas inventario"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](192, 0, null, null, 1, "h2", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](193, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](194, 0, null, null, 2, "div", [["class", "bg-secondary b-r-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](195, 0, null, null, 1, "div", [["class", "small-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](196, 0, null, null, 0, "i", [["data-feather", "credit-card"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](197, 0, null, null, 66, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](198, 0, null, null, 25, "div", [["class", "card order-graph sales-carousel"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](199, 0, null, null, 14, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](200, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["P\xE9rdidas en el segundo inventario"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](202, 0, null, null, 11, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](203, 0, null, null, 4, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](204, 0, null, null, 3, "div", [["class", "small-chartjs"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](205, 0, null, null, 2, "canvas", [["baseChart", ""], ["height", "60vw"], ["id", "ctx3"], ["width", "140vw"]], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](206, 999424, null, 0, ng2_charts__WEBPACK_IMPORTED_MODULE_10__["BaseChartDirective"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], ng2_charts__WEBPACK_IMPORTED_MODULE_10__["ThemeService"]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](207, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](208, 0, null, null, 5, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](209, 0, null, null, 4, "div", [["class", "value-graph"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](210, 0, null, null, 3, "h3", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](211, null, ["", "% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](212, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](213, 0, null, null, 0, "i", [["class", "fa fa-angle-up font-warning"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](214, 0, null, null, 9, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](215, 0, null, null, 8, "div", [["class", "media"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](216, 0, null, null, 7, "div", [["class", "media-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](217, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Total de p\xE9rdidas inventario 2"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](219, 0, null, null, 1, "h2", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](220, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](221, 0, null, null, 2, "div", [["class", "bg-warning b-r-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](222, 0, null, null, 1, "div", [["class", "small-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](223, 0, null, null, 0, "i", [["data-feather", "shopping-cart"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](224, 0, null, null, 39, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](225, 0, null, null, 25, "div", [["class", "card order-graph sales-carousel"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](226, 0, null, null, 14, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](227, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" Ventras rapidas"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](229, 0, null, null, 11, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](230, 0, null, null, 4, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](231, 0, null, null, 3, "div", [["class", "small-chartjs"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](232, 0, null, null, 2, "canvas", [["baseChart", ""], ["height", "60vw"], ["id", "ctx4"], ["width", "140vw"]], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](233, 999424, null, 0, ng2_charts__WEBPACK_IMPORTED_MODULE_10__["BaseChartDirective"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], ng2_charts__WEBPACK_IMPORTED_MODULE_10__["ThemeService"]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](234, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](235, 0, null, null, 5, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](236, 0, null, null, 4, "div", [["class", "value-graph"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](237, 0, null, null, 3, "h3", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](238, null, ["", "% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](239, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](240, 0, null, null, 0, "i", [["class", "fa fa-angle-up font-danger"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](241, 0, null, null, 9, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](242, 0, null, null, 8, "div", [["class", "media"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](243, 0, null, null, 7, "div", [["class", "media-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](244, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Ventas rapidas cantidad ganada"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](246, 0, null, null, 1, "h2", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](247, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](248, 0, null, null, 2, "div", [["class", "bg-danger b-r-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](249, 0, null, null, 1, "div", [["class", "small-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](250, 0, null, null, 0, "i", [["data-feather", "calendar"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](251, 0, null, null, 12, "div", [["class", "col-sm-12"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](252, 0, null, null, 11, "div", [["class", "card"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](253, 0, null, null, 2, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](254, 0, null, null, 1, "h5", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Mermas"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](256, 0, null, null, 7, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](257, 0, null, null, 6, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](258, 0, null, null, 5, "div", [["class", "col-xl-6 col-sm-8 xl-100"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](259, 0, null, null, 4, "div", [["class", "order-graph sm-order-space"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](260, 0, null, null, 3, "div", [["class", "peity-chart-dashboard text-center chart-vertical-center"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](261, 0, null, null, 2, "div", [["class", "chart"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](262, 0, null, null, 1, "canvas", [["baseChart", ""], ["height", "500"], ["width", "300"]], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](263, 999424, null, 0, ng2_charts__WEBPACK_IMPORTED_MODULE_10__["BaseChartDirective"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], ng2_charts__WEBPACK_IMPORTED_MODULE_10__["ThemeService"]], {
+      }), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵpid"](0, ngx_pagination__WEBPACK_IMPORTED_MODULE_9__["PaginatePipe"], [ngx_pagination__WEBPACK_IMPORTED_MODULE_9__["PaginationService"]]), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](111, 0, null, null, 25, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](112, 0, null, null, 24, "div", [["class", "card order-graph sales-carousel"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](113, 0, null, null, 13, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](114, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Porcentaje de ventas"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](116, 0, null, null, 10, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](117, 0, null, null, 3, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](118, 0, null, null, 2, "div", [["class", "small-chartjs"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](119, 0, null, null, 1, "canvas", [["height", "60"], ["id", "ctx1"], ["width", "140"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](120, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](121, 0, null, null, 5, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](122, 0, null, null, 4, "div", [["class", "value-graph"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](123, 0, null, null, 3, "h3", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](124, null, ["", "% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](125, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](126, 0, null, null, 0, "i", [["class", "fa fa-angle-up font-primary"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](127, 0, null, null, 9, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](128, 0, null, null, 8, "div", [["class", "media"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](129, 0, null, null, 4, "div", [["class", "media-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](130, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Ventas totales"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](132, 0, null, null, 1, "h2", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](133, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](134, 0, null, null, 2, "div", [["class", "bg-primary b-r-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](135, 0, null, null, 1, "div", [["class", "small-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](136, 0, null, null, 0, "i", [["data-feather", "briefcase"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](137, 0, null, null, 25, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](138, 0, null, null, 24, "div", [["class", "card order-graph sales-carousel"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](139, 0, null, null, 13, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](140, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Porcentaje de p\xE9rdidas primer inventario"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](142, 0, null, null, 10, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](143, 0, null, null, 3, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](144, 0, null, null, 2, "div", [["class", "small-chartjs"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](145, 0, null, null, 1, "canvas", [["height", "60vw"], ["id", "ctx2"], ["width", "140vw"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](146, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](147, 0, null, null, 5, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](148, 0, null, null, 4, "div", [["class", "value-graph"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](149, 0, null, null, 3, "h3", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](150, null, ["", "% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](151, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](152, 0, null, null, 0, "i", [["class", "fa fa-angle-up font-secondary"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](153, 0, null, null, 9, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](154, 0, null, null, 8, "div", [["class", "media"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](155, 0, null, null, 4, "div", [["class", "media-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](156, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Total de perdidas inventario"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](158, 0, null, null, 1, "h2", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](159, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](160, 0, null, null, 2, "div", [["class", "bg-secondary b-r-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](161, 0, null, null, 1, "div", [["class", "small-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](162, 0, null, null, 0, "i", [["data-feather", "credit-card"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](163, 0, null, null, 26, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](164, 0, null, null, 25, "div", [["class", "card order-graph sales-carousel"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](165, 0, null, null, 14, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](166, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["P\xE9rdidas en el segundo inventario"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](168, 0, null, null, 11, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](169, 0, null, null, 4, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](170, 0, null, null, 3, "div", [["class", "small-chartjs"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](171, 0, null, null, 2, "canvas", [["baseChart", ""], ["height", "60vw"], ["id", "ctx3"], ["width", "140vw"]], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](172, 999424, null, 0, ng2_charts__WEBPACK_IMPORTED_MODULE_10__["BaseChartDirective"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], ng2_charts__WEBPACK_IMPORTED_MODULE_10__["ThemeService"]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](173, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](174, 0, null, null, 5, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](175, 0, null, null, 4, "div", [["class", "value-graph"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](176, 0, null, null, 3, "h3", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](177, null, ["", "% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](178, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](179, 0, null, null, 0, "i", [["class", "fa fa-angle-up font-warning"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](180, 0, null, null, 9, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](181, 0, null, null, 8, "div", [["class", "media"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](182, 0, null, null, 4, "div", [["class", "media-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](183, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Total de p\xE9rdidas inventario 2"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](185, 0, null, null, 1, "h2", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](186, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](187, 0, null, null, 2, "div", [["class", "bg-warning b-r-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](188, 0, null, null, 1, "div", [["class", "small-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](189, 0, null, null, 0, "i", [["data-feather", "shopping-cart"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](190, 0, null, null, 26, "div", [["class", "col-xl-3 col-md-6 xl-50"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](191, 0, null, null, 25, "div", [["class", "card order-graph sales-carousel"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](192, 0, null, null, 14, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](193, 0, null, null, 1, "h6", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, [" Ventras rapidas"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](195, 0, null, null, 11, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](196, 0, null, null, 4, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](197, 0, null, null, 3, "div", [["class", "small-chartjs"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](198, 0, null, null, 2, "canvas", [["baseChart", ""], ["height", "60vw"], ["id", "ctx4"], ["width", "140vw"]], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](199, 999424, null, 0, ng2_charts__WEBPACK_IMPORTED_MODULE_10__["BaseChartDirective"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], ng2_charts__WEBPACK_IMPORTED_MODULE_10__["ThemeService"]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](200, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](201, 0, null, null, 5, "div", [["class", "col-6"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](202, 0, null, null, 4, "div", [["class", "value-graph"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](203, 0, null, null, 3, "h3", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](204, null, ["", "% "])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](205, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](206, 0, null, null, 0, "i", [["class", "fa fa-angle-up font-danger"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](207, 0, null, null, 9, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](208, 0, null, null, 8, "div", [["class", "media"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](209, 0, null, null, 4, "div", [["class", "media-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](210, 0, null, null, 1, "span", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Ventas rapidas cantidad ganada"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](212, 0, null, null, 1, "h2", [["class", "mb-0"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](213, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](214, 0, null, null, 2, "div", [["class", "bg-danger b-r-8"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](215, 0, null, null, 1, "div", [["class", "small-box"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](216, 0, null, null, 0, "i", [["data-feather", "calendar"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](217, 0, null, null, 12, "div", [["class", "col-sm-12"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](218, 0, null, null, 11, "div", [["class", "card"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](219, 0, null, null, 2, "div", [["class", "card-header"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](220, 0, null, null, 1, "h5", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["Mermas"])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](222, 0, null, null, 7, "div", [["class", "card-body"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](223, 0, null, null, 6, "div", [["class", "row"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](224, 0, null, null, 5, "div", [["class", "col-xl-6 col-sm-8 xl-100"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](225, 0, null, null, 4, "div", [["class", "order-graph sm-order-space"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](226, 0, null, null, 3, "div", [["class", "peity-chart-dashboard text-center chart-vertical-center"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](227, 0, null, null, 2, "div", [["class", "chart"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](228, 0, null, null, 1, "canvas", [["baseChart", ""], ["height", "500"], ["width", "300"]], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](229, 999424, null, 0, ng2_charts__WEBPACK_IMPORTED_MODULE_10__["BaseChartDirective"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], ng2_charts__WEBPACK_IMPORTED_MODULE_10__["ThemeService"]], {
         data: [0, "data"],
         labels: [1, "labels"],
         options: [2, "options"],
@@ -4830,19 +4842,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _ck(_v, 108, 0, currVal_18);
 
-        _ck(_v, 206, 0);
+        _ck(_v, 172, 0);
 
-        _ck(_v, 233, 0);
+        _ck(_v, 199, 0);
 
-        var currVal_35 = _co.pieChartData;
-        var currVal_36 = _co.pieChartLabels;
-        var currVal_37 = _co.pieChartOptions;
-        var currVal_38 = _co.pieChartType;
-        var currVal_39 = _co.pieChartColors;
-        var currVal_40 = _co.pieChartLegend;
-        var currVal_41 = _co.pieChartPlugins;
+        var currVal_31 = _co.pieChartData;
+        var currVal_32 = _co.pieChartLabels;
+        var currVal_33 = _co.pieChartOptions;
+        var currVal_34 = _co.pieChartType;
+        var currVal_35 = _co.pieChartColors;
+        var currVal_36 = _co.pieChartLegend;
+        var currVal_37 = _co.pieChartPlugins;
 
-        _ck(_v, 263, 0, currVal_35, currVal_36, currVal_37, currVal_38, currVal_39, currVal_40, currVal_41);
+        _ck(_v, 229, 0, currVal_31, currVal_32, currVal_33, currVal_34, currVal_35, currVal_36, currVal_37);
       }, function (_ck, _v) {
         var _co = _v.component;
         var currVal_17 = _co.chaarti;
@@ -4861,57 +4873,41 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _ck(_v, 133, 0, currVal_21);
 
-        var currVal_22 = _co.porcentaje_ventas * 100;
+        var currVal_22 = _co.porcentaje_perdida;
 
-        _ck(_v, 141, 0, currVal_22);
+        _ck(_v, 146, 0, currVal_22);
 
-        var currVal_23 = _co.porsentaje_venta;
+        var currVal_23 = _co.porcentaje_perdidas * 100;
 
-        _ck(_v, 154, 0, currVal_23);
+        _ck(_v, 150, 0, currVal_23);
 
-        var currVal_24 = _co.porcentaje_ventas * 100;
+        var currVal_24 = _co.totalperdidasinventario1 == null ? null : _co.totalperdidasinventario1.totalperdiasinv;
 
-        _ck(_v, 158, 0, currVal_24);
+        _ck(_v, 159, 0, currVal_24);
 
-        var currVal_25 = _co.todas_las_ventas == null ? null : _co.todas_las_ventas.ganancias_totales;
+        var currVal_25 = _co.todas_perdidainventario2;
 
-        _ck(_v, 167, 0, currVal_25);
+        _ck(_v, 173, 0, currVal_25);
 
-        var currVal_26 = _co.porcentaje_perdida;
+        var currVal_26 = _co.todas_perdidasinventario2 * 100;
 
-        _ck(_v, 180, 0, currVal_26);
+        _ck(_v, 177, 0, currVal_26);
 
-        var currVal_27 = _co.porcentaje_perdidas * 100;
+        var currVal_27 = _co.total_perdidasobtenidas == null ? null : _co.total_perdidasobtenidas.total_perdidas;
 
-        _ck(_v, 184, 0, currVal_27);
+        _ck(_v, 186, 0, currVal_27);
 
-        var currVal_28 = _co.totalperdidasinventario1 == null ? null : _co.totalperdidasinventario1.totalperdiasinv;
+        var currVal_28 = _co.venta_rapidasgrafico;
 
-        _ck(_v, 193, 0, currVal_28);
+        _ck(_v, 200, 0, currVal_28);
 
-        var currVal_29 = _co.todas_perdidainventario2;
+        var currVal_29 = _co.ventas_rapidasrealizada * 100;
 
-        _ck(_v, 207, 0, currVal_29);
+        _ck(_v, 204, 0, currVal_29);
 
-        var currVal_30 = _co.todas_perdidasinventario2 * 100;
+        var currVal_30 = _co.total_ventasrapidas == null ? null : _co.total_ventasrapidas.totalventasR;
 
-        _ck(_v, 211, 0, currVal_30);
-
-        var currVal_31 = _co.total_perdidasobtenidas == null ? null : _co.total_perdidasobtenidas.total_perdidas;
-
-        _ck(_v, 220, 0, currVal_31);
-
-        var currVal_32 = _co.venta_rapidasgrafico;
-
-        _ck(_v, 234, 0, currVal_32);
-
-        var currVal_33 = _co.ventas_rapidasrealizada * 100;
-
-        _ck(_v, 238, 0, currVal_33);
-
-        var currVal_34 = _co.total_ventasrapidas == null ? null : _co.total_ventasrapidas.totalventasR;
-
-        _ck(_v, 247, 0, currVal_34);
+        _ck(_v, 213, 0, currVal_30);
       });
     }
 
@@ -5104,89 +5100,89 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(DashboardComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
-            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
               while (1) {
-                switch (_context5.prev = _context5.next) {
+                switch (_context4.prev = _context4.next) {
                   case 0:
                     this.spinner.show("spinnerdashboard", {
                       type: "pacman",
                       size: "large",
                       color: "white"
                     });
-                    _context5.next = 3;
+                    _context4.next = 3;
                     return this.pagosrealizados();
 
                   case 3:
-                    _context5.next = 5;
+                    _context4.next = 5;
                     return this.listaventasdetectadis();
 
                   case 5:
-                    _context5.next = 7;
+                    _context4.next = 7;
                     return this.ganancias_mepasado();
 
                   case 7:
-                    _context5.next = 9;
+                    _context4.next = 9;
                     return this.ganancias_mensual();
 
                   case 9:
-                    _context5.next = 11;
+                    _context4.next = 11;
                     return this.losvoucher();
 
                   case 11:
-                    _context5.next = 13;
+                    _context4.next = 13;
                     return this.losproductos();
 
                   case 13:
-                    _context5.next = 15;
+                    _context4.next = 15;
                     return this.stockperdiasdestemes();
 
                   case 15:
-                    _context5.next = 17;
+                    _context4.next = 17;
                     return this.perdiasmesanterior();
 
                   case 17:
-                    _context5.next = 19;
+                    _context4.next = 19;
                     return this.perdiadsestemes();
 
                   case 19:
-                    _context5.next = 21;
+                    _context4.next = 21;
                     return this.datosgrafico();
 
                   case 21:
-                    _context5.next = 23;
+                    _context4.next = 23;
                     return this.gananciasobtenidas();
 
                   case 23:
-                    _context5.next = 25;
+                    _context4.next = 25;
                     return this.gananciaspormes();
 
                   case 25:
-                    _context5.next = 27;
+                    _context4.next = 27;
                     return this.obtenermermas();
 
                   case 27:
-                    _context5.next = 29;
+                    _context4.next = 29;
                     return this.PerdidasXmes();
 
                   case 29:
-                    _context5.next = 31;
+                    _context4.next = 31;
                     return this.perdidas_segundoinventario();
 
                   case 31:
-                    _context5.next = 33;
+                    _context4.next = 33;
                     return this.perdidasobtenidas();
 
                   case 33:
-                    _context5.next = 35;
+                    _context4.next = 35;
                     return this.totalperdiadasinventarioprimario();
 
                   case 35:
-                    _context5.next = 37;
+                    _context4.next = 37;
                     return this.ventasrapidasgrafico();
 
                   case 37:
-                    _context5.next = 39;
+                    _context4.next = 39;
                     return this.totaldeventasrapidas();
 
                   case 39:
@@ -5196,10 +5192,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 41:
                   case "end":
-                    return _context5.stop();
+                    return _context4.stop();
                 }
               }
-            }, _callee5, this);
+            }, _callee4, this);
           }));
         } // Fin del OnInit
 
@@ -7159,19 +7155,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "busquedaproducto",
         value: function busquedaproducto() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
-            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+            return regeneratorRuntime.wrap(function _callee5$(_context5) {
               while (1) {
-                switch (_context6.prev = _context6.next) {
+                switch (_context5.prev = _context5.next) {
                   case 0:
-                    return _context6.abrupt("return", this.productos = this.categoryservice.categorias().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.unsubscribe$)));
+                    return _context5.abrupt("return", this.productos = this.categoryservice.categorias().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.unsubscribe$)));
 
                   case 1:
                   case "end":
-                    return _context6.stop();
+                    return _context5.stop();
                 }
               }
-            }, _callee6, this);
+            }, _callee5, this);
           }));
         }
       }, {
@@ -7187,20 +7183,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "mermashoy",
         value: function mermashoy() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
-            return regeneratorRuntime.wrap(function _callee7$(_context7) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+            return regeneratorRuntime.wrap(function _callee6$(_context6) {
               while (1) {
-                switch (_context7.prev = _context7.next) {
+                switch (_context6.prev = _context6.next) {
                   case 0:
                     this.mermas_dia = this.categoryservice.mermasdeldia().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.unsubscribe$));
-                    return _context7.abrupt("return", this.mermas_dia);
+                    return _context6.abrupt("return", this.mermas_dia);
 
                   case 2:
                   case "end":
-                    return _context7.stop();
+                    return _context6.stop();
                 }
               }
-            }, _callee7, this);
+            }, _callee6, this);
           }));
         }
       }, {
@@ -7302,44 +7298,44 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "UpdateStadoMerma",
         value: function UpdateStadoMerma(datosMermas) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
-            return regeneratorRuntime.wrap(function _callee8$(_context8) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+            return regeneratorRuntime.wrap(function _callee7$(_context7) {
               while (1) {
-                switch (_context8.prev = _context8.next) {
+                switch (_context7.prev = _context7.next) {
                   case 0:
                     if (this.formMermaEstado.valid) {
-                      _context8.next = 4;
+                      _context7.next = 4;
                       break;
                     }
 
                     alert('debe ingresar un comentario pára actualizar el estado de la merma.');
-                    _context8.next = 14;
+                    _context7.next = 14;
                     break;
 
                   case 4:
-                    _context8.prev = 4;
-                    _context8.next = 7;
+                    _context7.prev = 4;
+                    _context7.next = 7;
                     return this.actualizar_estado(datosMermas);
 
                   case 7:
-                    _context8.next = 9;
+                    _context7.next = 9;
                     return this.guardarregistromerma(datosMermas);
 
                   case 9:
-                    _context8.next = 14;
+                    _context7.next = 14;
                     break;
 
                   case 11:
-                    _context8.prev = 11;
-                    _context8.t0 = _context8["catch"](4);
-                    console.log('ocurrio un error', _context8.t0);
+                    _context7.prev = 11;
+                    _context7.t0 = _context7["catch"](4);
+                    console.log('ocurrio un error', _context7.t0);
 
                   case 14:
                   case "end":
-                    return _context8.stop();
+                    return _context7.stop();
                 }
               }
-            }, _callee8, this, [[4, 11]]);
+            }, _callee7, this, [[4, 11]]);
           }));
         }
       }, {
@@ -7617,34 +7613,34 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(SolucionMermaComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
-            return regeneratorRuntime.wrap(function _callee9$(_context9) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+            return regeneratorRuntime.wrap(function _callee8$(_context8) {
               while (1) {
-                switch (_context9.prev = _context9.next) {
+                switch (_context8.prev = _context8.next) {
                   case 0:
                     this.spinner.show();
-                    _context9.next = 3;
+                    _context8.next = 3;
                     return this.obteniendodatos();
 
                   case 3:
                     console.log('datos', this.datosobtenidos[0].Consumo);
-                    _context9.next = 6;
+                    _context8.next = 6;
                     return this.grafico_mermas();
 
                   case 6:
-                    _context9.next = 8;
+                    _context8.next = 8;
                     return this.graficoestadomerma();
 
                   case 8:
-                    _context9.next = 10;
+                    _context8.next = 10;
                     return this.totalmuestra();
 
                   case 10:
                   case "end":
-                    return _context9.stop();
+                    return _context8.stop();
                 }
               }
-            }, _callee9, this);
+            }, _callee8, this);
           }));
         }
       }, {
@@ -9393,12 +9389,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(AppsaleComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
             var _this28 = this;
 
-            return regeneratorRuntime.wrap(function _callee10$(_context10) {
+            return regeneratorRuntime.wrap(function _callee9$(_context9) {
               while (1) {
-                switch (_context10.prev = _context10.next) {
+                switch (_context9.prev = _context9.next) {
                   case 0:
                     this.articuloBusqueda;
                     this.spinner.show();
@@ -9409,7 +9405,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       _this28.fecha_emision = x.diaymes;
                       _this28.hora_emision = x.hora.toString() + ':' + x.minutos + ':' + x.segundo;
                     });
-                    _context10.next = 6;
+                    _context9.next = 6;
                     return this.carservice.currentDataCart$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_16__["takeUntil"])(this.unsubscribe$)).subscribe(function (x) {
                       if (x) {
                         _this28.items = x;
@@ -9423,7 +9419,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 6:
-                    _context10.next = 8;
+                    _context9.next = 8;
                     return this.sermedio.mostrarmediodepago().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_16__["takeUntil"])(this.unsubscribe$)).subscribe(function (res) {
                       _this28.selecciondecomra = res;
 
@@ -9431,7 +9427,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 8:
-                    _context10.next = 10;
+                    _context9.next = 10;
                     return this.serviCat.categorias().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_16__["takeUntil"])(this.unsubscribe$)).subscribe(function (data) {
                       _this28.categorias = data;
 
@@ -9449,10 +9445,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 11:
                   case "end":
-                    return _context10.stop();
+                    return _context9.stop();
                 }
               }
-            }, _callee10, this);
+            }, _callee9, this);
           }));
         } // Habrir el modal al precionar el carrito de compra
 
@@ -12925,28 +12921,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ListPageComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
             var _this31 = this;
 
-            return regeneratorRuntime.wrap(function _callee11$(_context11) {
+            return regeneratorRuntime.wrap(function _callee10$(_context10) {
               while (1) {
-                switch (_context11.prev = _context11.next) {
+                switch (_context10.prev = _context10.next) {
                   case 0:
                     this.ngxspinner.show();
-                    _context11.next = 3;
+                    _context10.next = 3;
                     return this.bol.detalledeventa();
 
                   case 3:
-                    this.boletas = _context11.sent;
-                    _context11.next = 6;
+                    this.boletas = _context10.sent;
+                    _context10.next = 6;
                     return this.informacionesLocal();
 
                   case 6:
-                    _context11.next = 8;
+                    _context10.next = 8;
                     return this.secoind.getInfoReloj();
 
                   case 8:
-                    this.datos$ = _context11.sent;
+                    this.datos$ = _context10.sent;
                     this.fecha = this.datos$.subscribe(function (x) {
                       _this31.hora = x.diaymes + 'T' + x.hora.toString() + ':' + x.minutos + ':' + x.segundo;
 
@@ -12955,10 +12951,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 10:
                   case "end":
-                    return _context11.stop();
+                    return _context10.stop();
                 }
               }
-            }, _callee11, this);
+            }, _callee10, this);
           }));
         }
       }, {
@@ -15511,12 +15507,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "agregarcantidad",
         value: function agregarcantidad(cantidad_requerido) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
             var pruebaaaa, _i11, _pruebaaaa, i, nuwvo;
 
-            return regeneratorRuntime.wrap(function _callee12$(_context12) {
+            return regeneratorRuntime.wrap(function _callee11$(_context11) {
               while (1) {
-                switch (_context12.prev = _context12.next) {
+                switch (_context11.prev = _context11.next) {
                   case 0:
                     console.log("agregado a la lista", cantidad_requerido);
 
@@ -15542,10 +15538,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 2:
                   case "end":
-                    return _context12.stop();
+                    return _context11.stop();
                 }
               }
-            }, _callee12, this);
+            }, _callee11, this);
           }));
         }
       }, {
@@ -17364,31 +17360,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
             var _this42 = this;
 
-            return regeneratorRuntime.wrap(function _callee13$(_context13) {
+            return regeneratorRuntime.wrap(function _callee12$(_context12) {
               while (1) {
-                switch (_context13.prev = _context13.next) {
+                switch (_context12.prev = _context12.next) {
                   case 0:
                     this.ngxspinner.show();
-                    _context13.next = 3;
+                    _context12.next = 3;
                     return this.servi.categorias().subscribe(function (data) {
                       _this42.categorias = data;
                     });
 
                   case 3:
-                    _context13.next = 5;
+                    _context12.next = 5;
                     return this.marc.buscarmarca2().subscribe(function (data) {
                       _this42.marcas = data;
                     });
 
                   case 5:
-                    _context13.next = 7;
+                    _context12.next = 7;
                     return this.buscarimpuesto();
 
                   case 7:
-                    _context13.next = 9;
+                    _context12.next = 9;
                     return this.servi.__tomaproveedores().subscribe(function (res) {
                       _this42.proveedor = res;
 
@@ -17397,28 +17393,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 9:
                   case "end":
-                    return _context13.stop();
+                    return _context12.stop();
                 }
               }
-            }, _callee13, this);
+            }, _callee12, this);
           }));
         }
       }, {
         key: "buscarimpuesto",
         value: function buscarimpuesto() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
-            return regeneratorRuntime.wrap(function _callee14$(_context14) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
+            return regeneratorRuntime.wrap(function _callee13$(_context13) {
               while (1) {
-                switch (_context14.prev = _context14.next) {
+                switch (_context13.prev = _context13.next) {
                   case 0:
                     this.immp = this.impt.obtneriIMP().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.unsubscribe$));
 
                   case 1:
                   case "end":
-                    return _context14.stop();
+                    return _context13.stop();
                 }
               }
-            }, _callee14, this);
+            }, _callee13, this);
           }));
         }
       }, {
@@ -18709,19 +18705,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "Bimpuestos",
         value: function Bimpuestos() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee15() {
-            return regeneratorRuntime.wrap(function _callee15$(_context15) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
+            return regeneratorRuntime.wrap(function _callee14$(_context14) {
               while (1) {
-                switch (_context15.prev = _context15.next) {
+                switch (_context14.prev = _context14.next) {
                   case 0:
-                    return _context15.abrupt("return", this.IMPs = this.servi.obtneriIMP());
+                    return _context14.abrupt("return", this.IMPs = this.servi.obtneriIMP());
 
                   case 1:
                   case "end":
-                    return _context15.stop();
+                    return _context14.stop();
                 }
               }
-            }, _callee15, this);
+            }, _callee14, this);
           }));
         }
       }, {
@@ -21200,21 +21196,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ListaproductoComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee16() {
-            return regeneratorRuntime.wrap(function _callee16$(_context16) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee15() {
+            return regeneratorRuntime.wrap(function _callee15$(_context15) {
               while (1) {
-                switch (_context16.prev = _context16.next) {
+                switch (_context15.prev = _context15.next) {
                   case 0:
                     this.ngxspinner.show();
-                    _context16.next = 3;
+                    _context15.next = 3;
                     return this.productosAsync();
 
                   case 3:
-                    _context16.next = 5;
+                    _context15.next = 5;
                     return this.busquedaAsync2();
 
                   case 5:
-                    _context16.next = 7;
+                    _context15.next = 7;
                     return this.newinventario();
 
                   case 7:
@@ -21222,10 +21218,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 8:
                   case "end":
-                    return _context16.stop();
+                    return _context15.stop();
                 }
               }
-            }, _callee16, this);
+            }, _callee15, this);
           }));
         } // Tomando el inventario nuevo.
 
@@ -21272,10 +21268,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "productosAsync",
         value: function productosAsync() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee17() {
-            return regeneratorRuntime.wrap(function _callee17$(_context17) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee16() {
+            return regeneratorRuntime.wrap(function _callee16$(_context16) {
               while (1) {
-                switch (_context17.prev = _context17.next) {
+                switch (_context16.prev = _context16.next) {
                   case 0:
                     try {
                       this.listproductos = this.prod.products().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeUntil"])(this.unsubscribe$));
@@ -21284,9 +21280,33 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     }
 
                     this.ngxspinner.hide();
-                    return _context17.abrupt("return", this.listproductos);
+                    return _context16.abrupt("return", this.listproductos);
 
                   case 3:
+                  case "end":
+                    return _context16.stop();
+                }
+              }
+            }, _callee16, this);
+          }));
+        }
+      }, {
+        key: "busquedaAsync2",
+        value: function busquedaAsync2() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee17() {
+            return regeneratorRuntime.wrap(function _callee17$(_context17) {
+              while (1) {
+                switch (_context17.prev = _context17.next) {
+                  case 0:
+                    try {
+                      this.listproductosG = this.prod.products().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeUntil"])(this.unsubscribe$));
+                    } catch (e) {
+                      console.log('Ocurrion un error', e);
+                    }
+
+                    return _context17.abrupt("return", this.listproductosG);
+
+                  case 2:
                   case "end":
                     return _context17.stop();
                 }
@@ -21295,22 +21315,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
-        key: "busquedaAsync2",
-        value: function busquedaAsync2() {
+        key: "editarproductos",
+        value: function editarproductos(producto, nuevo, perdida) {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee18() {
+            var stock;
             return regeneratorRuntime.wrap(function _callee18$(_context18) {
               while (1) {
                 switch (_context18.prev = _context18.next) {
                   case 0:
-                    try {
-                      this.listproductosG = this.prod.products().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeUntil"])(this.unsubscribe$));
-                    } catch (e) {
-                      console.log('Ocurrion un error', e);
-                    }
+                    console.log('lo que se quiere actualizar', producto);
+                    _context18.next = 3;
+                    return this.prod.actualizarproducto(producto).subscribe(function (data) {
+                      return data;
+                    });
 
-                    return _context18.abrupt("return", this.listproductosG);
+                  case 3:
+                    stock = producto.stock;
+                    _context18.next = 6;
+                    return this.editarstock(stock, nuevo, perdida);
 
-                  case 2:
+                  case 6:
                   case "end":
                     return _context18.stop();
                 }
@@ -21319,53 +21343,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
-        key: "editarproductos",
-        value: function editarproductos(producto, nuevo, perdida) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee19() {
-            var stock;
-            return regeneratorRuntime.wrap(function _callee19$(_context19) {
-              while (1) {
-                switch (_context19.prev = _context19.next) {
-                  case 0:
-                    console.log('lo que se quiere actualizar', producto);
-                    _context19.next = 3;
-                    return this.prod.actualizarproducto(producto).subscribe(function (data) {
-                      return data;
-                    });
-
-                  case 3:
-                    stock = producto.stock;
-                    _context19.next = 6;
-                    return this.editarstock(stock, nuevo, perdida);
-
-                  case 6:
-                  case "end":
-                    return _context19.stop();
-                }
-              }
-            }, _callee19, this);
-          }));
-        }
-      }, {
         key: "editarstock",
         value: function editarstock(stck, stnuevo, stlost) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee20() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee19() {
             var _this53 = this;
 
             var edicion_producto;
-            return regeneratorRuntime.wrap(function _callee20$(_context20) {
+            return regeneratorRuntime.wrap(function _callee19$(_context19) {
               while (1) {
-                switch (_context20.prev = _context20.next) {
+                switch (_context19.prev = _context19.next) {
                   case 0:
                     // tslint:disable-next-line:variable-name
                     edicion_producto = stck; // tslint:disable-next-line:triple-equals
 
                     if (!(stnuevo == 0 && stlost == 0 || stnuevo == null && stlost == null)) {
-                      _context20.next = 4;
+                      _context19.next = 4;
                       break;
                     }
 
-                    _context20.next = 8;
+                    _context19.next = 8;
                     break;
 
                   case 4:
@@ -21387,7 +21383,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       }
                     }
 
-                    _context20.next = 7;
+                    _context19.next = 7;
                     return this.prod.actualizarstock(stck).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeUntil"])(this.unsubscribe$)).subscribe(function (data) {
                       return _this53.cd.markForCheck();
                     });
@@ -21397,26 +21393,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 8:
                   case "end":
-                    return _context20.stop();
+                    return _context19.stop();
                 }
               }
-            }, _callee20, this);
+            }, _callee19, this);
           }));
         }
       }, {
         key: "editar",
         value: function editar() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee21() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee20() {
             var _this54 = this;
 
             var id;
-            return regeneratorRuntime.wrap(function _callee21$(_context21) {
+            return regeneratorRuntime.wrap(function _callee20$(_context20) {
               while (1) {
-                switch (_context21.prev = _context21.next) {
+                switch (_context20.prev = _context20.next) {
                   case 0:
                     id = localStorage.getItem('idc'); // tslint:disable-next-line:max-line-length
 
-                    _context21.next = 3;
+                    _context20.next = 3;
                     return this.prod.buscarproductoporID(+id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeUntil"])(this.unsubscribe$)).subscribe(function (data) {
                       _this54.productoporid = data;
 
@@ -21425,10 +21421,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 3:
                   case "end":
-                    return _context21.stop();
+                    return _context20.stop();
                 }
               }
-            }, _callee21, this);
+            }, _callee20, this);
           }));
         }
       }, {
@@ -21478,15 +21474,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "open5",
         value: function open5(content, inv2) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee22() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee21() {
             var _this57 = this;
 
-            return regeneratorRuntime.wrap(function _callee22$(_context22) {
+            return regeneratorRuntime.wrap(function _callee21$(_context21) {
               while (1) {
-                switch (_context22.prev = _context22.next) {
+                switch (_context21.prev = _context21.next) {
                   case 0:
                     localStorage.setItem('inv2', inv2.id.toString());
-                    _context22.next = 3;
+                    _context21.next = 3;
                     return this.editar5();
 
                   case 3:
@@ -21500,35 +21496,35 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 4:
                   case "end":
-                    return _context22.stop();
+                    return _context21.stop();
                 }
               }
-            }, _callee22, this);
+            }, _callee21, this);
           }));
         }
       }, {
         key: "editar2",
         value: function editar2() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee23() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee22() {
             var _this58 = this;
 
             var id;
-            return regeneratorRuntime.wrap(function _callee23$(_context23) {
+            return regeneratorRuntime.wrap(function _callee22$(_context22) {
               while (1) {
-                switch (_context23.prev = _context23.next) {
+                switch (_context22.prev = _context22.next) {
                   case 0:
                     id = localStorage.getItem('idc2');
-                    _context23.next = 3;
+                    _context22.next = 3;
                     return this.prod.buscarelstockporID(+id).subscribe(function (data) {
                       _this58.stock_actualizado = data;
                     });
 
                   case 3:
                   case "end":
-                    return _context23.stop();
+                    return _context22.stop();
                 }
               }
-            }, _callee23, this);
+            }, _callee22, this);
           }));
         }
       }, {
@@ -22109,13 +22105,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(MarcaComponent, [{
         key: "lasmarca",
         value: function lasmarca() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee24() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee23() {
             var _this61 = this;
 
             var informacion;
-            return regeneratorRuntime.wrap(function _callee24$(_context24) {
+            return regeneratorRuntime.wrap(function _callee23$(_context23) {
               while (1) {
-                switch (_context24.prev = _context24.next) {
+                switch (_context23.prev = _context23.next) {
                   case 0:
                     informacion = function informacion() {
                       return new Promise(function (resolve, reject) {
@@ -22125,32 +22121,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       });
                     };
 
-                    return _context24.abrupt("return", informacion());
+                    return _context23.abrupt("return", informacion());
 
                   case 2:
                   case "end":
-                    return _context24.stop();
+                    return _context23.stop();
                 }
               }
-            }, _callee24);
+            }, _callee23);
           }));
         }
       }, {
         key: "informacionasync",
         value: function informacionasync() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee25() {
-            return regeneratorRuntime.wrap(function _callee25$(_context25) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee24() {
+            return regeneratorRuntime.wrap(function _callee24$(_context24) {
               while (1) {
-                switch (_context25.prev = _context25.next) {
+                switch (_context24.prev = _context24.next) {
                   case 0:
                     this.elnombre = this.Smarca.buscarmarca2();
 
                   case 1:
                   case "end":
-                    return _context25.stop();
+                    return _context24.stop();
                 }
               }
-            }, _callee25, this);
+            }, _callee24, this);
           }));
         }
       }, {
@@ -23011,21 +23007,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(VencimientosComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee26() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee25() {
             var _this66 = this;
 
-            return regeneratorRuntime.wrap(function _callee26$(_context26) {
+            return regeneratorRuntime.wrap(function _callee25$(_context25) {
               while (1) {
-                switch (_context26.prev = _context26.next) {
+                switch (_context25.prev = _context25.next) {
                   case 0:
                     this.ngxspinner.show();
-                    _context26.next = 3;
+                    _context25.next = 3;
                     return this.estanPorvencer()["finally"](function () {
                       _this66.isloading = true;
                     });
 
                   case 3:
-                    _context26.next = 5;
+                    _context25.next = 5;
                     return this.productosquevenceran()["finally"](function () {
                       _this66.isloading = true;
                     });
@@ -23035,23 +23031,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 6:
                   case "end":
-                    return _context26.stop();
+                    return _context25.stop();
                 }
               }
-            }, _callee26, this);
+            }, _callee25, this);
           }));
         }
       }, {
         key: "estanPorvencer",
         value: function estanPorvencer() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee27() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee26() {
             var _this67 = this;
 
-            return regeneratorRuntime.wrap(function _callee27$(_context27) {
+            return regeneratorRuntime.wrap(function _callee26$(_context26) {
               while (1) {
-                switch (_context27.prev = _context27.next) {
+                switch (_context26.prev = _context26.next) {
                   case 0:
-                    _context27.next = 2;
+                    _context26.next = 2;
                     return this.serproduct.GetPorvencer().then(function (res) {
                       _this67.fechas_avencer = res;
                       console.log('obtengo', _this67.fechas_avencer); // tslint:disable-next-line:radix max-line-length
@@ -23107,10 +23103,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 3:
                   case "end":
-                    return _context27.stop();
+                    return _context26.stop();
                 }
               }
-            }, _callee27, this);
+            }, _callee26, this);
           }));
         } // calculandofecha(){
         // let fecha2 = new Date()

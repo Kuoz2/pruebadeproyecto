@@ -11,7 +11,6 @@ export class VentasService {
   constructor(private http: HttpClient) { }
 
   Urlventas = 'https://marketmini.herokuapp.com/sales';
-  PruebaVentas = 'http://localhost:3000/sales';
   private ventarapida='https://marketmini.herokuapp.com/quick_sales';
   mostrarventas() {
    return this.http.get<Ventas>(this.Urlventas);

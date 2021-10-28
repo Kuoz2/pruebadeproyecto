@@ -1,5 +1,5 @@
 
-<ngx-spinner type="pacman">
+<ngx-spinner name = "spinnerinventario">
 </ngx-spinner>
 
 <div class="container-fluid">
@@ -70,7 +70,7 @@
                                                     <tr *ngFor="let l of (tomanuevoinventario | inventariosinstock2  ) | paginate: {id:'pagination8',itemsPerPage:3, currentPage:n} ; let i=index"   class="text-center" >
                                                         <td >{{l.fecha_vencimiento  }}</td>
                                                             <td >{{l.product.pcodigo}}</td>
-                                                            <td >{{l.product.category.cnombre}}/{{u.product.brand.bnombre}}</td>
+                                                            <td >{{l.product.category.cnombre}}/{{l.product.brand.bnombre}}</td>
                                                             <td >{{l.product.pdescripcion}}</td>
                                                             <td>{{l.product.pvalor}}</td>
                                                             <td>{{l.stock_expiration}}</td>
@@ -148,7 +148,7 @@
                                                 <tr *ngFor="let x of (tomanuevoinventario | inventariogestion2) | paginate: {id:'pagination7',itemsPerPage:3, currentPage:k} ; let i=index  " >
                                                     <td >{{x.fecha_vencimiento  }}</td>
                                                     <td >{{x.product.pcodigo}}</td>
-                                                    <td >{{x.product.category.cnombre}}/{{u.product.brand.bnombre}}</td>
+                                                    <td >{{x.product.category.cnombre}}/{{x.product.brand.bnombre}}</td>
                                                     <td >{{x.product.pdescripcion}}</td>
                                                     <td>{{x.product.pvalor}}</td>
                                                     <td>{{x.stock_expiration}}</td>

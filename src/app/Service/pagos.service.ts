@@ -15,8 +15,7 @@ export class PagosService {
   Url = 'https://marketmini.herokuapp.com/payments';
     urlmedio = 'https://marketmini.herokuapp.com/half_payments';
 
-      urlpaymentsprueba = 'http://localhost:3000/payments';
-        urlmediopagoprueba = 'http://localhost:3000/half_payments';
+  
   mostrarpagos() {
    return  this.http.get<Pagos[]>(this.Url);
   }

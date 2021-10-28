@@ -4,6 +4,11 @@ import {VerificadorService} from "../../Service/verificador.service";
 
 export const
     content: Routes = [
+      {
+        path:'',
+            redirectTo: 'navegacionboton/navboton',
+              pathMatch: 'prefix'
+      },
 
   {
     path: 'dashboard',

@@ -27,6 +27,7 @@ import {MarcaComponent} from './physical/marca/marca.component';
 import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
 import { VencimientosComponent } from './physical/vencimientos/vencimientos.component';
 import {NgxSpinnerModule} from "ngx-spinner";
+import { VerificarTokenService } from 'src/app/Service/verificar-token.service';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   maxFilesize: 50,
@@ -61,7 +62,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
         Ng4LoadingSpinnerModule,
         NgxSpinnerModule
     ],
-  providers: [
+  providers: [VerificarTokenService,
     {
       provide: DROPZONE_CONFIG,
       useValue: DEFAULT_DROPZONE_CONFIG

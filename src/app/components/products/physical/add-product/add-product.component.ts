@@ -148,7 +148,7 @@ file: File;
                 this.productForm.value.date_expiration.stock_expiration = this.productForm.value.stock.pstock;
                 this.productForm.value.stock.product_id = 0;
                 this.productForm.value.date_expiration.product_id = 0;
-                this.servi.guardarproductos( this.productForm.value ).subscribe(res =>  {console.log('lo guardado', res); });;
+                this.servi.guardarproductos( this.productForm.value );
                 console.log( 'productos', this.productForm.value );
               this.productForm.reset();
 

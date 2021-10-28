@@ -2611,6 +2611,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var src_app_Service_ventas_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! src/app/Service/ventas.service */
     "./src/app/Service/ventas.service.ts");
+    /* harmony import */
+
+
+    var devtools_detect__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! devtools-detect */
+    "./node_modules/devtools-detect/index.js");
+    /* harmony import */
+
+
+    var devtools_detect__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(devtools_detect__WEBPACK_IMPORTED_MODULE_7__);
 
     var NavbotonesComponent = /*#__PURE__*/function () {
       function NavbotonesComponent(marc, impt, servi, modalService, fb, vns) {
@@ -2743,34 +2753,50 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
-                    _context.next = 2;
+                    this.navegador_habierto();
+                    window.addEventListener('devtoolschange', function (event) {
+                      console.log('Is DevTools open:', event.detail.isOpen);
+                      console.log('DevTools orientation:', event.detail.orientation);
+
+                      if (event.detail.isOpen == true) {
+                        window.location.href = "https://errorconsole.herokuapp.com/";
+                      }
+                    });
+                    _context.next = 4;
                     return this.servi.__tomaproveedores().subscribe(function (res) {
                       _this.proveedor = res;
                     });
 
-                  case 2:
-                    _context.next = 4;
+                  case 4:
+                    _context.next = 6;
                     return this.servi.categorias().subscribe(function (data) {
                       _this.categorias = data;
                     });
 
-                  case 4:
-                    _context.next = 6;
+                  case 6:
+                    _context.next = 8;
                     return this.marc.buscarmarca2().subscribe(function (data) {
                       _this.marcas = data;
                     });
 
-                  case 6:
-                    _context.next = 8;
+                  case 8:
+                    _context.next = 10;
                     return this.buscarimpuesto();
 
-                  case 8:
+                  case 10:
                   case "end":
                     return _context.stop();
                 }
               }
             }, _callee, this);
           }));
+        }
+      }, {
+        key: "navegador_habierto",
+        value: function navegador_habierto() {
+          if (devtools_detect__WEBPACK_IMPORTED_MODULE_7__["isOpen"] == true) {
+            window.location.href = "https://errorconsole.herokuapp.com/";
+          }
         }
       }, {
         key: "buscarimpuesto",

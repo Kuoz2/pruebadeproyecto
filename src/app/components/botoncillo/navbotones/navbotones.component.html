@@ -1,35 +1,37 @@
 <ng-template #content10 let-modal10>
-    <div class="modal-header">
-        <h5 class="modal-title f-w-600" id="exampleModalLabel2">Revision del producto a ingresar</h5>
-        <button type="button" class="close" aria-label="Close"
-                (click)="modal10.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <form [formGroup]="Frmproducto" (ngSubmit)="Guardaregistro(form)" #form="ngForm">
-
-            <ul class="list-group">
-                <li class="list-group-item">{{Frmproducto.value.pdescripcion}}</li>
-                <li class="list-group-item">{{Frmproducto.value.category_id.cnombre}}</li>
-                <li class="list-group-item">{{Frmproducto.value.brand_id.bnombre}}</li>
-                <li class="list-group-item">{{Frmproducto.value.pcodigo}}</li>
-                <li class="list-group-item">{{Frmproducto.value.pvalor}}</li>
-                <li class="list-group-item">{{Frmproducto.value.fecha_vencimiento}}</li>
-                <li class="list-group-item">{{Frmproducto.value.stock.pstock}}</li>
-                <li class="list-group-item">{{Frmproducto.value.stock.stock_lost}}</li>
-              </ul>
-            <div class="btn-group row " role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary" (click)="modal10.dismiss('Cross click'); open9(content9)">Atras</button>
-                <button type="submit" class="btn btn-primary" (click)="guardar" > Guardar </button>
-              </div>  
-              <hr>
-              <div class="alert alert-success" role="alert">
-                <h4 class="alert-heading">Información.</h4>
-                <p>Aquí se muestra todos los datos del producto antes de ser guardados, revise bien la información antes.</p>
-            </div>
-        </form>
-    </div>
+ 
+                <div class="modal-header ">
+                    <h5 class="modal-title f-w-600" id="exampleModalLabel2">Revision del producto a ingresar</h5>
+                    <button type="button" class="close" aria-label="Close"
+                            (click)="modal10.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="Frmproducto" (ngSubmit)="Guardaregistro(form)" #form="ngForm">
+            
+                        <ul class="list-group">
+                            <li class="list-group-item">{{Frmproducto.value.pdescripcion}}</li>
+                           
+                            <li class="list-group-item">{{Frmproducto.value.pcodigo}}</li>
+                            <li class="list-group-item">{{Frmproducto.value.pvalor}}</li>
+                            <li class="list-group-item">{{Frmproducto.value.date_expiration.fecha_vencimiento}}</li>
+                            <li class="list-group-item">{{Frmproducto.value.stock.pstock}}</li>
+                            <li class="list-group-item">{{Frmproducto.value.stock.stock_lost}}</li>
+                          </ul>
+                        <div class="btn-group row " role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-primary" (click)="modal10.dismiss('Cross click'); open9(content9)">Atras</button>
+                            <button type="submit" class="btn btn-primary"  > Guardar </button>
+                          </div>  
+                          <hr>
+                          <div class="alert alert-success" role="alert">
+                            <h4 class="alert-heading">Información.</h4>
+                            <p>Aquí se muestra todos los datos del producto antes de ser guardados, revise bien la información antes.</p>
+                        </div>
+                    </form>
+                </div>
+       
+ 
 </ng-template>
 
 <ng-template #content9 let-modal9>
@@ -46,7 +48,7 @@
         <form [formGroup]="Frmproducto">
             <div class="form-group row">
                 <label for="precioproveedor" class="col-xl-3 col-sm-4 mb-0">Precio proveedor:</label>
-                <input class="form-control col-xl-8 col-sm-7" id="precioproveedor" type="number" formControlName="precio_provider" required="" autocomplete="off">
+                <input class="form-control col-xl-8 col-sm-7" id="precioproveedor" type="number" formControlName="precio_provider" required autocomplete="off">
             </div>
             <div class="btn-group row " role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-primary" (click)="modal9.dismiss('Cross click'); open8(content8)">Atras</button>
@@ -76,7 +78,7 @@
 
             <div class="form-group row">
                 <label for="proveedor" class="col-xl-3 col-sm-4 mb-0">Proveedor:</label>
-                <select id="proveedor" class="form-control digits col-xl-8 col-sm-7" formControlName="provider_id">
+                <select id="proveedor" class="form-control digits col-xl-8 col-sm-7" formControlName="provider_id" required>
                     <option [ngValue]="p" *ngFor="let p of proveedor" [selected]="proveedor[p.nombre_provider]">{{p.nombre_provider}}</option>
                 </select>
             </div>  
@@ -108,7 +110,7 @@
                 <label for="fecha" class="col-xl-3 col-sm-4 mb-0">Fecha estimación:</label>
                 <input   autocomplete="off"
                        class="form-control col-xl-8 col-sm-7"  formControlName="fecha_vencimiento" id="fecha"
-                       min="2000/01/01" type="date">
+                       min="2000/01/01" type="date" >
             </div>
             <div class="btn-group row " role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-primary" (click)="modal7.dismiss('Cross click'); open6(content6)">Atras</button>
@@ -143,7 +145,7 @@
                 <label  for="detalle"class="col-xl-3 col-sm-4">Agregar detalle :</label>
                 <div  class="col-xl-8 col-sm-7 pl-0 description-sm">
                     <label for="editor1"></label>
-                    <textarea type="text" id="detalle" language="es" formControlName="pdetalle" rows="10" cols="50"></textarea>
+                    <textarea type="text" id="detalle" language="es" formControlName="pdetalle" rows="5" cols="46"></textarea>
                     </div>
             </div>
             <div class="btn-group row " role="group" aria-label="Basic example">
@@ -176,7 +178,7 @@
                 <div class="qty-box1">
                     <div class="input-group">
                         <input class="touchspin1 text-center" id="perdidas" name="perdidas" formControlName="stock_lost" 
-                        type="number">
+                        type="number" [value]="0">
 
                     </div>
                 </div>
@@ -327,63 +329,58 @@
     </div>
 
 </ng-template>
-<ng-template #content1 let-modal1>
-    <div class="modal-header">
-        <h5 class="modal-title f-w-600" id="exampleModalLabel2">Nombre producto, marca y categoría</h5>
-        <button type="button" class="close" aria-label="Close"
-                (click)="modal1.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <div class="container">
-            <div class="row lign-items-start" >
-      <form [formGroup]="Frmproducto" >
-                <div class="form-group row">
-                    <label for="nombreproducto" class="col-xl-3 col-sm-4 mb-0">Nombre:</label>
-                    <input class="form-control col-xl-8 col-sm-7" formControlName = "pdescripcion" name="nombre" id="nombreproducto" 
-                        type="text" required >
-                        <div *ngIf="pdescripcion.touched && pdescripcion.errors?.required"
-                        class="text text-danger">
-                        El nombre no puede estar vacio.
+<ng-template #content1 let-modal1  >
+    
+                <div class="modal-header ">
+                    <h5 class="modal-title f-w-600" id="exampleModalLabel2">Producto</h5>
+                    <button type="button" class="close" aria-label="Close"
+                            (click)="modal1.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>                   
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row lign-items-start" >
+                  <form [formGroup]="Frmproducto" >
+                            <div class="form-group row">
+                                <label for="nombreproducto" class="col-xl-3 col-sm-4 mb-0">Nombre:</label>
+                                <input class="form-control col-xl-8 col-sm-7" formControlName = "pdescripcion" name="nombre" id="nombreproducto" 
+                                    type="text" required >
+                                    <div *ngIf="pdescripcion.touched && pdescripcion.errors?.required"
+                                    class="text text-danger">
+                                    El nombre no puede estar vacio.
+                                </div>
+                              </div>
+                            <div class="form-group row">
+                                <label for="marca" class="col-xl-3 col-sm-4 mb-0">Marca: </label>
+                                  <select class="form-control col-xl-8 col-sm-7" name="marca" formControlName="brand_id" id="marca">
+                                    <option value="0" selected></option>
+                                                        <option [ngValue]="y" *ngFor="let y of marcas" >{{y.bnombre}}</option>
+                                </select>
+                         
+                            </div>
+                            <div class="form-group row">
+                                <label for="Categoria" class="col-xl-3 col-sm-4 mb-0">Categoría: </label>
+                                  <select class="form-control col-xl-8 col-sm-7" name="categoria" formControlName="category_id" id="Categoria">
+                                    <option value="0" selected></option>
+                                                        <option [ngValue]="i" *ngFor="let i of categorias" >{{i.cnombre}}</option>
+                                </select>
+                         
+                            </div>
+                              <div class="btn-group row " role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-primary" >cerrar</button>
+                                <button type="button" class="btn btn-primary" (click)="modal1.dismiss('Cross click'); open2(content2)"> Siguiente </button>
+                            
+                              </div>  
+                              <hr>          
+        
+                                
+                    </form>
+                   
+                </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="marca" class="col-xl-3 col-sm-4 mb-0">Marca: </label>
-                      <select class="form-control col-xl-8 col-sm-7" name="marca" formControlName="brand_id" id="marca">
-                        <option value="0" selected></option>
-                                            <option [ngValue]="y" *ngFor="let y of marcas" >{{y.bnombre}}</option>
-                    </select>
-
-                    
-                </div>
-                <div class="form-group row">
-                    <label for="Categoria" class="col-xl-3 col-sm-4 mb-0">Categoría: </label>
-                      <select class="form-control col-xl-8 col-sm-7" name="categoria" formControlName="category_id" id="Categoria">
-                        <option value="0" selected></option>
-                                            <option [ngValue]="i" *ngFor="let i of categorias" >{{i.cnombre}}</option>
-                    </select>
-
-                    
-                </div>
-                  <div class="btn-group row " role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-primary" >cerrar</button>
-                    <button type="button" class="btn btn-primary" (click)="modal1.dismiss('Cross click'); open2(content2)"> Siguiente </button>
-                  </div>  
-                  <hr>
-           
-                  
-                    <div class="alert alert-primary " role="alert">
-                        <h1 class="alert-heading">El nombre del producto quedaria.</h1>
-                        <p>{{categoriaProducto}} {{nombreProducto}} {{marcaProducto}}</p>
-                      
-                    </div>         
-
-        </form>
-            </div>
-        </div>
-    </div>
-
+                    </div>
+                
 </ng-template>
 <ng-template #content0 let-modal0>
     <div class="modal-header">
@@ -428,16 +425,79 @@
 </div>
 </ng-template>
 <div class="container"> 
-    <div class="row lign-items-start">
-      <div class="col align-self-center"><button class="btn btn-agregar-producto btn-lg btn-block" (click)="openModal(content1)"><p class="texto-buton-in-prod ">Ingresar producto</p></button></div>
-      <div class="col align-self-center "><button class="btn btn-realizar-venta btn-lg btn-block"routerLink="/pages/app-pago"><p class="texto-buton-in-prod">Realizar venta</p></button></div>
-      <div class="w-100"></div>
-      <div class="col align-self-center "><button class="btn btn-ver-inventario  btn-lg btn-block" routerLink="/products/physical/lista-editar"><p class="texto-buton-in-prod ">Ver inventario</p></button></div>
-      <div class="col align-self-center "><button type="button" class="btn btn-venta-rapida btn-lg btn-block" (click)="open0(content0)"><p class="texto-buton-in-prod ">Venta rapida</p></button></div>
+    <div class="row col ">
+      
 
+      <div class="col align-self-center"><button class="btn btn-agregar-producto btn-lg btn-block" (click)="openModal(content1)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" fill="currentColor" class="bi bi-journal-arrow-up" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 11a.5.5 0 0 0 .5-.5V6.707l1.146 1.147a.5.5 0 0 0 .708-.708l-2-2a.5.5 0 0 0-.708 0l-2 2a.5.5 0 1 0 .708.708L7.5 6.707V10.5a.5.5 0 0 0 .5.5z"/>
+            <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+            <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+          </svg>
+        <p class="texto-buton-in-prod ">Ingresar producto</p></button></div>
+      <div class="col align-self-center "><i class="bi-alarm" style="font-size: 2rem; color: cornflowerblue;"></i>
+        <button class=" btn btn-realizar-venta btn-lg btn-block "routerLink="/pages/app-pago">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
+                <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
+                <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-2zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4z"/>
+              </svg>          
+            <p class="texto-buton-in-prod">
+            Realizar venta
+        </p>
+        </button></div>
+       
       <div class="w-100"></div>
-     
+      <div class="col align-self-center "><button class="btn btn-ver-inventario  btn-lg btn-block" routerLink="/products/physical/lista-editar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+          </svg>    
+        <p class="texto-buton-in-prod ">Ver inventario</p>
+    
+    </button></div>
+      <div class="col align-self-center "><button class="btn btn-venta-rapida btn-lg btn-block" (click)="open0(content0)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" fill="currentColor" class="bi bi-skip-forward" viewBox="0 0 16 16">
+            <path d="M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V8.752l-6.267 3.636c-.52.302-1.233-.043-1.233-.696v-2.94l-6.267 3.636C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696L7.5 7.248v-2.94c0-.653.713-.998 1.233-.696L15 7.248V4a.5.5 0 0 1 .5-.5zM1 4.633v6.734L6.804 8 1 4.633zm7.5 0v6.734L14.304 8 8.5 4.633z"/>
+          </svg>
+        <p class="texto-buton-in-prod ">Venta rapida</p>
+        </button></div>
+      
+      <div class="w-100"></div>
+    
+      <div class="col align-self-center "><button class="btn btn-ver-categoria  btn-lg btn-block" routerLink="/products/physical/category">
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30"  fill="currentColor" class="bi bi-wallet-fill" viewBox="0 0 16 16">
+            <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542.637 0 .987-.254 1.194-.542.226-.314.306-.705.306-.958a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2h-13z"/>
+            <path d="M16 6.5h-5.551a2.678 2.678 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5c-.963 0-1.613-.412-2.006-.958A2.679 2.679 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-6z"/>
+          </svg>
+        <p class="texto-buton-in-prod ">Categorías</p>
+    
+    </button></div>
+      <div class="col align-self-center "><button class="btn btn-venta-listaventa btn-lg btn-block" routerLink="/pages/lista-pago">
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30"  fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
+            <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
+          </svg>
+        <p class="texto-buton-in-prod ">Lista de ventas</p>
+        </button></div>
+        <div class="w-100"></div>
+    
+        <div class="col align-self-center "><button class="btn btn-ver-marca  btn-lg btn-block" routerLink="/products/physical/marca">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" fill="currentColor" class="bi bi-cash" viewBox="0 0 16 16">
+                <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+                <path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z"/>
+              </svg>
+          <p class="texto-buton-in-prod ">Marca</p>
+      
+      </button></div>
+        <div class="col align-self-center "><button class="btn btn-venta-impuesto btn-lg btn-block" routerLink="/pages/medio-pago">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" fill="currentColor" class="bi bi-building" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694 1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z"/>
+                <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"/>
+              </svg>
+          <p class="texto-buton-in-prod ">Impuesto</p>
+          </button></div>
+  
     </div>
+
+    
   </div> 
-
-
