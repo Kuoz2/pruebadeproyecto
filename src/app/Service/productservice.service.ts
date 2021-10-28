@@ -9,7 +9,7 @@ import {Provideer} from '../components/Modulos/Provideer';
 import {FormGroup} from '@angular/forms';
 import {Mermas} from '../components/Modulos/mermas';
 import {DateExpiration, Fecha_vencimiento} from '../components/Modulos/Fecha_vencimiento';
-import { VerificarTokenService } from './verificar-token.service';
+import { VerificarTokenService, respuesta } from './verificar-token.service';
 
 
 @Injectable({
@@ -17,7 +17,7 @@ import { VerificarTokenService } from './verificar-token.service';
 })
 export class ProductserviceService {
 // Variables publicas
-
+  public resipiente_Resu: respuesta
   constructor(private http: HttpClient, private verifica: VerificarTokenService) { }
 
 private UrlProductos = 'https://marketmini.herokuapp.com/products';
@@ -77,8 +77,9 @@ private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations'
     
     await  this.verifica.VerficSaveProd().subscribe(res => {
       console.log(res)
-        if(res.resultado != 'existe') {return}
-        if(res.resultado == 'existe'){
+      this.resipiente_Resu.resultado = res
+        if(this.resipiente_Resu.resultado != 'existe') {return}
+        if(this.resipiente_Resu.resultado == 'existe'){
         this.http.post<Productos>(this.UrlProductos, p).subscribe(response => {
          return response; })
         } 
