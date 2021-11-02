@@ -77,8 +77,7 @@ private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations'
     
     await  this.verifica.VerficSaveProd().subscribe(res => {
       console.log(res)
-      this.resipiente_Resu.resultado = res
-        if(this.resipiente_Resu.resultado != 'existe') {return}
+     
         if(this.resipiente_Resu.resultado == 'existe'){
         this.http.post<Productos>(this.UrlProductos, p).subscribe(response => {
          return response; })
@@ -106,6 +105,7 @@ private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations'
 
   // Tomar el stock perdida de este mes.
     stock_perida_este_mes() {
+
       return this.http.get(this.URLStockPerdida);
     }
 
@@ -134,7 +134,7 @@ private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations'
       return  this.http.get<any[]>(this.URL_STCK_GRF_PERDIDAS);
   }
 
-  // Aqui se conecta a los proveedores
+  // Aqui sSKe conecta a los proveedores
     __tomaproveedores() {
       return this.http.get<Provideer[]>(this.URL_PROVIDERS);
     }
@@ -162,7 +162,7 @@ private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations'
     }
     // Actualizar registro merma
     UpdateMermaEstado(mrm) {
-      console.log('id de la info', mrm.id);
+    
       return this.http.put(this.UR_MERMAS + '/' + mrm.id, mrm ).subscribe(error => console.log(error));
     }
 
@@ -190,7 +190,6 @@ private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations'
 actualizar_stock_fecha(fchAct: date_expiration) {
         return this.http.put<date_expiration>(this.URLFECHAS + '/' + fchAct.id, fchAct);
     }
-
     // Tomando el nuevo inventario con su stock de perdida y fecha de vencimiento.
     getnewinventario() {
        return this.http.get(this.URLFECHAS + '/date_product_id_on').toPromise();
