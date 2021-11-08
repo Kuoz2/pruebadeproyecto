@@ -21,7 +21,7 @@ constructor(private userservi: UsuarioService) {
 
 
    ngOnInit() {
-   //  this.navegador_habierto()
+    this.navegador_habierto()
    window.addEventListener('devtoolschange', event => {
    console.log('Is DevTools open:', event.detail.isOpen);
    console.log('DevTools orientation:', event.detail.orientation);
