@@ -36,9 +36,7 @@ nuevomedio: Medio;
       }
       if (data.includes( this.medioForm.value.mpnombre.toLowerCase() ) != true) {
         this.medioForm.value.mpnombre = this.medioForm.value.mpnombre.toLowerCase()
-        return this.medio.guardarmododepago( this.medioForm.value ).subscribe( res => {
-          this.mediopago = res
-        } )
+        this.medio.guardarmododepago( this.medioForm )
       } else {
         alert( "El medio de pago ya existe" + this.medioForm.value.mpnombre.toLowerCase() )
       }

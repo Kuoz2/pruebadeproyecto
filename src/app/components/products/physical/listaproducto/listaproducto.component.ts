@@ -161,8 +161,14 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
 
             }
 
-            await this.prod.actualizarstock(stck).pipe(takeUntil(this.unsubscribe$)).subscribe( data => this.cd.markForCheck() );
-          window.location.reload();
+            try{
+                await this.prod.actualizarstock(stck);
+                window.location.reload();
+      
+            }catch(error){
+                console.log(error)
+            }
+
         }
     }
 

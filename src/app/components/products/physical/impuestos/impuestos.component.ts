@@ -28,8 +28,7 @@ export class ImpuestosComponent implements OnInit {
   guardarimpuesto(imp) {
     if (imp.valid){
 
-        this.servi.guardarIMP(imp.value)
-      imp.reset()
+        this.servi.guardarIMP(imp)
     }
   }
 

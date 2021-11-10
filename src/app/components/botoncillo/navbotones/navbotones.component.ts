@@ -84,10 +84,10 @@ export class NavbotonesComponent implements OnInit {
 
     this.ventarapida = this.fb2.group({
       codigo_producto: new FormControl(''),
-      nombre_product: new FormControl(''),
-      cantidad: new FormControl(''),
-      precio: new FormControl(''),
-      medio_pago: new FormControl('')
+      nombre_product: new FormControl('',[Validators.required]),
+      cantidad: new FormControl('',[Validators.required]),
+      precio: new FormControl('', [Validators.required]),
+      medio_pago: new FormControl('', [Validators.required])
    })
   }
   
@@ -247,7 +247,7 @@ calImp(imp, valor): number {
           this.Frmproducto.value.date_expiration.stock_expiration = this.Frmproducto.value.stock.pstock;
           this.Frmproducto.value.stock.product_id = 0;
           this.Frmproducto.value.date_expiration.product_id = 0;
-         this.servi.guardarproductos( this.Frmproducto.value );
+         this.servi.guardarproductos( this.Frmproducto );
           console.log( 'productos', this.Frmproducto.value );
          // this.productForm.reset();
 
@@ -285,10 +285,9 @@ calImp(imp, valor): number {
    //);
   }
   realizarventa(){
-    console.log("formulario", this.ventarapida.value)
-    if(this.ventarapida.value.codigo_producto == ''){
+    if(this.ventarapida.valid){
   
-      this.vns.__guardar_ventaRapida(this.ventarapida.value)
+      this.vns.__guardar_ventaRapida(this.ventarapida)
 
     }
 

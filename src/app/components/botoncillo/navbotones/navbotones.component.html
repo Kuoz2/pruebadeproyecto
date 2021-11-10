@@ -403,11 +403,11 @@
                 <label for="manualcode" id="manualcode1" hidden>Código de forma manual</label>
                 <input class="form-control" formControlName="codigo_producto" id="manualcode" type="number" hidden>
                 <label for="nombre_product">Nombre producto</label>
-                <input class="form-control" formControlName="nombre_product" id="nombre_product" type="text">
+                <input class="form-control" formControlName="nombre_product" id="nombre_product" type="text" required>
                 <label for="cantidad" class="mb-1">Cantidad a vender :</label>
-                <input class="form-control" formControlName="cantidad" id="cantidad" type="number">
+                <input class="form-control" formControlName="cantidad" id="cantidad" type="number" required>
                 <label for="precio" class="mb-1">Precio del producto :</label>
-                <input class="form-control" formControlName="precio" id="precio" type="number">            
+                <input class="form-control" formControlName="precio" id="precio" type="number" required>            
                 <label for="cantidad" class="mb-1">Forma de pago :</label>
                 <select class="form-control" formControlName="medio_pago" >
                 <option value="" selected></option>

@@ -69,7 +69,12 @@ private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations'
     // Actializar el stock de los productos.
     actualizarstock(stck: Stock) {
       console.log('stck', stck);
-      return this.http.put<Stock>(this.URLStock + '/' + stck.id, stck);
+      this.verifica.veriuPsTock().subscribe((res:respuesta) => {
+        if (res.resultado != 'existe') { return; }
+     if (res.resultado == 'existe') {
+      this.http.put<Stock>(this.URLStock + '/' + stck.id, stck).subscribe();
+     }
+      })
     }
     // Guardar un nuevo producto
    async guardarproductos(p) {
@@ -79,8 +84,12 @@ private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations'
       console.log(res)
      
         if(this.resipiente_Resu.resultado == 'existe'){
-        this.http.post<Productos>(this.UrlProductos, p).subscribe(response => {
-         return response; })
+        this.http.post<Productos>(this.UrlProductos, p.value).subscribe( res => {
+          if( Object.values(res)[0] == 'correctamente'){
+              p.reset()
+          } 
+          
+          })
         } 
   
       })
@@ -187,8 +196,13 @@ private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations'
     //Productos que venceran el siguiente mes.
     
     // Actualizar el stock de las fechas
-actualizar_stock_fecha(fchAct: date_expiration) {
-        return this.http.put<date_expiration>(this.URLFECHAS + '/' + fchAct.id, fchAct);
+async actualizar_stock_fecha(fchAct: date_expiration) {
+   await this.verifica.VerifiUpDateExp().subscribe((res: respuesta) => {
+    if (res.resultado != 'existe') { return; }
+    if (res.resultado == 'existe') {
+      this.http.put<date_expiration>(this.URLFECHAS + '/' + fchAct.id, fchAct).subscribe();
+    }
+   })      
     }
     // Tomando el nuevo inventario con su stock de perdida y fecha de vencimiento.
     getnewinventario() {
@@ -213,8 +227,13 @@ actualizar_stock_fecha(fchAct: date_expiration) {
 
   // Actualizar la fecha vencimiento.
 
-  _actualizar_fechavence(dt: date_expiration){
-      return this.http.put(this.URLFECHAS + '/' + dt.id, dt)
+ async _actualizar_fechavence(dt: date_expiration){
+    await this.verifica.VerifiUpDateExp().subscribe((res: respuesta) => {
+      if (res.resultado != 'existe') { return; }
+      if (res.resultado == 'existe') {
+        this.http.put(this.URLFECHAS + '/' + dt.id, dt).subscribe()
+      }
+     })   
   }
 
 

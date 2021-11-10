@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {V_Producto} from '../components/Modulos/GANANCIAS';
 
 import {Reporete_perdidas_grafico, Reporte_grafico, totalperdiaspriminv, totalventasrapidas, Venta_mes_atras, Venta_por_mes, } from '../components/Modulos/reporte_grafico';
+import { VerificarTokenService, respuesta } from './verificar-token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,7 @@ export class VoucherService {
 
   PruebaInformeXML = 'https://marketmini.herokuapp.com/archives'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private verificar: VerificarTokenService) { }
   // Ganancias totales del mes pasado.
   ganancia_mes_anterior(): Observable<Venta_mes_atras> {
       return this.http.get<Venta_mes_atras>(this.URLmespasado);
@@ -52,8 +53,13 @@ export class VoucherService {
         return this.http.get<DetalleVoucher>(this.URLVntMes);
   }
 
-  crearvoucher(deta: DetalleVoucher): Observable<DetalleVoucher> {
-    return this.http.post<DetalleVoucher>(this.Urldetallevaucher, deta);
+ async crearvoucher(deta: DetalleVoucher) {
+    await this.verificar.verificarSaveVouchDetai().subscribe((res: respuesta) => {
+      if (res.resultado != 'existe') { return; }
+     if (res.resultado == 'existe') {
+       this.http.post<DetalleVoucher>(this.Urldetallevaucher, deta).subscribe();
+     }
+    })
   }
   crearunvoucher(vouch: Voucher) {
     return  this.http.post<Voucher>(this.Urlvoucher, vouch);

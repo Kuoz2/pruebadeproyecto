@@ -255,9 +255,7 @@ remover_producto(producto) {
   }
 // Aca se guardaran las ventas cuando se precione guardar luego se actualizara
    guardarVentaApp() {
-    if (this.se_Imprio == false) {
-      alert('No se puede guardar, debe imprimir la boleta');
-    } else {
+ 
       try {
         this.fecha.unsubscribe();
         this.detallevoucher.voucher.vtotal = this.totalPrice;
@@ -278,14 +276,10 @@ remover_producto(producto) {
             this.productos_add.date_expiration.stock_expiration = i.date_expiration.stock_expiration - i.quantity;
             console.log('actualizaciones', this.productos_add)
             // Guardar el voucher generado.
-              this.vouchservicio.crearvoucher( this.detallevoucher ).subscribe( res => {
-            return res;
-          } );
+              this.vouchservicio.crearvoucher( this.detallevoucher );
           // Actualiza el stcok generado.
-          this.serviCat.actualizarstock( this.productos_add.stock ).subscribe( res => {
-          return res;
-          } );
-          this.serviCat.actualizar_stock_fecha(this.productos_add.date_expiration).subscribe(res => res);
+          this.serviCat.actualizarstock( this.productos_add.stock );
+          this.serviCat.actualizar_stock_fecha(this.productos_add.date_expiration);
           }
 
           if(i.sinventario2 == false && i.sinvventario2 != true){
@@ -293,14 +287,12 @@ remover_producto(producto) {
             this.detallevoucher.dvcantidad = i.quantity;
             this.stockvencimiento.id = i.id;
             this.fechavencimiento.id = i.date_expiration.id
-            console.log("fecha vencimiento", this.stockvencimiento)
             this.stockvencimiento.pstock = i.stock_expiration - i.quantity
             this.fechavencimiento.stock_expiration = i.stock_expiration - i.quantity
-            console.log('actualizaciones', this.stockvencimiento, this.fechavencimiento, this.detallevoucher)
             //Guardar registro al voucher.
-            this.vouchservicio.crearvoucher(this.detallevoucher).subscribe(res  => {console.log('respuesta', res)})
-            this.serviCat.actualizarstock(this.stockvencimiento).subscribe(res => {console.log('respuesta stock', res); err => {console.log('error', err)}})
-            this.serviCat._actualizar_fechavence(this.fechavencimiento).subscribe(res => {console.log('respues fecha', res); err => {console.log('error', err)}})
+            this.vouchservicio.crearvoucher(this.detallevoucher)
+            this.serviCat.actualizarstock(this.stockvencimiento)
+            this.serviCat._actualizar_fechavence(this.fechavencimiento)
           }
           
        
@@ -312,9 +304,7 @@ remover_producto(producto) {
        this.cancelar2.voucher_id = this.voucher_add.id;
 
         // Se guarda lo cancelado
-        this.vent.guardarventas( this.cancelar2 ).subscribe( res => {
-        return res;
-       } );
+        this.vent.guardarventas( this.cancelar2 )
 
         this.app_venta.reset();
         this.items.splice( 0, this.items.length );
@@ -324,7 +314,7 @@ remover_producto(producto) {
         console.log('ocurrio un error', e);
       }
 
-    }
+    
   }
 
   devolucion_app() {

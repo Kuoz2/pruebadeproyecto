@@ -88,8 +88,8 @@ nombre;
     }
 
     guardarmarca(fbm) {
-
-            this.Smarca.guardarmarca(fbm.value);
-            this.marcasForm.reset()
+          if(this.marcasForm.valid){
+            this.Smarca.guardarmarca(this.marcasForm);
+          }
           }
 }

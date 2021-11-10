@@ -3,7 +3,7 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {CategoriasService} from '../../../../Service/categorias.service';
 import {Categories} from '../../../Modulos/Categories';
-import {Observable} from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-category',
@@ -13,13 +13,18 @@ import {Observable} from 'rxjs';
 export class CategoryComponent implements OnInit {
   public closeResult: string;
   categoriasForm: FormGroup;
-  categorias: Observable<Categories[]>;
+  categorias: Categories;
   categoriaID: Categories = new Categories();
   p: any;
-  constructor(private modalService: NgbModal, private formBuilder: FormBuilder, private servi: CategoriasService) {
+  constructor(private modalService: NgbModal, private formBuilder: FormBuilder, private servi: CategoriasService, private spinner: NgxSpinnerService) {
   }
 
   ngOnInit() {
+    this.spinner.show("spinnerdashcategori", {
+      type: "pacman",
+      size: "large",
+      color: "white"
+  })
     this.categoriasForm = this.formBuilder.group({
       cnombre: ['']
     });
@@ -28,12 +33,11 @@ export class CategoryComponent implements OnInit {
   }
 
   categoriaAsync() {
-    this.categorias = this.servi.mostrarcategorias();
+    return this.servi.mostrarcategorias().then((res:Categories) => {this.categorias = res; console.log(this.categorias)}).catch(res => {console.log('error', res)}).finally(() => {return this.spinner.hide('spinnerdashcategori')});
   }
 
   guardarcategoria() {
-    this.servi.guardarcategorias(this.categoriasForm.value);
-    this.categoriasForm.reset();
+    this.servi.guardarcategorias(this.categoriasForm);
   }
 
   open2(content2, catego: Categories): void {

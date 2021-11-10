@@ -1,3 +1,7 @@
+import { ImpuestosService } from './Service/impuestos.service';
+import { ProductserviceService } from './Service/productservice.service';
+import { CategoriasService } from './Service/categorias.service';
+import { MarcaService } from './Service/marca.service';
 import { Marca } from './components/Modulos/Marca';
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {UsuarioService} from './Service/usuario.service';
@@ -14,10 +18,17 @@ import * as devTools from 'devtools-detect';
 export class AppComponent implements OnInit {
   title = 'Beta';
 
-constructor(private userservi: UsuarioService) {
+constructor(private userservi: UsuarioService, 
+  private marca:MarcaService, 
+  private categoria: CategoriasService,
+   private impuesto: ImpuestosService,
+   private proveedor: ProductserviceService) {
 
 }
-
+// Verificar si estan las marcas, categorias, productos
+datosnovacios(){
+  
+}
 
 
    ngOnInit() {
@@ -38,6 +49,8 @@ constructor(private userservi: UsuarioService) {
       window.location.href = "https://errorconsole.herokuapp.com/"
     }
 }
+
+
 
 navegador(){
   var sBrowser, sUsrAg = navigator.userAgent;

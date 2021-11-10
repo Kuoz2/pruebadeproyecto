@@ -3,13 +3,15 @@ import {HttpClient} from '@angular/common/http';
 import {Pagos} from '../components/Modulos/Pagos';
 import {Observable} from 'rxjs';
 import {Medio} from '../components/Modulos/Medio';
+import { VerificarTokenService } from './verificar-token.service';
+import { respuesta, guardado } from './../components/Modulos/respuesta';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PagosService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private verificar: VerificarTokenService) { }
 
 
   Url = 'https://marketmini.herokuapp.com/payments';
@@ -28,7 +30,20 @@ export class PagosService {
     return   this.http.get<Medio[]>(this.urlmedio);
   }
 
-  guardarmododepago(med: Medio) {
-      return this.http.post<Medio>(this.urlmedio, med);
+ async guardarmododepago(med) {
+  await this.verificar.vierificarSaveHalfPyme().subscribe((respuesta: respuesta) => {
+    console.log(respuesta);
+    if (respuesta.resultado != 'existe') { return; }
+    if (respuesta.resultado == 'existe') {
+
+      this.http.post<Medio>(this.urlmedio, med.value).subscribe( res => {
+       if( Object.values(res)[0] == 'correctamente'){
+           med.reset()
+       } 
+       
+       })
+    }
+  })  
+  
   }
 }
