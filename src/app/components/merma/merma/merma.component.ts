@@ -154,7 +154,7 @@ this.frmCategoria = this.mermasForm.value.categoriasMrm;
             console.log('Mermas ingresada', mermasForm.value);
             try {
           this.categoryservice.guardarMerma(mermasForm.value).subscribe();
-          this.categoryservice.actualizarstock(da.stock).subscribe(res => res);
+          this.categoryservice.actualizarstock(da.stock);
       } catch (e) {
           alert('No se pudo guardar la merma' + e);
       }
