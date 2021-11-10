@@ -117,11 +117,9 @@ export class TicketComponent implements OnInit, OnDestroy {
                 this.productos_actualizado = i;
                 this.productos_actualizado.stock.pstock = i.stock.pstock - i.cantidad;
                 //se generea la boleta para realizar el pago
-                this.vouchservicio.crearvoucher( this.ingresodeunvaucher ).subscribe( res => {
-                    return res
-                } );
+                this.vouchservicio.crearvoucher( this.ingresodeunvaucher )
                 //Actualizar el stock del producto
-                this.prodi.actualizarstock( this.productos_actualizado.stock ).subscribe()
+                this.prodi.actualizarstock( this.productos_actualizado.stock )
             }
             //   setTimeout(() =>{this.guardarventa()}, 1000)
             this.cancelar.payment_id.pagomonto = this.total();
@@ -129,9 +127,7 @@ export class TicketComponent implements OnInit, OnDestroy {
             this.cancelar.payment_id.half_payment_id = this.loseleccionado.id;
             this.cancelar.voucher_id = this.voucherult.id + 1;
             //Se guarda el pago realizado.
-            this.vent.guardarventas( this.cancelar ).subscribe( res => {
-                return res
-            } );
+            this.vent.guardarventas( this.cancelar )
             location.reload();
 
         }
