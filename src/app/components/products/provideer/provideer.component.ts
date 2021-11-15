@@ -80,8 +80,7 @@ export class ProvideerComponent implements OnInit {
   guardarprovider():void {
           this.provideer.value.factura_provider = btoa(this.provideer.value.factura_provider)
     console.log("guardando", this.provideer.value)
-    this.serviProvider.guardarProvider(this.provideer.value).subscribe(res => {this.provideer_post = res});
+    this.serviProvider.guardarProvider(this.provideer);
      this.url.forEach(res => res.img ="assets/images/dashboard/stats.png" );
-    this.provideer.reset();
   }
 }

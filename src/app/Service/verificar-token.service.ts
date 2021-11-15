@@ -16,16 +16,17 @@ export class VerificarTokenService {
   public VupdateProdu = 'https://marketmini.herokuapp.com/products/verif_before_update'
   public verificaCate = 'https://marketmini.herokuapp.com/categories/verif_save_category'
   public verificaSbrand='https://marketmini.herokuapp.com/brands/verif_befores_save_brand'
-  private verificarTax = 'https://marketmini.herokuapp.com/taxes/verificar_blank_tax'
+  private verificarTax = 'https://marketmini.herokuapp.com/taxes/verif_befores_save_taxe'
   private vericarSale= 'https://marketmini.herokuapp.com/sales/verif_befores_save_sales'
   private verificarVoucher = 'https://marketmini.herokuapp.com/vouchers/verif_befores_save_voucher'
   private verificarQuicksale= 'https://marketmini.herokuapp.com/quick_sales/verif_befores_save_quick'
   private verificarDeacrease= 'https://marketmini.herokuapp.com/decreases/verif_before_update_decrease'
   private verificarVoucherDetails= 'https://marketmini.herokuapp.com/voucher_details/verif_befores_save_d_voucher'
-  private verificarProviders = 'https://marketmini.herokuapp.com/providers/verificar_blank_provider'
+  private verificarProviders = 'https://marketmini.herokuapp.com/providers/verif_befores_save_provi'
   private verificarHalfPyme = 'https://marketmini.herokuapp.com/half_payments/verif_befores_save_half'
   private verificaUpStock = 'https://marketmini.herokuapp.com/stocks/verif_before_update_stock'
   private verifiUpDateExp = 'https://marketmini.herokuapp.com/date_expirations/verif_before_update_date'
+
  private informerespuesta = new Subject<respuesta>()
   constructor(private http: HttpClient) { }
   validacion: any;

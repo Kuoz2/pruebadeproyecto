@@ -32,8 +32,6 @@ private URL_PROVIDERS = 'https://marketmini.herokuapp.com/providers';
 private UR_MERMAS = 'https://marketmini.herokuapp.com/decreases';
 private URLINFORME = 'https://marketmini.herokuapp.com/mrmsolutions';
 private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations'
-
-  respuesta_guardando
     // Actualizar la fecha al realizar una venta.
     
   // Tomar todos los productos
@@ -76,14 +74,28 @@ private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations'
      }
       })
     }
+    //Guardar un proveedor
+    guardarProvider(c) {
+      this.verifica.verificarSaveProvider().subscribe((res: respuesta) => {
+        if (res.resultado == 'existe') { 
+          this.http.post<Provideer>(this.URL_PROVIDERS, c.value).subscribe(resp => {
+            if (Object.values(resp)[0] == 'correctamente') {
+              c.reset()
+             }
+  
+          });
+        }
+      
+      })
+    }
     // Guardar un nuevo producto
    async guardarproductos(p) {
      
     
-    await  this.verifica.VerficSaveProd().subscribe(res => {
+    await  this.verifica.VerficSaveProd().subscribe((res: respuesta) => {
       console.log(res)
      
-        if(this.resipiente_Resu.resultado == 'existe'){
+        if(res.resultado == 'existe'){
         this.http.post<Productos>(this.UrlProductos, p.value).subscribe( res => {
           if( Object.values(res)[0] == 'correctamente'){
               p.reset()
@@ -93,12 +105,15 @@ private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations'
         } 
   
       })
+      
      // if(this.respuesta_guardando.guardado = 'Se guardo'){
      // return p.reset()
 
       //}
       //return p.reset()
   }
+    // Guardar un proveedor
+    
 
 
   // Tomar todas las categorias
@@ -148,11 +163,7 @@ private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations'
       return this.http.get<Provideer[]>(this.URL_PROVIDERS);
     }
 
-        // Guardar un proveedor
-    guardarProvider(c: Provideer) {
-      return this.http.post<Provideer>(this.URL_PROVIDERS, c);
-    }
-
+    
 
 
     // Guardar una merma
