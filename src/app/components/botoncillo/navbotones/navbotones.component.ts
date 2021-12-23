@@ -33,7 +33,10 @@ export class NavbotonesComponent implements OnInit {
   public marcas: Marca[];
   public ventarapida: FormGroup;
   public mediopago = ["efectivo", "tarjeta"]
-
+  public precio:number=0;
+  public margen:number=0;
+  public preciov:number=0;
+  public utilidad:number=0;
   get pactivado() {return this.Frmproducto.get('pactivado'); }
   get pdescripcion() { return this.Frmproducto.get('pdescripcion'); }
   get pdetalle() { return this.Frmproducto.get('pdetalle'); }
@@ -290,6 +293,15 @@ calImp(imp, valor): number {
       this.vns.__guardar_ventaRapida(this.ventarapida)
 
     }
+
+  }
+//Obterner las utilidades-
+  Obutildiad(margen, precio){
+    console.log(1-(margen/100))
+    const resultado = precio/ (1-(margen/100));
+    this.preciov = resultado;
+    this.utilidad = (resultado - precio)
+    console.log('utlidad', resultado.toFixed(0))
 
   }
 
