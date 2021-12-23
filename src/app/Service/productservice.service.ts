@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {date_expiration, Productos, Stock} from '../components/Modulos/Productos';
 import {Categories} from '../components/Modulos/Categories';
@@ -31,7 +31,9 @@ private URL_STCK_GRF_PERDIDAS = 'https://marketmini.herokuapp.com/stocks/buscar_
 private URL_PROVIDERS = 'https://marketmini.herokuapp.com/providers';
 private UR_MERMAS = 'https://marketmini.herokuapp.com/decreases';
 private URLINFORME = 'https://marketmini.herokuapp.com/mrmsolutions';
-private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations'
+private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations';
+urlListprovider = 'https://marketmini.herokuapp.com/providers'
+
     // Actualizar la fecha al realizar una venta.
     
   // Tomar todos los productos
@@ -247,5 +249,9 @@ async actualizar_stock_fecha(fchAct: date_expiration) {
      })   
   }
 
-
+  ListaProveedor():Observable<any>{
+    const headers = new HttpHeaders()
+  .set("X-CustomHeader", "custom header value");
+    return this.http.get(this.urlListprovider, {headers})
+  }
 }

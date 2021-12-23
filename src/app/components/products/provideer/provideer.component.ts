@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Bancos} from "../../../shared/tables/bancos";
 import {ProductserviceService} from "../../../Service/productservice.service";
 import {Provideer} from "../../Modulos/Provideer";
+import { map } from 'rxjs/operators';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-provideer',
@@ -12,74 +14,45 @@ import {Provideer} from "../../Modulos/Provideer";
 export class ProvideerComponent implements OnInit {
   public provideer: FormGroup;
   public provideer_post: Provideer;
-  constructor(private serviProvider: ProductserviceService) {
+  constructor(private serviProvider: ProductserviceService, private spinner: NgxSpinnerService) {
     this.provideer = ProvideerComponent.CreateFormProvider()
   }
-  public tipos_banco= Bancos;
-  public url = [{
-    img: "assets/images/dashboard/stats.png",
-  }
-  ];
 
+    provedores
+    providers
+    listprovider: string[]
+    provedor
+  p = 1
   ngOnInit(): void {
+    this.spinner.show("spinnerdashcategori")
+    this.ListaProveedor()
   }
 
   static CreateFormProvider(){
     return new FormGroup({
-      nombre_provider: new FormControl('',[Validators.required]),
-      //cambia a rut
-      rut_provider: new FormControl([]),
-      direccion_provider: new FormControl([]),
-      telefono_provider: new FormControl([]),
-      telefono_persona_provider: new FormControl([]),
-
-      correo_provider: new FormControl('',[Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
-
-      //Sitio web
-      web_provider: new FormControl([]),
-      comuna_provider: new FormControl([]),
-      //El concepto gasto cambiara a detalle del proveedor
-      detalle_provider: new FormControl([]),
-      banco_provider: new FormControl([]),
-      factura_provider: new FormControl([]),
+      nombre_provider: new FormControl('',[Validators.required]),     
     })
   }
 
-
-  get primerEmail(){
-    return this.provideer.get('correo_provider')
-  }
-
-  get seconEmail(){
-    return this.provideer.get('correo_provider_2')
-  }
-
-  readUrl(event: any, i) {
-    if (event.target.files.length === 0)
-      return;
-    //Image upload validation
-    var mimeType = event.target.files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
-      return;
-    }
-    // Image upload
-    var reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]);
-    reader.onload = (_event) => {
-      this.url[i].img = reader.result.toString();
-    }
-
-
-
-  }
-
   resetiarform() {
-
+    this.provideer.reset()
   }
 
-  guardarprovider():void {
-    console.log("guardando", this.provideer.value)
-    this.serviProvider.guardarProvider(this.provideer);
-     this.url.forEach(res => res.img ="assets/images/dashboard/stats.png" );
+ async guardarprovider() {
+ 
+    if(this.provideer.valid){
+    
+   await this.serviProvider.guardarProvider(this.provideer);
+      setTimeout(()=>{
+       this.ListaProveedor();
+
+      }, 1500)
+
+    }
   }
+
+ ListaProveedor(){
+  this.serviProvider.ListaProveedor().subscribe(x  => {this.provedor =x;     this.spinner.hide("spinnerdashcategori")
+})
+}
 }
