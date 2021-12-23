@@ -299,8 +299,8 @@ calImp(imp, valor): number {
   Obutildiad(margen, precio){
     console.log(1-(margen/100))
     const resultado = precio/ (1-(margen/100));
-    this.preciov = resultado;
-    this.utilidad = (resultado - precio)
+    this.preciov = parseInt(resultado.toFixed(0));
+    this.utilidad = parseInt((resultado - precio).toFixed(0))
     console.log('utlidad', resultado.toFixed(0))
 
   }
