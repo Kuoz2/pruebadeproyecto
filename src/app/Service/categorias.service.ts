@@ -37,8 +37,17 @@ export class CategoriasService {
       }
     })  }
 // Editar
-  actualizarcategoria( cat: Categories) {
-  return this.http.put<Categories>(this.UrlCategorias + '/' + cat.id, cat);
+ async actualizarcategoria( cat: Categories) {
+    await this.verificar.verificarEditCate().subscribe(async (res:respuesta) => {
+      if(res.resultado != 'existe'){return}
+      if(res.resultado == 'existe'){
+       await this.http.put<Categories>(this.UrlCategorias + '/' + cat.id, cat).subscribe(res => {
+         if(Object.values(res)[0] == 'correctamente'){
+           alert('La categoría se actualizado, correctamente.')
+         }
+       });;
+      }
+    })
   }
 
 
