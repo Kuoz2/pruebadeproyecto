@@ -53,7 +53,10 @@ export class CategoryComponent implements OnInit {
   }
 
   editarcategoria(categoria: Categories) {
-    this.servi.actualizarcategoria(categoria).subscribe(data => {this.categoriaID = data; });
+    this.servi.actualizarcategoria(categoria)
+    setTimeout(() => {
+     this.categoriaAsync()
+    }, 1500)
   }
 
   editar() {
