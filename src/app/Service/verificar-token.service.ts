@@ -26,7 +26,7 @@ export class VerificarTokenService {
   private verificarHalfPyme = 'https://marketmini.herokuapp.com/half_payments/verif_befores_save_half'
   private verificaUpStock = 'https://marketmini.herokuapp.com/stocks/verif_before_update_stock'
   private verifiUpDateExp = 'https://marketmini.herokuapp.com/date_expirations/verif_before_update_date'
-  private verificaECate = 'https://marketmini.herokuapp.com/categories/verif_befores_save_half'
+  private verificaECate = 'https://marketmini.herokuapp.com/categories/verif_before_update_category'
  private informerespuesta = new Subject<respuesta>()
   constructor(private http: HttpClient) { }
   validacion: any;

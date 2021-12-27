@@ -19,14 +19,14 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
     public closeResult: string;
     public listproductosG: Observable<Productos[]>;
     private unsubscribe$ = new Subject<void>();
-    public tomanuevoinventario;
+    public  ;
     listproductos: Observable<Productos[]> ;
     productoporid: Productos = new Productos();
     public inventario2;
     isloading: boolean;
     inventario2_datexpiration: date_expiration = new date_expiration();
     inventario2_stocknuevo: Stock =  new Stock();
-
+    tomanuevoinventario
     // tslint:disable-next-line:variable-name
     constructor(private prod: ProductserviceService,
                 private modalService: NgbModal,
