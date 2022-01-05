@@ -28,6 +28,7 @@ import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
 import { VencimientosComponent } from './physical/vencimientos/vencimientos.component';
 import {NgxSpinnerModule} from "ngx-spinner";
 import { VerificarTokenService } from 'src/app/Service/verificar-token.service';
+import { CotizacionComponent } from './physical/cotizacion/cotizacion.component';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   maxFilesize: 50,
@@ -46,7 +47,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     PromocionesComponent,
     ImpuestosComponent,
     MarcaComponent,
-    VencimientosComponent],
+    VencimientosComponent,
+    CotizacionComponent],
     imports: [
         CommonModule,
         FormsModule,

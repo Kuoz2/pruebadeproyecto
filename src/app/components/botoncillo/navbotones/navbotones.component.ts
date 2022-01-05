@@ -34,9 +34,7 @@ export class NavbotonesComponent implements OnInit {
   public ventarapida: FormGroup;
   public mediopago = ["efectivo", "tarjeta"]
   public precio:number=0;
-  public margen:number=0;
   public preciov:number=0;
-  public utilidad:number=0;
   get pactivado() {return this.Frmproducto.get('pactivado'); }
   get pdescripcion() { return this.Frmproducto.get('pdescripcion'); }
   get pdetalle() { return this.Frmproducto.get('pdetalle'); }
@@ -51,6 +49,9 @@ export class NavbotonesComponent implements OnInit {
     get brand_id() {return this.Frmproducto.get('brand_id'); }
     get pvneto() { return this.Frmproducto.get('pvneto'); }
     get fecha_vencimiento() {return  this.Frmproducto.get('fecha_vencimiento'); }
+    get margen (){return this.Frmproducto.get('margen')}
+    get utilidad () {return this. Frmproducto.get('utilidad')}
+    get precio_provider(){return this.Frmproducto.get('precio_provider')}
   constructor(private marc: MarcaService, private impt: ImpuestosService,
     private servi: ProductserviceService,
     private modalService: NgbModal,
@@ -62,14 +63,16 @@ export class NavbotonesComponent implements OnInit {
       pcodigo: new FormControl( '', [Validators.required]),
       pdescripcion: new FormControl(''),
       pdetalle: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]),
-      pvalor: new FormControl('', [Validators.required]),
+      pvalor: new FormControl(0, [Validators.required]),
       provider_id: new FormControl('', [Validators.required]),
-      precio_provider: new FormControl('', [Validators.required]),
+      precio_provider: new FormControl(0, [Validators.required]),
       category_id: new FormControl ('', [Validators.required]),
       pactivado: new FormControl(false),
       tax_id: new FormControl(''),
       brand_id: new FormControl('', [Validators.required]),
-      piva: new FormControl('',),
+      piva: new FormControl(''),
+      utilidad: new FormControl(0),
+      margen: new FormControl(0),
       stock: new FormGroup( {
           pstock: new FormControl( ''),
           stock_lost: new FormControl( '' ),
@@ -205,8 +208,8 @@ calImp(imp, valor): number {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-  open9(content9){
-    this.modalService.open(content9, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+  open9(content8){
+    this.modalService.open(content8, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -296,13 +299,16 @@ calImp(imp, valor): number {
 
   }
 //Obterner las utilidades-
-  Obutildiad(margen, precio){
-    console.log(1-(margen/100))
-    const resultado = precio/ (1-(margen/100));
-    this.preciov = parseInt(resultado.toFixed(0));
-    this.utilidad = parseInt((resultado - precio).toFixed(0))
-    console.log('utlidad', resultado.toFixed(0))
+  Obutildiad(frm){
 
-  }
+ console.log("pvalor",1-(this.Frmproducto.value.margen/100))
+    const resultado = (this.Frmproducto.value.precio_provider/ (1-(this.Frmproducto.value.margen/100)));
+    //frm.value.pvalor = parseInt(resultado.toFixed(0));
+  //  frm.value.utilidad =  parseInt((resultado - frm.value.pvalor).toFixed(0));
+    this.Frmproducto.controls['pvalor'].setValue(parseInt(resultado.toFixed(0)));
+    const dato = resultado.toFixed(0)
+    this.Frmproducto.controls['utilidad'].setValue( resultado - this.Frmproducto.value.precio_provider)
+   
+ }
 
 }

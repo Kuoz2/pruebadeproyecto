@@ -1,3 +1,4 @@
+import { CotizacionComponent } from './physical/cotizacion/cotizacion.component';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {CategoryComponent} from './physical/category/category.component';
@@ -76,6 +77,14 @@ const routes: Routes = [
         data:{
           title:'Vencimiento',
           breadcrumb:'Productos vencidos'
+        }
+      },
+      {
+        path:'cotizacion',
+        component: CotizacionComponent,
+        data:{
+          title:'Cotización',
+          breadcrumb:'Crear cotización'
         }
       }
     ]
