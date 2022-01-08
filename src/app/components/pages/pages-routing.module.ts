@@ -9,6 +9,7 @@ import {BoletaComponent} from "./boleta/boleta.component";
 import {CierrecajaComponent} from "./cierrecaja/cierrecaja.component";
 import {ListPageComponent} from "./list-page/list-page.component";
 import {ActualizarbolComponent} from "./actualizarbol/actualizarbol.component";
+import {VerificadorService} from "../../Service/verificador.service";
 
 
 const routes: Routes = [
@@ -23,6 +24,8 @@ const routes: Routes = [
           title: "Medio de pago",
           breadcrumb: "Formas de pago"
         },
+                canActivate: [VerificadorService]
+
       },
 
 
@@ -32,7 +35,9 @@ const routes: Routes = [
                data:{
           title: "Crear voucher",
           breadcrumb: "Crear voucher"
-        }
+        },
+                canActivate: [VerificadorService]
+
       },
       {
         path:'lista-pago',
@@ -40,7 +45,9 @@ const routes: Routes = [
         data:{
           title: "Ventas",
           breadcrumb:'Lista de ventas'
-        }
+        },
+                canActivate: [VerificadorService]
+
       },
       {
         path: 'lista-voucher',
@@ -49,6 +56,8 @@ const routes: Routes = [
           title: "Lista de voucher",
           breadcrumb: "Listado voucher"
         },
+                canActivate: [VerificadorService]
+
       },
       {
         path: 'create-voucher',
@@ -56,7 +65,9 @@ const routes: Routes = [
         data:{
           title: "Crear pago",
           breadcrumb: "Crear pago"
-        }
+        },
+                canActivate: [VerificadorService]
+
       },
       {
         path:'app-pago',
@@ -64,7 +75,9 @@ const routes: Routes = [
         data:{
           title:"Pago movil",
           breadcrumb:"App pago"
-        }
+        },
+                canActivate: [VerificadorService]
+
       },
       {
         path: "quick_sale",
@@ -72,7 +85,9 @@ const routes: Routes = [
         data:{
           title:"Listas de las ventas rapidas",
           breadcrumb: "Venta rapida"
-        }
+        },
+                canActivate: [VerificadorService]
+
       },
       {
         path:'boleta',
@@ -80,7 +95,9 @@ const routes: Routes = [
         data:{
           title:'Boleta',
           breadcrumb:'Boleta'
-        }
+        },
+                canActivate: [VerificadorService]
+
       },
       {
         path:'cierre',
@@ -88,7 +105,9 @@ const routes: Routes = [
         data:{
           title:'cierre de caja',
           breadcrumb:'caja'
-        }
+        },
+                canActivate: [VerificadorService]
+
       },
       {
         path: 'actualizar_boleta',
@@ -96,7 +115,9 @@ const routes: Routes = [
         data:{
           title:' Actualizar boleta',
           breadcrumb: 'Actualizar boleta'
-        }
+        },
+                canActivate: [VerificadorService]
+
       }
     ]
   }

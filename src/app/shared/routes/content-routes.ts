@@ -21,7 +21,8 @@ export const
     loadChildren: () => import('../../components/products/products.module').then(m => m.ProductsModule),
     data: {
       breadcrumb: "Productos"
-    }
+    },
+    canActivate: [VerificadorService],
   },
 
   {
@@ -30,14 +31,15 @@ export const
     data: {
       breadcrumb: "Pagos"
     },
-
+    canActivate: [VerificadorService],
   },
   {
     path: 'auth',
     loadChildren: () => import('../../components/auth/auth.module').then(m => m.AuthModule),
     data:{
       breadcrumb: "Autentificación"
-    }
+    },
+    canActivate: [VerificadorService],
   },
 
   {
@@ -51,12 +53,14 @@ export const
   {
    path:'merma',
    loadChildren: () => import('../../components/merma/merma.module').then(m => m.MermaModule),
+   canActivate: [VerificadorService],
    data: {
      breadcrumb: "Mermas"
     }
   },
   {
     path: 'navegacionboton',
+    canActivate: [VerificadorService],
     loadChildren: () => import('../../components/botoncillo/botoncillo.module').then(m => m.BotoncilloModule)
   }
 

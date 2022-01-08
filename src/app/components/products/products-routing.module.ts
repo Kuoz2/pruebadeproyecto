@@ -10,6 +10,7 @@ import {PromocionesComponent} from "./physical/promociones/promociones.component
 import {ImpuestosComponent} from "./physical/impuestos/impuestos.component";
 import {MarcaComponent} from "./physical/marca/marca.component";
 import {VencimientosComponent} from "./physical/vencimientos/vencimientos.component";
+import {VerificadorService} from "../../Service/verificador.service";
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
         data:{
           title:"Marcas",
           breadcrumb: "Marcas"
-        }
+        },
+      canActivate: [VerificadorService],
       },
       {
         path: 'physical/category',
@@ -29,7 +31,8 @@ const routes: Routes = [
         data: {
           title: "Categoarias",
           breadcrumb: "Categorias"
-        }
+        },
+      canActivate: [VerificadorService],
       },
       {
         path: 'physical/add-product',
@@ -37,7 +40,9 @@ const routes: Routes = [
         data: {
           title: 'Agregar producto',
           breadcrumb: 'Agregar producto'
-        }
+        },
+       canActivate: [VerificadorService],
+
       },
       {
         path: 'physical/impuestos',
@@ -45,7 +50,8 @@ const routes: Routes = [
         data:{
           title:'Agregar impuestos',
           breadcrumb: 'Agregar impuestos'
-        }
+        },
+        canActivate: [VerificadorService],
       },
       {
         path: 'physical/lista-editar',
@@ -53,7 +59,8 @@ const routes: Routes = [
         data:{
           title: 'lista y editar producto',
           breadcrumb:'lista editar producto'
-        }
+        },
+        canActivate: [VerificadorService],
        },
       {
         path:'physical/proveedor',
@@ -61,7 +68,8 @@ const routes: Routes = [
         data:{
           title:'Ingreso proveedor',
           breadcrumb:'Nuevo Proveedor'
-        }
+        },
+        canActivate: [VerificadorService]
       },
       {
         path:'physical/promociones',
@@ -69,7 +77,8 @@ const routes: Routes = [
         data:{
           title:'Crear promociones',
           breadcrumb:'Nuevas promociones'
-        }
+        },
+        canActivate: [VerificadorService]
       },
       {
         path:'physical/vencimiento',
@@ -77,7 +86,8 @@ const routes: Routes = [
         data:{
           title:'Vencimiento',
           breadcrumb:'Productos vencidos'
-        }
+        },
+        canActivate: [VerificadorService]
       },
       {
         path:'cotizacion',
@@ -85,7 +95,8 @@ const routes: Routes = [
         data:{
           title:'Cotización',
           breadcrumb:'Crear cotización'
-        }
+        },
+        canActivate: [VerificadorService]
       }
     ]
   }
