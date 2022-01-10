@@ -1,3 +1,4 @@
+import { ComparacionventaComponent } from './comparacionventa/comparacionventa.component';
 import { QuickSaleComponent } from './quick-sale/quick-sale.component';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
@@ -15,6 +16,8 @@ import {VerificadorService} from "../../Service/verificador.service";
 const routes: Routes = [
   {
     path: '',
+   canActivate: [VerificadorService]
+,
     children: [
 
       {
@@ -118,6 +121,15 @@ const routes: Routes = [
         },
                 canActivate: [VerificadorService]
 
+      },
+      {
+        path: 'comparar_ventas',
+        component: ComparacionventaComponent,
+        data:{
+          title: 'Coparar ventas',
+          breadcrumb: 'Comparacion ventas'
+        },
+        canActivate: [VerificadorService],
       }
     ]
   }

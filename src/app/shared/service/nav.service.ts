@@ -59,7 +59,8 @@ title: 'Productos' , icon: 'box', rol: '', type: 'sub', active: false,  children
 				{path: '/pages/medio-pago', rol: '', title: 'Medio de pago', type: 'link', },
 				{path: '/pages/app-pago', rol: '', title: 'Venta', type: 'link'},
 				{path: '/pages/boleta', rol: 'administrador', title: 'Boleta', type: 'link'},
-				{path: '/pages/quick_sale', rol: 'administrador', title: 'Venta rapida', type: 'link'}
+				{path: '/pages/qu/pages/comparar_ventasick_sale', rol: 'administrador', title: 'Venta rapida', type: 'link'},
+				{path: '', rol: 'administrador', title: 'Comparar venta', type: 'link'}
 			]
 		},
 

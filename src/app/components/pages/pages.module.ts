@@ -26,6 +26,7 @@ import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
 import {NgxSpinnerModule} from "ngx-spinner";
 import {NgxPrintModule} from 'ngx-print';
 import { QuickSaleComponent } from './quick-sale/quick-sale.component';
+import { ComparacionventaComponent } from './comparacionventa/comparacionventa.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { QuickSaleComponent } from './quick-sale/quick-sale.component';
       ListPageComponent,
       ActualizarbolComponent,
       QuickSaleComponent,
+      ComparacionventaComponent,
       ],
     imports: [
         CommonModule,

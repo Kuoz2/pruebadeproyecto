@@ -65,6 +65,9 @@ export class VoucherService {
     return  this.http.post<Voucher>(this.Urlvoucher, vouch);
   }
 
+  mostrar_promise(){
+    return this.http.get(this.Urldetallevaucher).toPromise();
+  }
  ultimovoucher(): Observable<Voucher> {
       return  this.http.get<Voucher>(this.UrlUltvoucher);
   }
