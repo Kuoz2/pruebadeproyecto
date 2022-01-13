@@ -14,6 +14,8 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import htmlToPdfmake from 'html-to-pdfmake';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
+import { CotizarcarService } from 'src/app/Service/cotizarcar.service';
+import { isUndefined } from 'util';
 @Component({
   selector: 'app-cotizacion',
   templateUrl: './cotizacion.component.html',
@@ -30,6 +32,21 @@ export class CotizacionComponent implements OnInit, OnDestroy  {
   public numeral = [];
   public totaldescuento:number = 0;
   public encontrandoApp
+  public cantidades: [] = []
+  public menoque=true
+  public descuento:number = 0
+  public unidescuento: String[]  = []
+  public condicionEntrega:string=""
+  public condicionValides:string=""
+  public condicionPago:string=""
+  public totalIva:number=0
+  public lacondicion:string=""
+  public cambioPrecio:number= 0
+  public cambioDesc:number=0
+  public cambioCantidad:string=""
+  public cambioDisponible:string=""
+  public contador:number = 0
+  norepetido
   hora: string;
   minutos: string;
   dia: string;
@@ -57,10 +74,11 @@ export class CotizacionComponent implements OnInit, OnDestroy  {
   get descuentos(){return this.cotizacion.get('descuentos')};
   get total(){return this.cotizacion.get('total')};
   get totaldesc(){return this.cotizacion.get('totaldesc')};
+  get condicion(){return this.cotizacion.get('condicion')};
   constructor(private modalService: NgbModal,
      private frm: FormBuilder,
       private pservi: ProductserviceService,
-      private carservice:CartServiceService,
+      private carservice:CotizarcarService,
       private productos_car:ProductserviceService, 
       private cd: ChangeDetectorRef,
       public secoind: HoraActualService,) { 
@@ -72,7 +90,8 @@ this.cotizacion = this.frm.group({
   formapago: new FormControl(''),
   descuentos: new FormControl(''),
   total: new FormControl(''),
-  totaldesc: new FormControl('')
+  totaldesc: new FormControl(''),
+  condicion: new FormControl('')
 })
 
   }
@@ -81,7 +100,7 @@ this.cotizacion = this.frm.group({
     this.unsubscribe$.complete();
   }
 
- async ngOnInit() {
+  ngOnInit() {
   this.datos$ = this.secoind.getInfoReloj();
   this.fechad =  this.datos$.subscribe( x => {
         this.hora = x.diaymes + 'T' + x.hora.toString() + ':' + x.minutos + ':' + x.segundo;
@@ -91,18 +110,57 @@ this.cotizacion = this.frm.group({
       })
     this.productos();
     console.log(this.GetProduct.subscribe(res => console.log(res)))
-    await this.carservice.currentDataCart$.pipe(takeUntil(this.unsubscribe$)).subscribe(
+     this.carservice.currentDataCart$.pipe(takeUntil(this.unsubscribe$)).subscribe(
       x => {
-        
+var sinDecimal
         if (x) { 
           this.items = x;
           this.totalQuantity = x.length;
-          this.totalPrice = x.reduce((sum, current) => sum + ((current.pvalor || current.product.pvalor) * current.quantity), 0 )
+          this.totalPrice = x.reduce((sum, current) => sum + ((current.pvalor || current.product.pvalor) * current.cantidad), 0 )
+          this.totalIva = x.reduce((sum, current) => sum + ((current.piva) || current.product.piva),0)
+          x.map(res => {
+            console.log("mape",typeof(undefined) != res.descuento ? res.descuento : res.descuento = '0')
+          })
+          sinDecimal = x.reduce((sum, current) => sum + ((((undefined != current.descuento ? current.descuento : current.descuento = '0'|| current.product.descuento ? undefined :  0) /100 )*current.pvalor))*current.cantidad ,0 ) 
+            if(isNaN(sinDecimal) === true){this.descuento = 0}else{ this.descuento = sinDecimal.toFixed(0)}
+          x.map(unides => 
+             {
+               console.log(unides.descuento)
+              console.log("segundo mape", undefined !== unides.descuento ?  unides.descuento : unides.descuento = 0) 
+              const valor = ((unides.pvalor || unides.product.pvalor)*((undefined != unides.descuento ? unides.descuento : unides.descuento =  '0' || unides.product.descuento ? undefined :0)/100)*unides.cantidad)
+             console.log(unides.descuento)
+              this.unidescuento.push(valor.toFixed(0))
+              this.norepetido  =  this.unidescuento.filter((item, index) => {
+                 this.unidescuento.indexOf(item) === index
+                return this.unidescuento.indexOf(item) === index
+              })
+              console.log("valor ingresado", this.norepetido)
+            }
+            )
           this.cd.markForCheck();
         }
       
       }
   );
+  this.norepetido
+  }
+  esmayor(cantidad, i, item){
+    const Swal = require('sweetalert2')
+
+    if(cantidad[i] > item){
+      window.document.getElementById('btnagregar').hidden = true;
+      (window.document.getElementById('cantidad') as HTMLInputElement).value = "";
+      Swal.fire({
+        title: 'Error!',
+        text: 'La cantidad ingresada es mayor al stock',
+        icon: 'error',
+        confirmButtonText: 'cerrar'
+      })
+    }
+    if(cantidad[i] < item){
+      window.document.getElementById('btnagregar').hidden = false
+
+    }
   }
   open(content) {
     console.log(content)
@@ -127,15 +185,22 @@ getDismissReason(reason){
    return this.GetProduct =   this.pservi.products()
   }
 
-  addCart(product: any) {
+  addCart(product: any, cantidad, i, descuento) {
+    const Swal = require('sweetalert2')
+    if(undefined !== cantidad[i] && cantidad[i] !== null && cantidad[i] > 0){
     delete product.sinventario
     delete product.sinventario2
-    console.log('lo que entra', product)
+    console.log('lo que entra', descuento)
 
     if(product.pcodigo){
       Object.assign(product, {sinventario:true})
+      Object.assign(product, {cantidad: cantidad[i]})
+      Object.assign(product, {descuento: descuento[i]})
     }else{
       Object.assign(product, {sinventario2:false})
+      Object.assign(product, {cantidad:cantidad[i]})
+      Object.assign(product, {descuento:descuento[i]})
+
     }
     const data = product;
     const elemento = {quantity: 1};
@@ -144,10 +209,18 @@ getDismissReason(reason){
     }else {
       const cambio = Object.assign( product, elemento )
       this.carservice.changeCart(cambio)
+    }
+  }else{
+    Swal.fire({
+      title: 'Error!',
+      text: 'Debe ingresar una cantidad mayor a 0',
+      icon: 'error',
+      confirmButtonText: 'cerrar'
+    })
   }
   }
  generarDesc(a, i, valor ) {
- 
+ if(this.totalPrice !=  0){
   const porcentaje = a[i] / 100    
   const preciodescuento = (porcentaje * valor)
   console.log(this.arreglo.length)
@@ -158,11 +231,13 @@ getDismissReason(reason){
   }
   console.log(this.arreglo)
    
-    const subtotal = this.arreglo.reduce((a,b) => (a + b),0) 
- 
-    this.totaldescuento = (this.totalPrice - subtotal)
+    const subtotal = this.arreglo.reduce((a,b) => (a + b)) 
+  console.log("precio del descuento",subtotal)
+  console.log("total precio", this.totalPrice)
+    this.totaldescuento = (this.totalPrice - Math.abs(subtotal))
    
-    console.log('resultado',this.arreglo.reduce((a,b) => (a + b),0))
+    console.log('resultado',this.totaldescuento)
+  }
  }
 
  generarCotizar(){
@@ -176,24 +251,74 @@ getDismissReason(reason){
  descargarpdf(){
    window.document.getElementById('CrearContizacion').hidden = true
    window.document.getElementById('imprimircotizacion').hidden = true
+   window.document.getElementById('buttoneditar').hidden = true
    const data = window.document.getElementById('factura')
-  html2canvas(data).then(canvas => {  
-    // Few necessary setting options  
-    var imgWidth = 208;   
-    var pageHeight = 295;    
-    var imgHeight = canvas.height * imgWidth / canvas.width;  
-    var heightLeft = imgHeight;  
-
-    const contentDataURL = canvas.toDataURL('image/png')  
-    let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
-    var position = 0;  
-    pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
-    pdf.save('MYPdf.pdf'); // Generated PDF   
-});
+  
+   setTimeout(() => {
+    html2canvas(data).then(canvas => {  
+      // Few necessary setting options  
+      var imgWidth = 210;   
+      var pageHeight = 295;    
+      var imgHeight = canvas.height * imgWidth / canvas.width;  
+      var heightLeft = imgHeight;  
+      const contentDataURL = canvas.toDataURL('image/png')  
+      const pdf = new jsPDF({
+        orientation: 'landscape',
+      });
+      const imgProps= pdf.getImageProperties(contentDataURL);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      pdf.addImage(contentDataURL, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save('download.pdf'); 
+      });
+   },2000)
+ 
 setTimeout(() => {
   window.document.getElementById('CrearContizacion').hidden = false
-  window.document.getElementById('imprimircotizacion').hidden = false  
+  window.document.getElementById('imprimircotizacion').hidden = false
+  window.document.getElementById('buttoneditar').hidden = false
+  
     
 }, 3000);
  }
+
+
+ editarcotiza(content, item, i){
+  console.log(item)
+  this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: <any>'xl ' }).result.then((result) => {
+    this.closeResult = `Closed with: ${result}`;
+  }, (reason) => {
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+
+   this.cambioPrecio = item.pvalor
+   this.cambioDesc = item.descuento
+ this.cambioCantidad = item.cantidad
+ this.cambioDisponible = item.stock.pstock
+ this.contador = i
+ }
+ Gcambio(a, b, i,norepetido ){
+   console.log(i)
+  b[0].pvalor =  this.cambioPrecio
+  b[0].descuento = this.cambioDesc
+  b[0].cantidad = this.cambioCantidad
+  const impuesto = this.cambioPrecio * (19/100)
+  b[0].piva = impuesto.toFixed(0)
+  
+    const camdesc = this.cambioPrecio *(this.cambioDesc / 100)
+    this.norepetido[this.contador] = camdesc.toFixed(0)
+    console.log("no repetidos",this.norepetido)
+  console.log(b)
+const sinDecimal = this.norepetido.reduce((a, b) => parseInt(a)+parseInt(b))
+const guardartotal =[]
+const guardartotaliva=[]
+for(const i in b)
+{
+ guardartotal.push(b[i].pvalor)
+ guardartotaliva.push(b[i].piva)
+}
+this.totalPrice = guardartotal.reduce((a,b) => parseInt(a)+parseInt(b));
+this. totalIva = guardartotaliva.reduce((a,b) => parseInt(a) + parseInt(b));
+ this.descuento = sinDecimal
+}
 }

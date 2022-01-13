@@ -1,6 +1,28 @@
+<ng-template #content2 let-modal2>
+  <div class="modal-header">
+      <h5 class="modal-title f-w-600" id="exampleModalLabel">Cambiar datos</h5>
+      <button type="button" class="close" aria-label="Close"
+          (click)="modal2.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+    <label for="caprecio">Precio</label>
+    <input type="text" id="caprecio" [(ngModel)]="cambioPrecio">
+    <label for="capdesc">Descuento</label>
+    <input type="text" id="capdesc" [(ngModel)]="cambioDesc">
+    <label for="capcanti">Cantidad</label>
+    <input type="text" id="capcanti" [(ngModel)]="cambioCantidad">
+    
+
+  </div>
+  <button (click)="Gcambio(cambioprecio, items)">guarda cambio</button>
+</ng-template>
+
+
 <ng-template #content let-modal>
     <div class="modal-header">
-        <h5 class="modal-title f-w-600" id="exampleModalLabel">Agregar nueva categoria</h5>
+        <h5 class="modal-title f-w-600" id="exampleModalLabel">INGRESO DE INFORMACIÓN</h5>
         <button type="button" class="close" aria-label="Close"
             (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
@@ -32,9 +54,18 @@
               <label for="metodo"> Metodo de pago</label>
               <select class="form-control" name="metodo" formControlName="formapago" [(ngModel)]="metodopago" id="metodo">
                 <option value=""></option>
-                <option value="efectivo"> efectivo</option>
+                <option value="efectivo">Efectivo</option>
                 <option value="debito"> Debito</option>
                 <option value="credito">Credito</option>
+              </select>
+            </div>
+            <div class="col-3">
+              <label for="metodo">Plazo</label>
+              <select class="form-control" name="metodo" formControlName="condicion" [(ngModel)]="lacondicion" id="metodo">
+                <option value=""></option>
+                <option value="Entrega Inmediata">Entrega Inmediata</option>
+                <option value="Tres días hábiles">Tres días hábiles</option>
+                <option value="Cinco días hábiles ">Cinco días hábiles</option>
               </select>
             </div>
           </div>
@@ -48,46 +79,43 @@
     <div class="row">
       <div class="col">
         <label for="busqueda">Buscar</label>
-        <input type="text" class="form-control" placeholder="Buscar por código de producto" [(ngModel)]="encontrandoApp" id="busqueda">
+        <input type="text" class="form-control" placeholder="Buscar por código de producto ej: 11111 o por categoria ej: tinta" [(ngModel)]="encontrandoApp" id="busqueda">
       </div>
     </div>
-    <table class="table table-borderless">
+    <table class="table table-bordered">
       <thead>
         <tr >
           <th scope="col">#</th>
           <th scope="col">Nombre</th>
           <th scope="col">Precio</th>
           <th scope="col">Disponibles</th>
+          <th scope="col">Cantidad</th>
           <th scope="col">Descuento</th>
           <th scope="col">Agregar</th>
         
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of GetProduct |async | busquedaApp:encontrandoApp|  paginate: {itemsPerPage:5, currentPage:p} ; let i = index ">
+        <tr *ngFor="let item of GetProduct |async | buquedacotizacion:encontrandoApp|  paginate: {itemsPerPage:5, currentPage:p} ; let i = index ">
           <th scope="row" >{{item.pcodigo}}</th>
           <td>{{item.category.cnombre}} {{item.brand.bnombre}} {{item.pdescripcion}}</td>
           <td>{{item.pvalor}}</td>
           <td>{{item.stock.pstock}}</td>
-          <td><input type="number"  size="4" id="descontar" [(ngModel)]="descontar[i]" (change)="generarDesc(descontar, i, item.pvalor)" ></td>
-          <td><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" (click)="addCart(item)" class="bi bi-plus-lg" viewBox="0 0 16 16">
+          <td><input type="number" size="4" id="cantidad" [(ngModel)]="cantidades[i] " (change)="esmayor(cantidades, i, item.stock.pstock)"></td>
+          <td><input type="number"  size="4" id="descontar" [(ngModel)]="descontar[i]" ></td>
+          <td id="btnagregar"><svg xmlns="http://www.w3.org/2000/svg"  width="28" height="28" fill="currentColor" (click)="addCart(item, cantidades, i, descontar)" class="bi bi-plus-lg" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
           </svg></td>
         </tr>
       </tbody>
     </table>
-    <pagination-controls (pageChange)="p = $event " previousLabel="Atras" nextLabel="Siguiente"></pagination-controls>
-  
-       
+    <pagination-controls (pageChange)="p = $event " previousLabel="Atras" nextLabel="Siguiente"></pagination-controls>  
     </div>
   </ng-template>
   
-  <div id="factura">
-  <div class="card">
+  <div class="card" id="factura" >
     <div id="app" class="col-11">
-  
     <div class="card-head">
-  
       <h2 style="margin-top: 30px;">Cotización</h2>
       <div class="informacion-vyt">
         <div class="row my-3">
@@ -97,8 +125,8 @@
             <p>adolfotyther@gmail.com</p>
             <p>www.vytcomputacion.cl</p>
           </div>
-          <div class="col-2">
-            <img class="tamaño-imagen"  src="../../../../../assets/images/vyt.png" />
+          <div class="col-2" >
+            <img  class="tamaño-imagen"  src="../../../../../assets/images/vyt.png" />
           </div>      
         </div>
       </div>
@@ -133,7 +161,6 @@
     <hr>
     
     <div class="row my-5">
-      
         <div class="col-12" >
           <div style="text-align: right;">
             <button class="btn-peligro" id="imprimircotizacion" (click)="descargarpdf()"> Guardar en pdf</button>
@@ -144,18 +171,27 @@
           <tr>
             <th>#</th>
             <th>Descripcion</th>
-            <th>Precio Unitario</th>
+            <th>P.Unitario</th>
+            <th>IVA.U</th>
             <th>Cantidad</th>
-            <th>Valor descuento</th>
+            <th>Desc</th>
+            <th>P.Cantidad</th>
+            <th>P.IVA</th>
+            <th>V.Descuento</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of items; let i = index ">
-            <td>{{item.pcodigo}}</td>
+          <tr *ngFor="let item of items; let l = index ">
+            <td>{{item.pcodigo}}{{i}}</td>
             <td>{{item.category.cnombre}} {{item.brand.bnombre}} {{item.pdescripcion}}</td>
             <td>{{item.pvalor}}</td>
-            <td>{{item.quantity}}</td>
-            <td>{{arreglo[i]}}</td>
+            <td>{{item.piva}}</td>
+            <td>{{item.cantidad}}</td>
+            <td>{{item.descuento}}</td>
+            <td>{{item.pvalor * item.cantidad}}</td>
+            <td>{{item.piva * item.cantidad}}</td>
+            <td>{{norepetido[l] }}</td>
+            <td><button (click)="editarcotiza(content2, item, l)" id="buttoneditar">editar</button></td>
           </tr>
           
         </tbody>
@@ -164,8 +200,10 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
+            <th></th>
             <th>Total</th>
-            <th>{{totalPrice}}</th>
+            <th>{{totalPrice + totalIva}}</th>
             <th></th>
           
           </tr>
@@ -175,8 +213,19 @@
             <th></th>
             <th></th>
             <th></th>
-            <th>Total Descuento</th>
-            <th>{{totaldescuento}}</th>
+            <th></th>
+            <th></th><th>Total Descuento</th>
+            <th>{{descuento}}</th>
+          </tr>
+        </tfoot>
+        <tfoot>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th><th>Total IVA</th>
+            <th>{{totalIva}}</th>
           </tr>
         </tfoot>
       </table>
@@ -189,9 +238,25 @@
              
             </div>
           </div>
-      
+          <div class="row">
+            <div class="col-12">
+              <div class="alert alert-secondary mt-3" role="alert">
+                <h4>CONDICIONES</h4>
+              </div>
+            </div>
+          </div>
+          <div class="aliniamiento-condiciones">
+            <div class="col">
+              <p>Plazo entrega: {{lacondicion}}</p>
+            </div>
+            <div class="col">
+              <p>validez de la cotización: {{vencimiento}}</p>
+            </div>
+            <div class="col">
+              <p>Forma de pago: {{metodopago}}</p>              
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-     
+
     

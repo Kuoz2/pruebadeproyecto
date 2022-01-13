@@ -34,6 +34,7 @@ import { Busqueda2inventarioPipe } from './Pipe/busqueda2inventario.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RangodefechasPipe } from './Pipe/rangodefechas.pipe';
 import { PaginatePipe } from 'ngx-pagination';
+import { BuquedacotizacionPipe } from './Pipe/buquedacotizacion.pipe';
 
 
 @NgModule({
@@ -59,7 +60,7 @@ import { PaginatePipe } from 'ngx-pagination';
     InventariopeligroPipe,
     BuscarmarcaPipe,
     CeparadorPipe,
-    Inventariosano2Pipe,    Inventariogestion2Pipe, Inventariosinstock2Pipe, Busqueda2inventarioPipe, RangodefechasPipe,
+    Inventariosano2Pipe, BuquedacotizacionPipe,   Inventariogestion2Pipe, Inventariosinstock2Pipe, Busqueda2inventarioPipe, RangodefechasPipe, BuquedacotizacionPipe,
 
   ],
   imports: [
@@ -85,7 +86,7 @@ import { PaginatePipe } from 'ngx-pagination';
                   CeparadorPipe,
                    Inventariosano2Pipe,
                   Busqueda2inventarioPipe,
-                  RangodefechasPipe,
+                  RangodefechasPipe,BuquedacotizacionPipe
                   ]
 })
 export class SharedModule { }
