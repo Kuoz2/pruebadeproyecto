@@ -22,7 +22,7 @@ import { isUndefined } from 'util';
   styleUrls: ['./cotizacion.component.scss']
 })
 export class CotizacionComponent implements OnInit, OnDestroy  {
-
+  public count:number=0
   private unsubscribe$ = new Subject<void>();
   public closeResult: string;
   public cotizacion: FormGroup;
@@ -249,11 +249,18 @@ getDismissReason(reason){
  }
 
  descargarpdf(){
-   window.document.getElementById('CrearContizacion').hidden = true
-   window.document.getElementById('imprimircotizacion').hidden = true
-   window.document.getElementById('buttoneditar').hidden = true
+   console.log(this.count)
+
+    const da = window.document.getElementsByTagName('button')
    const data = window.document.getElementById('factura')
-  
+    console.log(da.length)
+    var  n= 0  
+    while(n < da.length){
+      window.document.getElementsByTagName('button').item(n).hidden = true
+        console.log('botnes',n)
+        n++;
+      }
+    
     html2canvas(data).then(canvas => {  
       // Few necessary setting options  
       var imgWidth = 210;   
@@ -267,7 +274,7 @@ getDismissReason(reason){
       const imgProps= pdf.getImageProperties(contentDataURL);
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      pdf.addImage(contentDataURL, 'PNG', 15, 0, pdfWidth, pdfHeight);
+      pdf.addImage(contentDataURL, 'PNG', 10, 0, 290, 180);
       pdf.save('download.pdf'); 
       });
    
@@ -276,8 +283,8 @@ setTimeout(() => {
   window.document.getElementById('CrearContizacion').hidden = false
   window.document.getElementById('imprimircotizacion').hidden = false
   window.document.getElementById('buttoneditar').hidden = false
-  
-    
+  window.location.reload()  
+
 }, 3000);
  }
 

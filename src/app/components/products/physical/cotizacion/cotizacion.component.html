@@ -191,7 +191,7 @@
             <td>{{item.pvalor * item.cantidad}}</td>
             <td>{{item.piva * item.cantidad}}</td>
             <td>{{norepetido[l] }}</td>
-            <td><button (click)="editarcotiza(content2, item, l)" id="buttoneditar">editar</button></td>
+            <td id="esconder"><button class="editarcotizaciones" (click)="editarcotiza(content2, item, l)" id="buttoneditar[l]">editar</button></td>
           </tr>
           
         </tbody>
