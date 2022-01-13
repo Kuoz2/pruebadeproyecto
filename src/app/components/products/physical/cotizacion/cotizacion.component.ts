@@ -254,7 +254,6 @@ getDismissReason(reason){
    window.document.getElementById('buttoneditar').hidden = true
    const data = window.document.getElementById('factura')
   
-   setTimeout(() => {
     html2canvas(data).then(canvas => {  
       // Few necessary setting options  
       var imgWidth = 210;   
@@ -268,10 +267,10 @@ getDismissReason(reason){
       const imgProps= pdf.getImageProperties(contentDataURL);
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      pdf.addImage(contentDataURL, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.addImage(contentDataURL, 'PNG', 15, 0, pdfWidth, pdfHeight);
       pdf.save('download.pdf'); 
       });
-   },2000)
+   
  
 setTimeout(() => {
   window.document.getElementById('CrearContizacion').hidden = false
