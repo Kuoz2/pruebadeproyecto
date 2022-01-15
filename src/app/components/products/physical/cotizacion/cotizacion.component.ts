@@ -280,28 +280,44 @@ getDismissReason(reason){
    
  
 setTimeout(() => {
-  window.document.getElementById('CrearContizacion').hidden = false
-  window.document.getElementById('imprimircotizacion').hidden = false
-  window.document.getElementById('buttoneditar').hidden = false
   window.location.reload()  
-
-}, 3000);
+  
+}, 2000);
  }
 
 
- editarcotiza(content, item, i){
-  console.log(item)
-  this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: <any>'xl ' }).result.then((result) => {
-    this.closeResult = `Closed with: ${result}`;
-  }, (reason) => {
-    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-  });
+async editarcotiza(content, item, i){
 
-   this.cambioPrecio = item.pvalor
-   this.cambioDesc = item.descuento
- this.cambioCantidad = item.cantidad
- this.cambioDisponible = item.stock.pstock
- this.contador = i
+
+  const Swal = require('sweetalert2')
+await Swal.fire({
+          title: 'Error!',
+          text: 'Si preciona aceptar no podra ingresar más productos a la cotización',
+          icon: 'warning',
+          confirmButtonText: 'Aceptar',
+          showCancelButton: true,
+          cancelButtonText:"Cancelar"
+        }).then((result) => {
+          if(result.isConfirmed){
+            this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: <any>'xl ' }).result.then((result) => {
+              this.closeResult = `Closed with: ${result}`;
+            }, (reason) => {
+              this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+            });
+          
+             this.cambioPrecio = item.pvalor
+             this.cambioDesc = item.descuento
+           this.cambioCantidad = item.cantidad
+           this.cambioDisponible = item.stock.pstock
+           this.contador = i          
+          window.document.getElementById('CrearContizacion').hidden = true
+          
+          }
+        })
+
+
+
+ 
  }
  Gcambio(a, b, i,norepetido ){
    console.log(i)

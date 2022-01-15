@@ -31,6 +31,8 @@
                                                             Nombre descriptivo
                                                         </th>
                                                         <th>Précio</th>
+                                                        <th>Margen</th>
+                                                        <th>Utilidad</th>
                                                         <th>Stock</th>
                                                         <th>Fecha vencimiento</th>
                                                         <th>Estado</th>
@@ -41,6 +43,8 @@
                                                         <td id="td111">{{p.pcodigo  }}</td>
                                                         <td id="td222">{{p.category.cnombre}}/{{p.pdescripcion}}</td>
                                                         <td id="td333">{{p.pvalor}}</td>
+                                                        <td>{{p.margen}}</td>
+                                                        <td>{{p.utilidad}}</td>
                                                         <td id="td444">{{p.stock.pstock}}</td>
                                                         <td>{{p.date_expiration.fecha_vencimiento}}</td>
                                                         <td [attr.id]="'peligro' + i + j "  >{{cambiarColorSinStock(p.stock.pstock,i, j)}}</td>
@@ -63,6 +67,8 @@
                                                         <th>Categoría y marca</th>
                                                         <th>Nombre descriptivo</th>
                                                         <th>Precio</th>
+                                                        <th>Margen</th>
+                                                        <th>Utilidad</th>
                                                         <th>Stock</th>
                                                     </tr>
                                                     </thead>
@@ -73,6 +79,8 @@
                                                             <td >{{l.product.category.cnombre}}/{{l.product.brand.bnombre}}</td>
                                                             <td >{{l.product.pdescripcion}}</td>
                                                             <td>{{l.product.pvalor}}</td>
+                                                            <td>{{l.product.margen}}</td>
+                                                            <td>{{l.product.utilidad}}</td>
                                                             <td>{{l.stock_expiration}}</td>
                                                     </tr>
                                                     </tbody>
@@ -107,6 +115,8 @@
                                                         Nombre descriptivo
                                                     </th>
                                                     <th>Précio</th>
+                                                    <th>Margen</th>
+                                                    <th>Utilidad</th>
                                                     <th>Stock</th>
                                                     <th>Estado</th>
                                                     <th>Fecha vencimiento</th>
@@ -117,6 +127,8 @@
                                                     <td id="td11">{{p.pcodigo  }}</td>
                                                     <td id="td22">{{p.category.cnombre}}/{{p.pdescripcion}}</td>
                                                     <td id="td33">{{p.pvalor}}</td>
+                                                    <td>{{p.margen}}</td>
+                                                    <td>{{p.utilidad}}</td>
                                                     <td id="td44">{{p.stock.pstock}}</td>
                                                     <td>{{p.date_expiration.fecha_vencimiento}}</td>
                                                     <td [attr.id]="'gestionar' + i + d "  >{{cambiarColorGestion(p.stock.pstock,i, d)}}</td>
@@ -141,6 +153,8 @@
                                                     <th>Categoría y marca</th>
                                                     <th>Nombre descriptivo</th>
                                                     <th>Precio</th>
+                                                    <th>Margen</th>
+                                                    <th>Utilidad</th>
                                                     <th>Stock</th>
                                                 </tr>
                                                 </thead>
@@ -151,6 +165,8 @@
                                                     <td >{{x.product.category.cnombre}}/{{x.product.brand.bnombre}}</td>
                                                     <td >{{x.product.pdescripcion}}</td>
                                                     <td>{{x.product.pvalor}}</td>
+                                                    <td>{{x.product.margen}}</td>
+                                                    <td>{{x.product.utilidad}}</td>
                                                     <td>{{x.stock_expiration}}</td>
 
                                                 </tr>
@@ -185,6 +201,8 @@
                                                         Nombre descriptivo
                                                     </th>
                                                     <th>Précio</th>
+                                                    <th>Margen</th>
+                                                    <th>Utilidad</th>
                                                     <th>Stock</th>
                                                     <th>Fecha vencimiento</th>
                                                     <th>Estado</th>
@@ -195,8 +213,10 @@
                                                     <tr  class="text-center" id="tr1" (dblclick)="open2(content2, p)" >
                                                         <ng-container *ngIf="p.stock.pstock >= 10">
                                                             <td id="td1">{{p.pcodigo  }}</td>
-                                                            <td id="td2">{{p.category.cnombre}}/{{p.pdescripcion}}</td>
+                                                            <td id="td2">{{p.category .cnombre}}/{{p.pdescripcion}}</td>
                                                             <td id="td3">{{p.pvalor}}</td>
+                                                            <td>{{p.margen}}</td>
+                                                            <td>{{p.utilidad}}</td>
                                                             <td id="td4">{{p.stock.pstock}}</td>
                                                             <td>{{p.date_expiration.fecha_vencimiento}}</td>
                                                             <td [attr.id]="'estado' + i + h">{{cambiadColor(p.stock.pstock, i, h)}}</td>
@@ -222,6 +242,8 @@
                                                     <th>Categoría y marca</th>
                                                     <th>Nombre descriptivo</th>
                                                     <th>Precio</th>
+                                                    <th>Margen</th>
+                                                    <th>Utilidad</th>
                                                     <th>Stock</th>
                                                 </tr>
                                                 </thead>
@@ -234,6 +256,8 @@
                                                             <td >{{u.product.category.cnombre}}/{{u.product.brand.bnombre}}</td>
                                                             <td >{{u.product.pdescripcion}}</td>
                                                             <td>{{u.product.pvalor}}</td>
+                                                            <td>{{u.product.margen}}</td>
+                                                            <td>{{u.product.utilidad}}</td>
                                                             <td>{{u.stock_expiration}}</td>
                                                         </ng-container>
                                                     </tr>
@@ -302,15 +326,27 @@
                                         <input class="form-control" [(ngModel)]="productoporid.pdescripcion" id="validationCustom012" type="text">
                                     </div>
                                     <div class="form-group">
+                                        <label for="costo" class="mb-1">Costo :</label>
+                                        <input class="form-control" [(ngModel)]="productoporid.precio_provider" id="costo" type="text" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Margen" class="mb-1">Margen :</label>
+                                        <input class="form-control" [(ngModel)]="productoporid.margen" id="margen" type="text" (change)="Obutildiad(productoporid)">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="utilidad" class="mb-1">Utilidad:</label>
+                                        <input class="form-control" [(ngModel)]="productoporid.utilidad" id="utilidad" type="text">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="montoneto" class="mb-1">Monto neto :</label>
                                         <input class="form-control" [(ngModel)]="productoporid.pvalor" id="montoneto" type="text">
                                     </div>
-
                                     <div class="form-group">
                                         <label for="validationCustom0122" class="mb-1">Detalle del producto :</label>
                                         <textarea class="form-control" [(ngModel)]="productoporid.pdetalle" id="validationCustom0122" rows="5" cols="10" type="text">
                                         </textarea>
                                     </div>
+                                  
                                     <div class="form-group">
                                         <label for="validationCustom01222" class="mb-1">Stock Actual:</label>
                                         <input type="number" [(ngModel)]="productoporid.stock.pstock" class="for m-control" id = "validationCustom01222" disabled>

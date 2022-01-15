@@ -295,6 +295,18 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
         
     }
 
+    Obutildiad(productoporid){
+
+        console.log("pvalor",1-(productoporid.margen/100))
+           const resultado = (productoporid.precio_provider/ (1-(productoporid.margen/100)));
+           //frm.value.pvalor = parseInt(resultado.toFixed(0));
+         //  frm.value.utilidad =  parseInt((resultado - frm.value.pvalor).toFixed(0));
+           this.productoporid.pvalor = parseInt(resultado.toFixed(0));
+           const dato = resultado.toFixed(0)
+           productoporid.utilidad = ( resultado - productoporid.precio_provider).toFixed(0)
+          
+        }
+
     editarproducto2(productoporid, stock_nuevo, stock_perdidas_nuevo){
 
     }

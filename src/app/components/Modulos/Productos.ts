@@ -7,11 +7,14 @@ export class Productos {
     category: Categories[];
     category_id: Categories[];
     ppicture: any;
+    margen:number;
+    utilidad:number;
     id: number;
     pdescripcion: string;
     pcodigo: number;
     pdetalle: string;
     pvalor: number;
+    precio_provider:number;
     // tslint:disable-next-line:variable-name
     stock = new Stock();
     cantidad: number;
