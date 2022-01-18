@@ -255,7 +255,7 @@ remover_producto(producto) {
     this.textoCambiado2.emit(valor.target.value);
   }
 // Aca se guardaran las ventas cuando se precione guardar luego se actualizara
-   guardarVentaApp() {
+ async  guardarVentaApp() {
  
       try {
         this.fecha.unsubscribe();
@@ -279,8 +279,8 @@ remover_producto(producto) {
             // Guardar el voucher generado.
               this.vouchservicio.crearvoucher( this.detallevoucher );
           // Actualiza el stcok generado.
-          this.serviCat.actualizarstock( this.productos_add.stock );
-          this.serviCat.actualizar_stock_fecha(this.productos_add.date_expiration);
+      await    this.serviCat.actualizarstock( this.productos_add.stock );
+       await   this.serviCat.actualizar_stock_fecha(this.productos_add.date_expiration);
           }
 
           if(i.sinventario2 == false && i.sinvventario2 != true){
@@ -291,9 +291,9 @@ remover_producto(producto) {
             this.stockvencimiento.pstock = i.stock_expiration - i.quantity
             this.fechavencimiento.stock_expiration = i.stock_expiration - i.quantity
             //Guardar registro al voucher.
-            this.vouchservicio.crearvoucher(this.detallevoucher)
-            this.serviCat.actualizarstock(this.stockvencimiento)
-            this.serviCat._actualizar_fechavence(this.fechavencimiento)
+           await this.vouchservicio.crearvoucher(this.detallevoucher)
+           await this.serviCat.actualizarstock(this.stockvencimiento)
+          await  this.serviCat._actualizar_fechavence(this.fechavencimiento)
           }
           
        
