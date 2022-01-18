@@ -264,9 +264,8 @@ remover_producto(producto) {
         this.detallevoucher.fecha_emision = this.fecha_emision;
         this.detallevoucher.hora_emision = this.hora_emision;
         this.detallevoucher.voucher.vhora = this.hora_emision
-        this.detallevoucher.voucher.vfecha = this.fecha_emision
         this.detallevoucher.voucher.vdia = this.dia
-        for (const i of this.items) {
+        for (const i of this.items) { 
           if(i.sinventario == true && i.sinventario != false){
             this.detallevoucher.product_id = i.id;
             this.detallevoucher.dvcantidad = i.quantity;
