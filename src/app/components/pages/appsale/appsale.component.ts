@@ -106,10 +106,11 @@ imagenjpg;
           
           if (x) { 
           
+            console.log(this.totalPrice)
 
             this.items = x;
             this.totalQuantity = x.length;
-            this.totalPrice = x.reduce((sum, current) => sum + (current.pvalor || current.product.pvalor * current.quantity), 0 )
+            this.totalPrice = x.reduce((sum, current) => sum + (((current.pvalor || current.product.pvalor) * current.quantity) + current.piva), 0 )
             this.cd.markForCheck();
           }
         
@@ -392,5 +393,11 @@ remover_producto(producto) {
         this.totalPrice = parseInt( nuevoPres.toFixed())
 
       }
+      imprimirsii(){
+        "https://eboleta.sii.cl/emitir/"
+        let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+      width=0,height=0,left=-1000,top=-1000`;
 
+      open("https://eboleta.sii.cl/emitir/", "test", params);
+      }
 }

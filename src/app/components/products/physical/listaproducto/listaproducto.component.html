@@ -30,6 +30,7 @@
                                                         <th>
                                                             Nombre descriptivo
                                                         </th>
+                                                        <th>Costo</th>
                                                         <th>Précio</th>
                                                         <th>Margen</th>
                                                         <th>Utilidad</th>
@@ -42,6 +43,7 @@
                                                     <tr *ngFor="let p of (listproductosG | async| inventariopeligro ) | paginate: {id:'pagination3',itemsPerPage:3, currentPage:j} ; let i=index"  (dblclick)="open2(content2, p)" class="text-center" id="tr3" >
                                                         <td id="td111">{{p.pcodigo  }}</td>
                                                         <td id="td222">{{p.category.cnombre}}/{{p.pdescripcion}}</td>
+                                                        <td>{{p.precio_costo}}</td>
                                                         <td id="td333">{{p.pvalor}}</td>
                                                         <td>{{p.margen}}</td>
                                                         <td>{{p.utilidad}}</td>

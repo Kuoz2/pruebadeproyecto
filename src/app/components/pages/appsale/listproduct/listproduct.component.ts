@@ -61,6 +61,7 @@ console.log('date expiration', this.Productos_sin_id)
     }
     const data = product;
     const elemento = {quantity: 1};
+    console.log(data.quantity)
     if (data.quantity >= elemento.quantity){
       this.carservice.changeCart(data)
     }else {
