@@ -121,8 +121,7 @@ imagenjpg;
       this.selecciondecomra =  res;  this.cd.markForCheck(); });
     await this.serviCat.categorias().pipe(takeUntil(this.unsubscribe$)).subscribe(data => {
       this.categorias = data;  this.cd.markForCheck();     this.spinner.hide(); });
-    this.vouchservicio.ultimovoucher().subscribe(data => {this.voucher_add =  data; this.cd.markForCheck();
-    } ,  );
+  
   }
   // Habrir el modal al precionar el carrito de compra
   open2(content2): void {
@@ -297,24 +296,30 @@ remover_producto(producto) {
           
        
         }
-
-        this.cancelar2.payment_id.pagomonto = this.app_venta.value.efectivo;
-       this.cancelar2.payment_id.pagovuelto = this.devolucion_app();
-       this.cancelar2.payment_id.half_payment_id = this.app_venta.value.loseleccionadodelacompra.id;
-       this.cancelar2.voucher_id = this.voucher_add.id;
-
-        // Se guarda lo cancelado
-        this.vent.guardarventas( this.cancelar2 )
-
-        this.app_venta.reset();
-        this.items.splice( 0, this.items.length );
-        this.totalPrice = 0;
-        this.totalQuantity = 0;
+  await this.cancelarproducto()
+          
     } catch (e) {
         console.log('ocurrio un error', e);
       }
 
     
+  }
+
+  cancelarproducto(){
+    this.vouchservicio.ultimovoucher().subscribe(data => {this.voucher_add =  data; this.cd.markForCheck();
+    } ,  );
+    this.cancelar2.payment_id.pagomonto = this.app_venta.value.efectivo;
+    this.cancelar2.payment_id.pagovuelto = this.devolucion_app();
+    this.cancelar2.payment_id.half_payment_id = this.app_venta.value.loseleccionadodelacompra.id;
+    this.cancelar2.voucher_id = this.voucher_add.id;
+
+     // Se guarda lo cancelado
+     this.vent.guardarventas( this.cancelar2 )
+
+     this.app_venta.reset();
+     this.items.splice( 0, this.items.length );
+     this.totalPrice = 0;
+     this.totalQuantity = 0;
   }
 
   devolucion_app() {
