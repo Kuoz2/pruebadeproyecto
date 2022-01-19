@@ -45,6 +45,7 @@ export class VerificarTokenService {
     })
   }
   VerficSaveProd(){
+    console.log(this.informacion)
     return   this.http.post(this.VsaveProdu, this.informacion)
     
    }
