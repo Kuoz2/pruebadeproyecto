@@ -95,7 +95,6 @@ urlListprovider = 'https://marketmini.herokuapp.com/providers'
      
     
     await  this.verifica.VerficSaveProd().subscribe((res: respuesta) => {
-      console.log(res)
      
         if(res.resultado == 'existe'){
         this.http.post<Productos>(this.UrlProductos, p.value).subscribe( res => {

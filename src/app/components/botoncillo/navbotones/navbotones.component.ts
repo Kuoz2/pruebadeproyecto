@@ -255,7 +255,7 @@ calImp(imp, valor): number {
           this.Frmproducto.value.date_expiration.product_id = 0;
          this.servi.guardarproductos( this.Frmproducto );
           console.log( 'productos', this.Frmproducto.value );
-         // this.productForm.reset();
+         this.Frmproducto.reset();
 
       } catch (e) {
           console.log( 'ocurrio un error', e );

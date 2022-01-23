@@ -126,7 +126,6 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
 
    async editarproductos(producto: Productos, nuevo, perdida) {
 
-      console.log('lo que se quiere actualizar', producto);
       await this.prod.actualizarproducto(producto).subscribe(data => data);
       const stock = producto.stock;
       await this.editarstock(stock, nuevo, perdida);
@@ -287,7 +286,6 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
         this.inventario2_stocknuevo.product_id = this.productoporid.id;
         this.inventario2_stocknuevo.pstock = producstock;
         this.inventario2_stocknuevo.stock_lost = stockperdida;
-        console.log('guardar inventario', this.inventario2_datexpiration, this.inventario2_stocknuevo);
         this.prod._stockinventario2(this.inventario2_stocknuevo).subscribe((res) => console.log('resultado stock',res));
         this.prod._guardarfechainventario2(this.inventario2_datexpiration).subscribe((res) =>  console.log('resultado fecha', res));
     }
