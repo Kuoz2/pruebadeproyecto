@@ -91,7 +91,7 @@ urlListprovider = 'https://marketmini.herokuapp.com/providers'
       })
     }
     // Guardar un nuevo producto
-   async guardarproductos(p) {
+   async guardarproductos(p,a) {
      
     
     await  this.verifica.VerficSaveProd().subscribe((res: respuesta) => {
@@ -99,7 +99,15 @@ urlListprovider = 'https://marketmini.herokuapp.com/providers'
         if(res.resultado == 'existe'){
         this.http.post<Productos>(this.UrlProductos, p.value).subscribe( res => {
           if( Object.values(res)[0] == 'correctamente'){
-              p.reset()
+            const Swal = require('sweetalert2')
+            Swal.fire({
+              title: 'Exitoso!!',
+              text: 'El producto fue guardado correctamente.',
+              icon: 'success',
+              confirmButtonText: 'cerrar'
+            })
+           a.dismiss('Cross click')
+            p.reset()
           } 
           
           })

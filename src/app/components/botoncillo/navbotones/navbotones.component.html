@@ -8,16 +8,38 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form [formGroup]="Frmproducto" (ngSubmit)="Guardaregistro(form)" #form="ngForm">
+                    <form [formGroup]="Frmproducto" (ngSubmit)="Guardaregistro(form, modal10)" #form="ngForm">
             
-                        <ul class="list-group">
-                            <li class="list-group-item">{{Frmproducto.value.pdescripcion}}</li>
-                            <li class="list-group-item">{{Frmproducto.value.pcodigo}}</li>
-                            <li class="list-group-item">{{Frmproducto.value.pvalor}}</li>
-                            <li class="list-group-item">{{Frmproducto.value.date_expiration.fecha_vencimiento}}</li>
-                            <li class="list-group-item">{{Frmproducto.value.stock.pstock}}</li>
-                            <li class="list-group-item">{{Frmproducto.value.stock.stock_lost}}</li>
-                          </ul>
+                       
+            <div class="row">
+                
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Código" id="pcodigo" disabled>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Descripcion" id="pdescripcion" disabled>
+                  </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Categoría" id="categoria" disabled>
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Marca" id="marca" disabled>
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Precio" id="valor" disabled>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Inventario" id="stock" disabled>
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Fecha vencimiento" id="fecha" disabled>
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Perdidas" id="perdidas" disabled>
+                  </div>
+              </div>
                         <div class="btn-group row " role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-primary" (click)="modal9.dismiss('Cross click'); open9(content8)">Atras</button>
                             <button type="submit" class="btn btn-primary"  > Guardar </button>

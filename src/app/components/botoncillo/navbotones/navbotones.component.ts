@@ -209,11 +209,28 @@ calImp(imp, valor): number {
     });
   }
   open9(content8){
-    this.modalService.open(content8, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+    this.modalService.open(content8, { ariaLabelledBy: 'modal-basic-title',size: <any>'xl '   }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+
+    const pdescripcion = <HTMLInputElement> window.document.getElementById('pdescripcion')
+    const pcodigo = <HTMLInputElement> window.document.getElementById('pcodigo')
+    const categoria = <HTMLInputElement> window.document.getElementById('categoria')
+    const marca = <HTMLInputElement> window.document.getElementById('marca')
+    const precio = <HTMLInputElement> window.document.getElementById('valor')
+    const stock = <HTMLInputElement> window.document.getElementById('stock')
+    const fecha = <HTMLInputElement> window.document.getElementById('fecha')
+    const perdidas = <HTMLInputElement> window.document.getElementById('perdidas')
+    pdescripcion.value = this.Frmproducto.value.pdescripcion
+    pcodigo.value = this.Frmproducto.value.pcodigo
+    categoria.value = this.Frmproducto.value.category_id.cnombre
+    marca.value = this.Frmproducto.value.brand_id.bnombre
+    precio.value = this.Frmproducto.value.pvalor
+    stock.value = this.Frmproducto.value.stock.pstock
+    fecha.value = this.Frmproducto.value.date_expiration.fecha_vencimiento
+    perdidas.value = this.Frmproducto.value.stock.stock_lost
   }
   open10(content10){
     this.modalService.open(content10, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
@@ -241,7 +258,7 @@ calImp(imp, valor): number {
     }
   }
 
-  Guardaregistro(form){
+  Guardaregistro(form,a){
   
     if (this.Frmproducto.valid) { return;}
       try {
@@ -253,9 +270,7 @@ calImp(imp, valor): number {
           this.Frmproducto.value.date_expiration.stock_expiration = this.Frmproducto.value.stock.pstock;
           this.Frmproducto.value.stock.product_id = 0;
           this.Frmproducto.value.date_expiration.product_id = 0;
-         this.servi.guardarproductos( this.Frmproducto );
-          console.log( 'productos', this.Frmproducto.value );
-         this.Frmproducto.reset();
+         this.servi.guardarproductos( this.Frmproducto , a);
 
       } catch (e) {
           console.log( 'ocurrio un error', e );
