@@ -258,7 +258,7 @@ calImp(imp, valor): number {
     }
   }
 
-  Guardaregistro(form,a){
+  Guardaregistro(form, a){
   
     if (this.Frmproducto.valid) { return;}
       try {
@@ -270,8 +270,8 @@ calImp(imp, valor): number {
           this.Frmproducto.value.date_expiration.stock_expiration = this.Frmproducto.value.stock.pstock;
           this.Frmproducto.value.stock.product_id = 0;
           this.Frmproducto.value.date_expiration.product_id = 0;
-         this.servi.guardarproductos( this.Frmproducto , a);
-
+         this.servi.guardarproductos( this.Frmproducto );
+         a.dismiss('Cross click')
       } catch (e) {
           console.log( 'ocurrio un error', e );
       }

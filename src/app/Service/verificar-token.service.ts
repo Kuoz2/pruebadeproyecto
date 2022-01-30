@@ -55,7 +55,8 @@ export class VerificarTokenService {
    }
  
    verificarSaveCate(){
-     return this.http.post(this.verificaCate, this.informacion)
+     const veri = this.informacion
+     return this.http.post(this.verificaCate, veri)
    }
   
    verificaSaveBrand(){

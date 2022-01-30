@@ -33,6 +33,7 @@ export class MarcaService {
     if (res.resultado != 'existe') { return; }
     if (res.resultado == 'existe') {
       this.http.post<Marca>(this.urlmarca , m.value).subscribe(res => {
+        console.log(res)
         if(Object.values(res)[0] == 'correctamente'){
           m.reset()
         }

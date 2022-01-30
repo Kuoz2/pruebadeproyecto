@@ -1,23 +1,42 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {CategoriasService} from '../../../../Service/categorias.service';
 import {Categories} from '../../../Modulos/Categories';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss']
 })
-export class CategoryComponent implements OnInit {
+export class CategoryComponent implements OnInit, OnDestroy {
   public closeResult: string;
   categoriasForm: FormGroup;
+  room:string
+  otracategoria:any
+
   categorias: Categories;
   categoriaID: Categories = new Categories();
   p: any;
-  constructor(private modalService: NgbModal, private formBuilder: FormBuilder, private servi: CategoriasService, private spinner: NgxSpinnerService) {
+  private unsubscribe$ = new Subject<void>();
+
+  constructor(private modalService: NgbModal, 
+    private formBuilder: FormBuilder,
+     private servi: CategoriasService,
+      private spinner: NgxSpinnerService,
+      private cd: ChangeDetectorRef,
+        private router: ActivatedRoute,
+        private cookies: CookieService
+      ) {
   }
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();  }
 
   ngOnInit() {
     this.spinner.show("spinnerdashcategori", {
@@ -25,6 +44,7 @@ export class CategoryComponent implements OnInit {
       size: "large",
       color: "white"
   })
+ 
     this.categoriasForm = this.formBuilder.group({
       cnombre: ['']
     });
@@ -33,12 +53,22 @@ export class CategoryComponent implements OnInit {
   }
 
   categoriaAsync() {
-    return this.servi.mostrarcategorias().then((res:Categories) => {this.categorias = res; console.log(this.categorias)}).catch(res => {console.log('error', res)}).finally(() => {return this.spinner.hide('spinnerdashcategori')});
-  }
+    this.servi.mostrarcategorias().pipe(takeUntil(this.unsubscribe$)).subscribe((res:Categories) => {this.categorias = res; 
+      this.cd.markForCheck();
+      this.spinner.hide('spinnerdashcategori');
+    
+    })  }
 
   guardarcategoria() {
-    this.servi.guardarcategorias(this.categoriasForm);
-  }
+    if(this.categoriasForm.valid){
+      this.servi.guardarcategorias(this.categoriasForm)
+       this.room = this.router.snapshot.paramMap.get('category')
+       this.cookies.set('categoria', this.room) 
+    
+     //  this.servi.mostrarcategorias().subscribe(res =>  this.socketwebservice.emitEvent({res}))
+
+     return this.otracategoria
+     }  }
 
   open2(content2, catego: Categories): void {
     this.modalService.open(content2, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {

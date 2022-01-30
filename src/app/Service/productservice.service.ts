@@ -91,7 +91,7 @@ urlListprovider = 'https://marketmini.herokuapp.com/providers'
       })
     }
     // Guardar un nuevo producto
-   async guardarproductos(p,a) {
+   async guardarproductos(p) {
      
     
     await  this.verifica.VerficSaveProd().subscribe((res: respuesta) => {
@@ -106,7 +106,7 @@ urlListprovider = 'https://marketmini.herokuapp.com/providers'
               icon: 'success',
               confirmButtonText: 'cerrar'
             })
-           a.dismiss('Cross click')
+          
             p.reset()
           } 
           

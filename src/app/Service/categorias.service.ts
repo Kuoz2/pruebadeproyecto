@@ -15,7 +15,7 @@ export class CategoriasService {
   UrlCategorias = 'https://marketmini.herokuapp.com/categories';
 // Mostrar
   mostrarcategorias() {
-    return this.http.get<Categories>(this.UrlCategorias).toPromise();
+     return this.http.get(this.UrlCategorias)
   }
 // Por ID
   mostrarporID(id: number) {
