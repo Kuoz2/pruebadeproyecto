@@ -48,9 +48,7 @@ socket.on('marcaEvnt', (res) => {
 })
 
 })
-socket.on("disconnect", () => {
-  console.log(socket.id); // undefined
-});
+
 
   server.listen(process.env.PORT || 3000, () => {
 
