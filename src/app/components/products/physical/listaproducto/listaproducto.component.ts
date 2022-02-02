@@ -68,7 +68,7 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
         await this.newinventario();
         await this.ngxspinner.hide("spinnerinventario");
         console.log('inventario 2', this.tomanuevoinventario);
-
+        this.someMethodIThinkMightBeSlow()
     }
 
     // Tomando el inventario nuevo.
@@ -307,5 +307,14 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
 
     editarproducto2(productoporid, stock_nuevo, stock_perdidas_nuevo){
 
+    }
+
+    someMethodIThinkMightBeSlow() {
+        const startTime = performance.now();
+    
+        // Do the normal stuff for this function
+    
+        const duration = performance.now() - startTime;
+        console.log(`someMethodIThinkMightBeSlow took ${duration}ms`);
     }
 }
