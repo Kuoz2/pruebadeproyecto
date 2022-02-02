@@ -57,7 +57,7 @@ export class ListPageComponent implements OnInit {
          this.hora = x.diaymes + 'T' + x.hora.toString() + ':' + x.minutos + ':' + x.segundo;
          this.ngxspinner.hide();
     } );
-
+    this.someMethodIThinkMightBeSlow()
  }
 
     agregaboleta(da) {
@@ -257,5 +257,14 @@ console.log("decodificado",atob(byte.nombreXML))
 
     camarabardcode2(){
 
+    }
+
+     someMethodIThinkMightBeSlow() {
+        const startTime = performance.now();
+    
+        // Do the normal stuff for this function
+    
+        const duration = performance.now() - startTime;
+        console.log(`someMethodIThinkMightBeSlow took ${duration}ms`);
     }
 }

@@ -47,6 +47,10 @@ socket.on('marcaEvnt', (res) => {
   socket.to(nameRoom).emit('marcaEvnt', res);
 })
 
+socket.on("disconnect", () => {
+  console.log(socket.id); // undefined
+});
+
 })
 
 
@@ -54,3 +58,5 @@ socket.on('marcaEvnt', (res) => {
 
     console.log(process.env.PORT)
   });
+
+  //01 03 04 06 07 08 10 11 12 14 15 18 22 25
