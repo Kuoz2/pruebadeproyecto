@@ -5,7 +5,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
-import {DashboardModule} from './components/dashboard/dashboard.module';
 import {SharedModule} from './shared/shared.module';
 import {ProductsModule} from './components/products/products.module';
 import {PagesModule} from './components/pages/pages.module';
@@ -13,7 +12,6 @@ import {UsersModule} from './components/users/users.module';
 import {NgxPrintModule} from 'ngx-print';
 import {AuthModule} from './components/auth/auth.module';
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
-import {MermaModule} from "./components/merma/merma.module";
 
 
 @NgModule({
@@ -24,7 +22,6 @@ import {MermaModule} from "./components/merma/merma.module";
         BrowserAnimationsModule,
         BrowserModule.withServerTransition( {appId: 'serverApp'} ),
         AppRoutingModule,
-        DashboardModule,
         AuthModule,
         SharedModule,
         ProductsModule,
@@ -32,7 +29,6 @@ import {MermaModule} from "./components/merma/merma.module";
         UsersModule,
         ReactiveFormsModule,
         HttpClientModule,
-        MermaModule,
         FormsModule,
         NgxPrintModule,
              

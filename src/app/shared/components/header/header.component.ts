@@ -61,21 +61,7 @@ export class HeaderComponent implements OnInit {
   }
 
 
-    mermas() {
-    return this.Cmemrmas.mermasdeldia().toPromise().then(
-        res => {
-          console.log('Mermas', res);
-          this.Actualmermas = res;
-          // tslint:disable-next-line:no-shadowed-variable
-          this.Actualmermas.map((res) => {
-            if (res.solution_boolean === false) {
-              this.mermasnogestionadas.push(res);
-            }
-          });
-          this.cantidad = this.mermasnogestionadas.length;
-        }
-    );
-  }
+  
 
   inventario_gestionable() {
     return this.Cmemrmas.inventario_gestion().then(
@@ -89,10 +75,7 @@ export class HeaderComponent implements OnInit {
 
    ngOnInit(): void {
      
-    this.mermas().catch(
-        // tslint:disable-next-line:no-shadowed-variable
-        error => {console.log('el error', error); }
-    ).finally();
+   
 
     this.inventario_gestionable().catch(error => {
       {console.log('error inventario', error); }

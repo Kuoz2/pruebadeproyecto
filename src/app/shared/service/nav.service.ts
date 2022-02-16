@@ -33,14 +33,11 @@ public screenWidth: any;
 public collapseSidebar = false;
 MENUITEMS: Menu[] = [
 
-{
-path: '/dashboard/default', rol: 'administrador', title: 'Dashboard', icon: 'home', type: 'link', badgeType: 'primary', active: false
-},
+
 {
 title: 'Productos' , icon: 'box', rol: '', type: 'sub', active: false,  children: [
 
 { path: '/products/physical/lista-editar'  , rol: '', title: 'Inventario', type: 'link' },
-{ path: '/products/physical/add-product', rol: '', title: 'Agregar producto', type: 'link' },
 { path: '/products/physical/proveedor', rol: '', title: 'Proveedor', type: 'link'},
 { path: '/products/physical/promociones', rol: '', title: 'Promociones', type: 'link'},
 { path: '/products/physical/impuestos', rol: '', title: 'Impuestos', type: 'link'},

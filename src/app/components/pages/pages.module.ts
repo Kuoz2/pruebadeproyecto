@@ -6,19 +6,13 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {CKEditorModule} from 'ngx-ckeditor';
 
 import {PagesRoutingModule} from './pages-routing.module';
-import {VoucherCreateComponent} from './voucher-create/voucher-create.component';
 import {SharedModule} from "../../shared/shared.module";
 import {TicketComponent} from './ticket/ticket/ticket.component';
-import {HacerpagoComponent} from './hacerpago/hacerpago.component';
-import {ListavoucherComponent} from './listavoucher/listavoucher.component';
 import {MedioComponent} from './medio/medio.component';
 import {AppsaleComponent} from './appsale/appsale.component';
 import {ListproductComponent} from './appsale/listproduct/listproduct.component';
-import {ContenedorAppComponent} from './contenedor-app/contenedor-app.component';
 import {HoraActualService} from "../../Service/hora-actual.service";
 import {BoletaComponent} from './boleta/boleta.component';
-import {CierrecajaComponent} from './cierrecaja/cierrecaja.component';
-import {QRCodeModule} from "angularx-qrcode";
 import {ListPageComponent} from "./list-page/list-page.component";
 import {NgxPaginationModule} from "ngx-pagination";
 import {ActualizarbolComponent} from './actualizarbol/actualizarbol.component';
@@ -26,26 +20,20 @@ import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
 import {NgxSpinnerModule} from "ngx-spinner";
 import {NgxPrintModule} from 'ngx-print';
 import { QuickSaleComponent } from './quick-sale/quick-sale.component';
-import { ComparacionventaComponent } from './comparacionventa/comparacionventa.component';
-
-
+import { ContenedorAppComponent } from './contenedor-app/contenedor-app.component';
 @NgModule({
   declarations:
       [
-      VoucherCreateComponent,
       TicketComponent,
-      HacerpagoComponent,
-      ListavoucherComponent,
       MedioComponent,
       AppsaleComponent,
       ListproductComponent,
-      ContenedorAppComponent,
       BoletaComponent,
-      CierrecajaComponent,
       ListPageComponent,
       ActualizarbolComponent,
       QuickSaleComponent,
-      ComparacionventaComponent,
+      ContenedorAppComponent
+    
       ],
     imports: [
         CommonModule,
@@ -54,7 +42,6 @@ import { ComparacionventaComponent } from './comparacionventa/comparacionventa.c
         ReactiveFormsModule,
         CKEditorModule,
         SharedModule,
-        QRCodeModule,
         NgxPaginationModule,
         Ng4LoadingSpinnerModule,
         NgxSpinnerModule,

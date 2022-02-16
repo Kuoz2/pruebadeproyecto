@@ -1,15 +1,12 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {Ng2SmartTableModule} from 'ng2-smart-table';
 import {CKEditorModule} from 'ngx-ckeditor';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {ProductsRoutingModule} from './products-routing.module';
 import {CategoryComponent} from './physical/category/category.component';
-import {SubCategoryComponent} from './physical/sub-category/sub-category.component';
-import {AddProductComponent} from './physical/add-product/add-product.component';
 
 import {GalleryModule} from '@ks89/angular-modal-gallery';
 import 'hammerjs';
@@ -21,7 +18,6 @@ import {ListaproductoComponent} from './physical/listaproducto/listaproducto.com
 import {NgxPaginationModule} from "ngx-pagination";
 import {StockComponent} from './physical/stock/stock.component';
 import {ProvideerComponent} from './provideer/provideer.component';
-import {PromocionesComponent} from './physical/promociones/promociones.component';
 import {ImpuestosComponent} from './physical/impuestos/impuestos.component';
 import {MarcaComponent} from './physical/marca/marca.component';
 import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
@@ -39,12 +35,9 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
 
 @NgModule({
   declarations: [CategoryComponent,
-    SubCategoryComponent,
-    AddProductComponent,
     ListaproductoComponent,
     StockComponent,
     ProvideerComponent,
-    PromocionesComponent,
     ImpuestosComponent,
     MarcaComponent,
     VencimientosComponent,
@@ -55,7 +48,6 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
         ReactiveFormsModule,
         CKEditorModule,
         ProductsRoutingModule,
-        Ng2SmartTableModule,
         NgbModule,
         DropzoneModule,
         GalleryModule.forRoot(),

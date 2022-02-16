@@ -136,17 +136,7 @@ urlListprovider = 'https://marketmini.herokuapp.com/providers'
   }
 
 
-  // Tomar el stock perdida de este mes.
-    stock_perida_este_mes() {
-
-      return this.http.get(this.URLStockPerdida);
-    }
-
-    // Tomar el stock de perdidas del mes anterior
-    stock_perdida_anterior() {
-      return this.http.get(this.URLStockPerdidaAnterior);
-    }
-
+   
     // Busca el stock de perdidas con el precio del producto para poder ser multiplicados y a si sacar el valor de la perdida
     _stock_productos() {
       return this.http.get<Stock_productos[]>(this.URL_STOCK_PRODUCTOS);
@@ -157,15 +147,7 @@ urlListprovider = 'https://marketmini.herokuapp.com/providers'
       return this.http.post<Stock>(this.URLStock,stck);
     }
 
-    // Busca las perdidas de este mes
-    _stock_perdidas_hoy() {
-      return this.http.get<Perdidas_este_mes[]>(this.URL_STOCK_PERDIDA);
-    }
 
-    __graf_perdidas() {
-     // return this.http.get<Chart[]>(this.URL_STCK_GRF_PERDIDAS)
-      return  this.http.get<any[]>(this.URL_STCK_GRF_PERDIDAS);
-  }
 
   // Aqui sSKe conecta a los proveedores
     __tomaproveedores() {
@@ -175,32 +157,14 @@ urlListprovider = 'https://marketmini.herokuapp.com/providers'
     
 
 
-    // Guardar una merma
-    guardarMerma(merma) {
-    return this.http.post(this.UR_MERMAS, merma);
-    }
+   
 
     // Buscar mermas
-    mermasdeldia(): Observable<Mermas[]> {
-    return this.http.get<Mermas[]>(this.UR_MERMAS);
-    }
+  
 
-    // Cantidad de mermas realizadas
-    cantidadesObtenidas() {
-      return this.http.get(this.UR_MERMAS + '/muestra_situaciones').toPromise();
-    }
+ 
     // Actualizar registro merma
-    UpdateMermaEstado(mrm) {
-    
-      return this.http.put(this.UR_MERMAS + '/' + mrm.id, mrm ).subscribe(error => console.log(error));
-    }
-
-    // Guardar el informe de la merma, del como se soluciono.
-    GuardarRegistro(regimrm) {
-      return this.http.post(this.URLINFORME, regimrm).subscribe(
-          (error) => {console.log('ah, ocurrido un error', error); }
-          );
-    }
+  
 
         //Productos que venceran el siguiente mes.
 

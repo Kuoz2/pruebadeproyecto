@@ -10,12 +10,7 @@ export const
               pathMatch: 'prefix'
       },
 
-  {
-    path: 'dashboard',
-    loadChildren: () => import('../../components/dashboard/dashboard.module').then(m => m.DashboardModule),
-    canActivate: [VerificadorService],
 
-  },
   {
     path: 'products',
     loadChildren: () => import('../../components/products/products.module').then(m => m.ProductsModule),
@@ -50,14 +45,7 @@ export const
       breadcrumb: "Usuario"
     }
   },
-  {
-   path:'merma',
-   loadChildren: () => import('../../components/merma/merma.module').then(m => m.MermaModule),
-   canActivate: [VerificadorService],
-   data: {
-     breadcrumb: "Mermas"
-    }
-  },
+ 
   {
     path: 'navegacionboton',
     canActivate: [VerificadorService],

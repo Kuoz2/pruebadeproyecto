@@ -1,8 +1,9 @@
+import { takeUntil } from 'rxjs/operators';
 import { LocationStrategy } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ImpuestosService } from 'src/app/Service/impuestos.service';
 import { MarcaService } from 'src/app/Service/marca.service';
 import { ProductserviceService } from 'src/app/Service/productservice.service';
@@ -12,14 +13,13 @@ import { Impuestos } from '../../Modulos/impuestos';
 import { Marca } from '../../Modulos/Marca';
 import { Provideer } from '../../Modulos/Provideer';
 import * as devTools from 'devtools-detect';
-import { VerificarTokenService } from 'src/app/Service/verificar-token.service';
 
 @Component({
   selector: 'app-navbotones',
   templateUrl: './navbotones.component.html',
   styleUrls: ['./navbotones.component.scss']
 })
-export class NavbotonesComponent implements OnInit {
+export class NavbotonesComponent implements OnInit, OnDestroy{
   public ingresarproducto: FormGroup;
   public closeResult: string;
   public categoriaProducto: string;
@@ -35,6 +35,7 @@ export class NavbotonesComponent implements OnInit {
   public mediopago = ["efectivo", "tarjeta"]
   public precio:number=0;
   public preciov:number=0;
+  private unsubscribe$ = new Subject<void>();
   get pactivado() {return this.Frmproducto.get('pactivado'); }
   get pdescripcion() { return this.Frmproducto.get('pdescripcion'); }
   get pdetalle() { return this.Frmproducto.get('pdetalle'); }
@@ -58,7 +59,8 @@ export class NavbotonesComponent implements OnInit {
      private fb: FormBuilder,
      private fb2:FormBuilder,
       private vns: VentasService,
-      private verifica: VerificarTokenService) {
+      private cd: ChangeDetectorRef,
+      ) {
     this.Frmproducto = this.fb.group({
       pcodigo: new FormControl( '', [Validators.required]),
       pdescripcion: new FormControl(''),
@@ -96,13 +98,16 @@ export class NavbotonesComponent implements OnInit {
       medio_pago: new FormControl('', [Validators.required])
    })
   }
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();  }
   
 
  async ngOnInit(){
   
-    await this.servi.__tomaproveedores().subscribe(res => {this.proveedor = res; });
-    await  this.servi.categorias().subscribe(data => {this.categorias = data; });
-    await  this.marc.buscarmarca2().subscribe(data => {this.marcas =  data; });
+    await this.servi.__tomaproveedores().pipe(takeUntil(this.unsubscribe$)).subscribe(res => {this.proveedor = res; this.cd.markForCheck()} );
+    await  this.servi.categorias().pipe(takeUntil(this.unsubscribe$)).subscribe(data => {this.categorias = data; this.cd.markForCheck() });
+    await  this.marc.buscarmarca2().pipe(takeUntil(this.unsubscribe$)).subscribe(data => {this.marcas =  data; this.cd.markForCheck()});
     await this.buscarimpuesto();
   }
 

@@ -1,16 +1,12 @@
-import { ComparacionventaComponent } from './comparacionventa/comparacionventa.component';
 import { QuickSaleComponent } from './quick-sale/quick-sale.component';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {VoucherCreateComponent} from "./voucher-create/voucher-create.component";
-import {ListavoucherComponent} from "./listavoucher/listavoucher.component";
 import {MedioComponent} from "./medio/medio.component";
-import {ContenedorAppComponent} from "./contenedor-app/contenedor-app.component";
 import {BoletaComponent} from "./boleta/boleta.component";
-import {CierrecajaComponent} from "./cierrecaja/cierrecaja.component";
 import {ListPageComponent} from "./list-page/list-page.component";
 import {ActualizarbolComponent} from "./actualizarbol/actualizarbol.component";
 import {VerificadorService} from "../../Service/verificador.service";
+import { ContenedorAppComponent } from './contenedor-app/contenedor-app.component';
 
 
 const routes: Routes = [
@@ -30,18 +26,6 @@ const routes: Routes = [
                 canActivate: [VerificadorService]
 
       },
-
-
-      {
-        path: 'create-voucher',
-        component: VoucherCreateComponent,
-               data:{
-          title: "Crear voucher",
-          breadcrumb: "Crear voucher"
-        },
-                canActivate: [VerificadorService]
-
-      },
       {
         path:'lista-pago',
         component:ListPageComponent,
@@ -52,36 +36,8 @@ const routes: Routes = [
                 canActivate: [VerificadorService]
 
       },
-      {
-        path: 'lista-voucher',
-        component: ListavoucherComponent,
-        data:{
-          title: "Lista de voucher",
-          breadcrumb: "Listado voucher"
-        },
-                canActivate: [VerificadorService]
 
-      },
-      {
-        path: 'create-voucher',
-        component: VoucherCreateComponent,
-        data:{
-          title: "Crear pago",
-          breadcrumb: "Crear pago"
-        },
-                canActivate: [VerificadorService]
 
-      },
-      {
-        path:'app-pago',
-        component:ContenedorAppComponent,
-        data:{
-          title:"Pago movil",
-          breadcrumb:"App pago"
-        },
-                canActivate: [VerificadorService]
-
-      },
       {
         path: "quick_sale",
         component: QuickSaleComponent,
@@ -103,15 +59,14 @@ const routes: Routes = [
 
       },
       {
-        path:'cierre',
-        component: CierrecajaComponent,
+        path:'app-pago',
+        component:ContenedorAppComponent,
         data:{
-          title:'cierre de caja',
-          breadcrumb:'caja'
-        },
-                canActivate: [VerificadorService]
-
+          title:"Pago movil",
+          breadcrumb:"App pago"
+        }
       },
+ 
       {
         path: 'actualizar_boleta',
         component: ActualizarbolComponent,
@@ -122,15 +77,7 @@ const routes: Routes = [
                 canActivate: [VerificadorService]
 
       },
-      {
-        path: 'comparar_ventas',
-        component: ComparacionventaComponent,
-        data:{
-          title: 'Coparar ventas',
-          breadcrumb: 'Comparacion ventas'
-        },
-        canActivate: [VerificadorService],
-      }
+ 
     ]
   }
 ];

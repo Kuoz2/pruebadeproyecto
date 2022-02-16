@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  HEROKU_APP_NAME: 'https://marketmini.herokuapp.com'
+
 };

@@ -2,11 +2,9 @@ import { CotizacionComponent } from './physical/cotizacion/cotizacion.component'
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {CategoryComponent} from './physical/category/category.component';
-import {AddProductComponent} from './physical/add-product/add-product.component';
 
 import {ListaproductoComponent} from "./physical/listaproducto/listaproducto.component";
 import {ProvideerComponent} from "./provideer/provideer.component";
-import {PromocionesComponent} from "./physical/promociones/promociones.component";
 import {ImpuestosComponent} from "./physical/impuestos/impuestos.component";
 import {MarcaComponent} from "./physical/marca/marca.component";
 import {VencimientosComponent} from "./physical/vencimientos/vencimientos.component";
@@ -34,16 +32,7 @@ const routes: Routes = [
         },
       canActivate: [VerificadorService],
       },
-      {
-        path: 'physical/add-product',
-        component: AddProductComponent,
-        data: {
-          title: 'Agregar producto',
-          breadcrumb: 'Agregar producto'
-        },
-       canActivate: [VerificadorService],
-
-      },
+   
       {
         path: 'physical/impuestos',
         component: ImpuestosComponent,
@@ -71,15 +60,7 @@ const routes: Routes = [
         },
         canActivate: [VerificadorService]
       },
-      {
-        path:'physical/promociones',
-        component: PromocionesComponent,
-        data:{
-          title:'Crear promociones',
-          breadcrumb:'Nuevas promociones'
-        },
-        canActivate: [VerificadorService]
-      },
+   
       {
         path:'physical/vencimiento',
         component: VencimientosComponent,
@@ -90,14 +71,15 @@ const routes: Routes = [
         canActivate: [VerificadorService]
       },
       {
-        path:'cotizacion',
+        path:'products/cotizacion',
         component: CotizacionComponent,
         data:{
-          title:'Cotización',
-          breadcrumb:'Crear cotización'
+          title: 'Cotización',
+          breadcrumb: 'Cotizar'
         },
-        canActivate: [VerificadorService]
+        canActivate:[VerificadorService]
       }
+
     ]
   }
 ];

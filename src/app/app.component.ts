@@ -6,7 +6,8 @@ import { Marca } from './components/Modulos/Marca';
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {UsuarioService} from './Service/usuario.service';
 import * as devTools from 'devtools-detect';
-
+import { environment } from 'src/environments/environment';
+import hsp from 'heroku-self-ping';
 
 @Component({
   selector: 'app-root',
@@ -32,7 +33,7 @@ datosnovacios(){
 
 
    ngOnInit() {
- /*   this.navegador_habierto()
+   this.navegador_habierto()
    window.addEventListener('devtoolschange', event => {
    console.log('Is DevTools open:', event.detail.isOpen);
    console.log('DevTools orientation:', event.detail.orientation);
@@ -40,7 +41,7 @@ datosnovacios(){
     {
     window.location.href = "https://errorconsole.herokuapp.com/"
    }
-   });*/
+   });
   }
 
  
@@ -51,7 +52,14 @@ datosnovacios(){
 }
 
 
+intervalo(){
+  const servio =this.categoria.mostrarcategorias().subscribe()
+  setInterval(function() {
+    servio
+}, 1000 * 60 * 20);
 
+
+}
 navegador(){
   var sBrowser, sUsrAg = navigator.userAgent;
   if(sUsrAg.indexOf("Chrome") > -1) {
