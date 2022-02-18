@@ -40,7 +40,7 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody id="tbody3">
-                                                    <tr *ngFor="let p of (listproductosG | async| inventariopeligro ) | paginate: {id:'pagination3',itemsPerPage:3, currentPage:j} ; let i=index"  (dblclick)="open2(content2, p)" class="text-center" id="tr3" >
+                                                    <tr *ngFor="let p of (listproductosG | async| inventariopeligro ) | paginate: {id:'pagination3',itemsPerPage:10, currentPage:j} ; let i=index"  (dblclick)="open2(content2, p)" class="text-center" id="tr3" >
                                                         <td id="td111">{{p.pcodigo  }}</td>
                                                         <td id="td222">{{p.category.cnombre}}/{{p.pdescripcion}}</td>
                                                         <td>{{p.precio_costo}}</td>
@@ -75,7 +75,7 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody id="tbody3">
-                                                    <tr *ngFor="let l of (tomanuevoinventario | inventariosinstock2  ) | paginate: {id:'pagination8',itemsPerPage:3, currentPage:n} ; let i=index"   class="text-center" >
+                                                    <tr *ngFor="let l of (tomanuevoinventario | inventariosinstock2  ) | paginate: {id:'pagination8',itemsPerPage:10, currentPage:n} ; let i=index"   class="text-center" >
                                                         <td >{{l.fecha_vencimiento  }}</td>
                                                             <td >{{l.product.pcodigo}}</td>
                                                             <td >{{l.product.category.cnombre}}/{{l.product.brand.bnombre}}</td>
@@ -125,7 +125,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody id="tbody2">
-                                                <tr *ngFor="let p of (listproductosG |async| inventarioGestion ) | paginate: {id:'pagination2',itemsPerPage:3, currentPage:d} ; let i=index  " (dblclick)="open2(content2, p)" class="text-center" id="tr2">
+                                                <tr *ngFor="let p of (listproductosG |async| inventarioGestion ) | paginate: {id:'pagination2',itemsPerPage:10, currentPage:d} ; let i=index  " (dblclick)="open2(content2, p)" class="text-center" id="tr2">
                                                     <td id="td11">{{p.pcodigo  }}</td>
                                                     <td id="td22">{{p.category.cnombre}}/{{p.pdescripcion}}</td>
                                                     <td id="td33">{{p.pvalor}}</td>
@@ -161,7 +161,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody >
-                                                <tr *ngFor="let x of (tomanuevoinventario | inventariogestion2) | paginate: {id:'pagination7',itemsPerPage:3, currentPage:k} ; let i=index  " >
+                                                <tr *ngFor="let x of (tomanuevoinventario | inventariogestion2) | paginate: {id:'pagination7',itemsPerPage:10, currentPage:k} ; let i=index  " >
                                                     <td >{{x.fecha_vencimiento  }}</td>
                                                     <td >{{x.product.pcodigo}}</td>
                                                     <td >{{x.product.category.cnombre}}/{{x.product.brand.bnombre}}</td>
@@ -211,7 +211,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody id="tbody1">
-                                                <ng-container *ngFor="let p of (listproductosG  |async |inventarionsano ) | paginate: {id:'pagination1',itemsPerPage:3, currentPage:h}; let i=index "  >
+                                                <ng-container *ngFor="let p of (listproductosG  |async |inventarionsano ) | paginate: {id:'pagination1',itemsPerPage: 10, currentPage:h}; let i=index "  >
                                                     <tr  class="text-center" id="tr1" (dblclick)="open2(content2, p)" >
                                                         <ng-container *ngIf="p.stock.pstock >= 10">
                                                             <td id="td1">{{p.pcodigo  }}</td>
@@ -250,7 +250,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody >
-                                                <ng-container  *ngFor="let u of (tomanuevoinventario    |inventariosano2 ) | paginate: {id:'pagination5',itemsPerPage:3, currentPage:g}; let i=index "  >
+                                                <ng-container  *ngFor="let u of (tomanuevoinventario    |inventariosano2 ) | paginate: {id:'pagination5',itemsPerPage:10, currentPage:g}; let i=index "  >
                                                     <tr  class="text-center"  >
                                                         <ng-container *ngIf="u.cantidad_cambiadas >= 10">
                                                             <td >{{u.fecha_vencimiento  }}</td>
