@@ -27,6 +27,7 @@ export class VerificarTokenService {
   private verificaUpStock = 'https://marketmini.herokuapp.com/stocks/verif_before_update_stock'
   private verifiUpDateExp = 'https://marketmini.herokuapp.com/date_expirations/verif_before_update_date'
   private verificaECate = 'https://marketmini.herokuapp.com/categories/verif_before_update_category'
+  private verificarUpdateProduct ='https://marketmini.herokuapp.com/products/verif_before_update'
  private informerespuesta = new Subject<respuesta>()
   constructor(private http: HttpClient) { }
   validacion: any;
@@ -107,5 +108,11 @@ export class VerificarTokenService {
     return this.http.post(this.verificaECate, this.informacion)
 
    }
+
+   verificaUpdateProd(){
+     return this.http.post(this.verificarUpdateProduct, this.informacion)
+   }
+
+
    
   }

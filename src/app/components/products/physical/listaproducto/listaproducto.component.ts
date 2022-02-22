@@ -7,6 +7,7 @@ import {Observable, Subject} from 'rxjs';
 import {PagosService} from '../../../../Service/pagos.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {takeUntil} from 'rxjs/operators';
+import { ProductoActualizar } from 'src/app/components/Modulos/ProductoActualizar';
 
 @Component({
     selector: 'app-listaproducto',
@@ -124,9 +125,10 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
        return this.listproductosG;
    }
 
-   async editarproductos(producto: Productos, nuevo, perdida) {
-
-      await this.prod.actualizarproducto(producto).subscribe(data => data);
+   async editarproductos(producto: ProductoActualizar, nuevo, perdida) {
+    console.log("los productos cambiando", producto)
+    producto.pcodigo = producto.pcodigo.toString()
+      await this.prod.actualizarproducto(producto)
       const stock = producto.stock;
       await this.editarstock(stock, nuevo, perdida);
     }
@@ -184,7 +186,7 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
     open2(content2, catego: Productos): void {
             
        
-        
+        console.log(catego)
 
       console.log('lo que entra', catego.id);
       this.modalService.open(content2, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {

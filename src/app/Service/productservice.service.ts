@@ -10,6 +10,7 @@ import {FormGroup} from '@angular/forms';
 import {Mermas} from '../components/Modulos/mermas';
 import {DateExpiration, Fecha_vencimiento} from '../components/Modulos/Fecha_vencimiento';
 import { VerificarTokenService, respuesta } from './verificar-token.service';
+import { ProductoActualizar } from '../components/Modulos/ProductoActualizar';
 
 
 @Injectable({
@@ -62,8 +63,16 @@ urlListprovider = 'https://marketmini.herokuapp.com/providers'
       return this.http.get<Stock>(this.URLStock + '/' + id);
   }
 // Actualizar productos (detalle, texto referencia)
-    actualizarproducto(produ: Productos) {
-        return this.http.put<Productos>(this.UrlProductos + '/' + produ.id , produ);
+    actualizarproducto(produ: ProductoActualizar) {
+        const uproducto = produ
+      this.verifica.verificaUpdateProd().subscribe(async (res: respuesta) => {
+        if(res.resultado != 'existe'){return ;}
+        if(res.resultado == 'existe'){
+
+          await this.http.put<ProductoActualizar>(this.UrlProductos + '/' + uproducto.id , uproducto).subscribe(  res => {console.log(res)}
+          );
+        } 
+      })
     }
 
     // Actializar el stock de los productos.
