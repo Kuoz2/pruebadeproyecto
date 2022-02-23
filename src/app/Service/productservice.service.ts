@@ -65,11 +65,21 @@ urlListprovider = 'https://marketmini.herokuapp.com/providers'
 // Actualizar productos (detalle, texto referencia)
     actualizarproducto(produ: ProductoActualizar) {
         const uproducto = produ
+        const Swal = require('sweetalert2')
+
       this.verifica.verificaUpdateProd().subscribe(async (res: respuesta) => {
         if(res.resultado != 'existe'){return ;}
         if(res.resultado == 'existe'){
 
-          await this.http.put<ProductoActualizar>(this.UrlProductos + '/' + uproducto.id , uproducto).subscribe(  res => {console.log(res)}
+          await this.http.put<ProductoActualizar>(this.UrlProductos + '/' + uproducto.id , uproducto).subscribe(  res => {
+                        const Swal = require('sweetalert2')
+
+            Swal.fire({
+              title: 'Exitoso!!',
+              text: 'El producto fue actualizado correctamente.',
+              icon: 'success',
+              confirmButtonText: 'cerrar'
+            })}
           );
         } 
       })

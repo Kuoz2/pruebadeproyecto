@@ -15,7 +15,7 @@ import { ProductoActualizar } from 'src/app/components/Modulos/ProductoActualiza
     styleUrls: ['./listaproducto.component.scss']
 })
 export class ListaproductoComponent implements OnInit, OnDestroy {
-
+    public buscarinventario:string=""
     active = 1;
     public closeResult: string;
     public listproductosG: Observable<Productos[]>;
@@ -44,7 +44,7 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
     // tslint:disable-next-line:new-parens
     ck = new Stock;
     // tslint:disable-next-line:variable-name
-    stock_nuevo: number;
+    stock_nuevo: number =0;
     // tslint:disable-next-line:variable-name
     stock_perdidas_nuevo: number;
     d = 0;
@@ -164,7 +164,6 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
 
             try{
                 await this.prod.actualizarstock(stck);
-                window.location.reload();
       
             }catch(error){
                 console.log(error)
@@ -200,9 +199,9 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
 
       this.editar();
       this.editar2();
-
-      var elemento= <HTMLInputElement>  document.querySelector('input[name="newstock"]');
-      var elementoperdida = <HTMLInputElement> document.querySelector('input[name="nuevasperdidas"]');
+      this.stock_nuevo = 0
+     // var elemento= <HTMLInputElement>  document.querySelector('input[name="newstock"]');
+     /* var elementoperdida = <HTMLInputElement> document.querySelector('input[name="nuevasperdidas"]');
       var elementofecha = <HTMLInputElement> document.querySelector('input[name="fechavencimientos"]')  
         if(catego.stock.pstock != 0 )
         {
@@ -214,7 +213,7 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
             elemento.disabled = false
             elementoperdida.disabled=false
             elementofecha.disabled=false
-        }
+        }*/
 
     }
 
@@ -318,5 +317,9 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
     
         const duration = performance.now() - startTime;
         console.log(`someMethodIThinkMightBeSlow took ${duration}ms`);
+    }
+
+    sumarstock(a){
+         this.productoporid.stock.pstock = (this.productoporid.stock.pstock + a)
     }
 }

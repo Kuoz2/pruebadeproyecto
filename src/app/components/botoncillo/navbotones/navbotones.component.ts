@@ -143,12 +143,14 @@ if (pvalor.value != null) {
 
 calImp(imp, valor): number {
 
-  const n = parseInt(imp.value.timpuesto);
+  
   const n2 = parseInt(valor.value);
-  const multiva = (n * n2);
+  const multiva = ( n2 *( 19/100 ));
   const resultiva: number = multiva / 100;
   console.log('impuesto', resultiva);
-  this.prdiva = resultiva.toFixed();
+alert(n2)
+  this.prdiva = multiva
+  alert(this.prdiva)
   // @ts-ignore
   return resultiva;
 }

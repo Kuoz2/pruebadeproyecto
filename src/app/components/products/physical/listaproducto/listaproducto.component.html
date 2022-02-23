@@ -9,6 +9,8 @@
                 <div class="card-header">
                     <h5>Inventario</h5>
                 </div>
+                <label for="businventario">Buscar</label>
+                <input type="text" class="form-control" placeholder="Buscar por código del producto" [(ngModel)]="buscarinventario">
                 <ngb-tabset justify="fill">
                     <ngb-tab>
                         <ng-template ngbTabTitle><b>Inventario</b> sin stock</ng-template>
@@ -40,7 +42,7 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody id="tbody3">
-                                                    <tr *ngFor="let p of (listproductosG | async| inventariopeligro ) | paginate: {id:'pagination3',itemsPerPage:10, currentPage:j} ; let i=index"  (dblclick)="open2(content2, p)" class="text-center" id="tr3" >
+                                                    <tr *ngFor="let p of (listproductosG | async| inventariopeligro |buscareninventario:buscarinventario ) | paginate: {id:'pagination3',itemsPerPage:10, currentPage:j} ; let i=index"  (dblclick)="open2(content2, p)" class="text-center" id="tr3" >
                                                         <td id="td111">{{p.pcodigo  }}</td>
                                                         <td id="td222">{{p.category.cnombre}}/{{p.pdescripcion}}</td>
                                                         <td>{{p.precio_costo}}</td>
@@ -75,7 +77,7 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody id="tbody3">
-                                                    <tr *ngFor="let l of (tomanuevoinventario | inventariosinstock2  ) | paginate: {id:'pagination8',itemsPerPage:10, currentPage:n} ; let i=index"   class="text-center" >
+                                                    <tr *ngFor="let l of (tomanuevoinventario | inventariosinstock2 |buscareninventario:buscarinventario  ) | paginate: {id:'pagination8',itemsPerPage:10, currentPage:n} ; let i=index"   class="text-center" >
                                                         <td >{{l.fecha_vencimiento  }}</td>
                                                             <td >{{l.product.pcodigo}}</td>
                                                             <td >{{l.product.category.cnombre}}/{{l.product.brand.bnombre}}</td>
@@ -125,7 +127,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody id="tbody2">
-                                                <tr *ngFor="let p of (listproductosG |async| inventarioGestion ) | paginate: {id:'pagination2',itemsPerPage:10, currentPage:d} ; let i=index  " (dblclick)="open2(content2, p)" class="text-center" id="tr2">
+                                                <tr *ngFor="let p of (listproductosG |async| inventarioGestion |buscareninventario:buscarinventario ) | paginate: {id:'pagination2',itemsPerPage:10, currentPage:d} ; let i=index  " (dblclick)="open2(content2, p)" class="text-center" id="tr2">
                                                     <td id="td11">{{p.pcodigo  }}</td>
                                                     <td id="td22">{{p.category.cnombre}}/{{p.pdescripcion}}</td>
                                                     <td id="td33">{{p.pvalor}}</td>
@@ -161,7 +163,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody >
-                                                <tr *ngFor="let x of (tomanuevoinventario | inventariogestion2) | paginate: {id:'pagination7',itemsPerPage:10, currentPage:k} ; let i=index  " >
+                                                <tr *ngFor="let x of (tomanuevoinventario | inventariogestion2 |buscareninventario:buscarinventario) | paginate: {id:'pagination7',itemsPerPage:10, currentPage:k} ; let i=index  " >
                                                     <td >{{x.fecha_vencimiento  }}</td>
                                                     <td >{{x.product.pcodigo}}</td>
                                                     <td >{{x.product.category.cnombre}}/{{x.product.brand.bnombre}}</td>
@@ -211,7 +213,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody id="tbody1">
-                                                <ng-container *ngFor="let p of (listproductosG  |async |inventarionsano ) | paginate: {id:'pagination1',itemsPerPage: 10, currentPage:h}; let i=index "  >
+                                                <ng-container *ngFor="let p of (listproductosG  |async |inventarionsano |buscareninventario:buscarinventario ) | paginate: {id:'pagination1',itemsPerPage: 10, currentPage:h}; let i=index "  >
                                                     <tr  class="text-center" id="tr1" (dblclick)="open2(content2, p)" >
                                                         <ng-container *ngIf="p.stock.pstock >= 10">
                                                             <td id="td1">{{p.pcodigo  }}</td>
@@ -250,7 +252,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody >
-                                                <ng-container  *ngFor="let u of (tomanuevoinventario    |inventariosano2 ) | paginate: {id:'pagination5',itemsPerPage:10, currentPage:g}; let i=index "  >
+                                                <ng-container  *ngFor="let u of (tomanuevoinventario    |inventariosano2 |buscareninventario:buscarinventario ) | paginate: {id:'pagination5',itemsPerPage:10, currentPage:g}; let i=index "  >
                                                     <tr  class="text-center"  >
                                                         <ng-container *ngIf="u.cantidad_cambiadas >= 10">
                                                             <td >{{u.fecha_vencimiento  }}</td>
@@ -344,6 +346,10 @@
                                         <input class="form-control" [(ngModel)]="productoporid.pvalor" id="montoneto" type="text">
                                     </div>
                                     <div class="form-group">
+                                        <label for="IVA" class="mb-1">iIVA :</label>
+                                        <input class="form-control" [(ngModel)]="productoporid.piva" id="montoneto" type="text">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="validationCustom0122" class="mb-1">Detalle del producto :</label>
                                         <textarea class="form-control" [(ngModel)]="productoporid.pdetalle" id="validationCustom0122" rows="5" cols="10" type="text">
                                         </textarea>
@@ -355,7 +361,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="newstock" class="mb-1">Nuevo Stock:</label>
-                                        <input type="number" [(ngModel)]="stock_nuevo" class="form-control" id="newstock" name="newstock">
+                                        <input type="number" [(ngModel)]="stock_nuevo" class="form-control" id="newstock" name="newstock" (change)="sumarstock(stock_nuevo)"  >
                                     </div>
                                     <div class="form-group">
                                         <label for="validationCustom012222" class="mb-1">Stock Pérdida Actual:</label>
@@ -442,7 +448,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="nuevostock" class="mb-1">Nuevo Stock:</label>
-                                        <input type="number" [ngModel]="stock_nuevo" class="form-control" id="nuevostock" >
+                                        <input type="number" [ngModel]="stock_nuevo" class="form-control" id="nuevostock"  >
                                     </div>
                                     <div class="form-group">
                                         <label for="stockperdida" class="mb-1">Stock Pérdida Actual:</label>
