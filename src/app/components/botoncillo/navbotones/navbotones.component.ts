@@ -148,9 +148,7 @@ calImp(imp, valor): number {
   const multiva = ( n2 *( 19/100 ));
   const resultiva: number = multiva / 100;
   console.log('impuesto', resultiva);
-alert(n2)
   this.prdiva = multiva
-  alert(this.prdiva)
   // @ts-ignore
   return resultiva;
 }
