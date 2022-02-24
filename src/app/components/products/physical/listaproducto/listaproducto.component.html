@@ -136,6 +136,7 @@
                                                     <td id="td44">{{p.stock.pstock}}</td>
                                                     <td>{{p.date_expiration.fecha_vencimiento}}</td>
                                                     <td [attr.id]="'gestionar' + i + d "  >{{cambiarColorGestion(p.stock.pstock,i, d)}}</td>
+                                                    <td>{{p.id}}</td>
 
                                                 </tr>
                                                 </tbody>
@@ -172,7 +173,6 @@
                                                     <td>{{x.product.margen}}</td>
                                                     <td>{{x.product.utilidad}}</td>
                                                     <td>{{x.stock_expiration}}</td>
-
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -224,7 +224,7 @@
                                                             <td id="td4">{{p.stock.pstock}}</td>
                                                             <td>{{p.date_expiration.fecha_vencimiento}}</td>
                                                             <td [attr.id]="'estado' + i + h">{{cambiadColor(p.stock.pstock, i, h)}}</td>
-
+                                                            <td>{{p.id}}</td>
                                                         </ng-container>
                                                     </tr>
                                                 </ng-container>

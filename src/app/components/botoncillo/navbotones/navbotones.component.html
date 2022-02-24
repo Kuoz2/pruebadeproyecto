@@ -269,7 +269,11 @@
                 <label for="iva2" class="col-xl-3 col-sm-4 mb-0">Impuesto:</label>
                 <input type="text" [(ngModel)]="prdiva" class="form-control col-xl-8 col-sm-7" id="iva2"  formControlName="piva" disabled >
             </div>
-
+            <div class="form-group row">
+                <label for="iva2" class="col-xl-3 col-sm-4 mb-0">Precio neto + IVA:</label>
+                <input type="text" [(ngModel)]="preciva" class="form-control col-xl-8 col-sm-7" id="iva2"  formControlName="preciva"  >
+            </div>
+            
             <div class="btn-group row " role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-primary" (click)="modal3.dismiss('Cross click'); open2(content2)">Atras</button>
                 <button type="button" class="btn btn-primary" (click)="modal3.dismiss('Cross click'); open4(content4)"> Siguiente </button>

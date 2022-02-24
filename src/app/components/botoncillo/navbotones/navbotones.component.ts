@@ -53,6 +53,7 @@ export class NavbotonesComponent implements OnInit, OnDestroy{
     get margen (){return this.Frmproducto.get('margen')}
     get utilidad () {return this. Frmproducto.get('utilidad')}
     get precio_provider(){return this.Frmproducto.get('precio_provider')}
+    get preciva(){return this.Frmproducto.get('preciva')}
   constructor(private marc: MarcaService, private impt: ImpuestosService,
     private servi: ProductserviceService,
     private modalService: NgbModal,
@@ -87,6 +88,7 @@ export class NavbotonesComponent implements OnInit, OnDestroy{
          product_id: new FormControl(0)
       }),
       pvneto: new FormControl('', [Validators.required]),
+      preciva: new FormControl('')
     })
 
 
@@ -148,8 +150,11 @@ calImp(imp, valor): number {
   const multiva = ( n2 *( 19/100 ));
   const resultiva: number = multiva / 100;
   console.log('impuesto', resultiva);
-  this.prdiva = multiva
-  // @ts-ignore
+  this.prdiva = multiva.toFixed(0)
+ const ivaprecio =  (parseInt(multiva.toFixed(0)) + parseInt(this.Frmproducto.value.pvalor))
+  this.Frmproducto.controls['preciva'].setValue(ivaprecio)
+
+  // @ts-ignore 
   return resultiva;
 }
 
