@@ -318,7 +318,52 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
         const duration = performance.now() - startTime;
         console.log(`someMethodIThinkMightBeSlow took ${duration}ms`);
     }
+    async  eliminarproducto(a){
+        var codigovalidador:string[] = []
+        var codigovalidador2:string[] = []
+        var codigovalidador3:string[] = []
+        var codigovalidador4:string[] = []
+        var validante = []
+        for (var i = 0; i < 1; i++) {
+           codigovalidador.push( this.randomNumber(0, 10))
+           codigovalidador2.push( this.randomNumber(0, 10))
+           codigovalidador3.push( this.randomNumber(0, 10))
+           codigovalidador4.push( this.randomNumber(0, 10))
+          }
+          validante.push(codigovalidador[0],codigovalidador2[0],codigovalidador3[0],codigovalidador4[0])
 
+          const Swal = require('sweetalert2')
+        const valor = await Swal.fire({
+            title: `Código: ${codigovalidador[0]} ${ codigovalidador2[0]} ${codigovalidador3[0]} ${codigovalidador4[0]}`,
+            text: '¿Esta seguro de eliminar este producto?, si este producto esta asociado a una venta, se eliminaran ambos registros.'+ 
+            ' debe ingresar el código antes de 5 segundos. ',
+            icon: 'warning',
+            timer: 5000,
+            input: 'text',
+            showConfirmButton:true,
+            inputValue: '',
+            confirmButtonText: 'Confirmar',
+            timerProgressBar: true,
+            inputPlaceholder:'Ingresar código',
+            inputValidator: (value) => {
+                if (!value) {
+                  "Ingrese el código que se encuentra en la parte superior"
+                }
+              },
+          })
+            
+            console.log("valor del swal",valor)
+          let codig = validante.join().replace(/,/g, "")
+          if( codig === valor.value){
+                this.prod.eliminardatos(a)
+          }else
+          {
+              alert("esto no se eliminara")
+          }
+        }
+        randomNumber(max: number, min: number): any {
+            const r = Math.random()*(max-min) + min
+            return Math.floor(r)}
     sumarstock(a){
          this.productoporid.stock.pstock = (this.productoporid.stock.pstock + a)
     }

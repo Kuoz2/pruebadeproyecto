@@ -225,6 +225,7 @@
                                                             <td>{{p.date_expiration.fecha_vencimiento}}</td>
                                                             <td [attr.id]="'estado' + i + h">{{cambiadColor(p.stock.pstock, i, h)}}</td>
                                                             <td>{{p.id}}</td>
+                                                            <td><button (click)="eliminarproducto(p)">Eliminar</button></td>
                                                         </ng-container>
                                                     </tr>
                                                 </ng-container>

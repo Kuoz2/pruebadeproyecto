@@ -244,4 +244,17 @@ async actualizar_stock_fecha(fchAct: date_expiration) {
   .set("X-CustomHeader", "custom header value");
     return this.http.get(this.urlListprovider, {headers})
   }
+  
+  eliminardatos(a){
+    const Swal = require('sweetalert2')
+
+    this.http.delete(this.UrlProductos + '/' + a.id).subscribe(
+      res => {
+        Swal.fire({
+          title: "Eliminado correctamente",
+          text: 'Producto eliminado. ',
+          icon: 'alert',
+      })
+    })
+  }
 }
