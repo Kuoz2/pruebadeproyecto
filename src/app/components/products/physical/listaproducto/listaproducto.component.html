@@ -164,7 +164,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody >
-                                                <tr *ngFor="let x of (tomanuevoinventario | inventariogestion2 |buscareninventario:buscarinventario) | paginate: {id:'pagination7',itemsPerPage:10, currentPage:k} ; let i=index  " >
+                                                <tr *ngFor="let x of (tomanuevoinventario | inventariogestion2 |buscareninventario:buscarinventario) | paginate: {id:'pagination7',itemsPerPage:20, currentPage:k} ; let i=index  " >
                                                     <td >{{x.fecha_vencimiento  }}</td>
                                                     <td >{{x.product.pcodigo}}</td>
                                                     <td >{{x.product.category.cnombre}}/{{x.product.brand.bnombre}}</td>
