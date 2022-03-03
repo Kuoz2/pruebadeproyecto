@@ -338,7 +338,7 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
             text: '¿Esta seguro de eliminar este producto?, si este producto esta asociado a una venta, se eliminaran ambos registros.'+ 
             ' debe ingresar el código antes de 5 segundos. ',
             icon: 'warning',
-            timer: 5000,
+            timer: 10000,
             input: 'text',
             showConfirmButton:true,
             inputValue: '',

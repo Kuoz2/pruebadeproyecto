@@ -208,12 +208,12 @@
                                                     <th>Margen</th>
                                                     <th>Utilidad</th>
                                                     <th>Stock</th>
-                                                    <th>Fecha vencimiento</th>
                                                     <th>Estado</th>
+                                                    <th>Fecha vencimiento</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody id="tbody1">
-                                                <ng-container *ngFor="let p of (listproductosG  |async |inventarionsano |buscareninventario:buscarinventario ) | paginate: {id:'pagination1',itemsPerPage: 10, currentPage:h}; let i=index "  >
+                                                <ng-container *ngFor="let p of (listproductosG  |async |inventarionsano |buscareninventario:buscarinventario ) | paginate: {id:'pagination1',itemsPerPage: 30, currentPage:h}; let i=index "  >
                                                     <tr  class="text-center" id="tr1" (dblclick)="open2(content2, p)" >
                                                         <ng-container *ngIf="p.stock.pstock >= 10">
                                                             <td id="td1">{{p.pcodigo  }}</td>
