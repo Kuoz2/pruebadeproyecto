@@ -34,7 +34,13 @@ private UR_MERMAS = 'https://marketmini.herokuapp.com/decreases';
 private URLINFORME = 'https://marketmini.herokuapp.com/mrmsolutions';
 private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations';
 urlListprovider = 'https://marketmini.herokuapp.com/providers'
+enviar_correo= 'http://localhost:3000/products/envio_email_vencidos'
 
+
+//Enviar un post para enviar un correo.
+  enviar_uncorre(){
+    this.http.post(this.enviar_correo,"hola").subscribe()
+  }
     // Actualizar la fecha al realizar una venta.
     
   // Tomar todos los productos

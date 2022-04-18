@@ -81,17 +81,18 @@
    <div class="moda-body">
     <div class="row">
       <div class="col">
+        <form [formGroup]="fueradeinventario"  >
         <label class="mb-1" for="ingproducto">Nombre producto</label>
-        <input type="text" class="form-control" id="ingproducto">
-        <label  class="mb-1" for="ingcatego">Categoría</label>
-        <input class="form-control" type="text" id="ingcatego">
-        <label class="mb-1" for="ingmarca">Marca</label>
-        <input class="form-control" type="text" id="ingmarca">
+        <input type="text" class="form-control" formControlName="pdescripcion" id="ingproducto">
         <label class="mb-1" for="ingprecio">Precio</label>
-        <input class="form-control" type="text" id="ingprecio">
+        <input class="form-control" type="text" id="ingprecio" formControlName="pvalor">
         <label for="ingcantidad">Cantidad</label>
-        <input type="text" class="form-control" id="ingcantidad">
-        
+        <input type="text" class="form-control" id="ingcantidad" formControlName="quantity">
+        <div>
+          <button class="btn btn-info" (click)="addSininventario(fueradeinventario)">Guardar</button>
+        </div>
+
+      </form>
       </div>
     </div>
   </div>

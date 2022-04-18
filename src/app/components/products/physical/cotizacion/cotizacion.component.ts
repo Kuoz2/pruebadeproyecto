@@ -46,6 +46,7 @@ export class CotizacionComponent implements OnInit, OnDestroy  {
   public cambioCantidad:string=""
   public cambioDisponible:string=""
   public contador:number = 0
+  public fueradeinventario: FormGroup
   norepetido
   hora: string;
   minutos: string;
@@ -75,6 +76,10 @@ export class CotizacionComponent implements OnInit, OnDestroy  {
   get total(){return this.cotizacion.get('total')};
   get totaldesc(){return this.cotizacion.get('totaldesc')};
   get condicion(){return this.cotizacion.get('condicion')};
+
+  get pvalor(){return this.fueradeinventario.get('pvalor')}
+  get pdescripcion(){return this.fueradeinventario.get('pdescripcion')}
+  get quantity(){return this.fueradeinventario.get('quantity')}
   constructor(private modalService: NgbModal,
      private frm: FormBuilder,
       private pservi: ProductserviceService,
@@ -93,6 +98,12 @@ this.cotizacion = this.frm.group({
   totaldesc: new FormControl(''),
   condicion: new FormControl('')
 })
+
+  this.fueradeinventario = this.frm.group({
+    pdescripcion: new FormControl(''),
+    pvalor: new FormControl(''),
+    quantity: new FormControl('')
+  })
 
   }
   ngOnDestroy(): void {
@@ -185,9 +196,22 @@ getDismissReason(reason){
    return this.GetProduct =   this.pservi.products()
   }
 
+  addSininventario(a){
+    console.log(a.value)
+    Object.assign(a.value, {category:{cnombre:"no en inventario"}})
+    Object.assign(a.value, {pcodigo: "0000"})
+    Object.assign(a.value, [{cantidad: a.value.quantity}])
+    Object.assign(a.value,{brand:{bnombe:"no en inventario"}})
+    Object.assign(a.value,{piva:1})
+    console.log(a.value)
+      this.addCart(a.value,[parseInt(a.value.quantity)] , 0 , 1)
+      a.reset()
+  }
+
   addCart(product: any, cantidad, i, descuento) {
+    console.log(cantidad)
     const Swal = require('sweetalert2')
-    if(undefined !== cantidad[i] && cantidad[i] !== null && cantidad[i] > 0){
+    if(undefined !== cantidad[i] && cantidad[i] !== null && cantidad[i] > 0 || product.pcodigo=="0000"){
     delete product.sinventario
     delete product.sinventario2
     console.log('lo que entra', descuento)

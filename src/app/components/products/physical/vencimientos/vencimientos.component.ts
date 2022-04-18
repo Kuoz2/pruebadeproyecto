@@ -145,6 +145,10 @@ export class VencimientosComponent implements OnInit {
    })
  }
 
+ enviar_email(){
+   this.serproduct.enviar_uncorre()
+ }
+
  tomndo() {
      // tslint:disable-next-line:forin
      for (const i in this.resultado) {

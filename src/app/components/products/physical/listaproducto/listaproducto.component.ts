@@ -296,13 +296,13 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
 
     Obutildiad(productoporid){
 
-        console.log("pvalor",1-(productoporid.margen/100))
-           const resultado = (productoporid.precio_provider/ (1-(productoporid.margen/100)));
+           const resultado = (productoporid.precio_provider * (productoporid.margen/100));
            //frm.value.pvalor = parseInt(resultado.toFixed(0));
          //  frm.value.utilidad =  parseInt((resultado - frm.value.pvalor).toFixed(0));
+            const valor = (productoporid.precio_provider + resultado)
            this.productoporid.pvalor = parseInt(resultado.toFixed(0));
            const dato = resultado.toFixed(0)
-           productoporid.utilidad = ( resultado - productoporid.precio_provider).toFixed(0)
+           productoporid.utilidad = valor
           
         }
 
@@ -336,7 +336,7 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
         const valor = await Swal.fire({
             title: `Código: ${codigovalidador[0]} ${ codigovalidador2[0]} ${codigovalidador3[0]} ${codigovalidador4[0]}`,
             text: '¿Esta seguro de eliminar este producto?, si este producto esta asociado a una venta, se eliminaran ambos registros.'+ 
-            ' debe ingresar el código antes de 5 segundos. ',
+            ' debe ingresar el código antes de 10 segundos. ',
             icon: 'warning',
             timer: 10000,
             input: 'text',

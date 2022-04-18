@@ -326,13 +326,13 @@ calImp(imp, valor): number {
 //Obterner las utilidades-
   Obutildiad(frm){
 
- console.log("pvalor",1-(this.Frmproducto.value.margen/100))
-    const resultado = (this.Frmproducto.value.precio_provider/ (1-(this.Frmproducto.value.margen/100)));
+    const resultado = (this.Frmproducto.value.precio_provider * (this.Frmproducto.value.margen/100));
+    const valor = (this.Frmproducto.value.precio_provider + resultado)
     //frm.value.pvalor = parseInt(resultado.toFixed(0));
   //  frm.value.utilidad =  parseInt((resultado - frm.value.pvalor).toFixed(0));
-    this.Frmproducto.controls['pvalor'].setValue(parseInt(resultado.toFixed(0)));
+    this.Frmproducto.controls['pvalor'].setValue(parseInt(valor.toFixed(0)));
     const dato = resultado.toFixed(0)
-    this.Frmproducto.controls['utilidad'].setValue( resultado - this.Frmproducto.value.precio_provider)
+    this.Frmproducto.controls['utilidad'].setValue( resultado)
    
  }
 
