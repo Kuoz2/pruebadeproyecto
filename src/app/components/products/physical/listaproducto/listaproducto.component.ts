@@ -299,7 +299,7 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
            const resultado = (productoporid.precio_provider * (productoporid.margen/100));
            //frm.value.pvalor = parseInt(resultado.toFixed(0));
          //  frm.value.utilidad =  parseInt((resultado - frm.value.pvalor).toFixed(0));
-            const valor = (productoporid.precio_provider + resultado)
+            const valor = (productoporid.precio_provider + parseInt(resultado.toFixed(0)))
            this.productoporid.pvalor = parseInt(resultado.toFixed(0));
            const dato = resultado.toFixed(0)
            productoporid.utilidad = valor
