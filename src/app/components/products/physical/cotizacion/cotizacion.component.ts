@@ -128,7 +128,7 @@ var sinDecimal
           this.items = x;
           this.totalQuantity = x.length;
           this.totalPrice = x.reduce((sum, current) => sum + ((current.pvalor || current.product.pvalor) * current.cantidad), 0 )
-          this.totalIva = x.reduce((sum, current) => sum + ((current.piva * current.cantidad).toFixed(2) || current.product.piva),0)
+          this.totalIva = x.reduce((sum, current) => sum + ((current.piva * current.cantidad)|| current.product.piva),0)
           x.map(res => {
             console.log("mape",typeof(undefined) != res.descuento ? res.descuento : res.descuento = '0')
           })
