@@ -13,7 +13,7 @@ export class MarcaService {
 
 
   constructor(private http: HttpClient, private verificar: VerificarTokenService) { }
-  urlmarca = 'https://marketmini.herokuapp.com/brands';
+  urlmarca = 'https://multikart-norte.herokuapp.com/brands';
   // Buscarunamarca
  async buscarmarca() {
    return await this.http.get<Marca>( this.urlmarca );

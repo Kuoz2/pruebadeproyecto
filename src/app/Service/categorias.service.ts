@@ -12,7 +12,7 @@ export class CategoriasService {
 
   constructor(private http: HttpClient,private verificar: VerificarTokenService) { }
 
-  UrlCategorias = 'https://marketmini.herokuapp.com/categories';
+  UrlCategorias = 'https://multikart-norte.herokuapp.com/categories';
 // Mostrar
   mostrarcategorias() {
      return this.http.get(this.UrlCategorias)

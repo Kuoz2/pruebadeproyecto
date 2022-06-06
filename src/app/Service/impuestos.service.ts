@@ -11,7 +11,7 @@ export class ImpuestosService {
 
   constructor(private HTTP: HttpClient,private verificar: VerificarTokenService) { }
 
-  private HTTP_TAXES = 'https://marketmini.herokuapp.com/taxes';
+  private HTTP_TAXES = 'https://multikart-norte.herokuapp.com/taxes';
     // uRL de prueba
 
   // Guardar impuesto
