@@ -128,7 +128,7 @@ var sinDecimal
           this.items = x;
           this.totalQuantity = x.length;
           this.totalPrice = x.reduce((sum, current) => sum + ((current.pvalor || current.product.pvalor) * current.cantidad), 0 )
-          this.totalIva = x.reduce((sum, current) => sum + ((current.piva * current.cantidad) || current.product.piva),0)
+          this.totalIva = x.reduce((sum, current) => sum + ((current.piva * current.cantidad)|| current.product.piva),0)
           x.map(res => {
             console.log("mape",typeof(undefined) != res.descuento ? res.descuento : res.descuento = '0')
           })
@@ -202,7 +202,7 @@ getDismissReason(reason){
     Object.assign(a.value, {pcodigo: "0000"})
     Object.assign(a.value, [{cantidad: a.value.quantity}])
     Object.assign(a.value,{brand:{bnombe:"no en inventario"}})
-    Object.assign(a.value,{piva:1})
+    Object.assign(a.value,{piva:a.value.pvalor * 0.19})
     console.log(a.value)
       this.addCart(a.value,[parseInt(a.value.quantity)] , 0 , 1)
       a.reset()
