@@ -1,0 +1,65 @@
+  
+  @media only screen and (min-width: 600px) {
+    /* For tablets: */
+    
+    h2 {
+        color: rgb(133, 167, 241); 
+        text-align: center;  
+        letter-spacing: -2px;  
+    }
+    ul {
+        margin-left: 30%;
+        margin-right: 30%;
+        border: 1px solid #1c62cc;
+
+    }
+    p {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+   
+    
+   li:hover {
+        background-color: #f5f5f5;
+    }
+    
+  }
+  @media only screen and (min-width: 768px) {
+    /* For desktop: */
+   
+    h2 {
+        color: rgb(133, 167, 241); 
+        text-align: center;  
+        letter-spacing: -2px;  
+    }
+    ul {
+        margin-left: 30%;
+        margin-right: 30%;
+        border: 2px solid #1c62cc;
+
+    }
+    .asunto p {
+        color: red;
+        font-weight: bolder;
+        font-size: medium;
+    }
+
+    .iDproducto p {
+        font-style: oblique;
+        color: black;
+        font-weight: bold;
+        text-decoration-line: underline;
+    }
+    p {
+        color: cadetblue;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+   
+
+    li:hover {
+        background-color: #f5f5f5;
+        cursor: pointer; 
+    }
+ 
+  }
+
+

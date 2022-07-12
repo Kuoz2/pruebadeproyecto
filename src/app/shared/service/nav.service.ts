@@ -43,7 +43,8 @@ title: 'Productos' , icon: 'box', rol: '', type: 'sub', active: false,  children
 { path: '/products/physical/impuestos', rol: '', title: 'Impuestos', type: 'link'},
 {path: '/products/physical/marca', rol: '', title: 'Marcas', type: 'link'},
 {path: '/products/physical/category', rol: '', title: 'Categoría', type: 'link'},
-{path: '/products/physical/vencimiento', rol: '', title: 'Vencidos', type: 'link'	}
+{path: '/products/physical/vencimiento', rol: '', title: 'Vencidos', type: 'link'	},
+{path: '/products/physical/bitacora', rol: '', title: 'Bitacora', type: 'link'	}
 
 
 ]

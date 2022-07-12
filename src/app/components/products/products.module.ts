@@ -25,6 +25,7 @@ import { VencimientosComponent } from './physical/vencimientos/vencimientos.comp
 import {NgxSpinnerModule} from "ngx-spinner";
 import { VerificarTokenService } from 'src/app/Service/verificar-token.service';
 import { CotizacionComponent } from './physical/cotizacion/cotizacion.component';
+import { BitacoraComponent } from './bitacora/bitacora.component';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   maxFilesize: 50,
@@ -41,7 +42,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     ImpuestosComponent,
     MarcaComponent,
     VencimientosComponent,
-    CotizacionComponent],
+    CotizacionComponent,
+    BitacoraComponent],
     imports: [
         CommonModule,
         FormsModule,

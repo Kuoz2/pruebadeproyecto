@@ -1,3 +1,4 @@
+import { BitacoraComponent } from './bitacora/bitacora.component';
 import { CotizacionComponent } from './physical/cotizacion/cotizacion.component';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
@@ -78,6 +79,14 @@ const routes: Routes = [
           breadcrumb: 'Cotizar'
         },
         canActivate:[VerificadorService]
+      },
+      {
+        path:'physical/bitacora',
+        component: BitacoraComponent,
+        data:{
+          title: 'Bitacora',
+          breadcrumb: 'Bitacora'
+        },
       }
 
     ]
