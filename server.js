@@ -46,7 +46,11 @@ socket.on('marcaEvnt', (res) => {
   socket.emit('marcaEvnt',res);
   socket.to(nameRoom).emit('marcaEvnt', res);
 })
-
+socket.on('BitacoraEvent', (res) => {
+  console.log("respuesta el socket",res)
+  socket.emit('BitacoraEvent',res);
+  socket.to(nameRoom).emit('BitacoraEvent', res);
+})
 
 socket.on("disconnect", () => {
   console.log(socket.id); // undefined

@@ -19,7 +19,8 @@ export class BitacoraComponent implements OnInit {
   public resultado_obtenido;
   constructor(private bitacora: BitacoraService, private spinner: NgxSpinnerService, private router: ActivatedRoute,
     private cookies: CookieService, private webservice: WebsocketService,private modalService: NgbModal) { }
-  los_registros:any;
+  los_registros = new Observable
+  lo_observado:any;
   ngOnInit(): void {
     this.spinner.show("spinnerdashbitacora", {
       type: "pacman",
@@ -43,14 +44,17 @@ actualizar_registro(){
   return informacion
 }
   async registros_de_la_bitacora(){
-      return this.bitacora.registros_almacenados().subscribe((res) => {
- 
-      this.los_registros = res;
-      this.room = this.router.snapshot.paramMap.get('bitacora')
-      this.cookies.set('bitacora', this.room)
-      this.webservice.emitBitacoraEvent({res})
-      this.spinner.hide("spinnerdashbitacora")
-    })
+    this.los_registros = this.bitacora.registros_almacenados()
+    this.los_registros.subscribe(
+      (res) => {
+        this.lo_observado = res
+        this.room = this.router.snapshot.paramMap.get('bitacora')
+        this.cookies.set('bitacora', this.room)
+        this.webservice.emitBitacoraEvent({res})
+        this.spinner.hide("spinnerdashbitacora")
+      }
+    )
+    return this.los_registros
   }
 
   observando(): any{
