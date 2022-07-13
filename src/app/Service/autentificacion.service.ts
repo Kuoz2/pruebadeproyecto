@@ -24,7 +24,7 @@ export class AutentificacionService {
 
     public data: boolean;
   constructor(private http: HttpClient, private router: Router) { }
-  AUT_SERVER = 'https://multikart-norte.herokuapp.com/';
+  AUT_SERVER = 'https://marketmini.herokuapp.com/';
   authSubject =  new BehaviorSubject(false);
   private token: string;
     // tslint:disable-next-line:variable-name

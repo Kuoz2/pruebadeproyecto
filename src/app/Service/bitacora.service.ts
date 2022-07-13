@@ -7,8 +7,8 @@ import { Injectable } from '@angular/core';
 export class BitacoraService {
 
   constructor(private http: HttpClient) { }
-  url_registros_realizados = 'https://multikart-norte.herokuapp.com/binnacles'
-  url_registro_producto = 'https://multikart-norte.herokuapp.com/products'
+  url_registros_realizados = 'https://marketmini.herokuapp.com/binnacles'
+  url_registro_producto = 'https://marketmini.herokuapp.com/products'
   registros_almacenados(){
     return this.http.get(this.url_registros_realizados)
   }

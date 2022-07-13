@@ -9,7 +9,7 @@ export class UsuarioService {
 
 
   constructor(private http: HttpClient) {  }
-    URlusuario = 'https://multikart-norte.herokuapp.com/regi';
+    URlusuario = 'https://marketmini.herokuapp.com/regi';
 
 
  guardarusuario(user: user) {

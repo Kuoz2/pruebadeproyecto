@@ -14,8 +14,8 @@ export class PagosService {
   constructor(private http: HttpClient, private verificar: VerificarTokenService) { }
 
 
-  Url = 'https://multikart-norte.herokuapp.com/payments';
-    urlmedio = 'https://multikart-norte.herokuapp.com/half_payments';
+  Url = 'https://marketmini.herokuapp.com/payments';
+    urlmedio = 'https://marketmini.herokuapp.com/half_payments';
 
   
   mostrarpagos() {

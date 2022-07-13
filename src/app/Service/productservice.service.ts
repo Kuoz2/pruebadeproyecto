@@ -21,16 +21,16 @@ export class ProductserviceService {
   public resipiente_Resu: respuesta
   constructor(private http: HttpClient, private verifica: VerificarTokenService) { }
 
-private UrlProductos = 'https://multikart-norte.herokuapp.com/products';
-private UrlCategorias = 'https://multikart-norte.herokuapp.com/categories';
-private URLStock = 'https://multikart-norte.herokuapp.com/stocks';
+private UrlProductos = 'https://marketmini.herokuapp.com/products';
+private UrlCategorias = 'https://marketmini.herokuapp.com/categories';
+private URLStock = 'https://marketmini.herokuapp.com/stocks';
 
-private URL_STOCK_PRODUCTOS = 'https://multikart-norte.herokuapp.com/stocks/stock_products';
+private URL_STOCK_PRODUCTOS = 'https://marketmini.herokuapp.com/stocks/stock_products';
 
-private URL_PROVIDERS = 'https://multikart-norte.herokuapp.com/providers';
+private URL_PROVIDERS = 'https://marketmini.herokuapp.com/providers';
 
-private URLFECHAS = 'https://multikart-norte.herokuapp.com/date_expirations';
-urlListprovider = 'https://multikart-norte.herokuapp.com/providers'
+private URLFECHAS = 'https://marketmini.herokuapp.com/date_expirations';
+urlListprovider = 'https://marketmini.herokuapp.com/providers'
 enviar_correo= 'http://localhost:3000/products/envio_email_vencidos'
 
 
