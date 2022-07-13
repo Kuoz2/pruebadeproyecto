@@ -15,7 +15,6 @@
             <thead>
                 <tr >
                     <th>Nombre del producto</th>
-                    <th>Lo realizado</th>
                     <th>Stock</th>
                 </tr>
             </thead>
@@ -51,7 +50,7 @@
                            <div *ngIf="item.stock != 0" class="iDstock"><p>Id del stock:</p> {{item.stock}}</div>
                            <hr>
                         </li>
-                        <button (dblclick)="open(content1, item)">Resumen</button>
+                        <button (click)="open(content1, item)">Resumen</button>
                    
                 </ul>
           

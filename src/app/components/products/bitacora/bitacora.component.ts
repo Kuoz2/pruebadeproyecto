@@ -1,3 +1,4 @@
+import { async } from '@angular/core/testing';
 import { Observable } from 'rxjs';
 import { BitacoraService } from './../../../Service/bitacora.service';
 import { Component, OnInit } from '@angular/core';
@@ -66,20 +67,20 @@ actualizar_registro(){
     console.log("se apreto")
   }
 
-  obtenerproductoporid(a){
+ async obtenerproductoporid(a){
     console.log(a)
     if(a.producto != 0){
-      this.bitacora.Obtener_Registro_id(a.producto).subscribe((res) => {this.resultado_obtenido = res; console.log("resultado obtenido es", this.resultado_obtenido)} )
+    await  this.bitacora.Obtener_Registro_id(a.producto).subscribe((res) => {this.resultado_obtenido = res; console.log("resultado obtenido es", this.resultado_obtenido)} )
     }
   }
-  open(content, item) {
+ async  open(content, item) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
     
-    this.obtenerproductoporid(item);
+  await  this.obtenerproductoporid(item);
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
