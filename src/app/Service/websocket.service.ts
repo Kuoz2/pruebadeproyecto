@@ -24,7 +24,7 @@ export class WebsocketService  extends Socket {
 Listen(){
   this.ioSocket.on('event', res => this.callback.emit(res))
   this.ioSocket.on('marcaEvnt', res => this.Marcallback.emit(res) )
-  this.ioSocket.on('BitacoraEvent'), res => this.Bitacoraback.emit(res)
+  this.ioSocket.on('BitacoraEvent', res => this.Bitacoraback.emit(res))
 }
 
 emitEvent = (payload = {}) => {
