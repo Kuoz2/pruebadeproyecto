@@ -10,7 +10,8 @@ export class WebsocketService  extends Socket {
   Marcallback:  EventEmitter<any> = new EventEmitter();
   Bitacoraback: EventEmitter<any> = new EventEmitter();
   constructor(private cooki: CookieService) {super({
-    url:'https://vyt-computacion.herokuapp.com' || 'http://localhost:4200/',
+    //url:'https://vyt-computacion.herokuapp.com' || 'http://localhost:4200/',
+    url:'https://crlproyecto.herokuapp.com',
     options:{
       query:{
         nameRoom: cooki.get('categoria') || cooki.get('marca') || cooki.get('bitacora'),

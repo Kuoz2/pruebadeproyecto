@@ -13,8 +13,8 @@ export class VentasService {
 
   constructor(private http: HttpClient, private verificar: VerificarTokenService) { }
 
-  Urlventas = 'https://marketmini.herokuapp.com/sales';
-  private ventarapida='https://marketmini.herokuapp.com/quick_sales';
+  Urlventas = 'https://multikart-norte.herokuapp.com/sales';
+  private ventarapida='https://multikart-norte.herokuapp.com/quick_sales';
   mostrarventas() {
    return this.http.get<Ventas>(this.Urlventas);
   }

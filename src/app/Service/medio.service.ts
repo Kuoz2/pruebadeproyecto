@@ -10,7 +10,7 @@ export class MedioService {
   constructor(private http: HttpClient) { }
 
 
-  UrlMedio = 'https://marketmini.herokuapp.com/half_payments';
+  UrlMedio = 'https://multikart-norte.herokuapp.com/half_payments';
 
   mostrartodolosmedios() {
     return this.http.get<Medio[]>(this.UrlMedio);

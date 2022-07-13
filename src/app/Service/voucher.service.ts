@@ -13,25 +13,25 @@ import { VerificarTokenService, respuesta } from './verificar-token.service';
 })
 export class VoucherService {
 
-  Urldetallevaucher = 'https://marketmini.herokuapp.com/voucher_details'; // Muestra el detalle del detalle del voucher con el producto en general
-  Urlvoucher = 'https://marketmini.herokuapp.com/vouchers'; // Muestra el voucher completo
-  UrlUltvoucher = 'https://marketmini.herokuapp.com/vouchers/showlast'; // Muestra el ultimo producto vendido
-  URLVntMes = 'https://marketmini.herokuapp.com/show_date'; // Muestra el estado de las venta con el voucher y el producto vendido este mes.
-  UrlVentasTotal = 'https://marketmini.herokuapp.com/voucher_details/show_cantidad'; // Muesta la cantidad ganada este mes
-  URLmespasado = 'https://marketmini.herokuapp.com/voucher_details/show_after_month'; // Muestra las ganancas del mes anterior
-  URLproductosV = 'https://marketmini.herokuapp.com/voucher_details/producto_max_vend'; // Muestra los productos mas vendidos
-  UTLtotalganancias = 'https://marketmini.herokuapp.com/voucher_details/las_ganancias_totales_meses'; // Muestra el total de las ganancias.
-  URLTOTALGANANCIAS_FV = 'https://marketmini.herokuapp.com/vouchers/mostrar_ganancias_por_mes'; // MUESTRA LAS GANANCIAS POR CADA MES Y MUESTRA EL RESULTADO.
-  URLGuardarconfig = 'https://marketmini.herokuapp.com/config_vouchers'  ;
-  inventarioperdida2 = 'https://marketmini.herokuapp.com/date_expirations/buscar_las_fechas_perdidas';
-  todaslasperdidas = 'https://marketmini.herokuapp.com/date_expirations/todaslasperdidasdos';
-  pruebatodaslasperdidasdinv1 = 'https://marketmini.herokuapp.com/stocks/todaslasperdiadasinvprim';
-  pruebaquicksales = 'https://marketmini.herokuapp.com/quick_sales/ventarapida_fechas';
-  totalventasrapidas= 'https://marketmini.herokuapp.com/quick_sales/totalventasrapidas';
-  perdidaxmes = 'https://marketmini.herokuapp.com/stocks/buscar_las_fechas_perdidas';
+  Urldetallevaucher = 'https://multikart-norte.herokuapp.com/voucher_details'; // Muestra el detalle del detalle del voucher con el producto en general
+  Urlvoucher = 'https://multikart-norte.herokuapp.com/vouchers'; // Muestra el voucher completo
+  UrlUltvoucher = 'https://multikart-norte.herokuapp.com/vouchers/showlast'; // Muestra el ultimo producto vendido
+  URLVntMes = 'https://multikart-norte.herokuapp.com/show_date'; // Muestra el estado de las venta con el voucher y el producto vendido este mes.
+  UrlVentasTotal = 'https://multikart-norte.herokuapp.com/voucher_details/show_cantidad'; // Muesta la cantidad ganada este mes
+  URLmespasado = 'https://multikart-norte.herokuapp.com/voucher_details/show_after_month'; // Muestra las ganancas del mes anterior
+  URLproductosV = 'https://multikart-norte.herokuapp.com/voucher_details/producto_max_vend'; // Muestra los productos mas vendidos
+  UTLtotalganancias = 'https://multikart-norte.herokuapp.com/voucher_details/las_ganancias_totales_meses'; // Muestra el total de las ganancias.
+  URLTOTALGANANCIAS_FV = 'https://multikart-norte.herokuapp.com/vouchers/mostrar_ganancias_por_mes'; // MUESTRA LAS GANANCIAS POR CADA MES Y MUESTRA EL RESULTADO.
+  URLGuardarconfig = 'https://multikart-norte.herokuapp.com/config_vouchers'  ;
+  inventarioperdida2 = 'https://multikart-norte.herokuapp.com/date_expirations/buscar_las_fechas_perdidas';
+  todaslasperdidas = 'https://multikart-norte.herokuapp.com/date_expirations/todaslasperdidasdos';
+  pruebatodaslasperdidasdinv1 = 'https://multikart-norte.herokuapp.com/stocks/todaslasperdiadasinvprim';
+  pruebaquicksales = 'https://multikart-norte.herokuapp.com/quick_sales/ventarapida_fechas';
+  totalventasrapidas= 'https://multikart-norte.herokuapp.com/quick_sales/totalventasrapidas';
+  perdidaxmes = 'https://multikart-norte.herokuapp.com/stocks/buscar_las_fechas_perdidas';
   //de forma local se aran el ingreso.
 
-  PruebaInformeXML = 'https://marketmini.herokuapp.com/archives'
+  PruebaInformeXML = 'https://multikart-norte.herokuapp.com/archives'
 
   constructor(private http: HttpClient, private verificar: VerificarTokenService) { }
   // Ganancias totales del mes pasado.
