@@ -8,7 +8,13 @@ import {PagosService} from '../../../../Service/pagos.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {takeUntil} from 'rxjs/operators';
 import { ProductoActualizar } from 'src/app/components/Modulos/ProductoActualizar';
+import * as FileSaver from 'file-saver';
+import * as XLSX from 'xlsx'
+import { read, utils, writeFileXLSX } from 'xlsx';
+const EXCEL_TYPE = 
+'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8'
 
+const EXCEL_EXT = '.xlsx'
 @Component({
     selector: 'app-listaproducto',
     templateUrl: './listaproducto.component.html',
@@ -28,6 +34,7 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
     inventario2_datexpiration: date_expiration = new date_expiration();
     inventario2_stocknuevo: Stock =  new Stock();
     tomanuevoinventario
+    x
     // tslint:disable-next-line:variable-name
     constructor(private prod: ProductserviceService,
                 private modalService: NgbModal,
@@ -366,5 +373,24 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
             return Math.floor(r)}
     sumarstock(a){
          this.productoporid.stock.pstock = (this.productoporid.stock.pstock + a)
+    }
+
+    // Exportador de excel
+    exportar_excel_table(dato, excelnombre:string):void
+    {
+        console.log("excel", dato)
+        excelnombre = "prueba"
+        const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(dato)
+        const workBook: XLSX.WorkBook = {
+            Sheets: {'data' : worksheet},
+            SheetNames: ['data']
+        }
+        const excelBuffer: any  = XLSX.write(workBook, {bookType: 'xlsx', type: 'array'});
+
+        this.saveExcel(excelBuffer, excelnombre)
+    }
+    private saveExcel(buffer: any, fileName:string):void{ 
+    const data: Blob = new Blob([buffer], {type: EXCEL_TYPE});
+    FileSaver.saveAs(data, fileName + '_export_' + EXCEL_EXT);    
     }
 }

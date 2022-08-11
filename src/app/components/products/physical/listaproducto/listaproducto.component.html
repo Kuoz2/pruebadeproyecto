@@ -213,7 +213,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody id="tbody1">
-                                                <ng-container *ngFor="let p of (listproductosG  |async |inventarionsano |buscareninventario:buscarinventario ) | paginate: {id:'pagination1',itemsPerPage: 30, currentPage:h}; let i=index "  >
+                                                <ng-container *ngFor="let p of (listproductosG  |async |inventarionsano |buscareninventario:buscarinventario ) | paginate: {id:'pagination1',itemsPerPage: 30, currentPage:h}; let i=index; " >
                                                     <tr  class="text-center" id="tr1" (dblclick)="open2(content2, p)" >
                                                         <ng-container *ngIf="p.stock.pstock >= 10">
                                                             <td id="td1">{{p.pcodigo  }}</td>
@@ -226,12 +226,15 @@
                                                             <td [attr.id]="'estado' + i + h">{{cambiadColor(p.stock.pstock, i, h)}}</td>
                                                             <td>{{p.id}}</td>
                                                             <td><button (click)="eliminarproducto(p)">Eliminar</button></td>
+
                                                         </ng-container>
+
                                                     </tr>
                                                 </ng-container>
                                                 </tbody>
                                             </table>
                                             <pagination-controls (pageChange)="h = $event" previousLabel="Atras" nextLabel="Siguiente" id="pagination1"></pagination-controls>
+
                                         </div>
                                     </div>
                                     <div class="card">
@@ -271,6 +274,8 @@
                                             </table>
                                             <pagination-controls (pageChange)="g = $event" previousLabel="Atras" nextLabel="Siguiente" id="pagination5"></pagination-controls>
                                         </div>
+                                    </div>
+                                    <div>
                                     </div>
                                 </div>
                             </div>

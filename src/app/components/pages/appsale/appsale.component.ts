@@ -110,7 +110,7 @@ imagenjpg;
 
             this.items = x;
             this.totalQuantity = x.length;
-            this.totalPrice = x.reduce((sum, current) => sum + (((current.pvalor || current.product.pvalor) * current.quantity) ), 0 )
+            this.totalPrice = x.reduce((sum, current) => sum + ((((current.pvalor + current.piva) || current.product.pvalor) * current.quantity) ), 0 )
             this.cd.markForCheck();
           }
         
