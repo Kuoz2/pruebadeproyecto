@@ -1,3 +1,4 @@
+import { async } from '@angular/core/testing';
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductserviceService} from '../../../../Service/productservice.service';
 import {date_expiration, Productos, Stock} from '../../../Modulos/Productos';
@@ -34,7 +35,7 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
     inventario2_datexpiration: date_expiration = new date_expiration();
     inventario2_stocknuevo: Stock =  new Stock();
     tomanuevoinventario
-    x
+    x = []
     // tslint:disable-next-line:variable-name
     constructor(private prod: ProductserviceService,
                 private modalService: NgbModal,
@@ -111,6 +112,14 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
              const cambio3 = document.getElementById('peligro' + i + id);
              cambio3.style.backgroundColor = '#FA0000';
          }
+         if (EsPr < 10 && EsPr != 0) {
+            const cambio2 = document.getElementById('peligro' + i + id);
+            cambio2.style.backgroundColor = '#F9FF33';
+        }
+        if (EsPr > 10 || EsPr == 10) {
+            const cambio = document.getElementById('peligro' + i + id);
+            cambio.style.backgroundColor = '#B5FF33';
+        }
      }
 
 
@@ -376,11 +385,15 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
     }
 
     // Exportador de excel
-    exportar_excel_table(dato, excelnombre:string):void
-    {
-        console.log("excel", dato)
-        excelnombre = "prueba"
-        const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(dato)
+    exportar_excel_table():void
+    {   
+        console.log("excel", this.x)
+        const excelnombre = "prueba"
+        const contra=window.prompt()
+        contra
+        if(contra == '@#123#'){
+        if(this.x.length != 0){
+            const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.x)
         const workBook: XLSX.WorkBook = {
             Sheets: {'data' : worksheet},
             SheetNames: ['data']
@@ -389,8 +402,52 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
 
         this.saveExcel(excelBuffer, excelnombre)
     }
+    
+    }else{alert("contraseña incorrecta")}
+       
+ 
+       
+        
+    }
+   async export_all_inventarie(){
+        //this.almacenar(this.listproductosG, 1)
+        this.listproductos.forEach((res:any) => {
+          
+               for(const i of res){
+
+                const dato = {
+                    Codigo: i.pcodigo,
+                    Nombre: i.category.cnombre +''+i.brand.bnombre + '' + i.pdescripcion,
+                    Costo: i.precio_provider,
+                    Précio: i.pvalor,
+                    Margen: i.margen,
+                    Utilidad: i.utilidad,
+                    Unidades: i.stock.pstock
+                }
+                this.x.push(dato)
+               }
+        })
+        this.exportar_excel_table()
+        console.log("los datos de todo", this.x)
+        
+    }
     private saveExcel(buffer: any, fileName:string):void{ 
-    const data: Blob = new Blob([buffer], {type: EXCEL_TYPE});
-    FileSaver.saveAs(data, fileName + '_export_' + EXCEL_EXT);    
+        const data: Blob = new Blob([buffer], {type: EXCEL_TYPE});
+        FileSaver.saveAs(data, fileName + '_export_' + EXCEL_EXT);    
+            }
+    almacenar(variable, id):void{
+        const dato = {
+            Codigo: variable.pcodigo,
+            Nombre: variable.category.cnombre +''+variable.brand.bnombre + '' + variable.pdescripcion,
+            Costo: variable.precio_costo,
+            Précio: variable.pvalor,
+            Margen: variable.margen,
+            Utilidad: variable.utilidad,
+            Unidades: variable.stock.pstock
+        }
+        this.x.push(dato)
+        console.log("datos ingresados", variable)
+        console.log("esta fakse i trye", id)
+        console.log("document", this.x)
     }
 }

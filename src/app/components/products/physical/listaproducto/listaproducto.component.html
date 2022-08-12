@@ -11,7 +11,62 @@
                 </div>
                 <label for="businventario">Buscar</label>
                 <input type="text" class="form-control" placeholder="Buscar por código del producto" [(ngModel)]="buscarinventario">
-                <ngb-tabset justify="fill">
+                <div class="card-body">
+                    <hr>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-success " (click)="exportar_excel_table()">Exportar seleccionados a excel</button>
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-success" (click)="export_all_inventarie()">Exportar todo el inventario</button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <table class="table table-hover" id="table3">
+                        <thead>
+                        <tr class="text-center">
+                            <th>Seleccionar</th>
+                            <th>
+                                Código del producto
+                            </th>
+                            <th>
+                                Nombre descriptivo
+                            </th>
+                            <th>Costo</th>
+                            <th>Précio</th>
+                            <th>Margen</th>
+                            <th>Utilidad</th>
+                            <th>Stock</th>
+                            <th>Fecha vencimiento</th>
+                            <th>Estado</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tbody3">
+                        <tr *ngFor="let p of (listproductosG | async |buscareninventario:buscarinventario ) | paginate: {id:'pagination3',itemsPerPage:10, currentPage:j} ; let i=index"  (dblclick)="open2(content2, p)" class="text-center" id="tr3" >
+                            <ng-container *ngIf="p.stock.pstock != 0">
+                            <td><input type="checkbox" id="sanos{{i}}" [value]="p|json" (click)="almacenar(p, i)" ></td>
+                            <td id="td111">{{p.pcodigo  }}</td>
+                            <td id="td222">{{p.category.cnombre}}/{{p.pdescripcion}}</td>
+                            <td>{{p.precio_provider}}</td>
+                            <td >{{p.pvalor}}</td>
+                            <td>{{p.margen}}</td>
+                            <td>{{p.utilidad}}</td>
+                            <td id="td444">{{p.stock.pstock}}</td>
+                            <td>{{p.date_expiration.fecha_vencimiento}}</td>
+                            <td [attr.id]="'peligro' + i + j "  >{{cambiarColorSinStock(p.stock.pstock,i, j)}} </td>
+                            <td><button (click)="eliminarproducto(p)">Eliminar</button></td>
+                            </ng-container>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                    </div>
+                    <pagination-controls (pageChange)="j = $event" previousLabel="Atras" nextLabel="Siguiente" id="pagination3"></pagination-controls>
+                
+                </div>
+               <!-- <ngb-tabset justify="fill">
                     <ngb-tab>
                         <ng-template ngbTabTitle><b>Inventario</b> sin stock</ng-template>
                         <ng-template ngbTabContent>
@@ -198,6 +253,7 @@
                                             <table class="table table-hover" id="table1">
                                                 <thead>
                                                 <tr class="text-center">
+                                                    <th>Seleccionar</th>
                                                     <th>
                                                         Código del producto
                                                     </th>
@@ -216,9 +272,10 @@
                                                 <ng-container *ngFor="let p of (listproductosG  |async |inventarionsano |buscareninventario:buscarinventario ) | paginate: {id:'pagination1',itemsPerPage: 30, currentPage:h}; let i=index; " >
                                                     <tr  class="text-center" id="tr1" (dblclick)="open2(content2, p)" >
                                                         <ng-container *ngIf="p.stock.pstock >= 10">
-                                                            <td id="td1">{{p.pcodigo  }}</td>
-                                                            <td id="td2">{{p.category .cnombre}}/{{p.pdescripcion}}</td>
-                                                            <td id="td3">{{p.pvalor}}</td>
+                                                            <td><input type="checkbox" id="sanos{{i}}" [value]="p|json" (click)="almacenar(p, i)" ></td>
+                                                            <td >{{p.pcodigo  }}</td>
+                                                            <td >{{p.category .cnombre}}/{{p.pdescripcion}}</td>
+                                                            <td >{{p.pvalor}}</td>
                                                             <td>{{p.margen}}</td>
                                                             <td>{{p.utilidad}}</td>
                                                             <td id="td4">{{p.stock.pstock}}</td>
@@ -232,6 +289,9 @@
                                                     </tr>
                                                 </ng-container>
                                                 </tbody>
+                                                <div>
+                                                    <button (click)="exportar_excel_table()">Exportar a excel</button>
+                                                </div>
                                             </table>
                                             <pagination-controls (pageChange)="h = $event" previousLabel="Atras" nextLabel="Siguiente" id="pagination1"></pagination-controls>
 
@@ -281,7 +341,7 @@
                             </div>
                         </ng-template>
                     </ngb-tab>
-                </ngb-tabset>
+                </ngb-tabset>-->
                 <div class="card-body">
                     <div class="btn-popup pull-right">
 

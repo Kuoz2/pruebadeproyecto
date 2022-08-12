@@ -15,6 +15,7 @@ export class Productos {
     pdetalle: string;
     pvalor: number;
     precio_provider:number;
+    precio_costo:number;
     // tslint:disable-next-line:variable-name
     stock = new Stock();
     cantidad: number;
