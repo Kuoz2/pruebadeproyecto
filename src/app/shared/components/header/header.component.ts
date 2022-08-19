@@ -18,7 +18,7 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 export class HeaderComponent implements OnInit {
   // tslint:disable-next-line:variable-name
   public right_sidebar = false;
-  public open = true;
+  public open = false;
   public openNav = false;
   public isOpenMobile: boolean;
   private Actualmermas: Mermas[];

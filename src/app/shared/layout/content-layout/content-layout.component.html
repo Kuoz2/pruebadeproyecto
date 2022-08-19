@@ -2,10 +2,9 @@
     <div class="page-wrapper">
         <app-header (rightSidebarEvent)="rightSidebar($event)"></app-header>
         <div class="page-body-wrapper">
-            <div class="page-header">
                 <app-sidebar></app-sidebar>
              
-            </div>
+            
             <div class="page-body">
                 <app-breadcrumb></app-breadcrumb>
                 <main [@animateRoute]="getRouterOutletState(o)">

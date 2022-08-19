@@ -23,6 +23,10 @@
                             </div>
                         </div>
                     </div>
+                    <div>
+                        <ngx-spinner name = "SpinnerCarga">
+                        </ngx-spinner>
+                    </div>
                     <hr>
                     <table class="table table-hover" id="table3">
                         <thead>
@@ -45,7 +49,7 @@
                         </thead>
                         <tbody id="tbody3">
                         <tr *ngFor="let p of (listproductosG | async |buscareninventario:buscarinventario ) | paginate: {id:'pagination3',itemsPerPage:10, currentPage:j} ; let i=index"  (dblclick)="open2(content2, p)" class="text-center" id="tr3" >
-                            <ng-container *ngIf="p.stock.pstock != 0">
+                            <ng-container >
                             <td><input type="checkbox" id="sanos{{i}}" [value]="p|json" (click)="almacenar(p, i)" ></td>
                             <td id="td111">{{p.pcodigo  }}</td>
                             <td id="td222">{{p.category.cnombre}}/{{p.pdescripcion}}</td>

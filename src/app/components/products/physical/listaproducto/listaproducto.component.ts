@@ -12,6 +12,7 @@ import { ProductoActualizar } from 'src/app/components/Modulos/ProductoActualiza
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx'
 import { read, utils, writeFileXLSX } from 'xlsx';
+import { Timeouts } from 'selenium-webdriver';
 const EXCEL_TYPE = 
 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8'
 
@@ -385,8 +386,9 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
     }
 
     // Exportador de excel
-    exportar_excel_table():void
+    exportar_excel_table()
     {   
+        
         console.log("excel", this.x)
         const excelnombre = "prueba"
         const contra=window.prompt()
@@ -410,42 +412,80 @@ export class ListaproductoComponent implements OnInit, OnDestroy {
         
     }
    async export_all_inventarie(){
-        //this.almacenar(this.listproductosG, 1)
-        this.listproductos.forEach((res:any) => {
-          
+        //this.almacenar(this.listproductosG, 1
+        this.ngxspinner.show("SpinnerCarga", {
+            type: "cog",
+            size: "large",
+            color: "white",
+        });
+        this.listproductos.forEach( (res:any) => {
+        
+        this.x.splice(0, this.x.length)
+      
+                const sum = res.map(item => item.pvalor).reduce((prev, curr) => prev + curr, 0)
+                const sumStock = res.map(item => item.stock.pstock).reduce((prev, curr) => prev + curr, 0)
+                const psumiva = res.map(item => item.piva).reduce((prev, curr) => prev + curr, 0)
+                console.log("sum inventario", this.x.length)
+                console.log("sum inventario", sumStock)
+                let dato = {}
+                console.log("valor de x ", this.x)
                for(const i of res){
+            
 
-                const dato = {
+                 dato = {
                     Codigo: i.pcodigo,
                     Nombre: i.category.cnombre +''+i.brand.bnombre + '' + i.pdescripcion,
                     Costo: i.precio_provider,
                     Précio: i.pvalor,
                     Margen: i.margen,
                     Utilidad: i.utilidad,
-                    Unidades: i.stock.pstock
+                    Unidades: i.stock.pstock,
+                    
                 }
                 this.x.push(dato)
+
                }
-        })
-        this.exportar_excel_table()
-        console.log("los datos de todo", this.x)
+               this.x.unshift(Object.assign(dato, {Precio_sin_iva: sum},{Precio_iva: psumiva},{Total_stock: sumStock})  ) 
+      
+             }  ).then(()=>  {
+                this.ngxspinner.hide("SpinnerCarga")
+
+                this.exportar_excel_table();
+             }  )
+       
         
     }
     private saveExcel(buffer: any, fileName:string):void{ 
+        const Swal = require('sweetalert2')
+        const termino = Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Exportación exitosa',
+            showConfirmButton: false,
+            timer: 1500
+          })
         const data: Blob = new Blob([buffer], {type: EXCEL_TYPE});
-        FileSaver.saveAs(data, fileName + '_export_' + EXCEL_EXT);    
+        FileSaver.saveAs(data, fileName + '_export_' + EXCEL_EXT);  
+        termino
+
             }
     almacenar(variable, id):void{
-        const dato = {
-            Codigo: variable.pcodigo,
-            Nombre: variable.category.cnombre +''+variable.brand.bnombre + '' + variable.pdescripcion,
-            Costo: variable.precio_costo,
-            Précio: variable.pvalor,
-            Margen: variable.margen,
-            Utilidad: variable.utilidad,
-            Unidades: variable.stock.pstock
+        const checkboxpf =  window.document.getElementById("sanos" + id) as HTMLInputElement;
+        if(checkboxpf.checked == false){
+            this.x.splice(id, 1)
+        }else{
+            const dato = {
+                Codigo: variable.pcodigo,
+                Nombre: variable.category.cnombre +''+variable.brand.bnombre + '' + variable.pdescripcion,
+                Costo: variable.precio_costo,
+                Précio: variable.pvalor,
+                Margen: variable.margen,
+                Utilidad: variable.utilidad,
+                Unidades: variable.stock.pstock
+            }
+            this.x.push(dato)
         }
-        this.x.push(dato)
+        
         console.log("datos ingresados", variable)
         console.log("esta fakse i trye", id)
         console.log("document", this.x)
