@@ -142,7 +142,7 @@
                                 <td>{{bl.product.pdetalle}}</td>
                                 <td >{{bl.voucher.vtotal}} </td>
                                 <td>{{bl.voucher.created_at}}</td>
-                                <td>{{bl.product.pvneto}}</td>
+                                <td>{{bl.product.pvneto + bl.product.piva}}</td>
                                 <button (click)="agregaboleta(bl)"> Guardar registro</button>
                             </tr >
                             </tbody>
