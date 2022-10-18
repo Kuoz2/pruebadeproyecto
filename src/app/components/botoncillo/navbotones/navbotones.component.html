@@ -55,282 +55,10 @@
  
 </ng-template>
 
-<ng-template #content8 let-modal8>
-    <div class="modal-header">
-        <h5 class="modal-title f-w-600" id="exampleModalLabel2">Proveedor</h5>
-        <button type="button" class="close" aria-label="Close"
-                (click)="modal8.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <form [formGroup]="Frmproducto">
-
-            <div class="form-group row">
-                <label for="proveedor" class="col-xl-3 col-sm-4 mb-0">Proveedor:</label>
-                <select id="proveedor" class="form-control digits col-xl-8 col-sm-7" formControlName="provider_id" required>
-                    <option [ngValue]="p" *ngFor="let p of proveedor" [selected]="proveedor[p.nombre_provider]">{{p.nombre_provider}}</option>
-                </select>
-            </div>  
-            <div class="btn-group row " role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary" (click)="modal8.dismiss('Cross click'); open7(content7)">Atras</button>
-                <button type="button" class="btn btn-primary" (click)="modal8.dismiss('Cross click'); open9(content9)"> Siguiente </button>
-              </div>  
-              <hr>
-             
-        </form>
-    </div>
-</ng-template>
-
-<ng-template #content7 let-modal7>
-    <div class="modal-header">
-        <h5 class="modal-title f-w-600" id="exampleModalLabel2">Fecha de estimada para la venta</h5>
-        <button type="button" class="close" aria-label="Close"
-                (click)="modal7.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <form [formGroup]="Frmproducto">
-
-            <div class="form-group row" formGroupName="date_expiration">
-                <label for="fecha" class="col-xl-3 col-sm-4 mb-0">Fecha estimación:</label>
-                <input   autocomplete="off"
-                       class="form-control col-xl-8 col-sm-7"  formControlName="fecha_vencimiento" id="fecha"
-                       min="2000/01/01" type="date" >
-            </div>
-            <div class="btn-group row " role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary" (click)="modal7.dismiss('Cross click'); open6(content6)">Atras</button>
-                <button type="button" class="btn btn-primary" (click)="modal7.dismiss('Cross click'); open8(content8)"> Siguiente </button>
-              </div> 
-              
-              <hr>
-            <div class="alert alert-success" role="alert">
-                <h4 class="alert-heading">Información.</h4>
-                <p>Fecha de estimación es para poder tener un seguimiento estrategico, del movimiento del producto y poder controlar su venta.</p>
-                <hr>
-                <p class="mb-0">Poder tener un control de su salida y cantidad de ventas se puede realizar estrategias de insumos y no acaparar productos no necesarios.</p>
-                
-    
-            </div>
-        </form>
-    </div>
-</ng-template>
-
-<ng-template #content6 let-modal6>
-    <div class="modal-header">
-        <h5 class="modal-title f-w-600" id="exampleModalLabel2">Detalle del produto</h5>
-        <button type="button" class="close" aria-label="Close"
-                (click)="modal6.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <form [formGroup]="Frmproducto">
-
-            <div class="form-group row">
-                <label  for="detalle"class="col-xl-3 col-sm-4">Agregar detalle :</label>
-                <div  class="col-xl-8 col-sm-7 pl-0 description-sm">
-                    <label for="editor1"></label>
-                    <textarea type="text" id="detalle" language="es" formControlName="pdetalle" rows="5" cols="46"></textarea>
-                    </div>
-            </div>
-            <div class="btn-group row " role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary" (click)="modal6.dismiss('Cross click'); open5(content5)">Atras</button>
-                <button type="button" class="btn btn-primary" (click)="modal6.dismiss('Cross click'); open7(content7)"> Siguiente </button>
-              </div> 
-              <hr> 
-              <div class="alert alert-success" role="alert">
-                <h4 class="alert-heading">Información.</h4>
-                <p>Este paso no es obligatorio pero es necesario para conocer mas del producto.</p>             
-    
-            </div>
-        </form>
-    </div>
-</ng-template>
-
-<ng-template #content5 let-modal5>
-    <div class="modal-header">
-        <h5 class="modal-title f-w-600" id="exampleModalLabel2">Cantidad de perdidas del producto</h5>
-        <button type="button" class="close" aria-label="Close"
-                (click)="modal5.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <form [formGroup]="Frmproducto">
-
-            <div class="form-group row" formGroupName="stock">
-                <label for="perdidas" class="col-xl-3 col-sm-4 mb-0">Perdida :</label>
-                <div class="qty-box1">
-                    <div class="input-group">
-                        <input class="touchspin1 text-center" id="perdidas" name="perdidas" formControlName="stock_lost" 
-                        type="number" [value]="0">
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="btn-group row " role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary" (click)="modal5.dismiss('Cross click'); open4(content3)">Atras</button>
-                <button type="button" class="btn btn-primary" (click)="modal5.dismiss('Cross click'); open6(content6)"> Siguiente </button>
-              </div>  
-            <hr>
-            <div class="alert alert-success" role="alert">
-                <h4 class="alert-heading">Información.</h4>
-                <p>El primer stock del producto nuevo es ingresado aquí junto a su perdida si es que hay. Cuando ya tiene registrado el producto y desea ingresar un nuevo stock o cambiar la fecha debe hacerlo en inventario precionando dos veces.</p>
-                <hr>
-                <p class="mb-0">Solamente debe ingresar el stock si es un producto nuevo.</p>
-                
-    
-            </div>
-        </form>
-    </div>
-</ng-template>
 
 
-<ng-template #content4 let-modal4>
-    <div class="modal-header">
-        <h5 class="modal-title f-w-600" id="exampleModalLabel2">Ingreso de stock</h5>
-        <button type="button" class="close" aria-label="Close"
-                (click)="modal4.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <form [formGroup]="Frmproducto">
 
-            <div class="form-group row" formGroupName="stock">
-                <label for="stock" class="col-xl-3 col-sm-4 mb-0">Ingresar stock :</label>
-                <div class="qty-box1">
-                    <div class="input-group">
-                        <input class="touchspin1 text-center" id="stock" name="counter" formControlName="pstock" type="number" required>
-                        
-                    </div>
-                </div>
-            </div>    
-                    
-            <div class="btn-group row " role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary" (click)="modal4.dismiss('Cross click'); open3(content3)">Atras</button>
-                <button type="button" class="btn btn-primary" (click)="modal4.dismiss('Cross click'); open5(content5)"> Siguiente </button>
-              </div>  
-            <hr>
-            <div class="alert alert-success" role="alert">
-                <h4 class="alert-heading">Información.</h4>
-                <p>El primer stock del producto nuevo es ingresado aquí junto a su perdida si es que hay. Cuando ya tiene registrado el producto y desea ingresar un nuevo stock o cambiar la fecha debe hacerlo en inventario precionando dos veces.</p>
-                <hr>
-                <p class="mb-0">Solamente debe ingresar el stock si es un producto nuevo.</p>
-                
-    
-            </div>
-        </form>
-    </div>
-</ng-template>
 
-<ng-template #content3 let-modal3>
-    <div class="modal-header">
-        <h5 class="modal-title f-w-600" id="exampleModalLabel2">Ingresar precio e IVA</h5>
-        <button type="button" class="close" aria-label="Close"
-                (click)="modal3.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <form [formGroup]="Frmproducto">
-                <div class="form-group row">
-                    <label for="precio_provider" class="col-xl-3 col-sm-4 mb-0">Precio costo</label>
-                    <input type="number" id="precio_provider" class="form-control col-xl-4 col-sm-7"  formControlName="precio_provider" placeholder="ej: 3000" (change)="Obutildiad(Frmproducto)" >
-                </div>
-                <div class="form-group row">
-                    <label for="margen" class="col-xl-3 col-sm-4 mb-0">Margen de utilidad</label>
-                    <input type="number" id="margen" class="form-control col-xl-4 col-sm-7" formControlName="margen" placeholder="ej: 25" (change)="Obutildiad(Frmproducto)" >
-                </div>
-
-                <div class="form-group row">
-                    <label for="utilidad" class="col-xl-3 col-sm-4 mb-0">Utilidad</label>
-                    <input type="number" id="utilidad" class="form-control col-xl-4 col-sm-7" formControlName="utilidad" >
-                </div>
-            <div class="form-group row">
-                <label for="preciov" class="col-xl-3 col-sm-4 mb-0">Precio neto</label>
-                <input type="number" id="preciov" formControlName="pvalor" (change)="datos(pvalor)" class="form-control col-xl-4 col-sm-7"   >
-
-                <select class="form-control col-xl-4 col-sm-7" formControlName="tax_id" id="tax_id"  (change)="calImp(tax_id, pvalor)" >
-                    <option value="" selected></option>
-                    <option *ngFor="let im of (immp | async)" [ngValue]="im">{{im.tnombre}} </option>
-                </select>
-
-                <div *ngIf="pvalor.touched && pvalor.errors?.required"
-                    class="text text-danger">
-                    Precio del producto es requerido
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="iva2" class="col-xl-3 col-sm-4 mb-0">Impuesto:</label>
-                <input type="text" [(ngModel)]="prdiva" class="form-control col-xl-8 col-sm-7" id="iva2"  formControlName="piva" disabled >
-            </div>
-            <div class="form-group row">
-                <label for="iva2" class="col-xl-3 col-sm-4 mb-0">Precio neto + IVA:</label>
-                <input type="text" [(ngModel)]="preciva" class="form-control col-xl-8 col-sm-7" id="iva2"  formControlName="preciva"  >
-            </div>
-            
-            <div class="btn-group row " role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary" (click)="modal3.dismiss('Cross click'); open2(content2)">Atras</button>
-                <button type="button" class="btn btn-primary" (click)="modal3.dismiss('Cross click'); open4(content4)"> Siguiente </button>
-              </div>  
-
-              <hr>
-        <div class="alert alert-success" role="alert">
-            <h4 class="alert-heading">Información.</h4>
-            <p>El impuesto debe ser establecido antes, en el formulario ingresar impuesto</p>
-            <hr>
-          </div>
-        </form>
-    </div>
-</ng-template>
-
-<ng-template #content2 let-modal2>
-    <div class="modal-header">
-        <h5 class="modal-title f-w-600" id="exampleModalLabel2">Código del producto</h5>
-        <button type="button" class="close" aria-label="Close"
-                (click)="modal2.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <div class="container">
-            <div class="row lign-items-start" >
-        <form [formGroup]="Frmproducto">
-
-            <div class="form-group row">
-                <label for="codigo" class="col-xl-3 col-sm-4 mb-0">Código de barra:</label>
-                <input class="form-control col-xl-8 col-sm-7" formControlName="pcodigo" name="codigo" id="codigo" (dbclick)="InCode()"
-                    type="number" autocomplete="off" required >
-                    <div *ngIf="pcodigo.touched && pcodigo.errors?.required"
-                    class="text text-danger">
-                    El código del producto es obligatorio.
-                </div>
-                    </div>
-            <div class="btn-group row " role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary" (click)="modal2.dismiss('Cross click'); openModal(content1)">Atras</button>
-                <button type="button" class="btn btn-primary" (click)="modal2.dismiss('Cross click'); open3(content3)"> Siguiente </button>
-              </div>  
-            <hr>
-        <div class="alert alert-success" role="alert">
-            <h4 class="alert-heading">Información.</h4>
-            <p>El código de barra puede ser ingresado de dos formas. Mediante escritura manual o bien mediante la lectura del codigo, utilizando la camara incorporada en la maquina </p>
-            <hr>
-            <p class="mb-0">De forma manual: Debe digitar los numeros que se encuentran debajo del codigo de barra.</p>
-            <p class="mb-0">Lector de código: Precione dos veces el cuadro superior, enfoque bien el código del producto asta que este se marque.</p>
-
-          </div>
-        </form>
-        
-        </div>
-        </div>
-    </div>
-
-</ng-template>
 <ng-template #content1 let-modal1  >
     
                 <div class="modal-header ">
@@ -369,9 +97,95 @@
                                 </select>
                          
                             </div>
-                              <div class="btn-group row " role="group" aria-label="Basic example">
+                            
+                            <div class="form-group row">
+                                <label for="codigo" class="col-xl-3 col-sm-4 mb-0">Código de barra:</label>
+                                <input class="form-control col-xl-8 col-sm-7" formControlName="pcodigo" name="codigo" id="codigo" (dbclick)="InCode()"
+                                    type="number" autocomplete="off" required >
+                                    <div *ngIf="pcodigo.touched && pcodigo.errors?.required"
+                                    class="text text-danger">
+                                    El código del producto es obligatorio.
+                                    </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="precio_provider" class="col-xl-3 col-sm-4 mb-0">Precio costo</label>
+                                <input type="number" id="precio_provider" class="form-control col-xl-4 col-sm-7"  formControlName="precio_provider" placeholder="ej: 3000" (change)="Obutildiad(Frmproducto)" >
+                            </div>
+                            <div class="form-group row">
+                                <label for="margen" class="col-xl-3 col-sm-4 mb-0">Margen de utilidad</label>
+                                <input type="number" id="margen" class="form-control col-xl-4 col-sm-7" formControlName="margen" placeholder="ej: 25" (change)="Obutildiad(Frmproducto)" >
+                            </div>
+            
+                            <div class="form-group row">
+                                <label for="utilidad" class="col-xl-3 col-sm-4 mb-0">Utilidad</label>
+                                <input type="number" id="utilidad" class="form-control col-xl-4 col-sm-7" formControlName="utilidad" >
+                            </div>
+                        <div class="form-group row">
+                            <label for="preciov" class="col-xl-3 col-sm-4 mb-0">Precio neto</label>
+                            <input type="number" id="preciov" formControlName="pvalor" (change)="datos(pvalor)" class="form-control col-xl-4 col-sm-7"   >
+            
+                            <select class="form-control col-xl-4 col-sm-7" formControlName="tax_id" id="tax_id"  (change)="calImp(tax_id, pvalor)" >
+                                <option value="" selected></option>
+                                <option *ngFor="let im of (immp | async)" [ngValue]="im">{{im.tnombre}} </option>
+                            </select>
+            
+                            <div *ngIf="pvalor.touched && pvalor.errors?.required"
+                                class="text text-danger">
+                                Precio del producto es requerido
+                            </div>
+                        </div>
+            
+                        <div class="form-group row">
+                            <label for="iva2" class="col-xl-3 col-sm-4 mb-0">Impuesto:</label>
+                            <input type="text" [(ngModel)]="prdiva" class="form-control col-xl-8 col-sm-7" id="iva2"  formControlName="piva" disabled >
+                        </div>
+                        <div class="form-group row">
+                            <label for="iva2" class="col-xl-3 col-sm-4 mb-0">Precio neto + IVA:</label>
+                            <input type="text" [(ngModel)]="preciva" class="form-control col-xl-8 col-sm-7" id="iva2"  formControlName="preciva"  >
+                        </div>
+
+                        <div class="form-group row" formGroupName="stock">
+                            <label for="stock" class="col-xl-3 col-sm-4 mb-0">Ingresar stock :</label>
+                            <div class="qty-box1">
+                                <div class="input-group">
+                                    <input class="touchspin1 text-center" id="stock" name="counter" formControlName="pstock" type="number" required>
+                                    
+                                </div>
+                            </div>
+                        </div>    
+
+                        <div class="form-group row" formGroupName="stock">
+                            <label for="perdidas" class="col-xl-3 col-sm-4 mb-0">Perdida :</label>
+                            <div class="qty-box1">
+                                <div class="input-group">
+                                    <input class="touchspin1 text-center" id="perdidas" name="perdidas" formControlName="stock_lost" 
+                                    type="number" [value]="0">
+            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  for="detalle"class="col-xl-3 col-sm-4">Agregar detalle :</label>
+                            <div  class="col-xl-8 col-sm-7 pl-0 description-sm">
+                                <label for="editor1"></label>
+                                <textarea type="text" id="detalle" language="es" formControlName="pdetalle" rows="5" cols="46"></textarea>
+                                </div>
+                        </div>
+                        <div class="form-group row" formGroupName="date_expiration">
+                            <label for="fecha" class="col-xl-3 col-sm-4 mb-0">Fecha estimación:</label>
+                            <input   autocomplete="off"
+                                   class="form-control col-xl-8 col-sm-7"  formControlName="fecha_vencimiento" id="fecha"
+                                   min="2000/01/01" type="date" >
+                        </div>
+                        <div class="form-group row">
+                            <label for="proveedor" class="col-xl-3 col-sm-4 mb-0">Proveedor:</label>
+                            <select id="proveedor" class="form-control digits col-xl-8 col-sm-7" formControlName="provider_id" required>
+                                <option [ngValue]="p" *ngFor="let p of proveedor" [selected]="proveedor[p.nombre_provider]">{{p.nombre_provider}}</option>
+                            </select>
+                        </div>  
+                                 <div class="btn-group row " role="group" aria-label="Basic example">
                                 <button type="button" class="btn btn-primary" >cerrar</button>
-                                <button type="button" class="btn btn-primary" (click)="modal1.dismiss('Cross click'); open2(content2)"> Siguiente </button>
+                                <button type="button" class="btn btn-primary" (click)="modal1.dismiss('Cross click'); open2(content9)"> Siguiente </button>
                             
                               </div>  
                               <hr>          
@@ -426,108 +240,309 @@
     </form>
 </div>
 </ng-template>
-  <div class="row">
-    <div class="card">
-      <div class="col">
-          <div class="card-header" style="border: solid;" routerLink="/products/physical/marca">
-              <img class="imagen-marca card-img-top" src="../../../../assets/images/regostered.png">
-          </div>
-        <div class="card-body">
-          <h1 class="titulos-card  card-title" >Marca</h1>
-        </div>
-    </div>
-</div>
-<div class="card">
-  <div class="col">
-      <div class="card-header" style="border: solid;" routerLink="/products/physical/category">
-          <img class="imagen-categoria" src="../../../../assets/images/etiqueta-categoria-920x515.jpg">
-      </div>
-      <div class="card-body">
-          <h1 class="titulos-card card-title "> Categoría</h1>
-      </div>
-</div>
-</div>
-<div class="card">
-  <div class="col">
-      <div class="card-header" style="border: solid;" routerLink="/products/physical/lista-editar">
-          <img class="imagen-inventario" src="../../../../assets/images/box-gb3cb967f9_1280.png">
-      </div>
-      <div class="card-body">
-          <h1 class="titulos-card  card-title">Inventario</h1>
-      </div>
-  </div>
-</div>
-<div class="card">
-    <div class="col">
-        <div class="card-header" style="border: solid;" routerLink="/pages/app-pago">
-          <img class="imagen-inventario" src="../../../../assets/images/carritocompra.png" alt="">
-        </div>
-        <div class="card-body">
-          <h1 class="titulos-card  card-title">Ventas</h1>
-        </div>
-    </div>
-</div>
-<div class="card">
-    <div class="col">
-        <div class="card-header" style="border: solid;" (click)="open0(content0)">
-          <img class="imagen-inventario" src="../../../../assets/images/ventarapida.png" alt="">
-        </div>
-        <div class="card-body">
-            <h1 class="titulos-card  card-title">Venta rápida</h1>
-        </div>
-    </div>
-</div>
-<div class="card">
-    <div class="col">
-        <div class="card-header" style="border: solid;" routerLink="/pages/lista-pago">
-          <img class="imagen-inventario" src="../../../../assets/images/misventas.png" alt="">
-        </div>
-        <div class="card-body">
-          <h1 class="titulos-card  card-title">Mis ventas</h1>
-        </div>
-    </div>
-</div>
-</div>
 
-<div class="row">
-<div class="card">
-    <div class="col">
-        <div class="card-header" style="border: solid;">
-      <img class="imagen-inventario" src="../../../../assets/images/impuesto.png" alt="">
-      </div>
-      <div class="card-body">
-          <h1 class="titulos-card  card-title">Impuesto</h1>
-      </div>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <a href="#" class="card wallet" routerLink="/pages/app-pago">
+                     <div class="overlay"></div>
+                  <div class="circle">    
+                <svg width="78px" height="60px" viewBox="23 29 78 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+                    <desc>Created with Sketch.</desc>
+                    <defs></defs>
+                    <g id="icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(23.000000, 29.500000)">
+                        <rect id="Rectangle-3" fill="#AC8BE9" x="67.8357511" y="26.0333433" width="9.40495664" height="21.8788565" rx="4.70247832"></rect>
+                        <rect id="Rectangle-3" fill="#6A5297" x="67.8357511" y="38.776399" width="9.40495664" height="10.962961" rx="4.70247832"></rect>
+                        <polygon id="Rectangle-2" fill="#6A5297" points="57.3086772 0 67.1649301 26.3776902 14.4413177 45.0699507 4.58506484 18.6922605"></polygon>
+                        <path d="M0,19.6104296 C0,16.2921718 2.68622235,13.6021923 5.99495032,13.6021923 L67.6438591,13.6021923 C70.9547788,13.6021923 73.6388095,16.2865506 73.6388095,19.6104296 L73.6388095,52.6639057 C73.6388095,55.9821635 70.9525871,58.672143 67.6438591,58.672143 L5.99495032,58.672143 C2.68403068,58.672143 0,55.9877847 0,52.6639057 L0,19.6104296 Z" id="Rectangle" fill="#8B6FC0"></path>
+                        <rect id="Rectangle-4" fill="#AC8BE9" x="58.0305835" y="26.1162588" width="15.6082259" height="12.863158"></rect>
+                        <ellipse id="Oval" fill="#FFFFFF" cx="65.8346965" cy="33.0919007" rx="2.20116007" ry="2.23319575"></ellipse>
+                    </g>
+                </svg>
+                  </div>
+                  <p>Crear venta</p>
+                </a>
+               </div>
+            <div class="col-sm">
+                <a href="#" class="card education" (click)="openModal(content1)">
+                    <div class="overlay"></div>
+                 <div class="circle">
+               
+               <svg width="64px" height="76px" viewBox="10 30 100 85" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                   <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+                   <desc>Created with Sketch.</desc>
+                   <defs></defs>
+                   <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                       <g id="Group-8" fill="#D98A19">
+                           <g id="Group-7">
+                               <g id="Group-6">
+                                <path d="M15,109.8l48,17c0,0,0,0,0,0c0.1,0,0.2,0.1,0.3,0.1c0.2,0.1,0.5,0.1,0.7,0.1c0.2,0,0.3,0,0.5,0c0,0,0,0,0,0c0,0,0,0,0.1,0 c0.1,0,0.3-0.1,0.4-0.1c0,0,0,0,0,0l48-17c1.2-0.4,2-1.6,2-2.8V73.4l10-3.5c0.8-0.3,1.5-1,1.8-1.8s0.2-1.8-0.3-2.6l-12-20 c0,0-0.1-0.1-0.1-0.1c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0,0c0-0.1-0.1-0.1-0.1-0.2c0,0,0,0,0-0.1c-0.1-0.1-0.1-0.1-0.2-0.2 c0,0-0.1-0.1-0.1-0.1c0,0-0.1-0.1-0.1-0.1c0,0-0.1,0-0.1,0c0,0-0.1-0.1-0.1-0.1c-0.1-0.1-0.2-0.1-0.3-0.1c-0.1,0-0.1-0.1-0.2-0.1 c0,0,0,0,0,0c0,0,0,0,0,0l-48-17c0,0,0,0-0.1,0c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0c-0.1,0-0.1,0-0.2,0c0,0,0,0,0,0c0,0,0,0,0,0 c-0.1,0-0.1,0-0.2,0c-0.1,0-0.1,0-0.2,0c-0.1,0-0.2,0-0.4,0c-0.1,0-0.1,0-0.2,0c-0.2,0-0.4,0.1-0.5,0.1l-48,17 c-0.2,0.1-0.3,0.1-0.5,0.2c0,0-0.1,0.1-0.1,0.1c-0.1,0.1-0.2,0.1-0.3,0.2c0,0-0.1,0.1-0.1,0.1c-0.1,0.1-0.2,0.1-0.2,0.2 c0,0-0.1,0.1-0.1,0.1c-0.1,0.1-0.1,0.2-0.2,0.2c0,0,0,0.1-0.1,0.1l-12,20c-0.7,1.1-0.6,2.5,0.2,3.4C2.3,69.6,3.1,70,4,70 c0.3,0,0.7-0.1,1-0.2l8-2.8v40C13,108.3,13.8,109.4,15,109.8z M119.5,65.4l-42.2,15l-8.9-14.8l42.2-15L119.5,65.4z M67,34.2L103,47 L67,59.8V34.2z M67,74.8l6.4,10.7C74,86.5,75,87,76,87c0.3,0,0.7-0.1,1-0.2l32-11.3v29.4l-42,14.9V74.8z M19,51.2l42,14.9v53.6 l-42-14.9V51.2z"/></g>
+                            </g>
+                       </g>
+                       
+                   </g>
+               </svg>
+                 </div>
+                 <p>Ing. Producto</p>
+               </a>
+            </div>
+               <div class="col-sm">
+                <a href="#" class="card credentialing" routerLink="/products/physical/lista-editar">
+                    <div class="overlay"></div>
+                 <div class="circle">
+                   
+               <svg width="64px" height="72px" viewBox="27 21 64 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                   <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+                   <desc>Created with Sketch.</desc>
+                   <defs>
+                       <polygon id="path-1" points="60.9784821 18.4748913 60.9784821 0.0299638385 0.538377293 0.0299638385 0.538377293 18.4748913"></polygon>
+                   </defs>
+                   <g id="Group-12" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(27.000000, 21.000000)">
+                       <g id="Group-5">
+                           <g id="Group-3" transform="translate(2.262327, 21.615176)">
+                               <mask id="mask-2" fill="white">
+                                   <use xlink:href="#path-1"></use>
+                               </mask>
+                               <g id="Clip-2"></g>
+                               <path d="M7.17774177,18.4748913 L54.3387782,18.4748913 C57.9910226,18.4748913 60.9789911,15.7266455 60.9789911,12.3681986 L60.9789911,6.13665655 C60.9789911,2.77820965 57.9910226,0.0299638385 54.3387782,0.0299638385 L7.17774177,0.0299638385 C3.52634582,0.0299638385 0.538377293,2.77820965 0.538377293,6.13665655 L0.538377293,12.3681986 C0.538377293,15.7266455 3.52634582,18.4748913 7.17774177,18.4748913" id="Fill-1" fill="#59A785" mask="url(#mask-2)"></path>
+                           </g>
+                           <polygon id="Fill-4" fill="#FFFFFF" transform="translate(31.785111, 30.877531) rotate(-2.000000) translate(-31.785111, -30.877531) " points="62.0618351 55.9613216 7.2111488 60.3692832 1.50838775 5.79374073 56.3582257 1.38577917"></polygon>
+                           <ellipse id="Oval-3" fill="#25D48A" opacity="0.216243004" cx="30.0584472" cy="21.7657707" rx="9.95169733" ry="9.17325562"></ellipse>
+                           <g id="Group-4" transform="translate(16.959615, 6.479082)" fill="#54C796">
+                               <polygon id="Fill-6" points="10.7955395 21.7823628 0.11873799 11.3001058 4.25482787 7.73131106 11.0226557 14.3753897 27.414824 1.77635684e-15 31.3261391 3.77891399"></polygon>
+                           </g>
+                           <path d="M4.82347935,67.4368303 L61.2182039,67.4368303 C62.3304205,67.4368303 63.2407243,66.5995595 63.2407243,65.5765753 L63.2407243,31.3865871 C63.2407243,30.3636029 62.3304205,29.5263321 61.2182039,29.5263321 L4.82347935,29.5263321 C3.71126278,29.5263321 2.80095891,30.3636029 2.80095891,31.3865871 L2.80095891,65.5765753 C2.80095891,66.5995595 3.71126278,67.4368303 4.82347935,67.4368303" id="Fill-8" fill="#59B08B"></path>
+                           <path d="M33.3338063,67.4368303 L61.2181191,67.4368303 C62.3303356,67.4368303 63.2406395,66.5995595 63.2406395,65.5765753 L63.2406395,31.3865871 C63.2406395,30.3636029 62.3303356,29.5263321 61.2181191,29.5263321 L33.3338063,29.5263321 C32.2215897,29.5263321 31.3112859,30.3636029 31.3112859,31.3865871 L31.3112859,65.5765753 C31.3112859,66.5995595 32.2215897,67.4368303 33.3338063,67.4368303" id="Fill-10" fill="#4FC391"></path>
+                           <path d="M29.4284029,33.2640869 C29.4284029,34.2202068 30.2712569,34.9954393 31.3107768,34.9954393 C32.3502968,34.9954393 33.1931508,34.2202068 33.1931508,33.2640869 C33.1931508,32.3079669 32.3502968,31.5327345 31.3107768,31.5327345 C30.2712569,31.5327345 29.4284029,32.3079669 29.4284029,33.2640869" id="Fill-15" fill="#FEFEFE"></path>
+                           <path d="M8.45417501,71.5549073 L57.5876779,71.5549073 C60.6969637,71.5549073 63.2412334,69.2147627 63.2412334,66.3549328 L63.2412334,66.3549328 C63.2412334,63.4951029 60.6969637,61.1549584 57.5876779,61.1549584 L8.45417501,61.1549584 C5.34488919,61.1549584 2.80061956,63.4951029 2.80061956,66.3549328 L2.80061956,66.3549328 C2.80061956,69.2147627 5.34488919,71.5549073 8.45417501,71.5549073" id="Fill-12" fill="#5BD6A2"></path>
+                       </g>
+                   </g>
+               </svg>
+            </div>
+            <p>Inventario</p>
+            </a>
+               </div>
+              
+               <div class="col-sm">
+               <a href="#" class="card human-resources" routerLink="/pages/lista-pago">
+                    <div class="overlay"></div>
+                 <div class="circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="78px" height="60px" viewBox="0 0 64 64"><defs><style>.cls-1{fill:none;}.cls-1,.cls-2{stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}.cls-2{fill:#a9ba5a;}</style></defs><g id="economy"><circle cx="9.0992" cy="17.5232" r="1.0691"/><path class="cls-1" d="M19.9761,30H18A13,13,0,0,0,5,43v2a12.9906,12.9906,0,0,0,7,11.5256V61h6l1-2c.4241.0383,21,0,21,0l1,2h5V57c4.4894-1.7581,8.1065-5.1434,9-10l4-2V38H54a14.196,14.196,0,0,0-6-6.3035V25a8.687,8.687,0,0,0-8,5H36.0509"/><circle cx="46.5" cy="37.5" r="1.5"/><line class="cls-2" x1="16" x2="40" y1="34" y2="34"/><circle class="cls-1" cx="27.9999" cy="24" r="10"/><line class="cls-1" x1="32" x2="24" y1="19" y2="29"/><circle class="cls-1" cx="24.5" cy="20.5" r="1.5"/><circle class="cls-1" cx="31.5" cy="27.5" r="1.5"/><circle class="cls-1" cx="43" cy="12" r="2"/><path class="cls-1" d="M29.25,54.0671l4.9163-3.9331a2.0742,2.0742,0,0,0,.5845-2.598,2.001,2.001,0,0,0-3-.5919l-1.75,1.4V40.5056a2,2,0,0,0-2-2h0a2,2,0,0,0-2,2v7.8389l-1.6462-1.317a2.1129,2.1129,0,0,0-2.9407.2609,2,2,0,0,0,.3374,2.7787l5,4A2,2,0,0,0,29.25,54.0671Z"/><line class="cls-1" x1="49.5509" x2="52.5509" y1="17.0547" y2="20.0547"/><line class="cls-1" x1="52.5509" x2="49.5509" y1="17.0547" y2="20.0547"/></g></svg>
+                 </div>
+                 <p>Mis ventas</p>
+               </a>
+            </div>
+            <div class="col-sm">
+                <a href="#" class="card venta-rapida" (click)="open0(content0)">
+                    <div class="overlay"></div>
+                    <div class="circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="78px" height="60px" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <path style="fill:#74D24F;" d="M496,112H16c-8.82,0-16,7.18-16,16v256c0,8.82,7.18,16,16,16h480c8.82,0,16-7.18,16-16V128    C512,119.18,504.82,112,496,112z"/>
+                                </g>
+                                <g>
+                                    <path style="fill:#FFEFBC;" d="M472,192c-22.055,0-40-17.945-40-40c0-4.422-3.578-8-8-8H88c-4.422,0-8,3.578-8,8    c0,22.055-17.945,40-40,40c-4.422,0-8,3.578-8,8v112c0,4.422,3.578,8,8,8c22.055,0,40,17.945,40,40c0,4.422,3.578,8,8,8h336    c4.422,0,8-3.578,8-8c0-22.055,17.945-40,40-40c4.422,0,8-3.578,8-8V200C480,195.578,476.422,192,472,192z"/>
+                                </g>
+                                <g>
+                                    <path style="fill:#869B55;" d="M128,256c0,48.221,26.691,90.175,66.081,112h123.839C357.309,346.175,384,304.221,384,256    s-26.691-90.175-66.081-112H194.08C154.691,165.825,128,207.779,128,256z"/>
+                                </g>
+                                <g>
+                                    <path style="fill:#FFEFBC;" d="M256,244c-16.023,0-28-8.445-28-16c0-7.555,11.977-16,28-16s28,8.445,28,16c0,6.625,5.375,12,12,12    s12-5.375,12-12c0-19.236-16.824-34.862-40-38.932V184c0-6.625-5.375-12-12-12s-12,5.375-12,12v5.068    c-23.176,4.07-40,19.695-40,38.932c0,22.43,22.844,40,52,40c16.023,0,28,8.445,28,16c0,7.555-11.977,16-28,16s-28-8.445-28-16    c0-6.625-5.375-12-12-12s-12,5.375-12,12c0,19.236,16.824,34.862,40,38.932V328c0,6.625,5.375,12,12,12s12-5.375,12-12v-5.068    c23.176-4.07,40-19.695,40-38.932C308,261.57,285.156,244,256,244z"/>
+                                </g>
+                                <g>
+                                    <circle style="fill:#74D24F;" cx="80" cy="256" r="24"/>
+                                </g>
+                                <g>
+                                    <circle style="fill:#74D24F;" cx="432" cy="256" r="24"/>
+                                </g>
+                                <g>
+                                    <circle style="fill:#869B55;" cx="40" cy="152" r="16"/>
+                                </g>
+                                <g>
+                                    <circle style="fill:#869B55;" cx="472" cy="152" r="16"/>
+                                </g>
+                                <g>
+                                    <circle style="fill:#869B55;" cx="40" cy="360" r="16"/>
+                                </g>
+                                <g>
+                                    <circle style="fill:#869B55;" cx="472" cy="360" r="16"/>
+                                </g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            </svg>
+                    </div>
+                    <p>Venta rápida</p>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <a href="#" class="card categorias" routerLink="/products/physical/category">
+                    <div class="overlay"></div>
+                        <div class="circle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="78px" height="60px" viewBox="0 0 32 32" id="icon"><defs><style>.cls-1{fill:none;}</style></defs><title>collapse-categories</title><rect x="14" y="25" width="14" height="2"/><polygon points="7.17 26 4.59 28.58 6 30 10 26 6 22 4.58 23.41 7.17 26"/><rect x="14" y="15" width="14" height="2"/><polygon points="7.17 16 4.59 18.58 6 20 10 16 6 12 4.58 13.41 7.17 16"/><rect x="14" y="5" width="14" height="2"/><polygon points="7.17 6 4.59 8.58 6 10 10 6 6 2 4.58 3.41 7.17 6"/><rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="32" height="32"/></svg>
+                        </div>
+                        <p>Categorias</p>
+                </a>
+            </div>
+            <div class="col-sm">  
+                <a href="#" class="card marca" routerLink="/products/physical/marca">
+                    <div class="overlay"></div>
+                        <div class="circle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="78px" height="60px" viewBox="0 0 1024 1024" class="icon">
+                                <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372zm87.5-334.7c34.8-12.8 78.4-49 78.4-119.2 0-71.2-45.5-131.1-144.2-131.1H378c-4.4 0-8 3.6-8 8v410c0 4.4 3.6 8 8 8h54.5c4.4 0 8-3.6 8-8V561.2h88.7l74.6 159.2c1.3 2.8 4.1 4.6 7.2 4.6h62a7.9 7.9 0 0 0 7.1-11.5l-80.6-164.2zM522 505h-81.5V357h83.4c48 0 80.9 25.3 80.9 75.5 0 46.9-29.8 72.5-82.8 72.5z"/>
+                              </svg>
+                        </div>
+                        <p>Marcas</p>
+                </a>
+            </div>
+            <div class="col-sm">
+                <a href="#" class="card proveedor" routerLink="/products/physical/proveedor">
+                    <div class="overlay"></div>
+                    <div class="circle">
+                        <svg xmlns="http://www.w3.org/2000/svg"  width="78px" height="60px" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 511.6 511.6" style="enable-background:new 0 0 511.6 511.6;" xml:space="preserve">
+                            <path style="fill:#E6E9ED;" d="M437.002,74.613c-17.643,0-31.975-14.348-31.975-31.975c0-17.635,14.332-31.976,31.975-31.976  c17.611,0,31.975,14.341,31.975,31.976C468.977,60.266,454.613,74.613,437.002,74.613z"/>
+                            <path style="fill:#FFCE54;" d="M437.002,0h-21.327h-19.298H74.606C51.062,0,31.975,19.094,31.975,42.639v426.338h383.7V85.27h21.327  c23.544,0,42.623-19.087,42.623-42.631C479.625,19.094,460.546,0,437.002,0z M437.002,63.95c-11.771,0-21.327-9.556-21.327-21.312  c0-11.757,9.556-21.319,21.327-21.319c11.74,0,21.296,9.562,21.296,21.319S448.742,63.95,437.002,63.95z"/>
+                            <path style="fill:#F5F7FA;" d="M117.244,0c-23.528,0-42.607,19.062-42.63,42.584c0,0.016-0.008,0.039-0.008,0.055v383.7h298.446V0  H117.244z"/>
+                            <polygon style="fill:#DA4453;" points="373.052,511.6 330.413,500.952 287.776,511.6 287.776,420.016 373.052,420.016 "/>
+                            <path style="fill:#ED5564;" d="M394.348,404.684c0,35.316-28.618,63.95-63.935,63.95c-35.331,0-63.958-28.634-63.958-63.95  s28.627-63.95,63.958-63.95C365.73,340.734,394.348,369.367,394.348,404.684z"/>
+                            <path style="fill:#F5F7FA;" d="M351.725,404.684c0,11.771-9.555,21.327-21.312,21.327c-11.772,0-21.312-9.556-21.312-21.327  c0-11.772,9.539-21.312,21.312-21.312C342.17,383.372,351.725,392.911,351.725,404.684z"/>
+                            <g>
+                                <path style="fill:#656D78;" d="M319.75,149.219H127.9c-5.886,0-10.656,4.778-10.656,10.656c0,5.894,4.77,10.663,10.656,10.663   h191.85c5.886,0,10.647-4.77,10.647-10.663C330.398,153.997,325.636,149.219,319.75,149.219z"/>
+                                <path style="fill:#656D78;" d="M127.9,106.588h191.85c5.886,0,10.647-4.77,10.647-10.663c0-5.878-4.762-10.655-10.647-10.655H127.9   c-5.886,0-10.656,4.777-10.656,10.655C117.244,101.819,122.014,106.588,127.9,106.588z"/>
+                                <path style="fill:#656D78;" d="M319.75,213.169H127.9c-5.886,0-10.656,4.77-10.656,10.656c0,5.894,4.77,10.663,10.656,10.663   h191.85c5.886,0,10.647-4.77,10.647-10.663C330.398,217.939,325.636,213.169,319.75,213.169z"/>
+                                <path style="fill:#656D78;" d="M223.825,277.127H127.9c-5.886,0-10.656,4.762-10.656,10.648c0,5.901,4.77,10.663,10.656,10.663   h95.925c5.886,0,10.656-4.762,10.656-10.663C234.481,281.889,229.711,277.127,223.825,277.127z"/>
+                            </g>
+                            <path style="fill:#F5F7FA;" d="M415.675,0h-42.623v42.639C373.052,19.094,392.131,0,415.675,0z"/>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            </svg>
+                    </div>
+                    <p>Proveedores</p>
+                </a>
+            </div>
+           
+            <div class="col-sm">
+                <a href="#" class="card impuestos">
+                    <div class="overlay"></div>
+                    <div class="circle">
+<svg xmlns="http://www.w3.org/2000/svg" width="78px" height="60px" viewBox="0 0 146 146"><title>001-business</title><rect x="0.5" y="0.5" width="145" height="145" fill="none"/><path d="M93.8,94.6V125a0.8,0.8,0,0,1-.8.8H61V94.6H93.8Z" fill="#7bd489"/><path d="M60.2,94.6v31.2H29.8A0.8,0.8,0,0,1,29,125V94.6H60.2Z" fill="#fff"/><path d="M93,64.2V94.6H60.2V63.4h32A0.8,0.8,0,0,1,93,64.2Z" fill="#fff"/><path d="M60.2,63.4V94.6H29V64.2a0.8,0.8,0,0,1,.8-0.8H60.2Z" fill="#fff"/><rect x="29" y="35.4" width="64" height="19.2" rx="0.8" ry="0.8" fill="#a8cbeb"/><path d="M104.2,23.4V133a4.8,4.8,0,0,1-4.8,4.8H22.6a4.8,4.8,0,0,1-4.8-4.8V23.4a4.8,4.8,0,0,1,4.8-4.8H99.4A4.8,4.8,0,0,1,104.2,23.4ZM93,125V64.2a0.8,0.8,0,0,0-.8-0.8H29.8a0.8,0.8,0,0,0-.8.8V125a0.8,0.8,0,0,0,.8.8H92.2A0.8,0.8,0,0,0,93,125Zm0-70.4V37a0.8,0.8,0,0,0-.8-0.8H29.8a0.8,0.8,0,0,0-.8.8V54.6a0.8,0.8,0,0,0,.8.8H92.2A0.8,0.8,0,0,0,93,54.6Z" fill="#fff"/><rect x="17.8" y="18.6" width="86.4" height="119.2" rx="4.8" ry="4.8" fill="none" stroke="#515f76" stroke-miterlimit="10" stroke-width="2.4"/><polyline points="37.8 79.4 44.2 79.4 50.6 79.4" fill="none" stroke="#515f76" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.4"/><polyline points="44.2 85.8 44.2 79.4 44.2 73" fill="none" stroke="#515f76" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.4"/><line x1="70.6" y1="79.4" x2="83.4" y2="79.4" fill="none" stroke="#515f76" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.4"/><line x1="70.6" y1="106.6" x2="83.4" y2="106.6" fill="none" stroke="#515f76" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.4"/><line x1="70.6" y1="113" x2="83.4" y2="113" fill="none" stroke="#515f76" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.4"/><polyline points="39.95 115.38 44.48 110.86 49 106.33" fill="none" stroke="#515f76" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.4"/><polyline points="49 115.38 44.48 110.86 39.95 106.33" fill="none" stroke="#515f76" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.4"/><line x1="122.6" y1="5" x2="125.8" y2="8.2" fill="none" stroke="#7bd489" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.6"/><line x1="125.8" y1="5" x2="122.6" y2="8.2" fill="none" stroke="#7bd489" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.6"/><circle cx="135.8" cy="18.2" r="2" fill="none" stroke="#b8b9ba" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.6"/><circle cx="116.47" cy="26.48" r="1.6" fill="#b8b9ba"/><circle cx="21.8" cy="145.8" r="1.6" fill="#b8b9ba"/><line x1="12" y1="8" x2="12" y2="14" fill="none" stroke="#b8b9ba" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><line x1="15" y1="11" x2="9" y2="11" fill="none" stroke="#b8b9ba" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><circle cx="20.2" cy="3.4" r="1.6" fill="#b8b9ba"/><circle cx="10.2" cy="139" r="2" fill="none" stroke="#b8b9ba" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.6"/><rect x="29" y="35.4" width="64" height="19.2" rx="0.8" ry="0.8" fill="none" stroke="#515f76" stroke-miterlimit="10" stroke-width="2.4"/><path d="M66.47,99.28L93.8,97.8V94.6H61v31.2h3.2V101.67A2.4,2.4,0,0,1,66.47,99.28Z" fill="#a4e0b3"/><polyline points="61.8 63.4 61.8 94.6 61.8 125.8" fill="none" stroke="#515f76" stroke-miterlimit="10" stroke-width="2.4"/><path d="M29,126.6a0.8,0.8,0,0,1-.8-0.8V63.4H27.4A1.6,1.6,0,0,0,25.8,65v63.2a1.6,1.6,0,0,0,1.6,1.6l64,1.56a1.6,1.6,0,0,0,1.64-1.6V126.6H29Z" fill="#c3c7cd"/><path d="M93,94.6V125a0.8,0.8,0,0,1-.8.8H29.8A0.8,0.8,0,0,1,29,125V64.2a0.8,0.8,0,0,1,.8-0.8H92.2a0.8,0.8,0,0,1,.8.8V94.6Z" fill="none" stroke="#515f76" stroke-miterlimit="10" stroke-width="2.4"/><polyline points="93 94.6 60.2 94.6 29 94.6" fill="none" stroke="#515f76" stroke-miterlimit="10" stroke-width="2.4"/><polygon points="128.33 124.67 123.53 135.88 120.33 135.88 115.53 124.67 128.33 124.67" fill="#fff"/><rect x="115.53" y="70.27" width="12.8" height="7.2" fill="#ea9080"/><polygon points="115.53 111.08 115.53 101.47 115.53 93.47 115.53 82.28 115.53 77.47 128.33 77.47 128.33 82.28 128.33 93.47 128.33 111.08 128.33 124.67 115.53 124.67 115.53 111.08" fill="#ea9080"/><path d="M128.33,124.67l-4.87,11.12c-0.28.64-2.79,0.64-3.07,0l-4.87-11.12" fill="none" stroke="#515f76" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.4"/><path d="M128.33,24.67v4.8h-12.8v-4.8a3.2,3.2,0,0,1,3.2-3.2h6.4A3.2,3.2,0,0,1,128.33,24.67Z" fill="#ea9080"/><polygon points="128.33 56.67 128.33 70.28 115.53 70.28 115.53 56.67 115.53 29.48 127.53 29.48 128.33 29.48 128.33 56.67" fill="#ea9080"/><path d="M124.33,22.27h0v103.2h3.2v-100A3.2,3.2,0,0,0,124.33,22.27Z" fill="#eeb8a9" opacity="0.8"/><line x1="128.33" y1="31.07" x2="116.33" y2="31.07" fill="none" stroke="#515f76" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.4"/><line x1="128.33" y1="77.47" x2="115.53" y2="77.47" fill="none" stroke="#515f76" stroke-miterlimit="10" stroke-width="2.4"/><line x1="115.53" y1="69.47" x2="128.33" y2="69.47" fill="none" stroke="#515f76" stroke-miterlimit="10" stroke-width="2.4"/><path d="M128.33,124.67h-12.8V26.27a4.8,4.8,0,0,1,4.8-4.8h3.2a4.8,4.8,0,0,1,4.8,4.8v98.4Z" fill="none" stroke="#515f76" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/><circle cx="133.8" cy="0.2" r="1.6" fill="#b8b9ba"/><circle cx="114.46" cy="145.8" r="1.6" fill="#b8b9ba"/></svg>
+                    </div>
+                    <p>Impuesto</p>
+                </a>
+            </div>
+            <div class="col-sm">
+                <a href="#" class="card graficos" routerLink="/products/physical/vencimiento">
+                    <div class="overlay"></div>
+                    <div class="circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="78px" height="60px" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                            <polygon style="fill:#894BA2;" points="464.32,386.513 392.293,458.539 320.268,386.513 350.854,386.513 354.874,386.513   354.874,20.756 429.715,20.756 429.715,386.513 433.734,386.513 "/>
+                            <polygon style="fill:#763794;" points="433.734,386.513 464.32,386.513 395.944,454.888 395.944,20.756 429.715,20.756   429.715,386.513 "/>
+                            <rect x="218.581" y="159.205" style="fill:#F77935;" width="74.838" height="299.34"/>
+                            <rect x="259.586" y="159.205" style="fill:#D9510D;" width="33.833" height="299.34"/>
+                            <rect x="82.223" y="252.718" style="fill:#FFDB56;" width="74.838" height="205.815"/>
+                            <rect x="123.23" y="252.718" style="fill:#FBA806;" width="33.833" height="205.815"/>
+                            <path d="M218.579,466.997h74.841c4.671,0,8.458-3.786,8.458-8.458V159.202c0-4.672-3.787-8.458-8.458-8.458h-74.841  c-4.671,0-8.458,3.786-8.458,8.458v299.337C210.121,463.21,213.908,466.997,218.579,466.997z M227.037,167.66h57.925v282.421  h-57.925V167.66z"/>
+                            <path d="M82.223,466.997h74.842c4.671,0,8.458-3.786,8.458-8.458V252.718c0-4.672-3.787-8.458-8.458-8.458H82.223  c-4.671,0-8.458,3.786-8.458,8.458v52.357c0,4.672,3.787,8.458,8.458,8.458s8.458-3.786,8.458-8.458v-43.899h57.926v188.904H90.682  V339.085c0-4.672-3.787-8.458-8.458-8.458s-8.458,3.786-8.458,8.458v119.454C73.765,463.21,77.552,466.997,82.223,466.997z"/>
+                            <path d="M503.542,482.786H8.458c-4.671,0-8.458,3.786-8.458,8.458c0,4.672,3.787,8.458,8.458,8.458h495.084  c4.671,0,8.458-3.786,8.458-8.458C512,486.571,508.213,482.786,503.542,482.786z"/>
+                            <path d="M386.313,464.519c1.586,1.586,3.737,2.477,5.98,2.477s4.395-0.891,5.98-2.477l72.026-72.026  c2.419-2.42,3.143-6.057,1.834-9.218c-1.309-3.161-4.394-5.222-7.814-5.222h-26.147V20.756c0-4.672-3.787-8.458-8.458-8.458h-74.841  c-4.671,0-8.458,3.787-8.458,8.458v177.27c0,4.672,3.787,8.458,8.458,8.458s8.458-3.786,8.458-8.458V29.214h57.925v357.297  c0,4.672,3.787,8.458,8.458,8.458h14.186l-51.606,51.607l-51.606-51.607h14.186c4.671,0,8.458-3.786,8.458-8.458v-154.46  c0-4.672-3.787-8.458-8.458-8.458c-4.671,0-8.458,3.786-8.458,8.458v146.003H320.27c-3.42,0-6.505,2.06-7.814,5.221  c-1.309,3.161-0.585,6.798,1.834,9.218L386.313,464.519z"/>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            </svg>
+                    </div>
+                    <p>Vencimiento</p>
+                </a>
+            </div>         
+        </div>
     </div>
-</div>
-<div class="card">
-    <div class="col">
-        <div class="card-header" style="border: solid;" (click)="openModal(content1)">
-      <img class="imagen-inventario" src="../../../../assets/images/ingresandoproducto.jpg" alt="">
-      </div>
-      <div class="card-body">
-          <h1 class="titulos-card  card-title">Ingresar producto</h1>
-      </div>
-    </div>
-</div>
-<div class="card">
-    <div class="col">
-        <div class="card-header" style="border: solid;" routerLink="/products/physical/proveedor">
-      <img class="imagen-inventario" src="../../../../assets/images/proveedor.png" alt="">
-      </div>
-      <div class="card-body">
-          <h1 class="titulos-card  card-title">Proveedor</h1>
-      </div>
-    </div>
-</div>
-<div class="card">
-    <div class="col">
-        <div class="card-header" style="border: solid;" routerLink="/products/physical/vencimiento">
-      <img class="imagen-inventario" src="../../../../assets/images/vencimiento.png" alt="">
-      </div>
-      <div class="card-body">
-          <h1 class="titulos-card  card-title">Vencimiento</h1>
-      </div>
-    </div>
-</div>
-</div>
+
+
+    
